@@ -1,5 +1,11 @@
 # 更新记录
 
+## 1.2.0 · 2026-11-26 · 知识卡片板块、SC02
+- 知识卡片板块 `cards/`：排版 `cards/layouts/`、信息卡 `cards/infocards/`、图片 `cards/images/`（原 `libs/imagery` + `libs/stickers`）、配方 `cards/recipes/` 放在同一个文件夹；新增 `cards/README.md` 说明三者关系和与挖洞号卡片的对应。
+- 新增图片风格 **SC02 · 蓝调漫画**（`sc02-line` 蓝线漫画、`sc02-duo` 黑白漫画 → 蓝调双色），样张预览 `docs/previews/styles/SC02.jpg`；风格支持 `variants`，preset 写成 `风格-做法`。
+- 陶瓷贴纸后缀从 `brand.json` 移入 `cards/images/styles.json`；`tools/genimg.py` 全部风格从 `styles.json` 读。
+- 修复：被误清空的贴纸说明从历史找回，合并进 `cards/images/README.md`。
+
 ## 1.1.3 · 2026-11-26 · 图片风格提示词库、期号 BM、MiSans 入库
 - 图片素材库改为风格提示词库 `libs/imagery/styles.json`：`toy` 设计师玩具角色、`tone` 双色调摄影、`iso` 等距微缩场景、`device` 手持设备实拍、`flat` 几何平面插画；不定固定角色，图片每期现生成。`tools/genimg.py` 的 preset 直接读这些风格。`brand.json` → `imagery.styles_file`。
 - 期号前缀 `BM`（`BM01`），`EPISODES.md`、归档标签示例同步。

@@ -25,11 +25,11 @@
 - 不要背景音乐，只留对准画面事件的音效。
 
 ## 视觉系统与素材
-- 镜头一律由这些库搭出来：背景板库 `libs/backgrounds/`、排版库 `libs/layouts/`、信息卡库 `libs/infocards/`、录屏组件 `libs/screencast/`、贴纸 `libs/stickers/`、图片素材库 `libs/imagery/`、动效库 `engine/motion/`、配方表 `libs/recipes/`。库里没有的先补进库，再用到镜头里。
+- 镜头一律由库搭出来：**知识卡片板块 `cards/`**（图片 `cards/images/` + 排版 `cards/layouts/` + 信息卡 `cards/infocards/` + 配方 `cards/recipes/`）、背景板库 `libs/backgrounds/`、录屏组件 `libs/screencast/`、动效库 `engine/motion/`。库里没有的先补进库，再用到镜头里；这些库会持续扩充。
 - 只用 `STYLE.md` 已有的色板、字体、组件和动效；要改先问用户，确认后改 `tokens/brand.json` → 跑 `python3 tools/gen_tokens.py` 和 `python3 tools/contrast_check.py`（必须全过）→ 更新 `STYLE.md` + `CHANGELOG.md` 并升版本号。
-- **与艾唯说挖洞完全隔离**：不得复制、引用 `aiwei-vs2` 的任何素材、样例图、角色（黏土角色、SC-01、黑白雕塑等）和卡片样式。挖洞号 49 张卡只能借构图，在 `libs/layouts/` 里重做。
+- **与艾唯说挖洞完全隔离**：不得复制、引用 `aiwei-vs2` 的任何素材、样例图、角色（黏土角色、SC-01、黑白雕塑等）和卡片样式。挖洞号 49 张卡只能借构图，在 `cards/layouts/` 里重做。
 - **不得引入 lieflat code video 的代码或其派生代码**（PolyForm 非商业许可）。动效一律用 `engine/motion/` 自写的库。
-- **不设品牌素材层**：图片素材由用户提供，或按本期口播现生成，只用于本期，不跨期复用；同一张生图不得出现在两期。`libs/stickers/samples/` 是风格样张，不进正片。
+- **不设品牌素材层**：图片素材由用户提供，或按本期口播现生成，只用于本期，不跨期复用；同一张生图不得出现在两期。`cards/images/samples/` 是风格样张，不进正片。
 - AE 包交付前必须跑通 AE 检查（P6 建好后为 `python3 ae/build_ae.py <期目录>`）并如实告诉用户没在真 AE 里测过。
 - **AE 包必须分层**：背景板是单独的图片文件；动态背景是单独的 SVG / MP4 图层（能隐藏、能替换）；录屏能在 AE 里直接替换（窗口边框层 + 录屏预合成：原片 + 时间重映射 + 推镜关键帧 + 标注形状层）。不许把背景、窗口、录屏整帧烘焙成一条 MP4。细则见 `docs/rules/AE包规范.md`。
 - 每期做完在 `EPISODES.md` 登记并提交推送；中间产物在 `footage/ build/ out/`（不进 git）。

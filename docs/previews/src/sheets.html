@@ -81,7 +81,7 @@ if (sheet === 'palette') {
 }
 if (sheet === 'stickers') {
   const N = ['whitehat', 'aichip', 'shield', 'radar', 'key', 'briefcase', 'bug', 'lock_closed', 'lock_open', 'laptop', 'building', 'coin'];
-  const cell = n => `<div><img src="../../../libs/stickers/samples/bmz_${n}.png"></div>`;
+  const cell = n => `<div><img src="../../../cards/images/samples/bmz_${n}.png"></div>`;
   document.getElementById('strow1').innerHTML = N.slice(0, 6).map(cell).join('') + N.slice(6).map(cell).join('');
   document.getElementById('strow2').innerHTML = N.map(cell).join('');
   document.getElementById('stnames').textContent = '上：炭黑底　下：奶油白底　｜　' + N.map(n => 'bmz_' + n).join(' · ');

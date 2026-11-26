@@ -1,4 +1,4 @@
-# 艾唯白帽志 · 视觉系统 1.1.3
+# 艾唯白帽志 · 视觉系统 1.2
 
 「艾唯白帽志」（AI 挖洞、攻防技术、网安就业）的视频视觉系统和制作工具链：横屏 1920×1080 · 60fps · HTML 逐帧渲染 + AE 分层重建包。
 
@@ -9,7 +9,7 @@
 - 上手：`SETUP.md`；预览：`docs/previews/`；版本：`CHANGELOG.md`；作品台账：`EPISODES.md`
 
 ## 新会话开场白（复制即用）
-> 按「艾唯白帽志 · 视觉系统 1.1.3」制作第 BM0N 期。先读 CLAUDE.md、STYLE.md、docs/rules/用户要求汇总.md、EPISODES.md，运行 SETUP.md 装好环境，再看我发的口播和脚本。
+> 按「艾唯白帽志 · 视觉系统 1.2」制作第 BM0N 期。先读 CLAUDE.md、STYLE.md、docs/rules/用户要求汇总.md、EPISODES.md，运行 SETUP.md 装好环境，再看我发的口播和脚本。
 
 ## 目录
 | 目录 | 内容 |
@@ -17,12 +17,12 @@
 | `tokens/` | `brand.json`：色值、场景配色、字体、字号、网格、背景板、贴纸预设 |
 | `engine/` | `tokens.css`（自动生成）、`base.css`、渲染与运动模糊、音效合成；`motion/` 动效库（P2） |
 | `libs/backgrounds/` | 背景板库：底板 PNG + 动态层 SVG |
-| `libs/layouts/` | 排版库（P3）：由挖洞号 49 张卡的构图迁来，只含构图和槽位 |
-| `libs/infocards/` | 信息卡库（P4） |
+| `cards/` | **知识卡片板块** = 图片 + 排版 + 信息卡（见 `cards/README.md`） |
+| `cards/images/` | 图片：风格提示词 `styles.json`（sticker、SC02、toy、tone、iso、device、flat……持续扩充）、贴纸样张；图片每期现生成 |
+| `cards/layouts/` | 排版（P3）：由挖洞号 49 张卡的构图迁来，只含构图和槽位，持续扩充 |
+| `cards/infocards/` | 信息卡（P4），持续扩充 |
+| `cards/recipes/` | 配方（P6）：一张卡 = 排版 + 信息卡 + 图片 + 动效 |
 | `libs/screencast/` | 录屏组件（P4）：窗口、推镜、标注、光标、打码、联动 |
-| `libs/stickers/` | 贴纸：生图预设说明、风格样张（不设品牌贴纸层，每期素材每期做） |
-| `libs/imagery/` | 图片素材库：风格提示词（`styles.json`：toy / tone / iso / device / flat），图片每期现生成，不跨期复用 |
-| `libs/recipes/` | 镜头配方表（P6） |
 | `ae/` | AE 包工具：探测报告、说明；挖洞号迁来的参考实现在提交 `adbbc35` 的 `ae/_from_aiwei-vs2/`，P6 改造后进 `main` |
 | `tools/` | 生图、抠图、双色调、对比度检查、生成 tokens / 背景板 / 预览、语音识别、口播抠像 |
 | `fonts/` | 得意黑、Archivo Black、IBM Plex Mono（SIL OFL 1.1，附许可）；MiSans Medium / Bold / Heavy（小米许可，用户已确认商用） |
