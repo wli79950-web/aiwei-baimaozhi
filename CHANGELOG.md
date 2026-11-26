@@ -1,5 +1,10 @@
 # 更新记录
 
+## 1.1.3 · 2026-11-26 · 图片风格提示词库、期号 BM、MiSans 入库
+- 图片素材库改为风格提示词库 `libs/imagery/styles.json`：`toy` 设计师玩具角色、`tone` 双色调摄影、`iso` 等距微缩场景、`device` 手持设备实拍、`flat` 几何平面插画；不定固定角色，图片每期现生成。`tools/genimg.py` 的 preset 直接读这些风格。`brand.json` → `imagery.styles_file`。
+- 期号前缀 `BM`（`BM01`），`EPISODES.md`、归档标签示例同步。
+- MiSans Medium / Bold / Heavy TTF 放进 `fonts/`（用户确认商用授权，附 `MiSans_授权说明.md`）；`brand.json` → `font.cn.bundled = true`。
+
 ## 1.1.2 · 2026-11-26 · 分支清理
 - PR #1 合并后删除分支 `ref/ae-from-aiwei-vs2`、`candidate/imagery`；其内容保存在提交 `adbbc35`（`main` 历史中）。文档里的分支名改为指向该提交，并附取回命令。
 

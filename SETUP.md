@@ -17,7 +17,7 @@ mkdir -p models && curl -sSL -o /tmp/p.tar.bz2 https://github.com/k2-fsa/sherpa-
 
 - Chromium 和 Playwright 已预装，`require('playwright')` 可以直接用，不要重装。
 - 生图接口 `apihub.agnes-ai.com` 的密钥由云环境的网络代理注入，脚本里不写真密钥；如果报 `Invalid token`，在环境设置里给这个域名配置密钥。
-- AE 端需要安装的字体：`fonts/` 里的三款 OFL 字体 + MiSans（从小米官方下载 MiSans Medium / Bold / Heavy）。
+- AE 端需要安装的字体：`fonts/` 里的全部 TTF（得意黑、Archivo Black、IBM Plex Mono Medium / SemiBold、MiSans Medium / Bold / Heavy）。
 
 ## 常用命令
 | 做什么 | 命令 |

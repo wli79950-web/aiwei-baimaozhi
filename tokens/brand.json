@@ -1,6 +1,6 @@
 {
   "name": "艾唯白帽志",
-  "version": "1.1.0",
+  "version": "1.1.3",
   "updated": "2026-11-26",
   "spec": {
     "w": 1920,
@@ -186,9 +186,14 @@
         "700": "MiSans-Bold",
         "900": "MiSans-Heavy"
       },
-      "license": "小米 MiSans 字体知识产权许可协议（商用条款待用户确认）",
-      "bundled": false,
-      "use": "正文、字幕、标签"
+      "license": "小米 MiSans 字体知识产权许可协议（用户 2026-11-26 确认商用授权，见 fonts/MiSans_授权说明.md）",
+      "bundled": true,
+      "use": "正文、字幕、标签",
+      "files": [
+        "fonts/MiSans-Medium.ttf",
+        "fonts/MiSans-Bold.ttf",
+        "fonts/MiSans-Heavy.ttf"
+      ]
     },
     "num": {
       "family": "Archivo",
@@ -339,20 +344,8 @@
     "reuse": "不设品牌素材层：贴纸每期按口播生成或用用户提供的素材，不跨期复用"
   },
   "imagery": {
-    "lines": {
-      "WH": {
-        "name": "白帽角色线",
-        "status": "候选，待用户确认（样张在提交 adbbc35）",
-        "role": "固定角色出镜：情境、讲故事、代替人物做动作（作用类似挖洞号 SC-01）",
-        "style": "3D 设计师玩具风格的固定角色，奶油白陶瓷质感，戴白帽，脸部极简，配色只用奶油白 / 克莱因蓝 / 朱橙"
-      },
-      "TONE": {
-        "name": "双色调摄影线",
-        "status": "候选，待用户确认（样张在提交 adbbc35）",
-        "role": "情绪节点：章节卡、反转、金句、观点（作用类似挖洞号的黑白雕塑）",
-        "style": "黑白写实摄影生成后，用 tools/duotone.py 映射成 炭黑 → 朱橙 → 奶油白 双色调"
-      }
-    },
+    "styles_file": "libs/imagery/styles.json",
+    "note": "不设品牌素材层：图片每期按口播现生成（或用户提供），风格提示词在 styles_file",
     "duotone": {
       "orange": [
         [

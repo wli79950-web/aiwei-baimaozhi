@@ -3,9 +3,10 @@
 迁自 aiwei-vs2/tools/genimg.py，预设改成白帽志的：贴纸风格后缀从 tokens/brand.json 读取。
 
 用法：python3 tools/genimg.py jobs.json 输出目录
-jobs.json: [{"name":"stk_xxx","preset":"sticker","prompt":"a closed padlock ...","size":"1024x1024"}, ...]
+jobs.json: [{"name":"bm01_xxx","preset":"iso","prompt":"本期的画面内容","size":"1024x1024"}, ...]
 preset:
-  sticker  白帽志陶瓷贴纸（奶油白 / 克莱因蓝 / 朱橙，浅灰底，之后用 tools/cutout.py 抠成透明底）
+  sticker  陶瓷贴纸（奶油白 / 克莱因蓝 / 朱橙，浅灰底，之后用 tools/cutout.py 抠透明底）——后缀在 tokens/brand.json
+  toy / tone / iso / device / flat  图片素材库的风格——后缀和用法在 libs/imagery/styles.json
   photo    写实照片（只放进手机屏幕、窗口、卡片里，不整屏铺底）
   raw      不加后缀
 注意：
@@ -17,8 +18,10 @@ import base64, json, os, subprocess, sys, time
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 BRAND = json.load(open(os.path.join(ROOT, 'tokens', 'brand.json'), encoding='utf-8'))
+STYLES = json.load(open(os.path.join(ROOT, BRAND['imagery']['styles_file']), encoding='utf-8'))['styles']
 PRESET = {
     'sticker': BRAND['sticker']['prompt_suffix'],
+    **{k: v['prompt_suffix'] for k, v in STYLES.items()},
     'photo': "realistic photograph, cinematic, shallow depth of field, no readable text, no logos, no brand names",
     'raw': "",
 }

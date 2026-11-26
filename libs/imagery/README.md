@@ -1,29 +1,40 @@
-# 图片素材库（与贴纸并列）
+# 图片素材库 · 风格提示词
 
-作用类似「艾唯说挖洞」的 SC-01 漫画角色和黑白雕塑：一条线负责**角色和情境**，一条线负责**情绪和高级感**。白帽志用自己的风格，**不得使用 SC-01、黑白雕塑、黏土角色或任何挖洞号素材**。
+**不设品牌素材层，每期的图片都不一样。** 本库只放**风格提示词**和后期处理方法：每期按口播写画面内容，配上这里的风格后缀现生成；用户也可以自己生成后交来。图片只用于本期，同一张生图不得出现在两期。
 
-**本库只放风格定义、提示词和处理方法，不放可复用的图片**：图片由用户提供，或每期按口播生成，只用于本期。候选样张、预览板和演示帧 F5 / F6 在提交 `adbbc35` 里（`main` 历史中；浅克隆先 `git fetch --depth=10 origin main`），取回方法见文末。
+作用类似「艾唯说挖洞」的 SC-01 和黑白雕塑，但用白帽志自己的风格，**不得使用 SC-01、黑白雕塑、黏土角色或任何挖洞号素材**。
 
-## 两条线（候选，待用户确认后在 P5 定稿）
-| 线 | 作用 | 风格 | 生成方式 |
-|---|---|---|---|
-| **WH 白帽角色线** | 固定角色出镜：情境、讲故事、代替人物做动作，引导观众看录屏和信息卡 | 3D 设计师玩具风格，奶油白陶瓷质感，戴白帽（奶油白 + 克莱因蓝帽带），脸部极简；配色只用奶油白 / 克莱因蓝 / 朱橙 | `tools/genimg.py`，`sticker` 预设 + 固定角色描述；`tools/cutout.py object --largest` |
-| **TONE 双色调摄影线** | 情绪节点：章节卡、反转、金句、观点 | 黑白写实摄影 → 渐变映射成 炭黑 → 朱橙 → 奶油白（或 → 克莱因蓝） | `tools/genimg.py`（`raw`，提示词写黑白摄影）→ `python3 -I tools/duotone.py 黑白.jpg 输出.jpg [--map klein]` |
+## 风格一览（`styles.json`）
+| id | 风格 | 用来讲什么 | 后期 | 样张 |
+|---|---|---|---|---|
+| `sticker` | 陶瓷贴纸（在 `tokens/brand.json`） | 名词实物化：芯片、钥匙、锁、盾牌…… | 抠透明底 | `libs/stickers/samples/` |
+| `toy` | 设计师玩具角色 | 情境、讲故事、角色做动作、指向录屏 | 抠透明底 | 提交 `adbbc35` |
+| `tone` | 双色调摄影 | 情绪节点：章节卡、反转、金句 | `tools/duotone.py` 映射成炭黑 → 朱橙 / 蓝 → 奶油白 | 提交 `adbbc35` |
+| `iso` | 等距微缩场景 | 结构、系统、流程、攻击链 | 抠透明底 | 暂无，首次使用先出 2 张确认 |
+| `device` | 手持设备实拍 | 把用户截图放进手机屏幕 | 截图透视贴进白屏 | 暂无 |
+| `flat` | 几何平面插画 | 比喻、类比 | 直接用，放进卡片 | 暂无，首次使用先出 2 张确认 |
 
-## WH 角色定稿前要解决的
-- 候选两张不一致：一张脸是奶油白，另一张是肤色 + 红眼；笔记本是灰色（超出配色）。定稿时要像 SC-01 一样**写死一段角色设定**（脸、帽、衣、裤、鞋、配色），每次只改动作描述。
-- 「卫衣 + 抽绳 + 抱笔记本」和挖洞号的黏土白帽角色有相似之处，定稿时靠白帽、陶瓷质感和配色拉开，必要时换掉卫衣。
-- 定稿的是**角色设定提示词**（写进本 README 和 `tokens/brand.json`），每期需要什么动作就用同一段设定现生成，不跨期复用图片。
+每个风格的完整提示词后缀、放法、示例主题和注意事项都在 `styles.json` 里。
 
-## TONE 使用方式
-- 只放在**炭黑场**：照片的暗部本来就是炭黑，用 `mix-blend-mode: lighten` + 径向遮罩羽化，融进背景（见提交 `adbbc35` 的 `docs/previews/src/demo.html` F5）。AE 里图层混合模式设「变亮」。
-- 主体可以出血到画面外；文字压在照片上时，照片透明度降到 0.5–0.9，保证手机竖屏可读。
-- 禁止可辨认的真人脸、品牌、Logo、可读文字。
-- 意象贴网安：手 + 键盘、机房走廊、门锁、钥匙、监控屏、城市夜景、数据中心……
+## 怎么用
+```bash
+# jobs.json：prompt 只写本期的画面内容，preset 写风格 id
+# [{"name":"bm01_vault","preset":"iso","prompt":"a vault room behind a series of doors, the last door wide open"}]
+python3 tools/genimg.py jobs.json footage/gen
+python3 -I tools/cutout.py object footage/gen/bm01_vault.png episodes/BM01_xxx/assets/bm01_vault.png
+# 双色调：preset 用 tone，生成黑白照后再映射
+python3 -I tools/duotone.py footage/gen/bm01_corridor.png episodes/BM01_xxx/assets/bm01_corridor.jpg
+```
+- 生图清单（剪辑思路汇报的附件）里每张写明：用哪个风格、用在哪个镜头、对应哪句口播、文件名、本期的画面描述。
+- 一期里尽量只用 2–3 种风格，3D（`sticker` / `toy` / `iso`）和平面（`flat`）不要在同一个镜头里混用。
+- 配色只能是奶油白 / 克莱因蓝 / 朱橙（加炭黑阴影）；模型偶尔会加灰、加金，挑图时重生。
 
 ## 用户提供的素材
 截图、图片、录屏一律**保留原色**，放进窗口 / 卡片 / 手机屏幕里，不重新调色；需要强调时只加朱橙标注（框、下划线、标签）。
 
-## 图片放在哪
-- 每期素材：`episodes/<本期>/assets/`，不得出现在两期。
-- 候选样张（WH ×2、TONE ×3 + 黑白原图，提示词 `prompts.json`）：提交 `adbbc35` 的 `libs/imagery/candidates/`。取回：`git checkout adbbc35 -- libs/imagery/candidates`。
+## 样张取回
+`toy` 和 `tone` 的样张（2 张角色、3 张双色调照片 + 黑白原图）保存在提交 `adbbc35`（`main` 历史中）：
+```bash
+git fetch --depth=10 origin main   # 浅克隆先补历史
+git checkout adbbc35 -- libs/imagery/candidates
+```

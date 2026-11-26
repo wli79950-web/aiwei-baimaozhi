@@ -17,7 +17,7 @@
 ## 白帽志特有
 - 没有 HUD、时间码、角标层；不做左上角 IP 区检查。
 - 颜色、字体从 `tokens/brand.json` 读，不在 AE 脚本里手写色值。
-- 字体：得意黑 `SmileySans-Oblique`、Archivo `Archivo-Black`、IBM Plex Mono `IBMPlexMono-Medium / SemiBold` 随包附带（OFL）；MiSans 不随包分发，在 AE 电脑上自行安装。
+- 字体全部随包附带：得意黑 `SmileySans-Oblique`、Archivo `Archivo-Black`、IBM Plex Mono `IBMPlexMono-Medium / SemiBold`（OFL），MiSans `MiSans-Medium / Bold / Heavy`（小米许可，用户已确认商用）。
 - 人物 A-roll 素材层图层名以「人物占位_请替换」开头。
 
 ## AE 相关踩坑（沿用）
