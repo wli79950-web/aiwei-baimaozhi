@@ -336,21 +336,19 @@
     "material": "哑光陶瓷 / 磨砂树脂",
     "prompt_suffix": "premium 3D product render, soft matte ceramic and frosted resin materials, color palette strictly limited to cream white (#F5EEDF), Klein blue (#002FA7) and vermilion orange (#FF5A1F), clean geometric Bauhaus-inspired forms, smooth rounded edges, soft diffused studio lighting, gentle contact shadow, isolated on a plain light grey (#D6D6D6) seamless background, centered, full object visible, no text, no letters, no numbers, no logo, no watermark",
     "on_char": "优先奶油白为主的贴纸；蓝色为主的贴纸要垫一张卡片白卡",
-    "brand": [
-      "whitehat"
-    ]
+    "reuse": "不设品牌素材层：贴纸每期按口播生成或用用户提供的素材，不跨期复用"
   },
   "imagery": {
     "lines": {
       "WH": {
         "name": "白帽角色线",
-        "status": "候选，待用户确认",
+        "status": "候选，待用户确认（样张在分支 candidate/imagery）",
         "role": "固定角色出镜：情境、讲故事、代替人物做动作（作用类似挖洞号 SC-01）",
         "style": "3D 设计师玩具风格的固定角色，奶油白陶瓷质感，戴白帽，脸部极简，配色只用奶油白 / 克莱因蓝 / 朱橙"
       },
       "TONE": {
         "name": "双色调摄影线",
-        "status": "候选，待用户确认",
+        "status": "候选，待用户确认（样张在分支 candidate/imagery）",
         "role": "情绪节点：章节卡、反转、金句、观点（作用类似挖洞号的黑白雕塑）",
         "style": "黑白写实摄影生成后，用 tools/duotone.py 映射成 炭黑 → 朱橙 → 奶油白 双色调"
       }

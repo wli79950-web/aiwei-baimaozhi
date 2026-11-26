@@ -1,11 +1,11 @@
 # AE 包工具
 
 ## 现状（P1）
-`_from_aiwei-vs2/` 是从「艾唯说挖洞」迁来的 AE 工具（全部是自有代码，不含 lieflat 代码），**现在不要直接运行**：里面还写死了挖洞号的颜色、字体、HUD 和左上角 IP 区检查。P6 会按白帽志改造后移到 `ae/` 下。
+从「艾唯说挖洞」迁来的 AE 工具（全部是自有代码，不含 lieflat 代码）**不在 `main` 上**，放在分支 `ref/ae-from-aiwei-vs2` 的 `ae/_from_aiwei-vs2/`：里面还写死了挖洞号的颜色、字体、HUD 和左上角 IP 区检查，不要直接运行。P6 按白帽志改造后再进 `main`。
 
 | 文件 | 作用 | P6 要改的 |
 |---|---|---|
-| `build_ae.py` | 一键生成 AE 包：脚本 → 音效 → 收集素材 → 模拟测试 → zip | 素材查找路径（本期 → 同期分段 → `libs/stickers/brand/`）、字体清单 |
+| `build_ae.py` | 一键生成 AE 包：脚本 → 音效 → 收集素材 → 模拟测试 → zip | 素材查找路径（只查本期 → 同期分段，不设品牌素材层）、字体清单 |
 | `ae_lib.jsx` | AE 运行库（ES3）：图层、形状、文字、关键帧、窗口预合成 | 色值改读 brand.json；删除 HUD / 时间码 / PiP 描边；换成新动效库的 AE 写法 |
 | `fontcov.py` | 中英混排逐字设字体 | 字体表换成得意黑 / MiSans / Archivo / IBM Plex Mono |
 | `page_text.js` | 从 HTML 提取文字块和字体映射 | 字体映射 |

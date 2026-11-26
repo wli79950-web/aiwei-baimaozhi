@@ -53,21 +53,6 @@ table.ct td.r{font:900 26px var(--f-num);text-align:right}
   <div class="cap" id="stnames"></div>
 </div>
 
-<div class="sheet" id="imagery">
-  <div class="k">Aiwei Whitehat Log · Imagery library</div>
-  <h1>图片素材库 · 候选样张</h1>
-  <h2>WH 白帽角色线<small>固定角色出镜，作用类似挖洞号 SC-01（白帽志不用 SC-01）。两张不一致（脸色、笔记本颜色），定稿时要写死角色设定</small></h2>
-  <div class="st" style="grid-template-columns:repeat(4,1fr)"><div style="background:var(--char)"><img src="../../../libs/imagery/candidates/wh_char_a.png"></div><div style="background:var(--char)"><img src="../../../libs/imagery/candidates/wh_char_b.png"></div><div style="background:var(--cream)"><img src="../../../libs/imagery/candidates/wh_char_a.png"></div><div style="background:var(--cream)"><img src="../../../libs/imagery/candidates/wh_char_b.png"></div></div>
-  <h2>TONE 双色调摄影线<small>黑白写实照 → tools/duotone.py → 炭黑 / 朱橙 / 奶油白；作用类似挖洞号的黑白雕塑（白帽志不用雕塑）</small></h2>
-  <div class="st" style="grid-template-columns:repeat(5,1fr)">
-    <div style="padding:0"><img style="filter:none" src="../../../libs/imagery/candidates/raw/tone_hand_bw.jpg"></div>
-    <div style="padding:0"><img style="filter:none" src="../../../libs/imagery/candidates/tone_hand_orange.jpg"></div>
-    <div style="padding:0"><img style="filter:none" src="../../../libs/imagery/candidates/raw/tone_corridor_bw.jpg"></div>
-    <div style="padding:0"><img style="filter:none" src="../../../libs/imagery/candidates/tone_corridor_orange.jpg"></div>
-    <div style="padding:0"><img style="filter:none" src="../../../libs/imagery/candidates/tone_corridor_klein.jpg"></div></div>
-  <div class="cap">黑白原图 → 朱橙映射　｜　黑白原图 → 朱橙映射 → 克莱因蓝映射</div>
-</div>
-
 <script>
 const B = window.BRAND, C = Object.fromEntries(Object.entries(B.color).map(([k, v]) => [k, v.hex]));
 const sheet = new URLSearchParams(location.search).get('s') || 'palette';

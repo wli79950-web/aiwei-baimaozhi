@@ -11,7 +11,7 @@ preset:
 注意：
 - 必须用 response_format=b64_json；返回的图片 URL 域名会被网络策略拦截。
 - 免费额度约连续 10 张后限流，本脚本串行执行，失败后等 65 秒重试，最多 3 次。
-- 同一张生图不得出现在两期；品牌贴纸（libs/stickers/brand/）除外。
+- 同一张生图不得出现在两期；不设品牌素材层，每期素材都新生成或由用户提供。
 """
 import base64, json, os, subprocess, sys, time
 

@@ -1,5 +1,10 @@
 # 更新记录
 
+## 1.1.1 · 2026-11-26 · 仓库结构
+- 不设品牌素材层：删除 `libs/stickers/brand/`、`libs/imagery/wh/` 和「品牌贴纸可跨期」的规则；图片素材每期由用户提供或现生成。`brand.json` 去掉 `sticker.brand`。
+- `main` 只保留最新两期工程，更早的打标签 `ep/<期号>` 归档（`制作流程.md`、`EPISODES.md`）。
+- 挖洞号 AE 参考实现移到分支 `ref/ae-from-aiwei-vs2`；图片素材库候选样张、演示帧 F5 / F6、图片素材库预览板移到分支 `candidate/imagery`。演示页回到 F1–F4。
+
 ## 1.1.0 · 2026-11-26 · 空间利用率 + 图片素材库 + 录屏组件
 - 核心目标写进 `CLAUDE.md` / `STYLE.md`：知识可视化（图片 + 动效 + 录屏的综合动画）。
 - 版式：页边距 96 → 64px（左右）/ 56px（上下），允许出血；明确不做人物小窗；新增利用率底线（主体 ≥ 45%，内容 ≥ 70%，录屏宽 85–94%）。`brand.json` → `layout.margin_y / bleed / pip / utilization`。

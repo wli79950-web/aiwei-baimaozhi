@@ -56,37 +56,6 @@
   <div class="abs disp" style="left:60px;top:510px;font-size:140px"><span class="blk" style="margin-left:0">判断力</span>才是护城河</div>
 </section>
 
-<!-- F5 · 炭黑场 · 章节卡 + 双色调摄影（图片素材库 TONE 线，暗部融进背景，主体出血） -->
-<section class="frame scene-A" id="f5">
-  <img src="../../../libs/imagery/candidates/tone_corridor_orange.jpg" style="position:absolute;right:-60px;top:-40px;width:1300px;height:1160px;object-fit:cover;mix-blend-mode:lighten;-webkit-mask-image:radial-gradient(ellipse 62% 70% at 58% 50%,#000 45%,transparent 100%);mask-image:radial-gradient(ellipse 62% 70% at 58% 50%,#000 45%,transparent 100%)">
-  <div class="abs kick" style="left:68px;top:300px">Chapter 03 · IDOR</div>
-  <div class="abs disp" style="left:58px;top:340px;font-size:300px">越权</div>
-  <div class="abs cn" style="left:68px;top:690px;font-size:60px">同一个接口，看到了<span class="blk">别人的</span>数据</div>
-  <div class="sub">接下来这一章，我们顺着这条走廊<em>往里走</em></div>
-</section>
-
-<!-- F6 · 炭黑场 · 录屏窗口 + 标注 + 白帽角色（图片素材库 WH 线）：录屏是证据，角色是引导，标签是结论 -->
-<section class="frame scene-A" id="f6">
-  <div class="card" style="left:64px;top:56px;width:1400px;height:860px;box-shadow:0 40px 80px rgba(0,0,0,.5)">
-    <div style="height:58px;display:flex;align-items:center;gap:12px;padding:0 24px;border-bottom:2px solid rgba(245,238,223,.08)">
-      <i style="width:14px;height:14px;border-radius:50%;background:var(--orange)"></i><i style="width:14px;height:14px;border-radius:50%;background:var(--cream);opacity:.35"></i><i style="width:14px;height:14px;border-radius:50%;background:var(--cream);opacity:.2"></i>
-      <span class="mono" style="margin-left:14px;font-size:22px;letter-spacing:.06em;opacity:.7">lab.test/order/1002 · 示意靶场（这里放用户录屏）</span></div>
-    <div style="position:absolute;left:24px;right:24px;top:82px;bottom:24px;background:#FFFFFF;color:#222;padding:44px 56px;font-family:var(--f-cn)">
-      <div style="font-size:46px;font-weight:700">订单详情</div>
-      <div style="margin-top:34px;font-size:40px;line-height:2.1;font-weight:500">
-        <div>订单号　<span class="mono" style="font-size:38px">1002</span></div>
-        <div style="position:relative;display:inline-block">收件人　<span class="mono" style="font-size:38px">user_B</span>
-          <div style="position:absolute;left:-18px;top:-6px;right:-26px;bottom:-6px;border:6px solid var(--orange)"></div></div>
-        <div>手机号　<span class="mono" style="font-size:38px">138****0000</span></div>
-        <div>地址　　某某市某某区（示意）</div></div>
-    </div>
-  </div>
-  <div class="abs" style="left:478px;top:398px;width:64px;height:6px;background:var(--orange)"></div>
-  <div class="abs cn blk" style="left:540px;top:362px;font-size:56px;padding:10px 24px;margin:0">不是我的订单</div>
-  <img class="stk" src="../../../libs/imagery/candidates/wh_char_b.png" style="left:1330px;top:250px;width:620px;height:860px">
-  <div class="sub">我登录的是 A，接口却把 <em>B 的订单</em>给了我</div>
-</section>
-
 <script>
 const f = new URLSearchParams(location.search).get('f') || '1';
 document.getElementById('f' + f).classList.add('on');

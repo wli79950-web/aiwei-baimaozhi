@@ -29,10 +29,11 @@
 - 只用 `STYLE.md` 已有的色板、字体、组件和动效；要改先问用户，确认后改 `tokens/brand.json` → 跑 `python3 tools/gen_tokens.py` 和 `python3 tools/contrast_check.py`（必须全过）→ 更新 `STYLE.md` + `CHANGELOG.md` 并升版本号。
 - **与艾唯说挖洞完全隔离**：不得复制、引用 `aiwei-vs2` 的任何素材、样例图、角色（黏土角色、SC-01、黑白雕塑等）和卡片样式。挖洞号 49 张卡只能借构图，在 `libs/layouts/` 里重做。
 - **不得引入 lieflat code video 的代码或其派生代码**（PolyForm 非商业许可）。动效一律用 `engine/motion/` 自写的库。
-- 同一张生图不得出现在两期；只有 `libs/stickers/brand/` 的品牌贴纸可以跨期。`libs/stickers/samples/` 是风格样张，不进正片。
+- **不设品牌素材层**：图片素材由用户提供，或按本期口播现生成，只用于本期，不跨期复用；同一张生图不得出现在两期。`libs/stickers/samples/` 是风格样张，不进正片。
 - AE 包交付前必须跑通 AE 检查（P6 建好后为 `python3 ae/build_ae.py <期目录>`）并如实告诉用户没在真 AE 里测过。
 - **AE 包必须分层**：背景板是单独的图片文件；动态背景是单独的 SVG / MP4 图层（能隐藏、能替换）；录屏能在 AE 里直接替换（窗口边框层 + 录屏预合成：原片 + 时间重映射 + 推镜关键帧 + 标注形状层）。不许把背景、窗口、录屏整帧烘焙成一条 MP4。细则见 `docs/rules/AE包规范.md`。
 - 每期做完在 `EPISODES.md` 登记并提交推送；中间产物在 `footage/ build/ out/`（不进 git）。
+- **`main` 只保留最新两期的工程**：第三期合进 `main` 时，把最旧一期打标签 `ep/<期号>` 归档，再从 `main` 删除（细则见 `docs/rules/制作流程.md`）。
 
 ## 按需细则（用到再读）
 | 要做的事 | 读这份 |
