@@ -1,0 +1,67 @@
+{
+ "note": "2026-11-26 风格样张。生成时的后缀是金色点缀版（warm gold #F7C73E），朱橙定稿前生成；现在的预设见 tokens/brand.json 的 sticker.prompt_suffix。样张不进正片。",
+ "suffix_at_generation": "premium 3D product render, soft matte ceramic and frosted resin materials, color palette strictly limited to cream white (#F5EEDF), Klein blue (#002FA7) and warm gold (#F7C73E), clean geometric Bauhaus-inspired forms, smooth rounded edges, soft diffused studio lighting, gentle contact shadow, isolated on a plain light grey (#D6D6D6) seamless background, centered, full object visible, no text, no letters, no numbers, no logo, no watermark",
+ "model": "agnes-image-2.5-flash",
+ "items": [
+  {
+   "file": "bmz_whitehat.png",
+   "subject": "a classic fedora hat in cream white with a Klein blue hat band and a small gold round pin on the band, three-quarter view",
+   "cutout": "默认"
+  },
+  {
+   "file": "bmz_aichip.png",
+   "subject": "a chunky square AI processor chip, Klein blue body with cream pins around the edges and a glowing warm gold core on top, three-quarter view from above",
+   "cutout": "默认"
+  },
+  {
+   "file": "bmz_shield.png",
+   "subject": "a geometric shield emblem in cream white with a thick Klein blue rim and a gold keyhole in the center, slight three-quarter view",
+   "cutout": "--fill-holes"
+  },
+  {
+   "file": "bmz_radar.png",
+   "subject": "a small radar dish antenna on a short pedestal, cream white dish with Klein blue inner rings and a gold receiver tip, three-quarter view",
+   "cutout": "默认"
+  },
+  {
+   "file": "bmz_key.png",
+   "subject": "an oversized key with a circular geometric bow, gold key with a Klein blue ring inlay, lying diagonally",
+   "cutout": "默认"
+  },
+  {
+   "file": "bmz_briefcase.png",
+   "subject": "a compact modern briefcase in Klein blue with a cream handle and a gold clasp, three-quarter view",
+   "cutout": "默认"
+  },
+  {
+   "file": "bmz_bug.png",
+   "subject": "a cute stylized beetle made of simple geometric shapes, cream white shell split into two halves with Klein blue spots and gold antennae, top three-quarter view",
+   "cutout": "默认"
+  },
+  {
+   "file": "bmz_lock_closed.png",
+   "subject": "a closed padlock, Klein blue body with a cream white shackle and a small gold keyhole, front three-quarter view",
+   "cutout": "默认"
+  },
+  {
+   "file": "bmz_lock_open.png",
+   "subject": "an open padlock with the shackle lifted, cream white body with a Klein blue shackle and a small gold keyhole, front three-quarter view",
+   "cutout": "默认"
+  },
+  {
+   "file": "bmz_laptop.png",
+   "subject": "a compact open laptop, cream white body, Klein blue screen with a small gold radar ring icon on it, keyboard visible, three-quarter view",
+   "cutout": "--fill-holes"
+  },
+  {
+   "file": "bmz_building.png",
+   "subject": "a small modern office building block, cream white facade with Klein blue window grid and a gold flag on the roof, three-quarter view",
+   "cutout": "--fill-holes"
+  },
+  {
+   "file": "bmz_coin.png",
+   "subject": "a thick gold coin standing on its edge with a cream white shield emblem embossed in the center and a Klein blue rim, three-quarter view",
+   "cutout": "--fill-holes"
+  }
+ ]
+}

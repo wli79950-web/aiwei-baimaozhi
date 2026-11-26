@@ -1,0 +1,634 @@
+==== 艾唯说挖洞 · AE 接口探测报告 ====
+AE 版本: 24.6.2x2  build 2
+界面语言: zh_CN
+系统: Windows/64 10.0  
+表达式引擎: javascript-1.0
+
+==== 形状图层属性树 ====
+[1] ADBE Marker | 标记 | PROPERTY | MARKER | 可K帧
+[2] ADBE Root Vectors Group | 内容 | INDEXED_GROUP
+  [1] ADBE Vector Group | 组 1 | NAMED_GROUP
+    [1] ADBE Vector Blend Mode | 混合模式 | PROPERTY | OneD | 不可K帧
+    [2] ADBE Vectors Group | 内容 | INDEXED_GROUP
+      [1] ADBE Vector Shape - Rect | 矩形路径 1 | NAMED_GROUP
+        [1] ADBE Vector Shape Direction | 形状方向 | PROPERTY | OneD | 不可K帧
+        [2] ADBE Vector Rect Size | 大小 | PROPERTY | TwoD | 可K帧 | 可表达式
+        [3] ADBE Vector Rect Position | 位置 | PROPERTY | TwoD_SPATIAL | 可K帧 | 可表达式 | 空间
+        [4] ADBE Vector Rect Roundness | 圆度 | PROPERTY | OneD | 可K帧 | 可表达式
+      [2] ADBE Vector Shape - Ellipse | 椭圆路径 1 | NAMED_GROUP
+        [1] ADBE Vector Shape Direction | 形状方向 | PROPERTY | OneD | 不可K帧
+        [2] ADBE Vector Ellipse Size | 大小 | PROPERTY | TwoD | 可K帧 | 可表达式
+        [3] ADBE Vector Ellipse Position | 位置 | PROPERTY | TwoD_SPATIAL | 可K帧 | 可表达式 | 空间
+      [3] ADBE Vector Shape - Group | 路径 1 | NAMED_GROUP
+        [1] ADBE Vector Shape Direction | 形状方向 | PROPERTY | OneD | 不可K帧
+        [2] ADBE Vector Shape | 路径 | PROPERTY | SHAPE | 可K帧 | 可表达式 | 空间
+      [4] ADBE Vector Graphic - Fill | 填充 1 | NAMED_GROUP
+        [1] ADBE Vector Blend Mode | 混合模式 | PROPERTY | OneD | 不可K帧
+        [2] ADBE Vector Composite Order | 合成 | PROPERTY | OneD | 不可K帧
+        [3] ADBE Vector Fill Rule | 填充规则 | PROPERTY | OneD | 不可K帧
+        [4] ADBE Vector Fill Color | 颜色 | PROPERTY | COLOR | 可K帧 | 可表达式 | 空间
+        [5] ADBE Vector Fill Opacity | 不透明度 | PROPERTY | OneD | 可K帧 | 可表达式
+      [5] ADBE Vector Graphic - Stroke | 描边 1 | NAMED_GROUP
+        [1] ADBE Vector Blend Mode | 混合模式 | PROPERTY | OneD | 不可K帧
+        [2] ADBE Vector Composite Order | 合成 | PROPERTY | OneD | 不可K帧
+        [3] ADBE Vector Stroke Color | 颜色 | PROPERTY | COLOR | 可K帧 | 可表达式 | 空间
+        [4] ADBE Vector Stroke Opacity | 不透明度 | PROPERTY | OneD | 可K帧 | 可表达式
+        [5] ADBE Vector Stroke Width | 描边宽度 | PROPERTY | OneD | 可K帧 | 可表达式
+        [6] ADBE Vector Stroke Line Cap | 线段端点 | PROPERTY | OneD | 不可K帧
+        [7] ADBE Vector Stroke Line Join | 线段连接 | PROPERTY | OneD | 不可K帧
+        [8] ADBE Vector Stroke Miter Limit | 尖角限制 | PROPERTY | OneD | 可K帧 | 可表达式
+        [9] ADBE Vector Stroke Dashes | 虚线 | NAMED_GROUP
+          [1] ADBE Vector Stroke Dash 1 | 虚线 | PROPERTY | OneD | 可K帧
+          [2] ADBE Vector Stroke Gap 1 | 间隙 | PROPERTY | OneD | 可K帧
+          [3] ADBE Vector Stroke Dash 2 | 虚线 2 | PROPERTY | OneD | 可K帧
+          [4] ADBE Vector Stroke Gap 2 | 间隙 2 | PROPERTY | OneD | 可K帧
+          [5] ADBE Vector Stroke Dash 3 | 虚线 3 | PROPERTY | OneD | 可K帧
+          [6] ADBE Vector Stroke Gap 3 | 间隙 3 | PROPERTY | OneD | 可K帧
+          [7] ADBE Vector Stroke Offset | 偏移 | PROPERTY | OneD | 可K帧
+        [10] ADBE Vector Stroke Taper | 锥度 | NAMED_GROUP
+          [1] ADBE Vector Taper Length Units | 长度单位 | PROPERTY | OneD | 不可K帧
+          [2] ADBE Vector Taper Start Length | 起始长度 | PROPERTY | OneD | 可K帧 | 可表达式
+          [3] ADBE Vector Taper End Length | 结束长度 | PROPERTY | OneD | 可K帧 | 可表达式
+          [4] ADBE Vector Taper StartWidthPx | 起始长度 | PROPERTY | OneD | 可K帧
+          [5] ADBE Vector Taper EndWidthPx | 结束长度 | PROPERTY | OneD | 可K帧
+          [6] ADBE Vector Taper Start Width | 开始宽度 | PROPERTY | OneD | 可K帧 | 可表达式
+          [7] ADBE Vector Taper End Width | 末端宽度 | PROPERTY | OneD | 可K帧 | 可表达式
+          [8] ADBE Vector Taper Start Ease | 开始缓和 | PROPERTY | OneD | 可K帧 | 可表达式
+          [9] ADBE Vector Taper End Ease | 结束缓和 | PROPERTY | OneD | 可K帧 | 可表达式
+        [11] ADBE Vector Stroke Wave | 波形 | NAMED_GROUP
+          [1] ADBE Vector Taper Wave Amount | 数量 | PROPERTY | OneD | 可K帧 | 可表达式
+          [2] ADBE Vector Taper Wave Units | 单位 | PROPERTY | OneD | 不可K帧
+          [3] ADBE Vector Taper Wavelength | 波长 | PROPERTY | OneD | 可K帧 | 可表达式
+          [4] ADBE Vector Taper Wave Cycles | 环形 | PROPERTY | OneD | 可K帧
+          [5] ADBE Vector Taper Wave Phase | 相位 | PROPERTY | OneD | 可K帧 | 可表达式
+      [6] ADBE Vector Filter - Repeater | 中继器 1 | NAMED_GROUP
+        [1] ADBE Vector Repeater Copies | 副本 | PROPERTY | OneD | 可K帧 | 可表达式
+        [2] ADBE Vector Repeater Offset | 偏移 | PROPERTY | OneD | 可K帧 | 可表达式
+        [3] ADBE Vector Repeater Order | 合成 | PROPERTY | OneD | 不可K帧
+        [4] ADBE Vector Repeater Transform | 变换 | NAMED_GROUP
+          [1] ADBE Vector Repeater Anchor | 锚点 | PROPERTY | TwoD_SPATIAL | 可K帧 | 可表达式 | 空间
+          [2] ADBE Vector Repeater Position | 位置 | PROPERTY | TwoD_SPATIAL | 可K帧 | 可表达式 | 空间
+          [3] ADBE Vector Repeater Scale | 比例 | PROPERTY | TwoD | 可K帧 | 可表达式
+          [4] ADBE Vector Repeater Rotation | 旋转 | PROPERTY | OneD | 可K帧 | 可表达式
+          [5] ADBE Vector Repeater Opacity 1 | 起始点不透明度 | PROPERTY | OneD | 可K帧 | 可表达式
+          [6] ADBE Vector Repeater Opacity 2 | 结束点不透明度 | PROPERTY | OneD | 可K帧 | 可表达式
+    [3] ADBE Vector Transform Group | 变换 | NAMED_GROUP
+      [1] ADBE Vector Anchor | 锚点 | PROPERTY | TwoD_SPATIAL | 可K帧 | 可表达式 | 空间
+      [2] ADBE Vector Position | 位置 | PROPERTY | TwoD_SPATIAL | 可K帧 | 可表达式 | 空间
+      [3] ADBE Vector Scale | 比例 | PROPERTY | TwoD | 可K帧 | 可表达式
+      [4] ADBE Vector Skew | 倾斜 | PROPERTY | OneD | 可K帧 | 可表达式
+      [5] ADBE Vector Skew Axis | 倾斜轴 | PROPERTY | OneD | 可K帧 | 可表达式
+      [6] ADBE Vector Rotation | 旋转 | PROPERTY | OneD | 可K帧 | 可表达式
+      [7] ADBE Vector Group Opacity | 不透明度 | PROPERTY | OneD | 可K帧 | 可表达式
+    [4] ADBE Vector Materials Group | 材质选项 | NAMED_GROUP
+      [1] ADBE Vec3D Front RGB | 正面颜色 | PROPERTY | COLOR | 可K帧 | 空间
+      [2] ADBE Vec3D Front Ambient | 正面周围 | PROPERTY | OneD | 可K帧
+      [3] ADBE Vec3D Front Diffuse | 正面漫射 | PROPERTY | OneD | 可K帧
+      [4] ADBE Vec3D Front Specular | 正面镜面强度 | PROPERTY | OneD | 可K帧
+      [5] ADBE Vec3D Front Shininess | 正面镜面反光度 | PROPERTY | OneD | 可K帧
+      [6] ADBE Vec3D Front Metal | 正面金属质感 | PROPERTY | OneD | 可K帧
+      [7] ADBE Vec3D Front Reflection | 正面反射强度 | PROPERTY | OneD | 可K帧
+      [8] ADBE Vec3D Front Gloss | 正面反射锐度 | PROPERTY | OneD | 可K帧
+      [9] ADBE Vec3D Front Fresnel | 正面反射衰减 | PROPERTY | OneD | 可K帧
+      [10] ADBE Vec3D Front Xparency | 正面透明度 | PROPERTY | OneD | 可K帧
+      [11] ADBE Vec3D Front XparRoll | 正面透明度衰减 | PROPERTY | OneD | 可K帧
+      [12] ADBE Vec3D Front IOR | 正面折射率 | PROPERTY | OneD | 可K帧
+      [13] ADBE Vec3D Bevel RGB | 斜面颜色 | PROPERTY | COLOR | 可K帧 | 空间
+      [14] ADBE Vec3D Bevel Ambient | 斜面周围 | PROPERTY | OneD | 可K帧
+      [15] ADBE Vec3D Bevel Diffuse | 斜面漫射 | PROPERTY | OneD | 可K帧
+      [16] ADBE Vec3D Bevel Specular | 斜面镜面强度 | PROPERTY | OneD | 可K帧
+      [17] ADBE Vec3D Bevel Shininess | 斜面镜面反光度 | PROPERTY | OneD | 可K帧
+      [18] ADBE Vec3D Bevel Metal | 斜面金属质感 | PROPERTY | OneD | 可K帧
+      [19] ADBE Vec3D Bevel Reflection | 斜面反射强度 | PROPERTY | OneD | 可K帧
+      [20] ADBE Vec3D Bevel Gloss | 斜面反射锐度 | PROPERTY | OneD | 可K帧
+      [21] ADBE Vec3D Bevel Fresnel | 斜面反射衰减 | PROPERTY | OneD | 可K帧
+      [22] ADBE Vec3D Bevel Xparency | 斜面透明度 | PROPERTY | OneD | 可K帧
+      [23] ADBE Vec3D Bevel XparRoll | 斜面透明度衰减 | PROPERTY | OneD | 可K帧
+      [24] ADBE Vec3D Bevel IOR | 斜面折射率 | PROPERTY | OneD | 可K帧
+      [25] ADBE Vec3D Side RGB | 侧面颜色 | PROPERTY | COLOR | 可K帧 | 空间
+      [26] ADBE Vec3D Side Ambient | 侧面周围 | PROPERTY | OneD | 可K帧
+      [27] ADBE Vec3D Side Diffuse | 侧面漫射 | PROPERTY | OneD | 可K帧
+      [28] ADBE Vec3D Side Specular | 侧面镜面强度 | PROPERTY | OneD | 可K帧
+      [29] ADBE Vec3D Side Shininess | 侧面镜面反光度 | PROPERTY | OneD | 可K帧
+      [30] ADBE Vec3D Side Metal | 侧面金属质感 | PROPERTY | OneD | 可K帧
+      [31] ADBE Vec3D Side Reflection | 侧面反射强度 | PROPERTY | OneD | 可K帧
+      [32] ADBE Vec3D Side Gloss | 侧面反射锐度 | PROPERTY | OneD | 可K帧
+      [33] ADBE Vec3D Side Fresnel | 侧面反射衰减 | PROPERTY | OneD | 可K帧
+      [34] ADBE Vec3D Side Xparency | 侧面透明度 | PROPERTY | OneD | 可K帧
+      [35] ADBE Vec3D Side XparRoll | 侧面透明度衰减 | PROPERTY | OneD | 可K帧
+      [36] ADBE Vec3D Side IOR | 侧面折射率 | PROPERTY | OneD | 可K帧
+      [37] ADBE Vec3D Back RGB | 背面颜色 | PROPERTY | COLOR | 可K帧 | 空间
+      [38] ADBE Vec3D Back Ambient | 背面周围 | PROPERTY | OneD | 可K帧
+      [39] ADBE Vec3D Back Diffuse | 背面漫射 | PROPERTY | OneD | 可K帧
+      [40] ADBE Vec3D Back Specular | 背面镜面强度 | PROPERTY | OneD | 可K帧
+      [41] ADBE Vec3D Back Shininess | 背面镜面反光度 | PROPERTY | OneD | 可K帧
+      [42] ADBE Vec3D Back Metal | 背面金属质感 | PROPERTY | OneD | 可K帧
+      [43] ADBE Vec3D Back Reflection | 背面反射强度 | PROPERTY | OneD | 可K帧
+      [44] ADBE Vec3D Back Gloss | 背面反射锐度 | PROPERTY | OneD | 可K帧
+      [45] ADBE Vec3D Back Fresnel | 背面反射衰减 | PROPERTY | OneD | 可K帧
+      [46] ADBE Vec3D Back Xparency | 背面透明度 | PROPERTY | OneD | 可K帧
+      [47] ADBE Vec3D Back XparRoll | 背面透明度衰减 | PROPERTY | OneD | 可K帧
+      [48] ADBE Vec3D Back IOR | 背面折射率 | PROPERTY | OneD | 可K帧
+[3] ADBE Mask Parade | 蒙版 | INDEXED_GROUP
+  [1] ADBE Mask Atom | 蒙版 1 | NAMED_GROUP
+    [1] ADBE Mask Shape | 蒙版路径 | PROPERTY | SHAPE | 可K帧 | 可表达式 | 空间
+    [2] ADBE Mask Feather | 蒙版羽化 | PROPERTY | TwoD | 可K帧 | 可表达式
+    [3] ADBE Mask Opacity | 蒙版不透明度 | PROPERTY | OneD | 可K帧 | 可表达式
+    [4] ADBE Mask Offset | 蒙版扩展 | PROPERTY | OneD | 可K帧 | 可表达式
+[4] ADBE Effect Parade | 效果 | INDEXED_GROUP
+  [1] ADBE Ramp | 梯度渐变 | NAMED_GROUP
+    [1] ADBE Ramp-0001 | 渐变起点 | PROPERTY | TwoD_SPATIAL | 可K帧 | 可表达式 | 空间
+    [2] ADBE Ramp-0002 | 起始颜色 | PROPERTY | COLOR | 可K帧 | 可表达式 | 空间
+    [3] ADBE Ramp-0003 | 渐变终点 | PROPERTY | TwoD_SPATIAL | 可K帧 | 可表达式 | 空间
+    [4] ADBE Ramp-0004 | 结束颜色 | PROPERTY | COLOR | 可K帧 | 可表达式 | 空间
+    [5] ADBE Ramp-0005 | 渐变形状 | PROPERTY | OneD | 可K帧 | 可表达式
+    [6] ADBE Ramp-0006 | 渐变散射 | PROPERTY | OneD | 可K帧 | 可表达式
+    [7] ADBE Ramp-0007 | 与原始图像混合 | PROPERTY | OneD | 可K帧 | 可表达式
+    [8] ADBE Ramp-0008 |  | PROPERTY | NO_VALUE | 不可K帧
+    [9] ADBE Effect Built In Params | 合成选项 | NAMED_GROUP
+      [1] ADBE Effect Mask Parade | 蒙版 | INDEXED_GROUP
+      [2] ADBE Effect Mask Opacity | 效果不透明度 | PROPERTY | OneD | 可K帧 | 可表达式
+      [3] ADBE Force CPU GPU | GPU 渲染 | PROPERTY | OneD | 不可K帧
+[5] ADBE Transform Group | 变换 | NAMED_GROUP
+  [1] ADBE Anchor Point | 锚点 | PROPERTY | ThreeD_SPATIAL | 可K帧 | 可表达式 | 空间
+  [2] ADBE Position | 位置 | PROPERTY | ThreeD_SPATIAL | 可K帧 | 可表达式 | 空间
+  [3] ADBE Position_0 | X 位置 | PROPERTY | OneD | 可K帧
+  [4] ADBE Position_1 | Y 位置 | PROPERTY | OneD | 可K帧
+  [5] ADBE Position_2 | Z 位置 | PROPERTY | OneD | 可K帧
+  [6] ADBE Scale | 缩放 | PROPERTY | ThreeD | 可K帧 | 可表达式
+  [7] ADBE Orientation | 方向 | PROPERTY | ThreeD_SPATIAL | 可K帧 | 空间
+  [8] ADBE Rotate X | X 轴旋转 | PROPERTY | OneD | 可K帧
+  [9] ADBE Rotate Y | Y 轴旋转 | PROPERTY | OneD | 可K帧
+  [10] ADBE Rotate Z | 旋转 | PROPERTY | OneD | 可K帧 | 可表达式
+  [11] ADBE Opacity | 不透明度 | PROPERTY | OneD | 可K帧 | 可表达式
+  [12] ADBE Envir Appear in Reflect | 在反射中显示 | PROPERTY | OneD | 不可K帧
+[6] ADBE Layer Styles | 图层样式 | NAMED_GROUP
+  [1] ADBE Blend Options Group | 混合选项 | NAMED_GROUP
+    [1] ADBE Global Angle2 | 全局光角度 | PROPERTY | OneD | 可K帧 | 可表达式
+    [2] ADBE Global Altitude2 | 全局光高度 | PROPERTY | OneD | 可K帧 | 可表达式
+    [3] ADBE Adv Blend Group | 高级混合 | NAMED_GROUP
+      [1] ADBE Layer Fill Opacity2 | 填充不透明度 | PROPERTY | OneD | 可K帧 | 可表达式
+      [2] ADBE R Channel Blend | 红色 | PROPERTY | OneD | 可K帧 | 可表达式
+      [3] ADBE G Channel Blend | 绿色 | PROPERTY | OneD | 可K帧 | 可表达式
+      [4] ADBE B Channel Blend | 蓝色 | PROPERTY | OneD | 可K帧 | 可表达式
+      [5] ADBE Blend Interior | 混合内部样式为组 | PROPERTY | OneD | 可K帧 | 可表达式
+      [6] ADBE Blend Ranges | 使用源的混合范围 | PROPERTY | OneD | 可K帧 | 可表达式
+  [2] dropShadow/enabled | 投影 | NAMED_GROUP
+    [1] dropShadow/mode2 | 混合模式 | PROPERTY | OneD | 可K帧 | 可表达式
+    [2] dropShadow/color | 颜色 | PROPERTY | COLOR | 可K帧 | 可表达式 | 空间
+    [3] dropShadow/opacity | 不透明度 | PROPERTY | OneD | 可K帧 | 可表达式
+    [4] dropShadow/useGlobalAngle | 使用全局光 | PROPERTY | OneD | 可K帧 | 可表达式
+    [5] dropShadow/localLightingAngle | 角度 | PROPERTY | OneD | 可K帧 | 可表达式
+    [6] dropShadow/distance | 距离 | PROPERTY | OneD | 可K帧 | 可表达式
+    [7] dropShadow/chokeMatte | 扩展 | PROPERTY | OneD | 可K帧 | 可表达式
+    [8] dropShadow/blur | 大小 | PROPERTY | OneD | 可K帧 | 可表达式
+    [9] dropShadow/noise | 杂色 | PROPERTY | OneD | 可K帧 | 可表达式
+    [10] dropShadow/layerConceals | 图层镂空投影 | PROPERTY | OneD | 可K帧 | 可表达式
+  [3] innerShadow/enabled | 内阴影 | NAMED_GROUP
+    [1] innerShadow/mode2 | 混合模式 | PROPERTY | OneD | 可K帧 | 可表达式
+    [2] innerShadow/color | 颜色 | PROPERTY | COLOR | 可K帧 | 可表达式 | 空间
+    [3] innerShadow/opacity | 不透明度 | PROPERTY | OneD | 可K帧 | 可表达式
+    [4] innerShadow/useGlobalAngle | 使用全局光 | PROPERTY | OneD | 可K帧 | 可表达式
+    [5] innerShadow/localLightingAngle | 角度 | PROPERTY | OneD | 可K帧 | 可表达式
+    [6] innerShadow/distance | 距离 | PROPERTY | OneD | 可K帧 | 可表达式
+    [7] innerShadow/chokeMatte | 阻塞 | PROPERTY | OneD | 可K帧 | 可表达式
+    [8] innerShadow/blur | 大小 | PROPERTY | OneD | 可K帧 | 可表达式
+    [9] innerShadow/noise | 杂色 | PROPERTY | OneD | 可K帧 | 可表达式
+  [4] outerGlow/enabled | 外发光 | NAMED_GROUP
+    [1] outerGlow/mode2 | 混合模式 | PROPERTY | OneD | 可K帧 | 可表达式
+    [2] outerGlow/opacity | 不透明度 | PROPERTY | OneD | 可K帧 | 可表达式
+    [3] outerGlow/noise | 杂色 | PROPERTY | OneD | 可K帧 | 可表达式
+    [4] outerGlow/AEColorChoice | 颜色类型 | PROPERTY | OneD | 可K帧 | 可表达式
+    [5] outerGlow/color | 颜色 | PROPERTY | COLOR | 可K帧 | 可表达式 | 空间
+    [6] outerGlow/gradient | 颜色 | PROPERTY | NO_VALUE | 可K帧 | 空间
+    [7] outerGlow/gradientSmoothness | 渐变平滑度 | PROPERTY | OneD | 可K帧 | 可表达式
+    [8] outerGlow/glowTechnique | 技术 | PROPERTY | OneD | 可K帧 | 可表达式
+    [9] outerGlow/chokeMatte | 扩展 | PROPERTY | OneD | 可K帧 | 可表达式
+    [10] outerGlow/blur | 大小 | PROPERTY | OneD | 可K帧 | 可表达式
+    [11] outerGlow/inputRange | 范围 | PROPERTY | OneD | 可K帧 | 可表达式
+    [12] outerGlow/shadingNoise | 抖动 | PROPERTY | OneD | 可K帧 | 可表达式
+  [5] innerGlow/enabled | 内发光 | NAMED_GROUP
+    [1] innerGlow/mode2 | 混合模式 | PROPERTY | OneD | 可K帧 | 可表达式
+    [2] innerGlow/opacity | 不透明度 | PROPERTY | OneD | 可K帧 | 可表达式
+    [3] innerGlow/noise | 杂色 | PROPERTY | OneD | 可K帧 | 可表达式
+    [4] innerGlow/AEColorChoice | 颜色类型 | PROPERTY | OneD | 可K帧 | 可表达式
+    [5] innerGlow/color | 颜色 | PROPERTY | COLOR | 可K帧 | 可表达式 | 空间
+    [6] innerGlow/gradient | 颜色 | PROPERTY | NO_VALUE | 可K帧 | 空间
+    [7] innerGlow/gradientSmoothness | 渐变平滑度 | PROPERTY | OneD | 可K帧 | 可表达式
+    [8] innerGlow/glowTechnique | 技术 | PROPERTY | OneD | 可K帧 | 可表达式
+    [9] innerGlow/innerGlowSource | 源 | PROPERTY | OneD | 可K帧 | 可表达式
+    [10] innerGlow/chokeMatte | 阻塞 | PROPERTY | OneD | 可K帧 | 可表达式
+    [11] innerGlow/blur | 大小 | PROPERTY | OneD | 可K帧 | 可表达式
+    [12] innerGlow/inputRange | 范围 | PROPERTY | OneD | 可K帧 | 可表达式
+    [13] innerGlow/shadingNoise | 抖动 | PROPERTY | OneD | 可K帧 | 可表达式
+  [6] bevelEmboss/enabled | 斜面和浮雕 | NAMED_GROUP
+    [1] bevelEmboss/bevelStyle | 样式 | PROPERTY | OneD | 可K帧 | 可表达式
+    [2] bevelEmboss/bevelTechnique | 技术 | PROPERTY | OneD | 可K帧 | 可表达式
+    [3] bevelEmboss/strengthRatio | 深度 | PROPERTY | OneD | 可K帧 | 可表达式
+    [4] bevelEmboss/bevelDirection | 方向 | PROPERTY | OneD | 可K帧 | 可表达式
+    [5] bevelEmboss/blur | 大小 | PROPERTY | OneD | 可K帧 | 可表达式
+    [6] bevelEmboss/softness | 柔化 | PROPERTY | OneD | 可K帧 | 可表达式
+    [7] bevelEmboss/useGlobalAngle | 使用全局光 | PROPERTY | OneD | 可K帧 | 可表达式
+    [8] bevelEmboss/localLightingAngle | 角度 | PROPERTY | OneD | 可K帧 | 可表达式
+    [9] bevelEmboss/localLightingAltitude | 高度 | PROPERTY | OneD | 可K帧 | 可表达式
+    [10] bevelEmboss/highlightMode | 高亮模式 | PROPERTY | OneD | 可K帧 | 可表达式
+    [11] bevelEmboss/highlightColor | 加亮颜色 | PROPERTY | COLOR | 可K帧 | 可表达式 | 空间
+    [12] bevelEmboss/highlightOpacity | 高光不透明度 | PROPERTY | OneD | 可K帧 | 可表达式
+    [13] bevelEmboss/shadowMode | 阴影模式 | PROPERTY | OneD | 可K帧 | 可表达式
+    [14] bevelEmboss/shadowColor | 阴影颜色 | PROPERTY | COLOR | 可K帧 | 可表达式 | 空间
+    [15] bevelEmboss/shadowOpacity | 阴影不透明度 | PROPERTY | OneD | 可K帧 | 可表达式
+  [7] chromeFX/enabled | 光泽 | NAMED_GROUP
+    [1] chromeFX/mode2 | 混合模式 | PROPERTY | OneD | 可K帧 | 可表达式
+    [2] chromeFX/color | 颜色 | PROPERTY | COLOR | 可K帧 | 可表达式 | 空间
+    [3] chromeFX/opacity | 不透明度 | PROPERTY | OneD | 可K帧 | 可表达式
+    [4] chromeFX/localLightingAngle | 角度 | PROPERTY | OneD | 可K帧 | 可表达式
+    [5] chromeFX/distance | 距离 | PROPERTY | OneD | 可K帧 | 可表达式
+    [6] chromeFX/blur | 大小 | PROPERTY | OneD | 可K帧 | 可表达式
+    [7] chromeFX/invert | 反转 | PROPERTY | OneD | 可K帧 | 可表达式
+  [8] solidFill/enabled | 颜色叠加 | NAMED_GROUP
+    [1] solidFill/mode2 | 混合模式 | PROPERTY | OneD | 可K帧 | 可表达式
+    [2] solidFill/color | 颜色 | PROPERTY | COLOR | 可K帧 | 可表达式 | 空间
+    [3] solidFill/opacity | 不透明度 | PROPERTY | OneD | 可K帧 | 可表达式
+  [9] gradientFill/enabled | 渐变叠加 | NAMED_GROUP
+    [1] gradientFill/mode2 | 混合模式 | PROPERTY | OneD | 可K帧 | 可表达式
+    [2] gradientFill/opacity | 不透明度 | PROPERTY | OneD | 可K帧 | 可表达式
+    [3] gradientFill/gradient | 颜色 | PROPERTY | NO_VALUE | 可K帧 | 空间
+    [4] gradientFill/gradientSmoothness | 渐变平滑度 | PROPERTY | OneD | 可K帧 | 可表达式
+    [5] gradientFill/angle | 角度 | PROPERTY | OneD | 可K帧 | 可表达式
+    [6] gradientFill/type | 样式 | PROPERTY | OneD | 可K帧 | 可表达式
+    [7] gradientFill/reverse | 反向 | PROPERTY | OneD | 可K帧 | 可表达式
+    [8] gradientFill/align | 与图层对齐 | PROPERTY | OneD | 可K帧 | 可表达式
+    [9] gradientFill/scale | 缩放 | PROPERTY | OneD | 可K帧 | 可表达式
+    [10] gradientFill/offset | 偏移 | PROPERTY | TwoD_SPATIAL | 可K帧 | 可表达式 | 空间
+  [10] patternFill/enabled | 图案叠加 | NAMED_GROUP
+    [1] patternFill/mode2 | 混合模式 | PROPERTY | OneD | 可K帧 | 可表达式
+    [2] patternFill/opacity | 不透明度 | PROPERTY | OneD | 可K帧 | 可表达式
+    [3] patternFill/align | 与图层链接 | PROPERTY | OneD | 可K帧 | 可表达式
+    [4] patternFill/scale | 缩放 | PROPERTY | OneD | 可K帧 | 可表达式
+    [5] patternFill/phase | 偏移 | PROPERTY | TwoD_SPATIAL | 可K帧 | 可表达式 | 空间
+  [11] frameFX/enabled | 描边 | NAMED_GROUP
+    [1] frameFX/mode2 | 混合模式 | PROPERTY | OneD | 可K帧 | 可表达式
+    [2] frameFX/color | 颜色 | PROPERTY | COLOR | 可K帧 | 可表达式 | 空间
+    [3] frameFX/size | 大小 | PROPERTY | OneD | 可K帧 | 可表达式
+    [4] frameFX/opacity | 不透明度 | PROPERTY | OneD | 可K帧 | 可表达式
+    [5] frameFX/style | 位置 | PROPERTY | OneD | 可K帧 | 可表达式
+[7] ADBE Extrsn Options Group | 几何选项 | NAMED_GROUP
+  [1] ADBE Bevel Styles | 斜面样式 | PROPERTY | OneD | 不可K帧
+  [2] ADBE Bevel Direction | 斜面方向 | PROPERTY | OneD | 不可K帧
+  [3] ADBE Bevel Depth | 斜面深度 | PROPERTY | OneD | 可K帧 | 可表达式
+  [4] ADBE Hole Bevel Depth | 洞斜面深度 | PROPERTY | OneD | 可K帧 | 可表达式
+  [5] ADBE Extrsn Depth | 凸出深度 | PROPERTY | OneD | 可K帧 | 可表达式
+[8] ADBE Material Options Group | 材质选项 | NAMED_GROUP
+  [1] ADBE Casts Shadows | 投影 | PROPERTY | OneD | 不可K帧
+  [2] ADBE Light Transmission | 透光率 | PROPERTY | OneD | 可K帧
+  [3] ADBE Accepts Shadows | 接受阴影 | PROPERTY | OneD | 不可K帧
+  [4] ADBE Accepts Lights | 接受灯光 | PROPERTY | OneD | 不可K帧
+  [5] ADBE Shadow Color | 阴影颜色 | PROPERTY | COLOR | 可K帧 | 空间
+  [6] ADBE Appears in Reflections | 在反射中显示 | PROPERTY | OneD | 不可K帧
+  [7] ADBE Ambient Coefficient | 周围 | PROPERTY | OneD | 可K帧
+  [8] ADBE Diffuse Coefficient | 漫射 | PROPERTY | OneD | 可K帧
+  [9] ADBE Specular Coefficient | 镜面强度 | PROPERTY | OneD | 可K帧
+  [10] ADBE Shininess Coefficient | 镜面反光度 | PROPERTY | OneD | 可K帧
+  [11] ADBE Metal Coefficient | 金属质感 | PROPERTY | OneD | 可K帧
+  [12] ADBE Reflection Coefficient | 反射强度 | PROPERTY | OneD | 可K帧
+  [13] ADBE Glossiness Coefficient | 反射锐度 | PROPERTY | OneD | 可K帧
+  [14] ADBE Fresnel Coefficient | 反射衰减 | PROPERTY | OneD | 可K帧
+  [15] ADBE Transparency Coefficient | 透明度 | PROPERTY | OneD | 可K帧
+  [16] ADBE Transp Rolloff | 透明度衰减 | PROPERTY | OneD | 可K帧
+  [17] ADBE Index of Refraction | 折射率 | PROPERTY | OneD | 可K帧
+[9] ADBE Audio Group | 音频 | NAMED_GROUP
+  [1] ADBE Audio Levels | 音频电平 | PROPERTY | TwoD | 可K帧 | 可表达式
+[10] ADBE Layer Sets | 集 | INDEXED_GROUP
+
+==== 文字图层属性树 ====
+[1] ADBE Marker | 标记 | PROPERTY | MARKER | 可K帧
+[2] ADBE Text Properties | 文本 | NAMED_GROUP
+  [1] ADBE Text Document | 源文本 | PROPERTY | TEXT_DOCUMENT | 可K帧 | 可表达式
+  [2] ADBE Text Path Options | 路径选项 | NAMED_GROUP
+    [1] ADBE Text Path | 路径 | PROPERTY | MASK_INDEX | 不可K帧
+    [2] ADBE Text Reverse Path | 反转路径 | PROPERTY | OneD | 可K帧
+    [3] ADBE Text Perpendicular To Path | 垂直于路径 | PROPERTY | OneD | 可K帧
+    [4] ADBE Text Force Align Path | 强制对齐 | PROPERTY | OneD | 可K帧
+    [5] ADBE Text First Margin | 首字边距 | PROPERTY | OneD | 可K帧
+    [6] ADBE Text Last Margin | 末字边距 | PROPERTY | OneD | 可K帧
+  [3] ADBE Text More Options | 更多选项 | NAMED_GROUP
+    [1] ADBE Text Anchor Point Option | 锚点分组 | PROPERTY | OneD | 不可K帧
+    [2] ADBE Text Anchor Point Align | 分组对齐 | PROPERTY | TwoD | 可K帧 | 可表达式
+    [3] ADBE Text Render Order | 填充和描边 | PROPERTY | OneD | 不可K帧
+    [4] ADBE Text Character Blend Mode | 字符间混合 | PROPERTY | OneD | 不可K帧
+  [4] ADBE Text Animators | 动画制作工具 | INDEXED_GROUP
+    [1] ADBE Text Animator | 动画制作工具 1 | NAMED_GROUP
+      [1] ADBE Text Selectors | 选择器 | INDEXED_GROUP
+        [1] ADBE Text Selector | 范围选择器 1 | NAMED_GROUP
+          [1] ADBE Text Percent Start | 起始 | PROPERTY | OneD | 可K帧 | 可表达式
+          [2] ADBE Text Percent End | 结束 | PROPERTY | OneD | 可K帧 | 可表达式
+          [3] ADBE Text Percent Offset | 偏移 | PROPERTY | OneD | 可K帧 | 可表达式
+          [4] ADBE Text Index Start | 起始 | PROPERTY | OneD | 可K帧
+          [5] ADBE Text Index End | 结束 | PROPERTY | OneD | 可K帧
+          [6] ADBE Text Index Offset | 偏移 | PROPERTY | OneD | 可K帧
+          [7] ADBE Text Range Advanced | 高级 | NAMED_GROUP
+            [1] ADBE Text Range Units | 单位 | PROPERTY | OneD | 不可K帧
+            [2] ADBE Text Range Type2 | 依据 | PROPERTY | OneD | 不可K帧
+            [3] ADBE Text Selector Mode | 模式 | PROPERTY | OneD | 可K帧 | 可表达式
+            [4] ADBE Text Selector Max Amount | 数量 | PROPERTY | OneD | 可K帧 | 可表达式
+            [5] ADBE Text Range Shape | 形状 | PROPERTY | OneD | 不可K帧
+            [6] ADBE Text Selector Smoothness | 平滑度 | PROPERTY | OneD | 可K帧 | 可表达式
+            [7] ADBE Text Levels Max Ease | 缓和高 | PROPERTY | OneD | 可K帧 | 可表达式
+            [8] ADBE Text Levels Min Ease | 缓和低 | PROPERTY | OneD | 可K帧 | 可表达式
+            [9] ADBE Text Randomize Order | 随机排序 | PROPERTY | OneD | 不可K帧
+            [10] ADBE Text Random Seed | 随机植入 | PROPERTY | OneD | 可K帧
+      [2] ADBE Text Animator Properties | 属性 | NAMED_GROUP
+        [1] ADBE Text Anchor Point 3D | 锚点 | PROPERTY | ThreeD_SPATIAL | 可K帧 | 空间
+        [2] ADBE Text Position 3D | 位置 | PROPERTY | ThreeD_SPATIAL | 可K帧 | 空间
+        [3] ADBE Text Scale 3D | 缩放 | PROPERTY | ThreeD | 可K帧
+        [4] ADBE Text Skew | 倾斜 | PROPERTY | OneD | 可K帧
+        [5] ADBE Text Skew Axis | 倾斜轴 | PROPERTY | OneD | 可K帧
+        [6] ADBE Text Rotation X | X 轴旋转 | PROPERTY | OneD | 可K帧
+        [7] ADBE Text Rotation Y | Y 轴旋转 | PROPERTY | OneD | 可K帧
+        [8] ADBE Text Rotation | 旋转 | PROPERTY | OneD | 可K帧
+        [9] ADBE Text Opacity | 不透明度 | PROPERTY | OneD | 可K帧
+        [10] ADBE Text Fill Opacity | 填充不透明度 | PROPERTY | OneD | 可K帧
+        [11] ADBE Text Stroke Opacity | 描边不透明度 | PROPERTY | OneD | 可K帧
+        [12] ADBE Text Fill Color | 填充颜色 | PROPERTY | COLOR | 可K帧 | 可表达式 | 空间
+        [13] ADBE Text Stroke Color | 描边颜色 | PROPERTY | COLOR | 可K帧 | 空间
+        [14] ADBE Text Fill Hue | 填充色相 | PROPERTY | OneD | 可K帧
+        [15] ADBE Text Stroke Hue | 描边色相 | PROPERTY | OneD | 可K帧
+        [16] ADBE Text Fill Saturation | 填充饱和度 | PROPERTY | OneD | 可K帧
+        [17] ADBE Text Stroke Saturation | 描边饱和度 | PROPERTY | OneD | 可K帧
+        [18] ADBE Text Fill Brightness | 填充亮度 | PROPERTY | OneD | 可K帧
+        [19] ADBE Text Stroke Brightness | 描边亮度 | PROPERTY | OneD | 可K帧
+        [20] ADBE 3DText Front RGB | 正面颜色 | PROPERTY | COLOR | 可K帧 | 空间
+        [21] ADBE 3DText Front Hue | 正面色相 | PROPERTY | OneD | 可K帧
+        [22] ADBE 3DText Front Sat | 正面饱和度 | PROPERTY | OneD | 可K帧
+        [23] ADBE 3DText Front Bright | 正面亮度 | PROPERTY | OneD | 可K帧
+        [24] ADBE 3DText Front Opacity | 正面不透明度 | PROPERTY | OneD | 可K帧
+        [25] ADBE 3DText Front Ambient | 正面周围 | PROPERTY | OneD | 可K帧
+        [26] ADBE 3DText Front Diffuse | 正面漫射 | PROPERTY | OneD | 可K帧
+        [27] ADBE 3DText Front Specular | 正面镜面强度 | PROPERTY | OneD | 可K帧
+        [28] ADBE 3DText Front Shininess | 正面镜面反光度 | PROPERTY | OneD | 可K帧
+        [29] ADBE 3DText Front Metal | 正面金属质感 | PROPERTY | OneD | 可K帧
+        [30] ADBE 3DText Front Reflection | 正面反射强度 | PROPERTY | OneD | 可K帧
+        [31] ADBE 3DText Front Gloss | 正面反射锐度 | PROPERTY | OneD | 可K帧
+        [32] ADBE 3DText Front Fresnel | 正面反射衰减 | PROPERTY | OneD | 可K帧
+        [33] ADBE 3DText Front Xparency | 正面透明度 | PROPERTY | OneD | 可K帧
+        [34] ADBE 3DText Front XparRoll | 正面透明度衰减 | PROPERTY | OneD | 可K帧
+        [35] ADBE 3DText Front IOR | 正面折射率 | PROPERTY | OneD | 可K帧
+        [36] ADBE 3DText Bevel RGB | 斜面颜色 | PROPERTY | COLOR | 可K帧 | 空间
+        [37] ADBE 3DText Bevel Hue | 斜面色相 | PROPERTY | OneD | 可K帧
+        [38] ADBE 3DText Bevel Sat | 斜面饱和度 | PROPERTY | OneD | 可K帧
+        [39] ADBE 3DText Bevel Bright | 斜面亮度 | PROPERTY | OneD | 可K帧
+        [40] ADBE 3DText Bevel Opacity | 斜面不透明度 | PROPERTY | OneD | 可K帧
+        [41] ADBE 3DText Bevel Ambient | 斜面周围 | PROPERTY | OneD | 可K帧
+        [42] ADBE 3DText Bevel Diffuse | 斜面漫射 | PROPERTY | OneD | 可K帧
+        [43] ADBE 3DText Bevel Specular | 斜面镜面强度 | PROPERTY | OneD | 可K帧
+        [44] ADBE 3DText Bevel Shininess | 斜面镜面反光度 | PROPERTY | OneD | 可K帧
+        [45] ADBE 3DText Bevel Metal | 斜面金属质感 | PROPERTY | OneD | 可K帧
+        [46] ADBE 3DText Bevel Reflection | 斜面反射强度 | PROPERTY | OneD | 可K帧
+        [47] ADBE 3DText Bevel Gloss | 斜面反射锐度 | PROPERTY | OneD | 可K帧
+        [48] ADBE 3DText Bevel Fresnel | 斜面反射衰减 | PROPERTY | OneD | 可K帧
+        [49] ADBE 3DText Bevel Xparency | 斜面透明度 | PROPERTY | OneD | 可K帧
+        [50] ADBE 3DText Bevel XparRoll | 斜面透明度衰减 | PROPERTY | OneD | 可K帧
+        [51] ADBE 3DText Bevel IOR | 斜面折射率 | PROPERTY | OneD | 可K帧
+        [52] ADBE 3DText Side RGB | 侧面颜色 | PROPERTY | COLOR | 可K帧 | 空间
+        [53] ADBE 3DText Side Hue | 侧面色相 | PROPERTY | OneD | 可K帧
+        [54] ADBE 3DText Side Sat | 侧面饱和度 | PROPERTY | OneD | 可K帧
+        [55] ADBE 3DText Side Bright | 侧面亮度 | PROPERTY | OneD | 可K帧
+        [56] ADBE 3DText Side Opacity | 侧面不透明度 | PROPERTY | OneD | 可K帧
+        [57] ADBE 3DText Side Ambient | 侧面周围 | PROPERTY | OneD | 可K帧
+        [58] ADBE 3DText Side Diffuse | 侧面漫射 | PROPERTY | OneD | 可K帧
+        [59] ADBE 3DText Side Specular | 侧面镜面强度 | PROPERTY | OneD | 可K帧
+        [60] ADBE 3DText Side Shininess | 侧面镜面反光度 | PROPERTY | OneD | 可K帧
+        [61] ADBE 3DText Side Metal | 侧面金属质感 | PROPERTY | OneD | 可K帧
+        [62] ADBE 3DText Side Reflection | 侧面反射强度 | PROPERTY | OneD | 可K帧
+        [63] ADBE 3DText Side Gloss | 侧面反射锐度 | PROPERTY | OneD | 可K帧
+        [64] ADBE 3DText Side Fresnel | 侧面反射衰减 | PROPERTY | OneD | 可K帧
+        [65] ADBE 3DText Side Xparency | 侧面透明度 | PROPERTY | OneD | 可K帧
+        [66] ADBE 3DText Side XparRoll | 侧面透明度衰减 | PROPERTY | OneD | 可K帧
+        [67] ADBE 3DText Side IOR | 侧面折射率 | PROPERTY | OneD | 可K帧
+        [68] ADBE 3DText Back RGB | 背面颜色 | PROPERTY | COLOR | 可K帧 | 空间
+        [69] ADBE 3DText Back Hue | 背面色相 | PROPERTY | OneD | 可K帧
+        [70] ADBE 3DText Back Sat | 背面饱和度 | PROPERTY | OneD | 可K帧
+        [71] ADBE 3DText Back Bright | 背面亮度 | PROPERTY | OneD | 可K帧
+        [72] ADBE 3DText Back Opacity | 背面不透明度 | PROPERTY | OneD | 可K帧
+        [73] ADBE 3DText Back Ambient | 背面周围 | PROPERTY | OneD | 可K帧
+        [74] ADBE 3DText Back Diffuse | 背面漫射 | PROPERTY | OneD | 可K帧
+        [75] ADBE 3DText Back Specular | 背面镜面强度 | PROPERTY | OneD | 可K帧
+        [76] ADBE 3DText Back Shininess | 背面镜面反光度 | PROPERTY | OneD | 可K帧
+        [77] ADBE 3DText Back Metal | 背面金属质感 | PROPERTY | OneD | 可K帧
+        [78] ADBE 3DText Back Reflection | 背面反射强度 | PROPERTY | OneD | 可K帧
+        [79] ADBE 3DText Back Gloss | 背面反射锐度 | PROPERTY | OneD | 可K帧
+        [80] ADBE 3DText Back Fresnel | 背面反射衰减 | PROPERTY | OneD | 可K帧
+        [81] ADBE 3DText Back Xparency | 背面透明度 | PROPERTY | OneD | 可K帧
+        [82] ADBE 3DText Back XparRoll | 背面透明度衰减 | PROPERTY | OneD | 可K帧
+        [83] ADBE 3DText Back IOR | 背面折射率 | PROPERTY | OneD | 可K帧
+        [84] ADBE 3DText Bevel Depth | 斜面深度 | PROPERTY | OneD | 可K帧
+        [85] ADBE 3DText Extrude Depth | 凸出深度 | PROPERTY | OneD | 可K帧
+        [86] ADBE Text Stroke Width | 描边宽度 | PROPERTY | OneD | 可K帧
+        [87] ADBE Text Line Anchor | 行锚点 | PROPERTY | OneD | 可K帧
+        [88] ADBE Text Track Type | 字符间距类型 | PROPERTY | OneD | 可K帧
+        [89] ADBE Text Tracking Amount | 字符间距大小 | PROPERTY | OneD | 可K帧
+        [90] ADBE Text Character Change Type | 字符对齐方式 | PROPERTY | OneD | 不可K帧
+        [91] ADBE Text Character Range | 字符范围 | PROPERTY | OneD | 不可K帧
+        [92] ADBE Text Character Replace | 字符值 | PROPERTY | OneD | 可K帧
+        [93] ADBE Text Character Offset | 字符位移 | PROPERTY | OneD | 可K帧
+        [94] ADBE Text Line Spacing | 行距 | PROPERTY | TwoD | 可K帧
+        [95] ADBE Text Blur | 模糊 | PROPERTY | TwoD | 可K帧
+[3] ADBE Mask Parade | 蒙版 | INDEXED_GROUP
+[4] ADBE Effect Parade | 效果 | INDEXED_GROUP
+[5] ADBE Transform Group | 变换 | NAMED_GROUP
+  [1] ADBE Anchor Point | 锚点 | PROPERTY | ThreeD_SPATIAL | 可K帧 | 可表达式 | 空间
+  [2] ADBE Position | 位置 | PROPERTY | ThreeD_SPATIAL | 可K帧 | 可表达式 | 空间
+  [3] ADBE Position_0 | X 位置 | PROPERTY | OneD | 可K帧
+  [4] ADBE Position_1 | Y 位置 | PROPERTY | OneD | 可K帧
+  [5] ADBE Position_2 | Z 位置 | PROPERTY | OneD | 可K帧
+  [6] ADBE Scale | 缩放 | PROPERTY | ThreeD | 可K帧 | 可表达式
+  [7] ADBE Orientation | 方向 | PROPERTY | ThreeD_SPATIAL | 可K帧 | 空间
+  [8] ADBE Rotate X | X 轴旋转 | PROPERTY | OneD | 可K帧
+  [9] ADBE Rotate Y | Y 轴旋转 | PROPERTY | OneD | 可K帧
+  [10] ADBE Rotate Z | 旋转 | PROPERTY | OneD | 可K帧 | 可表达式
+  [11] ADBE Opacity | 不透明度 | PROPERTY | OneD | 可K帧 | 可表达式
+  [12] ADBE Envir Appear in Reflect | 在反射中显示 | PROPERTY | OneD | 不可K帧
+[6] ADBE Layer Styles | 图层样式 | NAMED_GROUP
+  [1] ADBE Blend Options Group | 混合选项 | NAMED_GROUP
+    [1] ADBE Global Angle2 | 全局光角度 | PROPERTY | OneD | 可K帧 | 可表达式
+    [2] ADBE Global Altitude2 | 全局光高度 | PROPERTY | OneD | 可K帧 | 可表达式
+    [3] ADBE Adv Blend Group | 高级混合 | NAMED_GROUP
+      [1] ADBE Layer Fill Opacity2 | 填充不透明度 | PROPERTY | OneD | 可K帧 | 可表达式
+      [2] ADBE R Channel Blend | 红色 | PROPERTY | OneD | 可K帧 | 可表达式
+      [3] ADBE G Channel Blend | 绿色 | PROPERTY | OneD | 可K帧 | 可表达式
+      [4] ADBE B Channel Blend | 蓝色 | PROPERTY | OneD | 可K帧 | 可表达式
+      [5] ADBE Blend Interior | 混合内部样式为组 | PROPERTY | OneD | 可K帧 | 可表达式
+      [6] ADBE Blend Ranges | 使用源的混合范围 | PROPERTY | OneD | 可K帧 | 可表达式
+  [2] dropShadow/enabled | 投影 | NAMED_GROUP
+    [1] dropShadow/mode2 | 混合模式 | PROPERTY | OneD | 可K帧 | 可表达式
+    [2] dropShadow/color | 颜色 | PROPERTY | COLOR | 可K帧 | 可表达式 | 空间
+    [3] dropShadow/opacity | 不透明度 | PROPERTY | OneD | 可K帧 | 可表达式
+    [4] dropShadow/useGlobalAngle | 使用全局光 | PROPERTY | OneD | 可K帧 | 可表达式
+    [5] dropShadow/localLightingAngle | 角度 | PROPERTY | OneD | 可K帧 | 可表达式
+    [6] dropShadow/distance | 距离 | PROPERTY | OneD | 可K帧 | 可表达式
+    [7] dropShadow/chokeMatte | 扩展 | PROPERTY | OneD | 可K帧 | 可表达式
+    [8] dropShadow/blur | 大小 | PROPERTY | OneD | 可K帧 | 可表达式
+    [9] dropShadow/noise | 杂色 | PROPERTY | OneD | 可K帧 | 可表达式
+    [10] dropShadow/layerConceals | 图层镂空投影 | PROPERTY | OneD | 可K帧 | 可表达式
+  [3] innerShadow/enabled | 内阴影 | NAMED_GROUP
+    [1] innerShadow/mode2 | 混合模式 | PROPERTY | OneD | 可K帧 | 可表达式
+    [2] innerShadow/color | 颜色 | PROPERTY | COLOR | 可K帧 | 可表达式 | 空间
+    [3] innerShadow/opacity | 不透明度 | PROPERTY | OneD | 可K帧 | 可表达式
+    [4] innerShadow/useGlobalAngle | 使用全局光 | PROPERTY | OneD | 可K帧 | 可表达式
+    [5] innerShadow/localLightingAngle | 角度 | PROPERTY | OneD | 可K帧 | 可表达式
+    [6] innerShadow/distance | 距离 | PROPERTY | OneD | 可K帧 | 可表达式
+    [7] innerShadow/chokeMatte | 阻塞 | PROPERTY | OneD | 可K帧 | 可表达式
+    [8] innerShadow/blur | 大小 | PROPERTY | OneD | 可K帧 | 可表达式
+    [9] innerShadow/noise | 杂色 | PROPERTY | OneD | 可K帧 | 可表达式
+  [4] outerGlow/enabled | 外发光 | NAMED_GROUP
+    [1] outerGlow/mode2 | 混合模式 | PROPERTY | OneD | 可K帧 | 可表达式
+    [2] outerGlow/opacity | 不透明度 | PROPERTY | OneD | 可K帧 | 可表达式
+    [3] outerGlow/noise | 杂色 | PROPERTY | OneD | 可K帧 | 可表达式
+    [4] outerGlow/AEColorChoice | 颜色类型 | PROPERTY | OneD | 可K帧 | 可表达式
+    [5] outerGlow/color | 颜色 | PROPERTY | COLOR | 可K帧 | 可表达式 | 空间
+    [6] outerGlow/gradient | 颜色 | PROPERTY | NO_VALUE | 可K帧 | 空间
+    [7] outerGlow/gradientSmoothness | 渐变平滑度 | PROPERTY | OneD | 可K帧 | 可表达式
+    [8] outerGlow/glowTechnique | 技术 | PROPERTY | OneD | 可K帧 | 可表达式
+    [9] outerGlow/chokeMatte | 扩展 | PROPERTY | OneD | 可K帧 | 可表达式
+    [10] outerGlow/blur | 大小 | PROPERTY | OneD | 可K帧 | 可表达式
+    [11] outerGlow/inputRange | 范围 | PROPERTY | OneD | 可K帧 | 可表达式
+    [12] outerGlow/shadingNoise | 抖动 | PROPERTY | OneD | 可K帧 | 可表达式
+  [5] innerGlow/enabled | 内发光 | NAMED_GROUP
+    [1] innerGlow/mode2 | 混合模式 | PROPERTY | OneD | 可K帧 | 可表达式
+    [2] innerGlow/opacity | 不透明度 | PROPERTY | OneD | 可K帧 | 可表达式
+    [3] innerGlow/noise | 杂色 | PROPERTY | OneD | 可K帧 | 可表达式
+    [4] innerGlow/AEColorChoice | 颜色类型 | PROPERTY | OneD | 可K帧 | 可表达式
+    [5] innerGlow/color | 颜色 | PROPERTY | COLOR | 可K帧 | 可表达式 | 空间
+    [6] innerGlow/gradient | 颜色 | PROPERTY | NO_VALUE | 可K帧 | 空间
+    [7] innerGlow/gradientSmoothness | 渐变平滑度 | PROPERTY | OneD | 可K帧 | 可表达式
+    [8] innerGlow/glowTechnique | 技术 | PROPERTY | OneD | 可K帧 | 可表达式
+    [9] innerGlow/innerGlowSource | 源 | PROPERTY | OneD | 可K帧 | 可表达式
+    [10] innerGlow/chokeMatte | 阻塞 | PROPERTY | OneD | 可K帧 | 可表达式
+    [11] innerGlow/blur | 大小 | PROPERTY | OneD | 可K帧 | 可表达式
+    [12] innerGlow/inputRange | 范围 | PROPERTY | OneD | 可K帧 | 可表达式
+    [13] innerGlow/shadingNoise | 抖动 | PROPERTY | OneD | 可K帧 | 可表达式
+  [6] bevelEmboss/enabled | 斜面和浮雕 | NAMED_GROUP
+    [1] bevelEmboss/bevelStyle | 样式 | PROPERTY | OneD | 可K帧 | 可表达式
+    [2] bevelEmboss/bevelTechnique | 技术 | PROPERTY | OneD | 可K帧 | 可表达式
+    [3] bevelEmboss/strengthRatio | 深度 | PROPERTY | OneD | 可K帧 | 可表达式
+    [4] bevelEmboss/bevelDirection | 方向 | PROPERTY | OneD | 可K帧 | 可表达式
+    [5] bevelEmboss/blur | 大小 | PROPERTY | OneD | 可K帧 | 可表达式
+    [6] bevelEmboss/softness | 柔化 | PROPERTY | OneD | 可K帧 | 可表达式
+    [7] bevelEmboss/useGlobalAngle | 使用全局光 | PROPERTY | OneD | 可K帧 | 可表达式
+    [8] bevelEmboss/localLightingAngle | 角度 | PROPERTY | OneD | 可K帧 | 可表达式
+    [9] bevelEmboss/localLightingAltitude | 高度 | PROPERTY | OneD | 可K帧 | 可表达式
+    [10] bevelEmboss/highlightMode | 高亮模式 | PROPERTY | OneD | 可K帧 | 可表达式
+    [11] bevelEmboss/highlightColor | 加亮颜色 | PROPERTY | COLOR | 可K帧 | 可表达式 | 空间
+    [12] bevelEmboss/highlightOpacity | 高光不透明度 | PROPERTY | OneD | 可K帧 | 可表达式
+    [13] bevelEmboss/shadowMode | 阴影模式 | PROPERTY | OneD | 可K帧 | 可表达式
+    [14] bevelEmboss/shadowColor | 阴影颜色 | PROPERTY | COLOR | 可K帧 | 可表达式 | 空间
+    [15] bevelEmboss/shadowOpacity | 阴影不透明度 | PROPERTY | OneD | 可K帧 | 可表达式
+  [7] chromeFX/enabled | 光泽 | NAMED_GROUP
+    [1] chromeFX/mode2 | 混合模式 | PROPERTY | OneD | 可K帧 | 可表达式
+    [2] chromeFX/color | 颜色 | PROPERTY | COLOR | 可K帧 | 可表达式 | 空间
+    [3] chromeFX/opacity | 不透明度 | PROPERTY | OneD | 可K帧 | 可表达式
+    [4] chromeFX/localLightingAngle | 角度 | PROPERTY | OneD | 可K帧 | 可表达式
+    [5] chromeFX/distance | 距离 | PROPERTY | OneD | 可K帧 | 可表达式
+    [6] chromeFX/blur | 大小 | PROPERTY | OneD | 可K帧 | 可表达式
+    [7] chromeFX/invert | 反转 | PROPERTY | OneD | 可K帧 | 可表达式
+  [8] solidFill/enabled | 颜色叠加 | NAMED_GROUP
+    [1] solidFill/mode2 | 混合模式 | PROPERTY | OneD | 可K帧 | 可表达式
+    [2] solidFill/color | 颜色 | PROPERTY | COLOR | 可K帧 | 可表达式 | 空间
+    [3] solidFill/opacity | 不透明度 | PROPERTY | OneD | 可K帧 | 可表达式
+  [9] gradientFill/enabled | 渐变叠加 | NAMED_GROUP
+    [1] gradientFill/mode2 | 混合模式 | PROPERTY | OneD | 可K帧 | 可表达式
+    [2] gradientFill/opacity | 不透明度 | PROPERTY | OneD | 可K帧 | 可表达式
+    [3] gradientFill/gradient | 颜色 | PROPERTY | NO_VALUE | 可K帧 | 空间
+    [4] gradientFill/gradientSmoothness | 渐变平滑度 | PROPERTY | OneD | 可K帧 | 可表达式
+    [5] gradientFill/angle | 角度 | PROPERTY | OneD | 可K帧 | 可表达式
+    [6] gradientFill/type | 样式 | PROPERTY | OneD | 可K帧 | 可表达式
+    [7] gradientFill/reverse | 反向 | PROPERTY | OneD | 可K帧 | 可表达式
+    [8] gradientFill/align | 与图层对齐 | PROPERTY | OneD | 可K帧 | 可表达式
+    [9] gradientFill/scale | 缩放 | PROPERTY | OneD | 可K帧 | 可表达式
+    [10] gradientFill/offset | 偏移 | PROPERTY | TwoD_SPATIAL | 可K帧 | 可表达式 | 空间
+  [10] patternFill/enabled | 图案叠加 | NAMED_GROUP
+    [1] patternFill/mode2 | 混合模式 | PROPERTY | OneD | 可K帧 | 可表达式
+    [2] patternFill/opacity | 不透明度 | PROPERTY | OneD | 可K帧 | 可表达式
+    [3] patternFill/align | 与图层链接 | PROPERTY | OneD | 可K帧 | 可表达式
+    [4] patternFill/scale | 缩放 | PROPERTY | OneD | 可K帧 | 可表达式
+    [5] patternFill/phase | 偏移 | PROPERTY | TwoD_SPATIAL | 可K帧 | 可表达式 | 空间
+  [11] frameFX/enabled | 描边 | NAMED_GROUP
+    [1] frameFX/mode2 | 混合模式 | PROPERTY | OneD | 可K帧 | 可表达式
+    [2] frameFX/color | 颜色 | PROPERTY | COLOR | 可K帧 | 可表达式 | 空间
+    [3] frameFX/size | 大小 | PROPERTY | OneD | 可K帧 | 可表达式
+    [4] frameFX/opacity | 不透明度 | PROPERTY | OneD | 可K帧 | 可表达式
+    [5] frameFX/style | 位置 | PROPERTY | OneD | 可K帧 | 可表达式
+[7] ADBE Extrsn Options Group | 几何选项 | NAMED_GROUP
+  [1] ADBE Bevel Styles | 斜面样式 | PROPERTY | OneD | 不可K帧
+  [2] ADBE Bevel Direction | 斜面方向 | PROPERTY | OneD | 不可K帧
+  [3] ADBE Bevel Depth | 斜面深度 | PROPERTY | OneD | 可K帧 | 可表达式
+  [4] ADBE Hole Bevel Depth | 洞斜面深度 | PROPERTY | OneD | 可K帧 | 可表达式
+  [5] ADBE Extrsn Depth | 凸出深度 | PROPERTY | OneD | 可K帧 | 可表达式
+[8] ADBE Material Options Group | 材质选项 | NAMED_GROUP
+  [1] ADBE Casts Shadows | 投影 | PROPERTY | OneD | 不可K帧
+  [2] ADBE Light Transmission | 透光率 | PROPERTY | OneD | 可K帧
+  [3] ADBE Accepts Shadows | 接受阴影 | PROPERTY | OneD | 不可K帧
+  [4] ADBE Accepts Lights | 接受灯光 | PROPERTY | OneD | 不可K帧
+  [5] ADBE Shadow Color | 阴影颜色 | PROPERTY | COLOR | 可K帧 | 空间
+  [6] ADBE Appears in Reflections | 在反射中显示 | PROPERTY | OneD | 不可K帧
+  [7] ADBE Ambient Coefficient | 周围 | PROPERTY | OneD | 可K帧
+  [8] ADBE Diffuse Coefficient | 漫射 | PROPERTY | OneD | 可K帧
+  [9] ADBE Specular Coefficient | 镜面强度 | PROPERTY | OneD | 可K帧
+  [10] ADBE Shininess Coefficient | 镜面反光度 | PROPERTY | OneD | 可K帧
+  [11] ADBE Metal Coefficient | 金属质感 | PROPERTY | OneD | 可K帧
+  [12] ADBE Reflection Coefficient | 反射强度 | PROPERTY | OneD | 可K帧
+  [13] ADBE Glossiness Coefficient | 反射锐度 | PROPERTY | OneD | 可K帧
+  [14] ADBE Fresnel Coefficient | 反射衰减 | PROPERTY | OneD | 可K帧
+  [15] ADBE Transparency Coefficient | 透明度 | PROPERTY | OneD | 可K帧
+  [16] ADBE Transp Rolloff | 透明度衰减 | PROPERTY | OneD | 可K帧
+  [17] ADBE Index of Refraction | 折射率 | PROPERTY | OneD | 可K帧
+[9] ADBE Audio Group | 音频 | NAMED_GROUP
+  [1] ADBE Audio Levels | 音频电平 | PROPERTY | TwoD | 可K帧 | 可表达式
+[10] ADBE Layer Sets | 集 | INDEXED_GROUP
+
+==== 关键帧缓动维度测试 ====
+ADBE Scale : 可用的缓动数组长度 = [3]
+ADBE Position : 可用的缓动数组长度 = [1]
+ADBE Opacity : 可用的缓动数组长度 = [1]
+ADBE Rotate Z : 可用的缓动数组长度 = [1]
+ADBE Mask Offset 设值 2300 : 成功，读回 2300
+
+==== 方法与属性可用性 ====
+Property.setValue : 有
+Property.setValueAtTime : 有
+Property.setTemporalEaseAtKey : 有
+Property.setInterpolationTypeAtKey : 有
+Property.keyTime : 有
+Property.numKeys : 有
+Property.expression : 有
+Property.valueAtTime : 有
+Layer.moveToEnd : 有
+Layer.moveToBeginning : 有
+Layer.moveAfter : 有
+Layer.sourceRectAtTime : 有
+Layer.audioEnabled : 有
+Layer.startTime : 有
+Layer.inPoint : 有
+Layer.outPoint : 有
+TextDocument.resetCharStyle : 有
+TextDocument.font : 有
+TextDocument.fontSize : 有
+TextDocument.applyFill : 有
+TextDocument.fillColor : 有
+TextDocument.tracking : 有
+TextDocument.autoLeading : 有
+TextDocument.leading : 有
+TextDocument.justification : 有
+sourceRectAtTime 返回: left=1.6171875 top=-37.375 w=226.9453125 h=41.6875
+行距设置 autoLeading/leading : 成功
+
+==== 字体检查（PostScript 名）====
+NotoSansSC-Black : 已安装
+NotoSansSC-Bold : 已安装
+NotoSansSC-Medium : 已安装
+NotoSerifSC-Black : 已安装
+JetBrainsMono-Bold : 未安装
+JetBrainsMono-Medium : 未安装
+SpaceGrotesk-Bold : 未安装
+
+==== 错误 / 不可用项 (0) ====

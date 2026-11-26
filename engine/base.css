@@ -1,0 +1,52 @@
+/* base.css — 艾唯白帽志 · 视觉系统 1.0 基础样式
+   引用顺序：engine/tokens.css（自动生成的变量和场景类）→ engine/base.css → 本期样式。
+   字体从仓库根目录 node_modules 加载（npm i）。AE 用的字体文件在 fonts/。 */
+@import "../node_modules/@chinese-fonts/dyh/dist/SmileySans-Oblique/result.css";
+@import "../node_modules/misans/lib/Normal/MiSans-Medium.min.css";
+@import "../node_modules/misans/lib/Normal/MiSans-Bold.min.css";
+@import "../node_modules/misans/lib/Normal/MiSans-Heavy.min.css";
+@import "../node_modules/@fontsource/archivo/900.css";
+@import "../node_modules/@fontsource/ibm-plex-mono/500.css";
+@import "../node_modules/@fontsource/ibm-plex-mono/600.css";
+
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{width:1920px;height:1080px;overflow:hidden;background:var(--char)}
+
+/* 画面：一个 section 一个镜头，加场景类 scene-A / scene-B */
+.frame{position:absolute;inset:0;width:1920px;height:1080px;overflow:hidden}
+.abs{position:absolute}
+
+/* 文字 */
+.disp{font-family:var(--f-disp);font-weight:400;line-height:1.04;letter-spacing:.01em;color:var(--s-title)}  /* 标题 / 章节 / 金句 ≥ 104px */
+.cn{font-family:var(--f-cn);font-weight:700}                                                                     /* 有意义的文字 ≥ 52px */
+.num{font-family:var(--f-num);font-weight:900;line-height:1}
+.mono{font-family:var(--f-mono);font-weight:500}
+.kick{font-family:var(--f-mono);font-weight:500;font-size:24px;letter-spacing:.2em;text-transform:uppercase;opacity:.55}  /* 英文小标注：每屏最多一处，装饰性 */
+.en{font-family:var(--f-mono);font-weight:500;font-size:20px;letter-spacing:.16em;text-transform:uppercase;opacity:.6}
+.accent{color:var(--s-accent)}
+
+/* 色块：重点（朱橙 + 炭黑字）/ 辅助（克莱因蓝 + 奶油白字）。蓝色在炭黑场里只能这样用，不做文字 */
+.blk{background:var(--s-blk);color:var(--s-blk-fg);padding:0 .22em;margin:0 .1em}
+.aux{background:var(--s-aux);color:var(--s-aux-fg);padding:0 .22em;margin:0 .1em}
+
+/* 信息卡（P4 信息卡片库会细分组件；这里只是场景默认样式） */
+.card{position:absolute;background:var(--s-card);color:var(--s-card-fg)}
+.scene-B .card{box-shadow:0 18px 40px rgba(90,40,10,.10),0 0 0 2px rgba(22,19,15,.06)}
+.card.lit{background:var(--paper);color:var(--char)}
+.card.hot{background:var(--s-blk);color:var(--s-blk-fg)}
+
+/* 贴纸：透明底 PNG，按场景给投影 */
+.stk{position:absolute;object-fit:contain}
+.scene-A .stk{filter:drop-shadow(0 30px 38px rgba(0,0,0,.45))}
+.scene-B .stk{filter:drop-shadow(0 24px 28px rgba(90,40,10,.18))}
+
+/* 背景动态层（libs/backgrounds/layers/*.svg），铺满画面 */
+.bg-layer{position:absolute;left:0;top:0;width:1920px;height:1080px;pointer-events:none}
+
+/* 字幕：MiSans Bold 50px，底部居中，距底 104px，实色底板 */
+.sub{position:absolute;left:50%;bottom:var(--sub-bottom);transform:translateX(-50%);white-space:nowrap;
+  font-family:var(--f-cn);font-weight:700;font-size:var(--t-subtitle);line-height:1;padding:16px 30px 18px;
+  background:var(--s-sub);color:var(--s-sub-fg)}
+.sub em{font-style:normal;color:var(--s-sub-em)}
+
+/* 不做：HUD、时间码、编号角标、进度条、左上角留空（白帽志 1.0 起取消） */

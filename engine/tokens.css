@@ -1,0 +1,25 @@
+/* 自动生成：python3 tools/gen_tokens.py ← tokens/brand.json（v1.1.0）。不要手改。 */
+:root{
+  --char:#16130F;  /* 炭黑 */
+  --char-hi:#241F19;  /* 炭黑·中心 */
+  --char-lo:#0F0D0A;  /* 炭黑·边缘 */
+  --slate:#2B2520;  /* 炭灰 */
+  --cream:#F5EEDF;  /* 奶油白 */
+  --paper:#FFFBF3;  /* 卡片白 */
+  --orange:#FF5A1F;  /* 朱橙 */
+  --klein:#002FA7;  /* 克莱因蓝 */
+  --f-disp:"Smiley Sans Oblique","MiSans",sans-serif;
+  --f-cn:"MiSans",sans-serif;
+  --f-num:"Archivo","MiSans",sans-serif;
+  --f-mono:"IBM Plex Mono","MiSans",monospace;
+  --t-subtitle:50px; --t-min:52px; --t-title-min:104px; --t-decor-min:18px;
+  --margin-x:64px; --margin-y:56px; --grid:48px; --sub-bottom:104px;
+  --sz-S-w:336px; --sz-S-h:192px;
+  --sz-M-w:528px; --sz-M-h:288px;
+  --sz-L-w:720px; --sz-L-h:384px;
+  --sz-XL-w:1104px; --sz-XL-h:576px;
+}
+/* 场景 A · 炭黑场：主场：开场 / 章节 / 讲解 / 金句 / 录屏 */
+.scene-A{background:radial-gradient(circle at 72% 46%,var(--char-hi) 0,var(--char) 58%,var(--char-lo) 100%);color:var(--cream);--s-title:var(--cream);--s-accent:var(--orange);--s-blk:var(--orange);--s-blk-fg:var(--char);--s-aux:var(--klein);--s-aux-fg:var(--cream);--s-card:var(--slate);--s-card-fg:var(--cream);--s-sub:var(--slate);--s-sub-fg:var(--cream);--s-sub-em:var(--orange);--s-line:var(--cream);--s-line-op:0.13;--s-focus:var(--orange)}
+/* 场景 B · 奶油白场：副场：信息多的图解 / 清单 / 对比 */
+.scene-B{background:var(--cream);color:var(--char);--s-title:var(--char);--s-accent:var(--klein);--s-blk:var(--orange);--s-blk-fg:var(--char);--s-aux:var(--klein);--s-aux-fg:var(--cream);--s-card:var(--paper);--s-card-fg:var(--char);--s-sub:var(--char);--s-sub-fg:var(--cream);--s-sub-em:var(--orange);--s-line:var(--char);--s-line-op:0.06;--s-focus:var(--orange)}

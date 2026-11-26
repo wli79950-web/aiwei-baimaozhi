@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="zh"><head><meta charset="utf-8">
+<!-- 视觉系统 1.0 演示页：只用 engine/tokens.css + engine/base.css + 背景板库 + 贴纸样张，不写任何私有颜色。
+     用法：tools/build_previews.js 逐帧截图（?f=1..4）。文案是示意。 -->
+<link rel="stylesheet" href="../../../engine/tokens.css">
+<link rel="stylesheet" href="../../../engine/base.css">
+<style>.frame{display:none}.frame.on{display:block}</style>
+</head><body>
+
+<!-- F1 · 炭黑场 · 章节卡 -->
+<section class="frame scene-A" id="f1">
+  <img class="bg-layer" src="../../../libs/backgrounds/layers/BG1_radar_lines.svg">
+  <img class="bg-layer" src="../../../libs/backgrounds/layers/BG1_radar_sweep.svg">
+  <img class="stk" src="../../../libs/stickers/samples/bmz_radar.png" style="left:1150px;top:250px;width:580px;height:580px">
+  <div class="abs kick" style="left:68px;top:300px">Chapter 02</div>
+  <div class="abs disp" style="left:58px;top:350px;font-size:270px">AI 挖洞</div>
+  <div class="abs cn" style="left:68px;top:680px;font-size:60px">让大模型替你跑完<span class="blk">前 80%</span>的体力活</div>
+  <div class="sub">这一章，我们先让 <em>AI</em> 把整个站跑一遍</div>
+</section>
+
+<!-- F2 · 炭黑场 · 对比（辅助色块 vs 重点色块） -->
+<section class="frame scene-A" id="f2">
+  <div class="abs kick" style="left:0;right:0;top:96px;text-align:center">AI vs Human</div>
+  <img class="stk" src="../../../libs/stickers/samples/bmz_aichip.png" style="left:330px;top:150px;width:360px;height:260px">
+  <img class="stk" src="../../../libs/stickers/samples/bmz_whitehat.png" style="left:1220px;top:170px;width:400px;height:250px">
+  <div class="abs aux" style="left:210px;top:400px;width:600px;height:220px;margin:0;display:flex;flex-direction:column;align-items:center;justify-content:center">
+    <div class="cn" style="font-size:84px;font-weight:900">AI 能做</div><div class="en">Machine</div></div>
+  <div class="abs blk" style="left:1110px;top:400px;width:600px;height:220px;margin:0;display:flex;flex-direction:column;align-items:center;justify-content:center">
+    <div class="cn" style="font-size:84px;font-weight:900">必须人来</div><div class="en">Human</div></div>
+  <div class="abs num" style="left:0;right:0;top:450px;text-align:center;font-size:120px">VS</div>
+  <div class="abs cn" style="left:210px;top:660px;width:600px;text-align:center;font-size:52px;line-height:1.4;opacity:.85">批量扫接口<br>整理线索</div>
+  <div class="abs cn" style="left:1110px;top:660px;width:600px;text-align:center;font-size:52px;line-height:1.4;opacity:.85">确认授权<br>判断真假</div>
+  <div class="sub">同样是挖洞，<em>判断</em>这一步只能人来</div>
+</section>
+
+<!-- F3 · 奶油白场 · 编号网格（信息卡 + 当前项朱橙卡） -->
+<section class="frame scene-B" id="f3">
+  <img class="bg-layer" src="../../../libs/backgrounds/layers/BG2_radar_lines.svg">
+  <div class="abs kick" style="left:68px;top:96px;color:var(--klein);opacity:1">Five steps</div>
+  <div class="abs disp" style="left:60px;top:134px;font-size:104px">AI 挖洞，按顺序来</div>
+  <div class="card" style="left:64px;top:300px;width:581px;height:240px"><div class="abs num accent" style="left:34px;top:30px;font-size:40px">01</div><div class="abs cn" style="left:34px;top:150px;font-size:56px">确认授权</div><img class="stk" src="../../../libs/stickers/samples/bmz_key.png" style="right:26px;top:26px;width:180px;height:180px"></div>
+  <div class="card" style="left:669px;top:300px;width:581px;height:240px"><div class="abs num accent" style="left:34px;top:30px;font-size:40px">02</div><div class="abs cn" style="left:34px;top:150px;font-size:56px">信息收集</div><img class="stk" src="../../../libs/stickers/samples/bmz_radar.png" style="right:30px;top:20px;width:170px;height:200px"></div>
+  <div class="card hot" style="left:1274px;top:300px;width:581px;height:240px"><div class="abs num" style="left:34px;top:30px;font-size:40px">03</div><div class="abs cn" style="left:34px;top:150px;font-size:56px">AI 扫描</div><img class="stk" src="../../../libs/stickers/samples/bmz_aichip.png" style="right:20px;top:34px;width:220px;height:170px"></div>
+  <div class="card" style="left:64px;top:564px;width:581px;height:240px"><div class="abs num accent" style="left:34px;top:30px;font-size:40px">04</div><div class="abs cn" style="left:34px;top:150px;font-size:56px">人工复核</div><img class="stk" src="../../../libs/stickers/samples/bmz_shield.png" style="right:36px;top:24px;width:160px;height:190px"></div>
+  <div class="card" style="left:669px;top:564px;width:581px;height:240px"><div class="abs num accent" style="left:34px;top:30px;font-size:40px">05</div><div class="abs cn" style="left:34px;top:150px;font-size:56px">提交报告</div><img class="stk" src="../../../libs/stickers/samples/bmz_laptop.png" style="right:22px;top:30px;width:210px;height:180px"></div>
+  <div class="abs" style="left:1274px;top:564px;width:581px;height:240px;border:3px dashed var(--klein);opacity:.5;display:flex;align-items:center;justify-content:center"><span class="cn accent" style="font-size:52px">第 3 步最省时间</span></div>
+  <div class="sub">五步，<em>按顺序</em>一步一步来</div>
+</section>
+
+<!-- F4 · 炭黑场 · 金句（品牌贴纸白帽） -->
+<section class="frame scene-A" id="f4">
+  <img class="bg-layer" src="../../../libs/backgrounds/layers/BG1_radar_lines.svg">
+  <img class="stk" src="../../../libs/stickers/samples/bmz_whitehat.png" style="left:1110px;top:300px;width:680px;height:560px">
+  <div class="abs kick" style="left:68px;top:300px">Whitehat note</div>
+  <div class="abs disp" style="left:60px;top:350px;font-size:140px">AI 是放大器，</div>
+  <div class="abs disp" style="left:60px;top:510px;font-size:140px"><span class="blk" style="margin-left:0">判断力</span>才是护城河</div>
+</section>
+
+<script>
+const f = new URLSearchParams(location.search).get('f') || '1';
+document.getElementById('f' + f).classList.add('on');
+</script>
+</body></html>
