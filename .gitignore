@@ -1,0 +1,15 @@
+node_modules/
+models/
+ae/aedocs/
+__pycache__/
+*.pyc
+.DS_Store
+footage/
+build/
+out/
+episodes/*/footage/
+episodes/*/build/
+episodes/*/out/
+episodes/*/sfx/
+episodes/*/*/footage/
+episodes/*/*/build/

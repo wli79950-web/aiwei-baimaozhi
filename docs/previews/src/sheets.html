@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="zh"><head><meta charset="utf-8">
+<!-- 预览板：配色 / 背景板 / 贴纸。数据由 tools/build_previews.js 从 tokens/brand.json 注入（window.BRAND），不手写色值。 -->
+<link rel="stylesheet" href="../../../engine/tokens.css">
+<link rel="stylesheet" href="../../../engine/base.css">
+<style>
+html,body{width:2240px;height:auto;overflow:visible;background:#EFE8DA;color:var(--char)}
+body{padding:64px 80px 80px;font-family:var(--f-cn)}
+.sheet{display:none}.sheet.on{display:block}
+.k{font:500 22px var(--f-mono);letter-spacing:.2em;color:var(--orange);margin-bottom:10px;text-transform:uppercase}
+h1{font:400 84px var(--f-disp);line-height:1.05}
+h2{font-size:36px;font-weight:900;margin:52px 0 18px}h2 small{font-size:24px;font-weight:700;opacity:.55;margin-left:12px}
+.sw{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.sw div{height:210px;padding:20px 22px;display:flex;flex-direction:column;justify-content:flex-end;font-size:28px;font-weight:900;line-height:1.3}
+.sw span{font:500 19px var(--f-mono);opacity:.85;margin-top:4px}.sw p{font-size:21px;font-weight:700;opacity:.8;margin-top:6px;line-height:1.4}
+table.ct{border-collapse:collapse;width:100%;font-size:24px}table.ct td{padding:10px 16px;border-bottom:1px solid #16130F18}
+table.ct td.r{font:900 26px var(--f-num);text-align:right}
+.chip{display:inline-block;padding:4px 14px;font-weight:700}
+.bg{display:grid;grid-template-columns:repeat(2,1fr);gap:26px}.bg .v{position:relative;width:100%;aspect-ratio:16/9;outline:1px solid #16130F22;overflow:hidden}
+.bg .v img{position:absolute;inset:0;width:100%;height:100%}.bg p{font-size:26px;font-weight:900;margin-top:10px}.bg i{display:block;font-style:normal;font-size:21px;font-weight:700;opacity:.6;margin-top:4px}
+.st{display:grid;grid-template-columns:repeat(6,1fr)}.st div{aspect-ratio:1;display:flex;align-items:center;justify-content:center;padding:26px}
+.st img{max-width:100%;max-height:100%;filter:drop-shadow(0 16px 20px rgba(0,0,0,.25))}
+.cap{font:500 18px var(--f-mono);letter-spacing:.06em;opacity:.65;margin-top:8px}
+</style></head><body>
+
+<div class="sheet" id="palette">
+  <div class="k">Aiwei Whitehat Log · Color system</div>
+  <h1 id="ptitle"></h1>
+  <h2>色板<small>来自 tokens/brand.json</small></h2>
+  <div class="sw" id="swatches"></div>
+  <h2>对比度检查<small>正文 ≥ 4.5；与 tools/contrast_check.py 同一套规则</small></h2>
+  <table class="ct" id="ctab"></table>
+</div>
+
+<div class="sheet" id="backgrounds">
+  <div class="k">Aiwei Whitehat Log · Background plates</div>
+  <h1>背景板库</h1>
+  <h2>底板 + 动态层<small>底板是单独的图片；雷达线、扫描扇区是透明 SVG 层，AE 里可隐藏 / 替换 / 做动画</small></h2>
+  <div class="bg">
+    <div><div class="v"><img src="../../../libs/backgrounds/plates/BG1_char_plate.png"><img src="../../../libs/backgrounds/layers/BG1_radar_lines.svg"><img src="../../../libs/backgrounds/layers/BG1_radar_sweep.svg"></div><p>BG1 · 炭黑 · 雷达（主场 A）</p><i>plates/BG1_char_plate.png + layers/BG1_radar_lines.svg + layers/BG1_radar_sweep.svg</i></div>
+    <div><div class="v"><img src="../../../libs/backgrounds/plates/BG2_cream_plate.png"><img src="../../../libs/backgrounds/layers/BG2_radar_lines.svg"></div><p>BG2 · 奶油白 · 纸面（副场 B）</p><i>plates/BG2_cream_plate.png + layers/BG2_radar_lines.svg（可关）</i></div>
+    <div><div class="v"><img src="../../../libs/backgrounds/plates/FX_orange.png"></div><p>FX · 朱橙闪切</p><i>重拍 / 反转，每次 ≤ 6 帧</i></div>
+    <div><div class="v"><img src="../../../libs/backgrounds/plates/FX_klein.png"></div><p>FX · 克莱因蓝闪切</p><i>对照 / 切换话题，每次 ≤ 6 帧</i></div>
+  </div>
+</div>
+
+<div class="sheet" id="stickers">
+  <div class="k">Aiwei Whitehat Log · Sticker samples</div>
+  <h1>贴纸样张（12 张）</h1>
+  <h2>只作风格样张，不进正片<small>正片素材每期按口播重新生成；品牌贴纸在 P5 按朱橙配色重生成</small></h2>
+  <div class="st" id="strow1" style="background:var(--char)"></div>
+  <div class="st" id="strow2" style="background:var(--cream)"></div>
+  <div class="cap" id="stnames"></div>
+</div>
+
+<script>
+const B = window.BRAND, C = Object.fromEntries(Object.entries(B.color).map(([k, v]) => [k, v.hex]));
+const sheet = new URLSearchParams(location.search).get('s') || 'palette';
+document.getElementById(sheet).classList.add('on');
+if (sheet === 'palette') {
+  document.getElementById('ptitle').textContent = `${B.name} · 配色 v${B.version}`;
+  const dark = k => ['char', 'char_hi', 'char_lo', 'slate', 'klein'].includes(k);
+  document.getElementById('swatches').innerHTML = Object.entries(B.color).map(([k, v]) =>
+    `<div style="background:${v.hex};color:${dark(k) ? C.cream : C.char};${k === 'cream' || k === 'paper' ? 'outline:2px solid #16130F22' : ''}">${v.name}<span>${v.hex} · --${k.replace('_', '-')}</span><p>${v.role}</p></div>`).join('');
+  const lum = h => { const c = [1, 3, 5].map(i => parseInt(h.substr(i, 2), 16) / 255).map(x => x <= .03928 ? x / 12.92 : ((x + .055) / 1.055) ** 2.4); return .2126 * c[0] + .7152 * c[1] + .0722 * c[2]; };
+  const ratio = (a, b) => { const x = lum(C[a]), y = lum(C[b]); return (Math.max(x, y) + .05) / (Math.min(x, y) + .05); };
+  const rows = [];
+  for (const [sid, s] of Object.entries(B.scene)) {
+    if (sid === 'FX') continue;
+    rows.push([sid, '标题 / 正文', s.text.title, s.bg], [sid, '重点字', s.text.accent, s.bg],
+      [sid, '重点色块', s.block.accent[1], s.block.accent[0]], [sid, '辅助色块', s.block.aux[1], s.block.aux[0]],
+      [sid, '信息卡', s.card[1], s.card[0]], [sid, '字幕关键词', s.subtitle.em, s.subtitle.bg]);
+  }
+  for (const [fg, bg, why] of B.contrast.forbidden) rows.push(['禁用', why.split('→')[0], fg, bg]);
+  document.getElementById('ctab').innerHTML = rows.map(([sid, what, fg, bg]) => {
+    const r = ratio(fg, bg), ok = sid === '禁用' ? r < B.contrast.large_min : r >= B.contrast.text_min;
+    return `<tr><td>${sid === '禁用' ? '✕ 禁用' : '场景 ' + sid + ' · ' + B.scene[sid].name}</td><td>${what}</td>
+      <td><span class="chip" style="background:${C[bg]};color:${C[fg]};${bg === 'cream' || bg === 'paper' ? 'outline:1px solid #16130F22' : ''}">${B.color[fg].name} / ${B.color[bg].name}</span></td>
+      <td class="r" style="color:${sid === '禁用' ? '#8a8378' : (ok ? '#1d7a3a' : '#b3261e')}">${r.toFixed(2)} ${sid === '禁用' ? (ok ? '禁用' : '⚠ 规则需复核') : (ok ? '✓' : '✗')}</td></tr>`;
+  }).join('');
+}
+if (sheet === 'stickers') {
+  const N = ['whitehat', 'aichip', 'shield', 'radar', 'key', 'briefcase', 'bug', 'lock_closed', 'lock_open', 'laptop', 'building', 'coin'];
+  const cell = n => `<div><img src="../../../libs/stickers/samples/bmz_${n}.png"></div>`;
+  document.getElementById('strow1').innerHTML = N.slice(0, 6).map(cell).join('') + N.slice(6).map(cell).join('');
+  document.getElementById('strow2').innerHTML = N.map(cell).join('');
+  document.getElementById('stnames').textContent = '上：炭黑底　下：奶油白底　｜　' + N.map(n => 'bmz_' + n).join(' · ');
+}
+</script>
+</body></html>

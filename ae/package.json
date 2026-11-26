@@ -1,0 +1,7 @@
+{
+  "name": "aiwei-baimaozhi-ae-tests",
+  "private": true,
+  "dependencies": {
+    "acorn": "*"
+  }
+}

@@ -1,0 +1,108 @@
+{
+  "name": "艾唯白帽志",
+  "version": "1.0.0",
+  "updated": "2026-11-26",
+  "spec": { "w": 1920, "h": 1080, "portrait": [1080, 1920], "fps": 60, "container": "mp4" },
+
+  "color": {
+    "char":    { "hex": "#16130F", "name": "炭黑",     "role": "主底（约 65% 镜头）；浅底上的标题和正文" },
+    "char_hi": { "hex": "#241F19", "name": "炭黑·中心", "role": "炭黑径向渐变中心" },
+    "char_lo": { "hex": "#0F0D0A", "name": "炭黑·边缘", "role": "炭黑径向渐变边缘" },
+    "slate":   { "hex": "#2B2520", "name": "炭灰",     "role": "炭黑底上的信息卡、字幕底板、窗口" },
+    "cream":   { "hex": "#F5EEDF", "name": "奶油白",   "role": "深底上的文字；信息多的图解做副底" },
+    "paper":   { "hex": "#FFFBF3", "name": "卡片白",   "role": "奶油白底上的信息卡" },
+    "orange":  { "hex": "#FF5A1F", "name": "朱橙",     "role": "核心强调：重点、当前项、漏洞 / 风险、焦点图形" },
+    "klein":   { "hex": "#002FA7", "name": "克莱因蓝", "role": "辅助：对照项、编号、防守 / 修复后、贴纸" }
+  },
+
+  "scene": {
+    "A": {
+      "name": "炭黑场", "plate": "BG1", "usage": "主场：开场 / 章节 / 讲解 / 金句 / 录屏",
+      "bg": "char",
+      "text":   { "title": "cream", "body": "cream", "accent": "orange" },
+      "block":  { "accent": ["orange", "char"], "aux": ["klein", "cream"] },
+      "card":   ["slate", "cream"],
+      "card_lit": ["paper", "char"],
+      "subtitle": { "bg": "slate", "fg": "cream", "em": "orange" },
+      "line": { "color": "cream", "opacity": 0.13 },
+      "focus": "orange"
+    },
+    "B": {
+      "name": "奶油白场", "plate": "BG2", "usage": "副场：信息多的图解 / 清单 / 对比",
+      "bg": "cream",
+      "text":   { "title": "char", "body": "char", "accent": "klein" },
+      "block":  { "accent": ["orange", "char"], "aux": ["klein", "cream"] },
+      "card":   ["paper", "char"],
+      "subtitle": { "bg": "char", "fg": "cream", "em": "orange" },
+      "line": { "color": "char", "opacity": 0.06 },
+      "focus": "orange"
+    },
+    "FX": {
+      "name": "闪切", "usage": "转场 / 重拍，不做常驻背景",
+      "plates": { "FX_orange": "orange", "FX_klein": "klein" },
+      "max_frames": 6
+    }
+  },
+
+  "contrast": {
+    "text_min": 4.5,
+    "large_min": 3.0,
+    "large_px": 52,
+    "forbidden": [
+      ["cream", "orange", "奶油白字放在朱橙块上（2.70）→ 朱橙块一律配炭黑字"],
+      ["orange", "cream", "朱橙字放在奶油白上（2.70）→ 奶油白场里朱橙只做色块"],
+      ["klein", "char", "克莱因蓝字 / 细线放在炭黑上（1.73）→ 炭黑场里蓝色只做色块"]
+    ]
+  },
+
+  "area": { "char": 0.65, "cream": 0.25, "orange": 0.10, "klein": 0.05, "klein_max_per_frame": 0.15 },
+
+  "font": {
+    "display": { "family": "Smiley Sans Oblique", "cn": "得意黑", "ae": "SmileySans-Oblique", "file": "fonts/SmileySans-Oblique.ttf", "license": "SIL OFL 1.1", "bundled": true, "use": "标题、章节大字、金句" },
+    "cn":      { "family": "MiSans", "cn": "MiSans", "weights": { "500": "MiSans-Medium", "700": "MiSans-Bold", "900": "MiSans-Heavy" }, "license": "小米 MiSans 字体知识产权许可协议（商用条款待用户确认）", "bundled": false, "use": "正文、字幕、标签" },
+    "num":     { "family": "Archivo", "weight": 900, "ae": "Archivo-Black", "file": "fonts/Archivo-Black.ttf", "license": "SIL OFL 1.1（由可变字体固定为 wght 900 / wdth 100）", "bundled": true, "use": "英文大字、数字" },
+    "mono":    { "family": "IBM Plex Mono", "weights": { "500": "IBMPlexMono-Medium", "600": "IBMPlexMono-SemiBold" }, "files": ["fonts/IBMPlexMono-Medium.ttf", "fonts/IBMPlexMono-SemiBold.ttf"], "license": "SIL OFL 1.1（保留字体名 Plex，原版未改）", "bundled": true, "use": "英文小标注、代码、终端" }
+  },
+
+  "type": {
+    "subtitle": 50,
+    "meaningful_min": 52,
+    "title_min": 104,
+    "decor_min": 18,
+    "chapter": [240, 280],
+    "quote": [120, 150],
+    "section": [96, 112],
+    "kicker": { "size": 24, "tracking": "0.2em", "per_frame_max": 1 }
+  },
+
+  "layout": {
+    "margin_x": 96,
+    "grid": 48,
+    "ip_reserve": null,
+    "hud": false,
+    "timecode": false,
+    "subtitle": { "bottom": 104, "padding": [16, 30, 18, 30], "font_weight": 700 },
+    "size_class": {
+      "S":  [336, 192],
+      "M":  [528, 288],
+      "L":  [720, 384],
+      "XL": [1104, 576]
+    }
+  },
+
+  "background": {
+    "BG1": { "name": "炭黑·雷达", "scene": "A", "plate": "libs/backgrounds/plates/BG1_char_plate.png", "layers": ["libs/backgrounds/layers/BG1_radar_lines.svg", "libs/backgrounds/layers/BG1_radar_sweep.svg"] },
+    "BG2": { "name": "奶油白·纸面", "scene": "B", "plate": "libs/backgrounds/plates/BG2_cream_plate.png", "layers": ["libs/backgrounds/layers/BG2_radar_lines.svg"] },
+    "FX_orange": { "name": "朱橙闪切", "plate": "libs/backgrounds/plates/FX_orange.png" },
+    "FX_klein":  { "name": "克莱因蓝闪切", "plate": "libs/backgrounds/plates/FX_klein.png" },
+    "radar": { "cx": 1440, "cy": 540, "rings": [170, 270, 370, 470], "axis": true, "sweep_deg": [0, 45], "sweep_opacity": 0.38 }
+  },
+
+  "sticker": {
+    "palette": ["cream", "klein", "orange"],
+    "material": "哑光陶瓷 / 磨砂树脂",
+    "prompt_suffix": "premium 3D product render, soft matte ceramic and frosted resin materials, color palette strictly limited to cream white (#F5EEDF), Klein blue (#002FA7) and vermilion orange (#FF5A1F), clean geometric Bauhaus-inspired forms, smooth rounded edges, soft diffused studio lighting, gentle contact shadow, isolated on a plain light grey (#D6D6D6) seamless background, centered, full object visible, no text, no letters, no numbers, no logo, no watermark",
+    "on_char": "优先奶油白为主的贴纸；蓝色为主的贴纸要垫一张卡片白卡",
+    "brand": ["whitehat"]
+  }
+}
