@@ -1,4 +1,4 @@
-/* 自动生成：python3 tools/gen_tokens.py ← tokens/brand.json（v1.0.0）。不要手改。 */
+/* 自动生成：python3 tools/gen_tokens.py ← tokens/brand.json（v1.1.0）。不要手改。 */
 :root{
   --char:#16130F;  /* 炭黑 */
   --char-hi:#241F19;  /* 炭黑·中心 */
@@ -13,7 +13,7 @@
   --f-num:"Archivo","MiSans",sans-serif;
   --f-mono:"IBM Plex Mono","MiSans",monospace;
   --t-subtitle:50px; --t-min:52px; --t-title-min:104px; --t-decor-min:18px;
-  --margin-x:96px; --grid:48px; --sub-bottom:104px;
+  --margin-x:64px; --margin-y:56px; --grid:48px; --sub-bottom:104px;
   --sz-S-w:336px; --sz-S-h:192px;
   --sz-M-w:528px; --sz-M-h:288px;
   --sz-L-w:720px; --sz-L-h:384px;

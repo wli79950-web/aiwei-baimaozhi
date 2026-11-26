@@ -17,7 +17,7 @@ out += [
     f'  --f-num:"{F["num"]["family"]}","{F["cn"]["family"]}",sans-serif;',
     f'  --f-mono:"{F["mono"]["family"]}","{F["cn"]["family"]}",monospace;',
     f'  --t-subtitle:{T["subtitle"]}px; --t-min:{T["meaningful_min"]}px; --t-title-min:{T["title_min"]}px; --t-decor-min:{T["decor_min"]}px;',
-    f'  --margin-x:{LY["margin_x"]}px; --grid:{LY["grid"]}px; --sub-bottom:{LY["subtitle"]["bottom"]}px;',
+    f'  --margin-x:{LY["margin_x"]}px; --margin-y:{LY.get("margin_y", LY["margin_x"])}px; --grid:{LY["grid"]}px; --sub-bottom:{LY["subtitle"]["bottom"]}px;',
 ]
 for k, (w, h) in LY['size_class'].items():
     out.append(f'  --sz-{k}-w:{w}px; --sz-{k}-h:{h}px;')

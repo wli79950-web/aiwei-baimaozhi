@@ -1,0 +1,26 @@
+{
+ "note": "2026-11-26 图片素材库候选样张（待用户确认风格后在 P5 定稿）。WH 角色用 sticker 预设；TONE 照片用 raw 生成黑白照，再用 tools/duotone.py 映射。",
+ "model": "agnes-image-2.5-flash",
+ "items": [
+  {
+   "name": "wh_char_a",
+   "preset": "sticker",
+   "prompt": "a stylized designer art-toy figure of a calm young white-hat hacker, wearing a cream white fedora hat with a Klein blue band, minimal smooth face with only two small dot eyes, cream white oversized hoodie with a small vermilion orange zipper pull, holding a small open laptop, standing pose, full body"
+  },
+  {
+   "name": "wh_char_b",
+   "preset": "sticker",
+   "prompt": "a stylized designer art-toy figure of a calm young white-hat hacker sitting cross-legged, wearing a cream white fedora hat with a Klein blue band, minimal smooth face with only two small dot eyes, cream white oversized hoodie, Klein blue trousers, pointing forward with one hand, full body"
+  },
+  {
+   "name": "tone_hand",
+   "preset": "raw",
+   "prompt": "dramatic black and white fine-art photograph, close-up of a human hand resting on a mechanical keyboard in a dark room, single hard side light, deep shadows, high contrast, subtle film grain, no text, no logo, no readable characters"
+  },
+  {
+   "name": "tone_corridor",
+   "preset": "raw",
+   "prompt": "dramatic black and white fine-art photograph of a long data center corridor between rows of server racks, strong one-point perspective, cold hard light from the end of the corridor, deep shadows, high contrast, subtle film grain, no text, no logo, no readable characters"
+  }
+ ]
+}
