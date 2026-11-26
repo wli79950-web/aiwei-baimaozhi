@@ -1,5 +1,8 @@
 # 更新记录
 
+## 1.1.2 · 2026-11-26 · 分支清理
+- PR #1 合并后删除分支 `ref/ae-from-aiwei-vs2`、`candidate/imagery`；其内容保存在提交 `adbbc35`（`main` 历史中）。文档里的分支名改为指向该提交，并附取回命令。
+
 ## 1.1.1 · 2026-11-26 · 仓库结构
 - 不设品牌素材层：删除 `libs/stickers/brand/`、`libs/imagery/wh/` 和「品牌贴纸可跨期」的规则；图片素材每期由用户提供或现生成。`brand.json` 去掉 `sticker.brand`。
 - `main` 只保留最新两期工程，更早的打标签 `ep/<期号>` 归档（`制作流程.md`、`EPISODES.md`）。

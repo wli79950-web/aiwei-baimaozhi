@@ -1,7 +1,7 @@
 # 艾唯白帽志 · 视觉系统 1.1
 
 所有数值以 `tokens/brand.json` 为准（本文件是说明）。网页用 `engine/tokens.css`（由 `tools/gen_tokens.py` 生成）+ `engine/base.css`。
-预览：`docs/previews/`（`sheet_palette.jpg` 配色、`sheet_backgrounds.jpg` 背景板、`sheet_stickers.jpg` 贴纸样张、`demo_F1–F4.jpg` 演示关键帧、`phone_demo.jpg` 手机竖屏模拟）。图片素材库的候选样张和演示帧 F5 / F6 在分支 `candidate/imagery`。
+预览：`docs/previews/`（`sheet_palette.jpg` 配色、`sheet_backgrounds.jpg` 背景板、`sheet_stickers.jpg` 贴纸样张、`demo_F1–F4.jpg` 演示关键帧、`phone_demo.jpg` 手机竖屏模拟）。图片素材库的候选样张和演示帧 F5 / F6 在提交 `adbbc35`（`main` 历史中）。
 
 规格：横屏 1920×1080（竖屏 1080×1920）· 60fps · MP4 · 时长与口播严格一致。
 
@@ -80,7 +80,7 @@
 - `samples/` 里的 12 张是 2026-11-26 的风格样张（点缀色还是金色，生成于朱橙定稿之前），**不进正片**；P5 换成朱橙版样张。
 
 ## 6b. 图片素材库（`libs/imagery/`，与贴纸并列）
-作用类似挖洞号的 SC-01 漫画角色和黑白雕塑，但用白帽志自己的风格，**不得使用 SC-01、黑白雕塑或任何挖洞号素材**。库里只放风格定义和提示词，图片每期生成，不跨期复用。两条线（候选，待用户确认，样张在分支 `candidate/imagery`）：
+作用类似挖洞号的 SC-01 漫画角色和黑白雕塑，但用白帽志自己的风格，**不得使用 SC-01、黑白雕塑或任何挖洞号素材**。库里只放风格定义和提示词，图片每期生成，不跨期复用。两条线（候选，待用户确认，样张在提交 `adbbc35`）：
 | 线 | 作用 | 风格 |
 |---|---|---|
 | **WH 白帽角色线** | 角色出镜：情境、讲故事、代替人物做动作（固定的是角色设定提示词，图片每期生成） | 3D 设计师玩具风格，奶油白陶瓷质感，戴白帽，脸部极简，只用奶油白 / 克莱因蓝 / 朱橙 |
@@ -95,7 +95,7 @@
 | 信息卡库：承载信息的组件 × A/B 场景 × S–XL | `libs/infocards/` | P4 |
 | 录屏组件：窗口、推镜、标注、光标、打码、和信息卡联动 | `libs/screencast/` | P4 |
 | 贴纸：生图预设 + 风格样张（不设品牌贴纸层） | `libs/stickers/` | 样张 ✅，朱橙版样张 P5 |
-| 图片素材库：WH 角色线 + TONE 双色调摄影线（风格定义 + 提示词） | `libs/imagery/` | 候选在 `candidate/imagery`，定稿 P5 |
+| 图片素材库：WH 角色线 + TONE 双色调摄影线（风格定义 + 提示词） | `libs/imagery/` | 候选在提交 `adbbc35`，定稿 P5 |
 | 动效库（自写，不含 lieflat 代码） | `engine/motion/` | P2 |
 | 镜头配方表：叙事功能 → 排版 + 信息卡 + 素材 + 动效 | `libs/recipes/` | P6 |
 

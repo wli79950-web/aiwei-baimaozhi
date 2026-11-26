@@ -21,9 +21,9 @@
 | `libs/infocards/` | 信息卡库（P4） |
 | `libs/screencast/` | 录屏组件（P4）：窗口、推镜、标注、光标、打码、联动 |
 | `libs/stickers/` | 贴纸：生图预设说明、风格样张（不设品牌贴纸层，每期素材每期做） |
-| `libs/imagery/` | 图片素材库：WH 白帽角色线 + TONE 双色调摄影线的风格定义和提示词（候选样张在分支 `candidate/imagery`，定稿 P5） |
+| `libs/imagery/` | 图片素材库：WH 白帽角色线 + TONE 双色调摄影线的风格定义和提示词（候选样张在提交 `adbbc35`，定稿 P5） |
 | `libs/recipes/` | 镜头配方表（P6） |
-| `ae/` | AE 包工具：探测报告、说明；挖洞号迁来的参考实现在分支 `ref/ae-from-aiwei-vs2`，P6 改造后进 `main` |
+| `ae/` | AE 包工具：探测报告、说明；挖洞号迁来的参考实现在提交 `adbbc35` 的 `ae/_from_aiwei-vs2/`，P6 改造后进 `main` |
 | `tools/` | 生图、抠图、双色调、对比度检查、生成 tokens / 背景板 / 预览、语音识别、口播抠像 |
 | `fonts/` | 得意黑、Archivo Black、IBM Plex Mono（SIL OFL 1.1，附许可） |
 | `episodes/` | 每期一个目录；`main` 只保留最新两期，更早的打标签 `ep/<期号>` 归档 |
@@ -41,11 +41,12 @@
 | P6 配方表 + AE | 配方表、新 AE 组件库、`build_ae.py` 分层检查 | 待做 |
 | P7 试做一期 | 30–60 秒完整流程 | 待做 |
 
-## 分支
-| 分支 | 内容 |
-|---|---|
-| `main` | 已确认、现在就能用的规范、tokens、背景板、字体、工具；最新两期工程 |
-| `ref/ae-from-aiwei-vs2` | 挖洞号 AE 工具的参考快照（待 P6 改造） |
-| `candidate/imagery` | 图片素材库候选样张、演示帧 F5 / F6（待确认） |
+## 不在 main 当前版本里、但保存在历史中的内容
+`main` 上只有已确认的东西。下面两项暂时不用，保存在提交 `adbbc35`（`main` 的历史里），需要时取回（浅克隆先 `git fetch --depth=10 origin main`）：
+
+| 内容 | 位置 | 取回命令 | 什么时候进 main |
+|---|---|---|---|
+| 挖洞号 AE 工具的参考实现（写死了挖洞号的颜色、字体、HUD） | `ae/_from_aiwei-vs2/` | `git checkout adbbc35 -- ae/_from_aiwei-vs2` | P6 改造完 |
+| 图片素材库候选样张、演示帧 F5 / F6、图片素材库预览板 | `libs/imagery/candidates/`、`docs/previews/` | `git checkout adbbc35 -- libs/imagery/candidates` | 确认两条线后随 P5 |
 
 > 本仓库不含 lieflat code video 的任何代码；所有动效自写。与「艾唯说挖洞」（`aiwei-vs2`）的素材完全隔离。不设品牌素材层，图片素材每期由用户提供或现生成。

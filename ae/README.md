@@ -1,7 +1,7 @@
 # AE 包工具
 
 ## 现状（P1）
-从「艾唯说挖洞」迁来的 AE 工具（全部是自有代码，不含 lieflat 代码）**不在 `main` 上**，放在分支 `ref/ae-from-aiwei-vs2` 的 `ae/_from_aiwei-vs2/`：里面还写死了挖洞号的颜色、字体、HUD 和左上角 IP 区检查，不要直接运行。P6 按白帽志改造后再进 `main`。
+从「艾唯说挖洞」迁来的 AE 工具（全部是自有代码，不含 lieflat 代码）**不在 `main` 当前版本里**，保存在提交 `adbbc35` 的 `ae/_from_aiwei-vs2/`（`main` 历史中；浅克隆先 `git fetch --depth=10 origin main`），取回：`git checkout adbbc35 -- ae/_from_aiwei-vs2`。里面还写死了挖洞号的颜色、字体、HUD 和左上角 IP 区检查，不要直接运行。P6 按白帽志改造后再进 `main`。
 
 | 文件 | 作用 | P6 要改的 |
 |---|---|---|

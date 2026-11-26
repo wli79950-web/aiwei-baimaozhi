@@ -1,6 +1,6 @@
 # 录屏组件（P4 建设，和信息卡库一起做）
 
-白帽志的核心讲法之一：**用户提供的录屏是证据**，配合标注、信息卡和贴纸 / 角色，把「发生了什么」讲清楚。演示帧 F6（录屏 + 标注 + 白帽角色）在分支 `candidate/imagery` 的 `docs/previews/demo_F6.jpg`。
+白帽志的核心讲法之一：**用户提供的录屏是证据**，配合标注、信息卡和贴纸 / 角色，把「发生了什么」讲清楚。演示帧 F6（录屏 + 标注 + 白帽角色）在提交 `adbbc35` 里（`main` 历史中；浅克隆先 `git fetch --depth=10 origin main`）：`git show adbbc35:docs/previews/demo_F6.jpg > demo_F6.jpg`。
 
 ## 组件
 | 组件 | 作用 |

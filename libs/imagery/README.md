@@ -2,7 +2,7 @@
 
 作用类似「艾唯说挖洞」的 SC-01 漫画角色和黑白雕塑：一条线负责**角色和情境**，一条线负责**情绪和高级感**。白帽志用自己的风格，**不得使用 SC-01、黑白雕塑、黏土角色或任何挖洞号素材**。
 
-**本库只放风格定义、提示词和处理方法，不放可复用的图片**：图片由用户提供，或每期按口播生成，只用于本期。候选样张、预览板和演示帧 F5 / F6 在分支 `candidate/imagery`。
+**本库只放风格定义、提示词和处理方法，不放可复用的图片**：图片由用户提供，或每期按口播生成，只用于本期。候选样张、预览板和演示帧 F5 / F6 在提交 `adbbc35` 里（`main` 历史中；浅克隆先 `git fetch --depth=10 origin main`），取回方法见文末。
 
 ## 两条线（候选，待用户确认后在 P5 定稿）
 | 线 | 作用 | 风格 | 生成方式 |
@@ -16,7 +16,7 @@
 - 定稿的是**角色设定提示词**（写进本 README 和 `tokens/brand.json`），每期需要什么动作就用同一段设定现生成，不跨期复用图片。
 
 ## TONE 使用方式
-- 只放在**炭黑场**：照片的暗部本来就是炭黑，用 `mix-blend-mode: lighten` + 径向遮罩羽化，融进背景（见分支 `candidate/imagery` 的 `docs/previews/src/demo.html` F5）。AE 里图层混合模式设「变亮」。
+- 只放在**炭黑场**：照片的暗部本来就是炭黑，用 `mix-blend-mode: lighten` + 径向遮罩羽化，融进背景（见提交 `adbbc35` 的 `docs/previews/src/demo.html` F5）。AE 里图层混合模式设「变亮」。
 - 主体可以出血到画面外；文字压在照片上时，照片透明度降到 0.5–0.9，保证手机竖屏可读。
 - 禁止可辨认的真人脸、品牌、Logo、可读文字。
 - 意象贴网安：手 + 键盘、机房走廊、门锁、钥匙、监控屏、城市夜景、数据中心……
@@ -26,4 +26,4 @@
 
 ## 图片放在哪
 - 每期素材：`episodes/<本期>/assets/`，不得出现在两期。
-- 候选样张（WH ×2、TONE ×3 + 黑白原图，提示词 `prompts.json`）：分支 `candidate/imagery` 的 `libs/imagery/candidates/`。
+- 候选样张（WH ×2、TONE ×3 + 黑白原图，提示词 `prompts.json`）：提交 `adbbc35` 的 `libs/imagery/candidates/`。取回：`git checkout adbbc35 -- libs/imagery/candidates`。
