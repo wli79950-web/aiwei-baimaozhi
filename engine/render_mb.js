@@ -5,7 +5,9 @@ const { chromium } = require('playwright'); const fs=require('fs'); const path=r
   fs.mkdirSync(out,{recursive:true});
   const b=await chromium.launch(); const p=await b.newPage({viewport:{width:1920,height:1080}});
   const errs=[]; p.on('pageerror',e=>errs.push(e.message));
-  await p.goto('file://'+path.resolve(file)); await p.evaluate(()=>document.fonts.ready); await p.waitForTimeout(1500);
+  await p.goto('file://'+path.resolve(file)); await p.evaluate(()=>document.fonts.ready);
+  await p.evaluate(()=>Promise.all([...document.images].map(i=>i.decode().catch(()=>{}))));   // 先解码全部图片（含隐藏的），保证逐帧确定
+  await p.waitForTimeout(1500);
   const n0=Math.round(t0*FPS), n1=Math.round(t1*FPS); let done=0; const st=Date.now();
   for(let f=n0+W; f<n1; f+=WC){
     for(let i=0;i<S;i++){

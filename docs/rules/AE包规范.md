@@ -20,6 +20,11 @@
 - 字体全部随包附带：得意黑 `SmileySans-Oblique`、Archivo `Archivo-Black`、IBM Plex Mono `IBMPlexMono-Medium / SemiBold`（OFL），MiSans `MiSans-Medium / Bold / Heavy`（小米许可，用户已确认商用）。
 - 人物 A-roll 素材层图层名以「人物占位_请替换」开头。
 
+## 动效
+- AE 端动效一律用 `ae/motion_ae.jsx`（`#include`），数值来自 `ae/motion_data.jsx`（由 `tokens/motion.json` 生成），和网页是同一条曲线；不要在 AE 脚本里手写缓动数值。
+- 位置要先拆分维度（X / Y 单独加关键帧），时间缓动才和网页逐维一致。
+- 线性擦除 / 径向擦除的参数按序号访问，擦除方向还没在真 AE 里核对过，第一次用时要检查。
+
 ## AE 相关踩坑（沿用）
 - AE 接口名、属性 matchName 不能凭记忆写：先查官方文档副本（`git clone https://github.com/docsforadobe/after-effects-scripting-guide.git ae/aedocs`），再以 `ae/probe/` 里用户真实 AE（24.6.2）的探测报告为准；用户换 AE 版本或电脑后，让用户重跑探测脚本并更新报告。
 - AE 文字换行必须是真正的换行符（Python 里写 `'\r'`，不是 `'\\r'`）；中英混排要逐字设字体，生成时有缺字形要直接报错。

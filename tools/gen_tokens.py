@@ -45,3 +45,16 @@ for sid, s in B['scene'].items():
     ]
 open(os.path.join(ROOT, 'engine', 'tokens.css'), 'w', encoding='utf-8').write('\n'.join(out) + '\n')
 print('engine/tokens.css 已生成')
+
+# ---------- 动效参数：tokens/motion.json → 网页 engine/motion/tokens.js + AE ae/motion_data.jsx ----------
+M = json.load(open(os.path.join(ROOT, 'tokens', 'motion.json'), encoding='utf-8'))
+for k, e in M['ease'].items():
+    x1, y1, x2, y2 = e['bezier']
+    if k != 'linear' and not (0 < x1 <= 1 and 0 <= x2 < 1):
+        raise SystemExit(f'缓动 {k} 的控制点 x1 必须在 (0,1]、x2 必须在 [0,1)，否则 AE 关键帧缓动无法精确还原')
+data = json.dumps(M, ensure_ascii=False, indent=1)
+open(os.path.join(ROOT, 'engine', 'motion', 'tokens.js'), 'w', encoding='utf-8').write(
+    '/* 自动生成：python3 tools/gen_tokens.py ← tokens/motion.json（v%s）。不要手改。 */\nwindow.BM_MOTION = %s;\n' % (M['version'], data))
+open(os.path.join(ROOT, 'ae', 'motion_data.jsx'), 'w', encoding='utf-8').write(
+    '/* 自动生成：python3 tools/gen_tokens.py ← tokens/motion.json（v%s）。不要手改。ES3。 */\nvar BM_MOTION = %s;\n' % (M['version'], data))
+print('engine/motion/tokens.js、ae/motion_data.jsx 已生成')

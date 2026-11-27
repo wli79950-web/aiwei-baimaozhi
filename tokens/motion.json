@@ -1,0 +1,37 @@
+{
+  "name": "艾唯白帽志 · 动效参数",
+  "version": "1.0.0",
+  "note": "动效库唯一的数值来源：网页（engine/motion/motion.js）和 AE（ae/motion_ae.jsx）都从这里读。缓动一律用三次贝塞尔曲线，AE 里能用关键帧缓动精确还原。改完运行 python3 tools/gen_tokens.py 和 node tools/test_motion.js。",
+  "fps": 60,
+
+  "ease": {
+    "linear":  { "bezier": [0, 0, 1, 1],          "use": "匀速：雷达扫描扇区常驻旋转、慢推" },
+    "out":     { "bezier": [0.22, 1, 0.36, 1],    "use": "默认入场：快进慢停（接近 easeOutQuint）" },
+    "outExpo": { "bezier": [0.16, 1, 0.3, 1],     "use": "更利落的入场：大字、色块扫入" },
+    "inOut":   { "bezier": [0.65, 0, 0.35, 1],    "use": "画线、转场：两头慢中间快（接近 easeInOutCubic）" },
+    "in":      { "bezier": [0.32, 0, 0.67, 0],    "use": "退场、冲镜：慢起快走（接近 easeInCubic）" },
+    "settle":  { "bezier": [0.34, 1.25, 0.64, 1], "use": "贴纸落定：轻回弹，过冲 2.0%（上限 3%）" }
+  },
+
+  "dur": { "xs": 0.25, "s": 0.4, "m": 0.55, "l": 0.7, "xl": 1.0 },
+
+  "preset": {
+    "rise":        { "kind": "入场", "dur": "m",  "ease": "out",     "dy": 48, "use": "上移淡入：卡片、文字、标签的默认入场" },
+    "maskUp":      { "kind": "入场", "dur": "m",  "ease": "outExpo", "stagger": 0.08, "use": "遮罩逐行上移：标题、金句逐行出现（每行包一层遮罩）" },
+    "drop":        { "kind": "入场", "dur": "l",  "ease": "settle",  "dy": -90, "scale_from": 0.94, "fade": 0.18, "use": "贴纸落定：从上方落下，轻回弹" },
+    "unfold":      { "kind": "入场", "dur": "m",  "ease": "out",     "scale_from": 0.86, "fade": 0.25, "use": "卡片展开：从顶部展开（缩放 Y）" },
+    "underline":   { "kind": "强调", "dur": "s",  "ease": "inOut",   "use": "朱橙下划线从左画到右" },
+    "blockSweep":  { "kind": "强调", "dur": "s",  "ease": "outExpo", "use": "色块从左扫入，块上的字随之显出（.blk / .aux / 当前项卡片）" },
+    "countUp":     { "kind": "强调", "dur": "xl", "ease": "out",     "use": "数字滚动到目标值" },
+    "ringDraw":    { "kind": "强调", "dur": "xl", "ease": "inOut",   "stagger": 0.1, "use": "雷达圈、线条描线（SVG 描边 / AE 路径修剪）" },
+    "sink":        { "kind": "退场", "dur": "s",  "ease": "in",      "dy": 32, "use": "下移淡出" },
+    "maskDown":    { "kind": "退场", "dur": "s",  "ease": "in",      "stagger": 0.05, "use": "遮罩逐行收起" },
+    "flash":       { "kind": "转场", "frames": 4, "max_frames": 6,   "use": "朱橙 / 蓝闪切：整屏色板硬切几帧" },
+    "fieldWipe":   { "kind": "转场", "dur": "m",  "ease": "inOut",   "angle": 90, "use": "色场擦除：下一场景从左到右擦入（AE 线性擦除）" },
+    "radarSweep":  { "kind": "转场", "dur": "l",  "ease": "inOut",   "cx": 1440, "cy": 540, "start_deg": 0, "use": "雷达扫掠：下一场景绕雷达中心顺时针扫入（AE 径向擦除）" },
+    "stickerPush": { "kind": "转场", "dur": "m",  "ease": "in",      "scale_to": 5.0, "fade_from": 0.75, "use": "贴纸冲镜：贴纸放大冲向镜头、盖住画面后切场" },
+    "sweepSpin":   { "kind": "常驻", "deg_per_s": 36, "ease": "linear", "use": "雷达扫描扇区常驻旋转，10 秒一圈" },
+    "slowPush":    { "kind": "镜头", "rate": 0.004, "ease": "linear", "use": "镜头极慢推近：每秒放大 0.4%" },
+    "hold":        { "kind": "镜头", "use": "镜头静止（默认）" }
+  }
+}

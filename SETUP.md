@@ -30,4 +30,7 @@ mkdir -p models && curl -sSL -o /tmp/p.tar.bz2 https://github.com/k2-fsa/sherpa-
 | 分镜关键帧 | `node engine/shots_v2.js episodes/X/index.html 2.0,7.3,... 输出目录`（页面需提供 `window.renderAt(t)`） |
 | 合成音效 | 在期目录下运行 `python3 ../../engine/sfx.py cues.json 时长` |
 | 成片渲染 | `node engine/render_mb.js episodes/X/index.html 0 时长 out/sub 5 0 3`（开 3 个 worker，第 6 个参数分别填 0 / 1 / 2），再 `engine/mb_encode.sh out/sub 5 out/video.mp4`，最后用 ffmpeg 混入口播和音效 |
+| 动效库测试 | `(cd ae && npm i --silent) && node tools/test_motion.js`（曲线、预设、网页↔AE 一致、ES3、逐帧确定性） |
+| 改动效参数后 | `python3 tools/gen_tokens.py && node tools/test_motion.js`（`tokens/motion.json` → `engine/motion/tokens.js`、`ae/motion_data.jsx`） |
+| 动效样片 | 3 个进程：`node engine/render_mb.js docs/previews/src/motion_demo.html 0 5 out/motion 5 <0/1/2> 3`，再 `bash engine/mb_encode.sh out/motion 5 out/motion_demo.mp4` |
 | AE 重建包 | P6 建好后：`python3 ae/build_ae.py episodes/X` |

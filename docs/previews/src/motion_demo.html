@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="zh"><head><meta charset="utf-8">
+<!-- 动效库 5 秒样片：只用 tokens.css + base.css + motion.css + 动效库（engine/motion/），所有画面由 window.renderAt(t) 决定。
+     渲染：node engine/render_mb.js docs/previews/src/motion_demo.html 0 5 out/motion 5 0 1 → engine/mb_encode.sh out/motion 5 out/motion_demo.mp4
+     贴纸用的是风格样张（只作演示）。文案是示意。 -->
+<link rel="stylesheet" href="../../../engine/tokens.css">
+<link rel="stylesheet" href="../../../engine/base.css">
+<link rel="stylesheet" href="../../../engine/motion/motion.css">
+<script src="../../../engine/motion/tokens.js"></script>
+<script src="../../../engine/motion/motion.js"></script>
+<style>
+  .frame{display:block}
+  .hotbg{position:absolute;inset:0;--sweep:var(--orange)}
+</style>
+</head><body>
+
+<!-- 第一幕 · 炭黑章节卡 -->
+<section class="frame scene-A" id="s1">
+  <div class="bm-camera" id="cam1">
+    <svg class="bg-layer" width="1920" height="1080" fill="none" stroke="#F5EEDF" stroke-width="2" opacity=".13">
+      <circle class="ring" cx="1440" cy="540" r="170"/><circle class="ring" cx="1440" cy="540" r="270"/>
+      <circle class="ring" cx="1440" cy="540" r="370"/><circle class="ring" cx="1440" cy="540" r="470"/>
+      <line class="ring" x1="880" y1="540" x2="2000" y2="540"/><line class="ring" x1="1440" y1="40" x2="1440" y2="1040"/>
+    </svg>
+    <svg class="bg-layer bm-spin" id="sweep1" width="1920" height="1080"><path d="M1440 540 L1440 70 A470 470 0 0 1 1772.3 207.7 Z" fill="#FF5A1F" fill-opacity=".38"/></svg>
+    <img class="stk" id="stk1" src="../../../cards/images/samples/bmz_radar.png" style="left:1150px;top:250px;width:580px;height:580px">
+    <div class="abs kick" id="k1" style="left:68px;top:300px">Chapter 02</div>
+    <div class="abs disp" style="left:58px;top:350px;font-size:270px"><span class="bm-mask"><span id="t1">AI 挖洞</span></span></div>
+    <div class="abs cn" id="l1" style="left:68px;top:690px;font-size:60px">让大模型替你跑完<span class="blk bm-sweep" id="b1">前 80%</span>的体力活</div>
+  </div>
+  <div class="sub" id="sub1">这一章，我们先让 <em>AI</em> 把整个站跑一遍</div>
+</section>
+
+<!-- 第二幕 · 奶油白五步卡片 -->
+<section class="frame scene-B" id="s2">
+  <div class="bm-camera" id="cam2">
+    <img class="bg-layer" src="../../../libs/backgrounds/layers/BG2_radar_lines.svg">
+    <div class="abs kick" id="k2" style="left:68px;top:80px;color:var(--klein);opacity:1">Five steps</div>
+    <div class="abs disp" style="left:60px;top:118px;font-size:104px"><span class="bm-mask"><span id="t2">AI 挖洞，按顺序来</span></span></div>
+    <div class="abs" id="u2" style="left:64px;top:236px;width:560px;height:12px;background:var(--orange)"></div>
+    <div class="card" id="c0" style="left:64px;top:300px;width:581px;height:240px"><div class="abs num accent" style="left:34px;top:30px;font-size:40px">01</div><div class="abs cn" style="left:34px;top:150px;font-size:56px">确认授权</div><img class="stk" id="i0" src="../../../cards/images/samples/bmz_key.png" style="right:26px;top:26px;width:180px;height:180px"></div>
+    <div class="card" id="c1" style="left:669px;top:300px;width:581px;height:240px"><div class="abs num accent" style="left:34px;top:30px;font-size:40px">02</div><div class="abs cn" style="left:34px;top:150px;font-size:56px">信息收集</div><img class="stk" id="i1" src="../../../cards/images/samples/bmz_radar.png" style="right:30px;top:20px;width:170px;height:200px"></div>
+    <div class="card" id="c2" style="left:1274px;top:300px;width:581px;height:240px"><div class="hotbg bm-sweep" id="h2"></div><div class="abs num" style="left:34px;top:30px;font-size:40px;color:var(--char)">03</div><div class="abs cn" style="left:34px;top:150px;font-size:56px">AI 扫描</div><img class="stk" id="i2" src="../../../cards/images/samples/bmz_aichip.png" style="right:20px;top:34px;width:220px;height:170px"></div>
+    <div class="card" id="c3" style="left:64px;top:564px;width:581px;height:240px"><div class="abs num accent" style="left:34px;top:30px;font-size:40px">04</div><div class="abs cn" style="left:34px;top:150px;font-size:56px">人工复核</div><img class="stk" id="i3" src="../../../cards/images/samples/bmz_shield.png" style="right:36px;top:24px;width:160px;height:190px"></div>
+    <div class="card" id="c4" style="left:669px;top:564px;width:581px;height:240px"><div class="abs num accent" style="left:34px;top:30px;font-size:40px">05</div><div class="abs cn" style="left:34px;top:150px;font-size:56px">提交报告</div><img class="stk" id="i4" src="../../../cards/images/samples/bmz_laptop.png" style="right:22px;top:30px;width:210px;height:180px"></div>
+    <div class="abs" id="tip" style="left:1274px;top:564px;width:581px;height:240px;border:3px dashed var(--klein);display:flex;flex-direction:column;align-items:center;justify-content:center">
+      <span class="cn accent" style="font-size:44px">第 3 步省下</span><span class="num accent" style="font-size:96px;margin-top:6px"><span id="n2">0</span>%</span></div>
+  </div>
+  <div class="sub" id="sub2">五步，<em>按顺序</em>一步一步来</div>
+</section>
+
+<!-- 第三幕 · 炭黑金句（雷达扫掠进场，白帽冲镜收尾） -->
+<section class="frame scene-A" id="s3">
+  <div class="bm-camera" id="cam3">
+    <img class="bg-layer" src="../../../libs/backgrounds/layers/BG1_radar_lines.svg">
+    <img class="stk" id="hat" src="../../../cards/images/samples/bmz_whitehat.png" style="left:1110px;top:300px;width:680px;height:560px">
+    <div class="abs kick" id="k3" style="left:68px;top:300px">Whitehat note</div>
+    <div class="abs disp" style="left:60px;top:350px;font-size:140px">
+      <span class="bm-mask"><span id="q0">AI 是放大器，</span></span>
+      <span class="bm-mask" style="margin-top:12px"><span id="q1"><span class="blk bm-sweep" id="b3" style="margin-left:0">判断力</span>才是护城河</span></span>
+    </div>
+  </div>
+</section>
+
+<div class="frame" id="flash" style="background:var(--orange)"></div>
+
+<script>
+const $ = id => document.getElementById(id);
+const rings = [...document.querySelectorAll('#s1 .ring')];
+const CUT1 = 1.60, WIPE = 3.30, WIPE_END = WIPE + BM.dur(BM.tokens().preset.radarSweep.dur), END = 5.0;
+
+window.renderAt = function (t) {
+  /* 场景可见性 */
+  BM.set($('s1'), t < CUT1 ? {} : false);
+  BM.set($('s2'), t >= CUT1 && t < WIPE_END ? {} : false);
+  BM.set($('s3'), t >= WIPE ? {} : false, BM.radarSweep(t, WIPE));
+  BM.set($('flash'), BM.flash(t, CUT1) ? {} : false);
+
+  /* 第一幕 */
+  BM.set($('cam1'), BM.slowPush(t, 0));
+  rings.forEach((r, i) => BM.set(r, BM.ringDraw(t, 0.05, i)));
+  BM.set($('sweep1'), BM.sweepSpin(t, 0), { o: BM.tween(t, 0.35, 0.5, 0, 1, 'out') });
+  BM.set($('stk1'), BM.drop(t, 0.25));
+  BM.set($('k1'), BM.rise(t, 0.15), { o: 0.55 });
+  BM.set($('t1'), BM.maskUp(t, 0.25, 0));
+  BM.set($('l1'), BM.rise(t, 0.55));
+  BM.set($('b1'), BM.blockSweep(t, 0.9));
+  BM.set($('sub1'), { o: t >= 0.2 ? 1 : 0 });
+
+  /* 第二幕 */
+  BM.set($('cam2'), BM.slowPush(t, CUT1));
+  BM.set($('k2'), BM.rise(t, 1.66));
+  BM.set($('t2'), BM.maskUp(t, 1.70, 0));
+  BM.set($('u2'), BM.underline(t, 2.05));
+  for (let i = 0; i < 5; i++) { BM.set($('c' + i), BM.rise(t, 1.85 + i * 0.07)); BM.set($('i' + i), BM.drop(t, 1.97 + i * 0.07)); }
+  BM.set($('h2'), BM.blockSweep(t, 2.60));
+  BM.set($('tip'), BM.rise(t, 2.75));
+  BM.text($('n2'), String(Math.round(BM.countUp(t, 2.85, 0, 80))));
+  BM.set($('sub2'), { o: t >= CUT1 + 0.1 ? 1 : 0 });
+
+  /* 第三幕 */
+  BM.set($('cam3'), BM.slowPush(t, WIPE));
+  BM.set($('k3'), BM.rise(t, 3.55), { o: 0.55 });
+  BM.set($('q0'), BM.maskUp(t, 3.60, 0));
+  BM.set($('q1'), BM.maskUp(t, 3.60, 1));
+  BM.set($('b3'), BM.blockSweep(t, 4.05));
+  BM.set($('hat'), BM.drop(t, 3.50), t >= 4.45 ? BM.stickerPush(t, 4.45) : null);
+};
+renderAt(0);
+</script>
+</body></html>

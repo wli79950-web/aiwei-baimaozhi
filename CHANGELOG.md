@@ -1,5 +1,14 @@
 # 更新记录
 
+## 1.3.0 · 2026-11-27 · P2 动效库
+- 新增动效参数 `tokens/motion.json`（唯一数值来源）：6 条贝塞尔缓动、5 档时长、17 个预设参数。`tools/gen_tokens.py` 同时生成 `engine/motion/tokens.js`（网页）和 `ae/motion_data.jsx`（AE），并拦截 AE 无法精确还原的曲线。
+- 新增网页动效库 `engine/motion/motion.js` + `motion.css`（全新编写，不含 lieflat 代码）：入场 rise / maskUp / drop / unfold，强调 underline / blockSweep / countUp / ringDraw，退场 sink / maskDown，转场 flash / fieldWipe / radarSweep / stickerPush，常驻与镜头 sweepSpin / slowPush / hold。
+- 新增 AE 动效库 `ae/motion_ae.jsx`（ES3）：每个预设都有 AE 写法；贝塞尔曲线精确换算成关键帧速度 + 影响。
+- 新增自动测试 `tools/test_motion.js`（104 项）：曲线、预设、网页↔AE 一致（最大偏差约 2×10⁻⁵）、ES3 语法、演示页逐帧确定性。
+- 新增 5 秒样片 `docs/previews/motion/motion_demo.mp4`（源文件 `docs/previews/src/motion_demo.html`）和关键帧对照。
+- `engine/render_mb.js`：渲染前先解码全部图片，保证逐帧确定。
+- 踩坑记录：`will-change` 会让逐帧结果依赖渲染历史，已写进动效库说明。
+
 ## 1.2.0 · 2026-11-26 · 知识卡片板块、SC02
 - 知识卡片板块 `cards/`：排版 `cards/layouts/`、信息卡 `cards/infocards/`、图片 `cards/images/`（原 `libs/imagery` + `libs/stickers`）、配方 `cards/recipes/` 放在同一个文件夹；新增 `cards/README.md` 说明三者关系和与挖洞号卡片的对应。
 - 新增图片风格 **SC02 · 蓝调漫画**（`sc02-line` 蓝线漫画、`sc02-duo` 黑白漫画 → 蓝调双色），样张预览 `docs/previews/styles/SC02.jpg`；风格支持 `variants`，preset 写成 `风格-做法`。

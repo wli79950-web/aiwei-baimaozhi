@@ -1,0 +1,20 @@
+/* engine/motion/motion.css — 动效库配套样式（放在 tokens.css、base.css 之后引入） */
+
+/* 遮罩逐行上移 / 收起：每一行外面包一层 .bm-mask，里面那一层做 BM.maskUp / BM.maskDown */
+.bm-mask{display:block;overflow:hidden;padding:0 .14em .1em 0;margin-right:-.14em}
+.bm-mask.inl{display:inline-block;vertical-align:top}
+.bm-mask > *{display:block}
+
+/* 色块扫入：块的颜色用背景图画，BM.blockSweep 改 background-size；炭黑字在块到达前和底色融为一体 */
+/* 不加 !important：BM.set 写进的内联 background-size 要能覆盖它 */
+.bm-sweep{background:linear-gradient(var(--sweep, var(--s-blk)), var(--sweep, var(--s-blk))) no-repeat 0 0 / 0% 100%}
+.bm-sweep.aux{--sweep:var(--s-aux)}
+
+/* 新场景层：转场时叠在旧场景上，用 BM.fieldWipe / BM.radarSweep 控制露出范围 */
+.bm-layer{position:absolute;inset:0;width:1920px;height:1080px;overflow:hidden}
+
+/* 镜头：整个画面包一层，BM.slowPush 以画面中心缩放 */
+.bm-camera{position:absolute;inset:0;transform-origin:960px 540px}
+
+/* 雷达扫描扇区：绕雷达中心旋转（BM.sweepSpin） */
+.bm-spin{transform-origin:1440px 540px}
