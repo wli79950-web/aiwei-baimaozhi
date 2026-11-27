@@ -48,3 +48,9 @@ L-N22：✓
 L-N23：✓
 L-N24：✓
 L-N25：✓
+R-AI-CHAT：✓
+R-AI-REVIEW：✓
+R-SKILL：✓
+R-JD：✓
+R-TOOLS：✓
+R-INTERVIEW：✓

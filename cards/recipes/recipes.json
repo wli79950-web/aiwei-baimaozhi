@@ -1,0 +1,4230 @@
+{
+ "version": "1.0",
+ "updated": "2026-11-27",
+ "note": "镜头配方表（P6）：一张知识卡片 = 排版 + 信息卡 / 图解 + 图片 + 动效。每条配方写明用来讲什么、场景、焦点、图片类别、用到的组件、动效节奏和一个示例镜头（example，可直接交给 engine/shot.js / tools/cards_preview.js / ae/build_ae.py）。示例内容是示意，图片是风格样张（不进正片）。",
+ "shot_spec": "example 的字段见 engine/shot.js 开头：layout、scene、fill（槽位 → 填充）、cue（入场秒）、deco、lines、co、amb、bokeh、sc（录屏）、sub",
+ "recipes": [
+  {
+   "id": "L-K01",
+   "layout": "L-K01",
+   "name": "票据档位",
+   "function": "有档位、有价格（3–5 档）",
+   "scene": "B",
+   "focus": [
+    "c2"
+   ],
+   "images": [
+    "1 实物贴纸"
+   ],
+   "components": [
+    "tier",
+    "title"
+   ],
+   "motion": "标题逐行 maskUp → 卡片 / 图解按槽位顺序 rise（错开 0.12s） → 贴纸 drop（落定回弹 2%） → 文字 rise → 焦点（朱橙）在强调拍 blockSweep；类别 3 和背景动态常驻",
+   "preview": "docs/previews/cards/L-K01.jpg",
+   "example": {
+    "layout": "L-K01",
+    "fill": {
+     "t1": {
+      "ic": "title",
+      "data": {
+       "title": "提交之前，\n先定个级",
+       "fs": 104
+      }
+     },
+     "l1": {
+      "t": "平台按危害分档，\n档位越高，赏金越高",
+      "fs": 52,
+      "cls": "wrap dim"
+     },
+     "c1": {
+      "ic": "tier",
+      "data": {
+       "level": "严重",
+       "en": "CRITICAL",
+       "desc": "能控制服务器",
+       "value": "9.0–10",
+       "score": 9.5,
+       "band": "dark"
+      },
+      "tone": "lit"
+     },
+     "c2": {
+      "ic": "tier",
+      "data": {
+       "level": "高危",
+       "en": "HIGH",
+       "desc": "能读别人的数据",
+       "value": "7.0–8.9",
+       "score": 8,
+       "band": "hot"
+      },
+      "tone": "lit"
+     },
+     "c3": {
+      "ic": "tier",
+      "data": {
+       "level": "中危",
+       "en": "MEDIUM",
+       "desc": "要一定条件",
+       "value": "4.0–6.9",
+       "score": 5.5,
+       "band": "dark"
+      },
+      "tone": "lit"
+     },
+     "c4": {
+      "ic": "tier",
+      "data": {
+       "level": "低危",
+       "en": "LOW",
+       "desc": "影响有限",
+       "value": "0.1–3.9",
+       "score": 2,
+       "band": "dark"
+      },
+      "tone": "lit"
+     },
+     "m1": {
+      "img": "cards/images/samples/bmz_lock_open.png"
+     },
+     "m2": {
+      "img": "cards/images/samples/bmz_bug.png"
+     },
+     "m3": {
+      "img": "cards/images/samples/bmz_key.png"
+     },
+     "m4": {
+      "img": "cards/images/samples/bmz_lock_closed.png"
+     }
+    },
+    "deco": [
+     [
+      64,
+      120,
+      "SEVERITY · 漏洞定级"
+     ],
+     [
+      64,
+      836,
+      "CVSS v3.1 · 0.0 – 10.0"
+     ]
+    ]
+   }
+  },
+  {
+   "id": "L-K02",
+   "layout": "L-K02",
+   "name": "圆环定义",
+   "function": "由哪几类组成（3–6 类）",
+   "scene": "A",
+   "focus": [
+    "c1"
+   ],
+   "images": [],
+   "components": [
+    "keyword",
+    "ring",
+    "title"
+   ],
+   "motion": "标题逐行 maskUp → 卡片 / 图解按槽位顺序 rise（错开 0.12s） → 文字 rise → 焦点（朱橙）在强调拍 blockSweep；类别 3 和背景动态常驻",
+   "preview": "docs/previews/cards/L-K02.jpg",
+   "example": {
+    "layout": "L-K02",
+    "fill": {
+     "c1": {
+      "ic": "ring",
+      "data": {
+       "center": "越权",
+       "centerEn": "IDOR",
+       "items": [
+        {
+         "name": "水平越权",
+         "en": "HORIZONTAL",
+         "pct": 40,
+         "hot": true
+        },
+        {
+         "name": "垂直越权",
+         "en": "VERTICAL",
+         "pct": 25
+        },
+        {
+         "name": "未授权",
+         "en": "UNAUTH",
+         "pct": 20
+        },
+        {
+         "name": "越权下载",
+         "en": "FILE ACCESS",
+         "pct": 15
+        }
+       ]
+      }
+     },
+     "k1": {
+      "t": "ACCESS CONTROL · 越权分类",
+      "fs": 20,
+      "cls": "mic"
+     },
+     "t1": {
+      "ic": "title",
+      "data": {
+       "title": "越权，\n分四种",
+       "fs": 104
+      }
+     },
+     "c2": {
+      "ic": "keyword",
+      "data": {
+       "word": "水平越权",
+       "en": "THIS EPISODE · 本期",
+       "icon": "target"
+      },
+      "tone": "card"
+     }
+    }
+   }
+  },
+  {
+   "id": "L-K03",
+   "layout": "L-K03",
+   "name": "目标档案",
+   "function": "定目标、定范围",
+   "scene": "B",
+   "focus": [
+    "l1"
+   ],
+   "images": [
+    "证据截图"
+   ],
+   "components": [
+    "list",
+    "shot",
+    "tag",
+    "title"
+   ],
+   "motion": "标题逐行 maskUp → 卡片 / 图解按槽位顺序 rise（错开 0.12s） → 焦点（朱橙）在强调拍 blockSweep；类别 3 和背景动态常驻",
+   "preview": "docs/previews/cards/L-K03.jpg",
+   "example": {
+    "layout": "L-K03",
+    "fill": {
+     "t1": {
+      "ic": "title",
+      "data": {
+       "title": "目标档案",
+       "fs": 112
+      }
+     },
+     "c1": {
+      "ic": "list",
+      "data": {
+       "items": [
+        {
+         "text": "目标：shop.test",
+         "state": "done"
+        },
+        {
+         "text": "范围：Web / API",
+         "state": "done"
+        },
+        {
+         "text": "授权书编号",
+         "state": "now"
+        },
+        "测试时间窗"
+       ]
+      }
+     },
+     "m1": {
+      "ic": "shot",
+      "data": {
+       "title": "授权书.pdf（示意）"
+      },
+      "tilt": -4
+     },
+     "m2": {
+      "ic": "shot",
+      "data": {
+       "img": "cards/images/samples/evidence/shop_order_教学示例.jpg",
+       "title": "shop.test"
+      },
+      "tilt": 3
+     },
+     "l1": {
+      "ic": "tag",
+      "data": {
+       "text": "已授权",
+       "icon": "badge-check"
+      },
+      "tone": "hot"
+     }
+    },
+    "deco": [
+     [
+      1000,
+      150,
+      "TARGET DOSSIER · 授权测试"
+     ]
+    ]
+   }
+  },
+  {
+   "id": "L-K04",
+   "layout": "L-K04",
+   "name": "徽章关系",
+   "function": "谁和谁之间发生了什么（3 个角色）",
+   "scene": "A",
+   "focus": [
+    "c1"
+   ],
+   "images": [],
+   "components": [
+    "flow",
+    "title"
+   ],
+   "motion": "标题逐行 maskUp → 卡片 / 图解按槽位顺序 rise（错开 0.12s） → 焦点（朱橙）在强调拍 blockSweep；类别 3 和背景动态常驻",
+   "preview": "docs/previews/cards/L-K04.jpg",
+   "example": {
+    "layout": "L-K04",
+    "fill": {
+     "t1": {
+      "ic": "title",
+      "data": {
+       "title": "漏洞从发现到奖励",
+       "fs": 112
+      }
+     },
+     "c1": {
+      "ic": "flow",
+      "data": {
+       "nodes": [
+        {
+         "name": "白帽",
+         "en": "WHITE HAT",
+         "icon": "user-round",
+         "hot": true
+        },
+        {
+         "name": "平台",
+         "en": "PLATFORM",
+         "icon": "shield-check"
+        },
+        {
+         "name": "厂商",
+         "en": "VENDOR",
+         "icon": "building-2"
+        }
+       ],
+       "links": [
+        {
+         "from": 0,
+         "to": 1,
+         "label": "提交报告",
+         "en": "REPORT"
+        },
+        {
+         "from": 1,
+         "to": 2,
+         "label": "转交厂商",
+         "en": "FORWARD"
+        },
+        {
+         "from": 2,
+         "to": 1,
+         "label": "确认修复",
+         "en": "FIXED",
+         "back": true
+        },
+        {
+         "from": 1,
+         "to": 0,
+         "label": "发放奖励",
+         "en": "BOUNTY",
+         "back": true
+        }
+       ]
+      },
+      "rect": [
+       64,
+       248,
+       1792,
+       640
+      ]
+     },
+     "c2": null,
+     "c3": null,
+     "l1": null,
+     "l2": null,
+     "l3": null,
+     "l4": null
+    },
+    "deco": [
+     [
+      68,
+      236,
+      "FLOW · 赏金流转"
+     ]
+    ]
+   }
+  },
+  {
+   "id": "L-K05",
+   "layout": "L-K05",
+   "name": "手持关键词",
+   "function": "一个名词是什么",
+   "scene": "A",
+   "focus": [],
+   "images": [
+    "2 意象插画",
+    "3 氛围装饰"
+   ],
+   "components": [
+    "keyword"
+   ],
+   "motion": "卡片 / 图解按槽位顺序 rise（错开 0.12s） → 贴纸 drop（落定回弹 2%） → 焦点（朱橙）在强调拍 blockSweep；类别 3 和背景动态常驻",
+   "preview": "docs/previews/cards/L-K05.jpg",
+   "example": {
+    "layout": "L-K05",
+    "fill": {
+     "p1": {
+      "img": "cards/images/samples/sc02/sc02_magnifier.png",
+      "cls": "stk diecut"
+     },
+     "c1": {
+      "ic": "keyword",
+      "data": {
+       "word": "越权",
+       "en": "IDOR · BROKEN ACCESS CONTROL",
+       "exp": "看了不该你看的数据",
+       "icon": "key-round"
+      },
+      "tone": "card"
+     },
+     "m1": null
+    },
+    "deco": [
+     [
+      160,
+      150,
+      "TERM 01 · 名词"
+     ]
+    ],
+    "bokeh": [
+     [
+      1700,
+      260,
+      110
+     ],
+     [
+      240,
+      900,
+      90
+     ]
+    ]
+   }
+  },
+  {
+   "id": "L-K06",
+   "layout": "L-K06",
+   "name": "原文 + 译文",
+   "function": "引用原文、公告",
+   "scene": "B",
+   "focus": [
+    "[[ ]] 色块"
+   ],
+   "images": [
+    "证据截图"
+   ],
+   "components": [
+    "quote",
+    "shot"
+   ],
+   "motion": "卡片 / 图解按槽位顺序 rise（错开 0.12s） → 焦点（朱橙）在强调拍 blockSweep；类别 3 和背景动态常驻",
+   "preview": "docs/previews/cards/L-K06.jpg",
+   "example": {
+    "layout": "L-K06",
+    "fill": {
+     "m1": {
+      "ic": "shot",
+      "data": {
+       "img": "cards/images/samples/evidence/shop_order_教学示例.jpg",
+       "title": "平台规则（示意）"
+      },
+      "tilt": -2
+     },
+     "c1": {
+      "ic": "quote",
+      "data": {
+       "text": "同一个漏洞拆成多份提交，\n算[[刷洞]]，要扣分",
+       "src": "平台规则（示意）"
+      }
+     }
+    },
+    "deco": [
+     [
+      64,
+      120,
+      "ADVISORY · 原文 + 译文"
+     ]
+    ]
+   }
+  },
+  {
+   "id": "L-K07",
+   "layout": "L-K07",
+   "name": "取景框大数字",
+   "function": "一个关键数字或状态",
+   "scene": "A",
+   "focus": [],
+   "images": [
+    "证据截图"
+   ],
+   "components": [],
+   "motion": "贴纸 drop（落定回弹 2%） → 文字 rise → 焦点（朱橙）在强调拍 blockSweep；类别 3 和背景动态常驻",
+   "preview": "docs/previews/cards/L-K07.jpg",
+   "example": {
+    "layout": "L-K07",
+    "fill": {
+     "m1": {
+      "img": "cards/images/samples/evidence/shop_order_教学示例.jpg",
+      "cls": "photo dim"
+     },
+     "l1": {
+      "t": "返回状态码<small>HTTP STATUS</small>",
+      "fs": 56,
+      "cls": "c"
+     },
+     "l2": {
+      "t": "200",
+      "fs": 320,
+      "cls": "num c"
+     },
+     "l3": {
+      "t": "GET /api/orders/1002",
+      "fs": 52,
+      "cls": "mono c dim"
+     }
+    }
+   }
+  },
+  {
+   "id": "L-K08",
+   "layout": "L-K08",
+   "name": "编号网格",
+   "function": "步骤、流程（3–6 步）",
+   "scene": "A",
+   "focus": [
+    "c3"
+   ],
+   "images": [],
+   "components": [
+    "step",
+    "title",
+    "vtrack"
+   ],
+   "motion": "标题逐行 maskUp → 卡片 / 图解按槽位顺序 rise（错开 0.12s） → 焦点（朱橙）在强调拍 blockSweep；类别 3 和背景动态常驻",
+   "preview": "docs/previews/cards/L-K08.jpg",
+   "example": {
+    "layout": "L-K08",
+    "fill": {
+     "t1": {
+      "ic": "title",
+      "data": {
+       "title": "AI 挖洞，按顺序来",
+       "fs": 112
+      }
+     },
+     "c1": {
+      "ic": "step",
+      "data": {
+       "idx": "01",
+       "name": "确认授权",
+       "en": "AUTHORIZE",
+       "icon": "file-check",
+       "step": 6
+      },
+      "tone": "card"
+     },
+     "c2": {
+      "ic": "step",
+      "data": {
+       "idx": "02",
+       "name": "信息收集",
+       "en": "RECON",
+       "icon": "radar",
+       "step": 6
+      },
+      "tone": "card"
+     },
+     "c3": {
+      "ic": "step",
+      "data": {
+       "idx": "03",
+       "name": "AI 扫描",
+       "en": "AI SCAN",
+       "icon": "cpu",
+       "step": 6
+      },
+      "tone": "hot"
+     },
+     "c4": {
+      "ic": "step",
+      "data": {
+       "idx": "04",
+       "name": "人工复核",
+       "en": "VERIFY",
+       "icon": "search-check",
+       "step": 6
+      },
+      "tone": "card"
+     },
+     "c5": {
+      "ic": "step",
+      "data": {
+       "idx": "05",
+       "name": "写报告",
+       "en": "REPORT",
+       "icon": "file-text",
+       "step": 6
+      },
+      "tone": "card"
+     },
+     "c6": {
+      "ic": "step",
+      "data": {
+       "idx": "06",
+       "name": "等审核",
+       "en": "TRIAGE",
+       "icon": "hourglass",
+       "step": 6
+      },
+      "tone": "card"
+     },
+     "c7": {
+      "ic": "vtrack",
+      "data": {
+       "en": "PROGRESS · 03 / 06",
+       "items": [
+        "确认授权",
+        "信息收集",
+        "AI 扫描",
+        "人工复核",
+        "写报告",
+        "等审核"
+       ],
+       "now": 2
+      }
+     }
+    },
+    "scene": "A",
+    "deco": [
+     [
+      68,
+      236,
+      "WORKFLOW · 06 STEPS"
+     ]
+    ]
+   }
+  },
+  {
+   "id": "L-K09",
+   "layout": "L-K09",
+   "name": "证据墙",
+   "function": "证据、截图（3–5 张）",
+   "scene": "A",
+   "focus": [],
+   "images": [
+    "证据截图"
+   ],
+   "components": [
+    "title",
+    "wall"
+   ],
+   "motion": "标题逐行 maskUp → 卡片 / 图解按槽位顺序 rise（错开 0.12s） → 文字 rise → 焦点（朱橙）在强调拍 blockSweep；类别 3 和背景动态常驻",
+   "preview": "docs/previews/cards/L-K09.jpg",
+   "example": {
+    "layout": "L-K09",
+    "fill": {
+     "t1": {
+      "ic": "title",
+      "data": {
+       "title": "一个发现，\n一张截图",
+       "fs": 104
+      }
+     },
+     "k1": {
+      "t": "05 FILES · ARCHIVED",
+      "fs": 20,
+      "cls": "mic"
+     },
+     "g1": {
+      "ic": "wall",
+      "data": {
+       "shots": [
+        {
+         "img": "cards/images/samples/evidence/shop_order_教学示例.jpg",
+         "title": "EV-01 · ORDER 1002"
+        },
+        {
+         "img": "cards/images/samples/evidence/shop_order_教学示例.jpg",
+         "title": "EV-02 · ORDER 1003"
+        },
+        {
+         "img": "cards/images/samples/evidence/shop_order_教学示例.jpg",
+         "title": "EV-03 · NETWORK"
+        },
+        {
+         "img": "cards/images/samples/evidence/shop_order_教学示例.jpg",
+         "title": "EV-04 · RESPONSE"
+        },
+        {
+         "img": "cards/images/samples/evidence/shop_order_教学示例.jpg",
+         "title": "EV-05 · OWNER"
+        }
+       ],
+       "mark": [
+        0.58,
+        0.41,
+        0.2,
+        0.05
+       ],
+       "note": "别人的订单"
+      }
+     },
+     "m1": null,
+     "m2": null,
+     "m3": null,
+     "m4": null,
+     "m5": null
+    },
+    "deco": [
+     [
+      64,
+      200,
+      "EVIDENCE · 证据墙"
+     ]
+    ]
+   }
+  },
+  {
+   "id": "L-K10",
+   "layout": "L-K10",
+   "name": "对比双芯片",
+   "function": "二选一对比",
+   "scene": "A",
+   "focus": [
+    "c2"
+   ],
+   "images": [
+    "1 实物贴纸",
+    "3 氛围装饰"
+   ],
+   "components": [
+    "chip"
+   ],
+   "motion": "卡片 / 图解按槽位顺序 rise（错开 0.12s） → 贴纸 drop（落定回弹 2%） → 文字 rise → 焦点（朱橙）在强调拍 blockSweep；类别 3 和背景动态常驻",
+   "preview": "docs/previews/cards/L-K10.jpg",
+   "example": {
+    "layout": "L-K10",
+    "fill": {
+     "p1": {
+      "img": "cards/images/samples/bmz_whitehat.png"
+     },
+     "c1": {
+      "ic": "chip",
+      "data": {
+       "name": "AI 能做",
+       "en": "MACHINE",
+       "sub": "批量扫接口",
+       "icon": "bot"
+      },
+      "tone": "card"
+     },
+     "l1": {
+      "t": "VS",
+      "fs": 72,
+      "cls": "num c"
+     },
+     "c2": {
+      "ic": "chip",
+      "data": {
+       "name": "必须人来",
+       "en": "HUMAN",
+       "sub": "判断真假",
+       "icon": "user-round"
+      },
+      "tone": "hot"
+     },
+     "l2": {
+      "t": "速度快，会误报",
+      "fs": 52,
+      "cls": "c"
+     },
+     "l3": {
+      "t": "慢，但要负责",
+      "fs": 52,
+      "cls": "c"
+     }
+    },
+    "amb": [
+     [
+      "cable",
+      1580,
+      130,
+      260,
+      200,
+      "far"
+     ],
+     [
+      "screws",
+      120,
+      150,
+      200,
+      150,
+      "far"
+     ]
+    ]
+   }
+  },
+  {
+   "id": "L-K11",
+   "layout": "L-K11",
+   "name": "侧向跟读大字",
+   "function": "一句话分左右两半说完",
+   "scene": "A",
+   "focus": [
+    "{{ }} 重点字"
+   ],
+   "images": [
+    "2 意象插画",
+    "3 氛围装饰"
+   ],
+   "components": [],
+   "motion": "贴纸 drop（落定回弹 2%） → 文字 rise → 焦点（朱橙）在强调拍 blockSweep；类别 3 和背景动态常驻",
+   "preview": "docs/previews/cards/L-K11.jpg",
+   "example": {
+    "layout": "L-K11",
+    "fill": {
+     "p1": {
+      "img": "cards/images/samples/sc02/sc02_boundary.png",
+      "cls": "stk diecut"
+     },
+     "l1": {
+      "t": "先授权<small>AUTHORIZE</small>",
+      "fs": 120,
+      "cls": "disp r"
+     },
+     "l2": {
+      "t": "再{{动手}}<small>THEN TEST</small>",
+      "fs": 120,
+      "cls": "disp"
+     }
+    },
+    "bokeh": [
+     [
+      1700,
+      900,
+      110
+     ],
+     [
+      220,
+      220,
+      90
+     ]
+    ],
+    "deco": [
+     [
+      860,
+      960,
+      "SCOPE · 授权边界"
+     ]
+    ]
+   }
+  },
+  {
+   "id": "L-K12",
+   "layout": "L-K12",
+   "name": "引语短标签",
+   "function": "复述一句原话（2–4 条）",
+   "scene": "A",
+   "focus": [],
+   "images": [
+    "2 意象插画",
+    "3 氛围装饰"
+   ],
+   "components": [
+    "tag"
+   ],
+   "motion": "卡片 / 图解按槽位顺序 rise（错开 0.12s） → 贴纸 drop（落定回弹 2%） → 焦点（朱橙）在强调拍 blockSweep；类别 3 和背景动态常驻",
+   "preview": "docs/previews/cards/L-K12.jpg",
+   "example": {
+    "layout": "L-K12",
+    "fill": {
+     "p1": {
+      "img": "cards/images/samples/sc02/sc02_waiting.png",
+      "cls": "stk diecut"
+     },
+     "l1": {
+      "ic": "tag",
+      "data": {
+       "text": "“审核要多久？”",
+       "icon": "clock"
+      },
+      "tone": "card"
+     },
+     "l2": {
+      "ic": "tag",
+      "data": {
+       "text": "“报告写了一晚上”",
+       "icon": "pencil"
+      },
+      "tone": "card"
+     },
+     "l3": {
+      "ic": "tag",
+      "data": {
+       "text": "“又被判重复了”",
+       "icon": "repeat"
+      },
+      "tone": "card"
+     },
+     "l4": {
+      "ic": "tag",
+      "data": {
+       "text": "“终于通过了”",
+       "icon": "badge-check"
+      },
+      "tone": "card"
+     }
+    },
+    "bokeh": [
+     [
+      1780,
+      860,
+      100
+     ],
+     [
+      120,
+      180,
+      80
+     ]
+    ]
+   }
+  },
+  {
+   "id": "L-K13",
+   "layout": "L-K13",
+   "name": "反转大字",
+   "function": "反差：你以为 A，其实是 B",
+   "scene": "A",
+   "focus": [],
+   "images": [
+    "3 氛围装饰"
+   ],
+   "components": [],
+   "motion": "文字 rise → 焦点（朱橙）在强调拍 blockSweep；类别 3 和背景动态常驻",
+   "preview": "docs/previews/cards/L-K13.jpg",
+   "example": {
+    "layout": "L-K13",
+    "fill": {
+     "l1": {
+      "t": "~~挖洞靠运气~~",
+      "fs": 120,
+      "cls": "c"
+     },
+     "k1": {
+      "t": "LUCK?",
+      "fs": 20,
+      "cls": "mic"
+     },
+     "l2": {
+      "t": "靠方法<small>METHOD, NOT LUCK</small>",
+      "fs": 440,
+      "cls": "disp c"
+     }
+    },
+    "bokeh": [
+     [
+      300,
+      820,
+      130
+     ],
+     [
+      1650,
+      300,
+      110
+     ]
+    ]
+   }
+  },
+  {
+   "id": "L-K14",
+   "layout": "L-K14",
+   "name": "暗底三连字",
+   "function": "递进三步",
+   "scene": "A",
+   "focus": [
+    "{{ }} 重点字"
+   ],
+   "images": [
+    "证据截图"
+   ],
+   "components": [],
+   "motion": "贴纸 drop（落定回弹 2%） → 文字 rise → 引线 / 标注在最后一个元素之后 0.15–0.25s 出现 → 焦点（朱橙）在强调拍 blockSweep；类别 3 和背景动态常驻",
+   "preview": "docs/previews/cards/L-K14.jpg",
+   "example": {
+    "layout": "L-K14",
+    "fill": {
+     "s1": {
+      "img": "cards/images/samples/evidence/shop_order_教学示例.jpg",
+      "cls": "photo dim"
+     },
+     "l1": {
+      "t": "抓包<small>CAPTURE</small>",
+      "fs": 140,
+      "cls": "c"
+     },
+     "l2": {
+      "t": "改包<small>TAMPER</small>",
+      "fs": 140,
+      "cls": "c"
+     },
+     "l3": {
+      "t": "{{重放}}<small>REPLAY</small>",
+      "fs": 140,
+      "cls": "c"
+     }
+    },
+    "lines": [
+     [
+      652,
+      508,
+      676,
+      508
+     ],
+     [
+      1244,
+      508,
+      1268,
+      508
+     ]
+    ],
+    "deco": [
+     [
+      96,
+      140,
+      "01 → 02 → 03 · 递进"
+     ]
+    ]
+   }
+  },
+  {
+   "id": "L-K21",
+   "layout": "L-K21",
+   "name": "侧板关系链",
+   "function": "谁 → 做了什么 → 结果（主体不离开画面）",
+   "scene": "A",
+   "focus": [],
+   "images": [
+    "1 实物贴纸",
+    "3 氛围装饰"
+   ],
+   "components": [
+    "list"
+   ],
+   "motion": "卡片 / 图解按槽位顺序 rise（错开 0.12s） → 贴纸 drop（落定回弹 2%） → 引线 / 标注在最后一个元素之后 0.15–0.25s 出现 → 焦点（朱橙）在强调拍 blockSweep；类别 3 和背景动态常驻",
+   "preview": "docs/previews/cards/L-K21.jpg",
+   "example": {
+    "layout": "L-K21",
+    "fill": {
+     "p1": {
+      "img": "cards/images/samples/bmz_aichip.png"
+     },
+     "c1": {
+      "ic": "list",
+      "data": {
+       "title": "发生了什么",
+       "items": [
+        {
+         "text": "AI 扫到接口",
+         "state": "done"
+        },
+        {
+         "text": "改了 uid",
+         "state": "done"
+        },
+        {
+         "text": "读到别人手机号",
+         "state": "now"
+        }
+       ]
+      },
+      "tone": "card"
+     }
+    },
+    "amb": [
+     [
+      "keycaps",
+      820,
+      760,
+      420,
+      330,
+      "near"
+     ]
+    ],
+    "co": [
+     {
+      "from": [
+       600,
+       420
+      ],
+      "to": [
+       860,
+       210
+      ],
+      "label": "AI 扫描",
+      "en": "STEP 03 · AI-ASSISTED"
+     }
+    ]
+   }
+  },
+  {
+   "id": "L-K22",
+   "layout": "L-K22",
+   "name": "前后对照板",
+   "function": "修复前 / 后、改动前 / 后（同一个输入）",
+   "scene": "B",
+   "focus": [
+    "[[ ]] 色块"
+   ],
+   "images": [],
+   "components": [
+    "term",
+    "title"
+   ],
+   "motion": "标题逐行 maskUp → 卡片 / 图解按槽位顺序 rise（错开 0.12s） → 文字 rise → 焦点（朱橙）在强调拍 blockSweep；类别 3 和背景动态常驻",
+   "preview": "docs/previews/cards/L-K22.jpg",
+   "example": {
+    "layout": "L-K22",
+    "fill": {
+     "t1": {
+      "ic": "title",
+      "data": {
+       "title": "补一步校验，结果完全不同",
+       "fs": 104
+      }
+     },
+     "c1": {
+      "ic": "term",
+      "data": {
+       "title": "修复前 · 200",
+       "lines": [
+        "$ GET /api/user/1002",
+        "# 只查了登录",
+        "{",
+        "  \"uid\": 1002,",
+        "  \"phone\": [[\"138****\"]]",
+        "}"
+       ]
+      }
+     },
+     "l1": {
+      "t": "→",
+      "fs": 64,
+      "cls": "blkcell"
+     },
+     "c2": {
+      "ic": "term",
+      "data": {
+       "title": "修复后 · 403",
+       "lines": [
+        "$ GET /api/user/1002",
+        "# 加了归属校验",
+        "{",
+        "  \"error\":",
+        "    \"not owner\"",
+        "}"
+       ]
+      }
+     }
+    },
+    "deco": [
+     [
+      68,
+      236,
+      "BEFORE / AFTER · 同一个请求"
+     ]
+    ]
+   }
+  },
+  {
+   "id": "L-K23",
+   "layout": "L-K23",
+   "name": "并排证据板",
+   "function": "看完证据，下判断",
+   "scene": "A",
+   "focus": [
+    "[[ ]] 色块"
+   ],
+   "images": [
+    "2 意象插画"
+   ],
+   "components": [
+    "tag",
+    "term",
+    "title"
+   ],
+   "motion": "标题逐行 maskUp → 卡片 / 图解按槽位顺序 rise（错开 0.12s） → 贴纸 drop（落定回弹 2%） → 文字 rise → 焦点（朱橙）在强调拍 blockSweep；类别 3 和背景动态常驻",
+   "preview": "docs/previews/cards/L-K23.jpg",
+   "example": {
+    "layout": "L-K23",
+    "fill": {
+     "p1": {
+      "img": "cards/images/samples/sc02/sc02_magnifier.png",
+      "cls": "stk diecut"
+     },
+     "t1": {
+      "ic": "title",
+      "data": {
+       "title": "只看这几个字段",
+       "fs": 104
+      }
+     },
+     "c1": {
+      "t": "GET /api/orders/1002",
+      "fs": 52,
+      "cls": "mono"
+     },
+     "c2": {
+      "ic": "term",
+      "data": {
+       "title": "Response · 200",
+       "lines": [
+        "\"owner\": [[\"user_b\"]],",
+        "\"phone\": \"138****0012\""
+       ]
+      }
+     },
+     "l1": {
+      "ic": "tag",
+      "data": {
+       "text": "越权成立",
+       "dot": true,
+       "en": "CONFIRMED"
+      },
+      "tone": "card"
+     }
+    },
+    "deco": [
+     [
+      740,
+      236,
+      "EVIDENCE · 3 FIELDS"
+     ]
+    ]
+   }
+  },
+  {
+   "id": "L-K24",
+   "layout": "L-K24",
+   "name": "嵌套归属",
+   "function": "归属、权限边界（租户 / 项目 / 资源）",
+   "scene": "A",
+   "focus": [
+    "{{ }} 重点字"
+   ],
+   "images": [],
+   "components": [
+    "nest",
+    "title"
+   ],
+   "motion": "标题逐行 maskUp → 卡片 / 图解按槽位顺序 rise（错开 0.12s） → 文字 rise → 焦点（朱橙）在强调拍 blockSweep；类别 3 和背景动态常驻",
+   "preview": "docs/previews/cards/L-K24.jpg",
+   "example": {
+    "layout": "L-K24",
+    "fill": {
+     "t1": {
+      "ic": "title",
+      "data": {
+       "title": "A 的钥匙，\n开了 B 的门",
+       "fs": 104
+      }
+     },
+     "l1": {
+      "t": "箭头＝动作，框＝归属",
+      "fs": 52,
+      "cls": "dim"
+     },
+     "l2": {
+      "t": "越权：{{成立}}",
+      "fs": 56,
+      "cls": ""
+     },
+     "c1": {
+      "ic": "nest",
+      "data": {
+       "outer": {
+        "name": "平台",
+        "en": "PLATFORM"
+       },
+       "zones": [
+        {
+         "name": "用户 A 的空间",
+         "en": "TENANT A",
+         "session": {
+          "text": "会话 A",
+          "icon": "key-round"
+         },
+         "items": [
+          {
+           "text": "订单 1002",
+           "icon": "file"
+          }
+         ]
+        },
+        {
+         "name": "用户 B 的空间",
+         "en": "TENANT B",
+         "items": [
+          {
+           "text": "订单 1003",
+           "icon": "file"
+          }
+         ]
+        }
+       ],
+       "cross": {
+        "from": 0,
+        "to": [
+         1,
+         0
+        ],
+        "label": "改单号 · 越界"
+       }
+      }
+     }
+    },
+    "deco": [
+     [
+      68,
+      210,
+      "OWNERSHIP · 归属"
+     ]
+    ]
+   }
+  },
+  {
+   "id": "L-K25",
+   "layout": "L-K25",
+   "name": "排除法收束",
+   "function": "排查原因、误区纠正（先排除，再给答案）",
+   "scene": "A",
+   "focus": [
+    "c1"
+   ],
+   "images": [
+    "2 意象插画",
+    "3 氛围装饰"
+   ],
+   "components": [
+    "verdict"
+   ],
+   "motion": "卡片 / 图解按槽位顺序 rise（错开 0.12s） → 贴纸 drop（落定回弹 2%） → 文字 rise → 焦点（朱橙）在强调拍 blockSweep；类别 3 和背景动态常驻",
+   "preview": "docs/previews/cards/L-K25.jpg",
+   "example": {
+    "layout": "L-K25",
+    "fill": {
+     "p1": {
+      "img": "cards/images/samples/sc02/sc02p_report.png",
+      "cls": "stk diecut"
+     },
+     "l1": {
+      "t": "~~服务器挂了~~<small>SERVER DOWN</small>",
+      "fs": 56,
+      "cls": ""
+     },
+     "l2": {
+      "t": "~~参数写错了~~<small>TYPO</small>",
+      "fs": 56,
+      "cls": ""
+     },
+     "l3": {
+      "t": "~~缓存没清~~<small>CACHE</small>",
+      "fs": 56,
+      "cls": ""
+     },
+     "c1": {
+      "ic": "verdict",
+      "data": {
+       "text": "没做归属校验",
+       "en": "ROOT CAUSE",
+       "mark": "!"
+      },
+      "tone": "hot"
+     }
+    },
+    "bokeh": [
+     [
+      1700,
+      260,
+      100
+     ]
+    ]
+   }
+  },
+  {
+   "id": "L-K26",
+   "layout": "L-K26",
+   "name": "透视卡片队列",
+   "function": "列举：能做什么、有几种方法（3–7 项）",
+   "scene": "A",
+   "focus": [
+    "c3"
+   ],
+   "images": [
+    "1 实物贴纸"
+   ],
+   "components": [
+    "chip",
+    "keyword"
+   ],
+   "motion": "卡片 / 图解按槽位顺序 rise（错开 0.12s） → 贴纸 drop（落定回弹 2%） → 文字 rise → 焦点（朱橙）在强调拍 blockSweep；类别 3 和背景动态常驻",
+   "preview": "docs/previews/cards/L-K26.jpg",
+   "example": {
+    "layout": "L-K26",
+    "fill": {
+     "p1": {
+      "img": "cards/images/samples/anime/anime_radar.png"
+     },
+     "l1": {
+      "t": "常见越权 03 / 05",
+      "fs": 52,
+      "cls": "c"
+     },
+     "c1": {
+      "ic": "chip",
+      "data": {
+       "name": "改 uid",
+       "icon": "user-round"
+      },
+      "tone": "card",
+      "tilt": -6
+     },
+     "c2": {
+      "ic": "chip",
+      "data": {
+       "name": "改订单号",
+       "icon": "file"
+      },
+      "tone": "card",
+      "tilt": -3
+     },
+     "c3": {
+      "ic": "keyword",
+      "data": {
+       "word": "改角色字段",
+       "en": "ROLE TAMPERING",
+       "exp": "普通用户变管理员"
+      },
+      "tone": "hot"
+     },
+     "c4": {
+      "ic": "chip",
+      "data": {
+       "name": "改租户 ID",
+       "icon": "building-2"
+      },
+      "tone": "card",
+      "tilt": 3
+     },
+     "c5": {
+      "ic": "chip",
+      "data": {
+       "name": "越权下载",
+       "icon": "folder"
+      },
+      "tone": "card",
+      "tilt": 6
+     }
+    }
+   }
+  },
+  {
+   "id": "L-K27",
+   "layout": "L-K27",
+   "name": "开场三拍海报",
+   "function": "设问式开场：主题 → 疑问 → 原文",
+   "scene": "A",
+   "focus": [
+    "{{ }} 重点字"
+   ],
+   "images": [
+    "1 实物贴纸"
+   ],
+   "components": [
+    "quote",
+    "title"
+   ],
+   "motion": "标题逐行 maskUp → 卡片 / 图解按槽位顺序 rise（错开 0.12s） → 贴纸 drop（落定回弹 2%） → 焦点（朱橙）在强调拍 blockSweep；类别 3 和背景动态常驻",
+   "preview": "docs/previews/cards/L-K27.jpg",
+   "example": {
+    "layout": "L-K27",
+    "fill": {
+     "p1": {
+      "img": "cards/images/samples/anime/anime_chip.png"
+     },
+     "t1": {
+      "ic": "title",
+      "data": {
+       "title": "AI 能帮你挖洞吗？",
+       "fs": 112
+      }
+     },
+     "c1": {
+      "ic": "quote",
+      "data": {
+       "text": "AI 找到的线索，\n要人来{{签字确认}}",
+       "src": "白帽工作守则（示意）"
+      },
+      "tone": "card"
+     }
+    },
+    "deco": [
+     [
+      68,
+      236,
+      "OPENING · Q&A"
+     ]
+    ]
+   }
+  },
+  {
+   "id": "L-K28",
+   "layout": "L-K28",
+   "name": "原件分层摘录",
+   "function": "一份报告 / 公告里有多条重点",
+   "scene": "B",
+   "focus": [
+    "[[ ]] 色块"
+   ],
+   "images": [
+    "证据截图"
+   ],
+   "components": [
+    "quote",
+    "shot",
+    "stat"
+   ],
+   "motion": "卡片 / 图解按槽位顺序 rise（错开 0.12s） → 文字 rise → 焦点（朱橙）在强调拍 blockSweep；类别 3 和背景动态常驻",
+   "preview": "docs/previews/cards/L-K28.jpg",
+   "example": {
+    "layout": "L-K28",
+    "fill": {
+     "m1": {
+      "ic": "shot",
+      "data": {
+       "img": "cards/images/samples/evidence/shop_order_教学示例.jpg",
+       "title": "漏洞报告（示意）"
+      },
+      "tilt": -2
+     },
+     "c1": {
+      "t": "上一条：影响范围是全部订单",
+      "fs": 52,
+      "cls": "dim"
+     },
+     "c2": {
+      "ic": "quote",
+      "data": {
+       "text": "任意登录用户\n可读取[[他人订单]]"
+      }
+     },
+     "c3": {
+      "ic": "stat",
+      "data": {
+       "value": "12,000",
+       "unit": "条",
+       "label": "可读订单",
+       "en": "ORDERS EXPOSED",
+       "note": "示意数据"
+      }
+     }
+    },
+    "deco": [
+     [
+      912,
+      120,
+      "REPORT · 第 2 节"
+     ]
+    ]
+   }
+  },
+  {
+   "id": "L-K29",
+   "layout": "L-K29",
+   "name": "素材关键词戳",
+   "function": "在录屏、截图上点名一个概念",
+   "scene": "A",
+   "focus": [],
+   "images": [
+    "证据截图"
+   ],
+   "components": [
+    "keyword",
+    "shot"
+   ],
+   "motion": "卡片 / 图解按槽位顺序 rise（错开 0.12s） → 焦点（朱橙）在强调拍 blockSweep；类别 3 和背景动态常驻",
+   "preview": "docs/previews/cards/L-K29.jpg",
+   "example": {
+    "layout": "L-K29",
+    "fill": {
+     "s1": {
+      "ic": "shot",
+      "data": {
+       "img": "cards/images/samples/evidence/shop_order_教学示例.jpg",
+       "title": "shop.test/orders/1002",
+       "mark": [
+        0.6,
+        0.42,
+        0.18,
+        0.05
+       ],
+       "note": "别人的订单"
+      }
+     },
+     "c1": {
+      "ic": "keyword",
+      "data": {
+       "word": "越权",
+       "en": "IDOR",
+       "exp": "改个号，就看到了",
+       "icon": "key-round"
+      },
+      "tone": "card"
+     }
+    }
+   }
+  },
+  {
+   "id": "L-K30",
+   "layout": "L-K30",
+   "name": "抓包字段放大",
+   "function": "抓包、响应字段讲解",
+   "scene": "A",
+   "focus": [
+    "[[ ]] 色块"
+   ],
+   "images": [],
+   "components": [
+    "lens",
+    "tag",
+    "term"
+   ],
+   "motion": "卡片 / 图解按槽位顺序 rise（错开 0.12s） → 文字 rise → 焦点（朱橙）在强调拍 blockSweep；类别 3 和背景动态常驻",
+   "preview": "docs/previews/cards/L-K30.jpg",
+   "example": {
+    "layout": "L-K30",
+    "fill": {
+     "c1": {
+      "ic": "term",
+      "data": {
+       "title": "Request",
+       "lines": [
+        "$ PUT /api/me",
+        "\"role\": \"admin\""
+       ]
+      }
+     },
+     "c2": {
+      "ic": "term",
+      "data": {
+       "title": "Response · 200",
+       "lines": [
+        "{",
+        "  \"uid\": 1002,",
+        "  \"role\": [[\"admin\"]]",
+        "}"
+       ]
+      }
+     },
+     "c3": {
+      "ic": "lens",
+      "data": {
+       "label": "第 3 行",
+       "text": "[[\"admin\"]]",
+       "note": "普通用户自己改的"
+      }
+     },
+     "l1": {
+      "ic": "tag",
+      "data": {
+       "text": "普通用户"
+      },
+      "tone": "card"
+     },
+     "l2": {
+      "t": "≠",
+      "fs": 56,
+      "cls": "num c"
+     },
+     "l3": {
+      "ic": "tag",
+      "data": {
+       "text": "admin"
+      },
+      "tone": "card"
+     }
+    }
+   }
+  },
+  {
+   "id": "L-N01",
+   "layout": "L-N01",
+   "name": "角色立牌",
+   "function": "角色介绍（3 个角色）",
+   "scene": "B",
+   "focus": [],
+   "images": [
+    "2 意象插画"
+   ],
+   "components": [
+    "step",
+    "title"
+   ],
+   "motion": "标题逐行 maskUp → 卡片 / 图解按槽位顺序 rise（错开 0.12s） → 贴纸 drop（落定回弹 2%） → 文字 rise → 焦点（朱橙）在强调拍 blockSweep；类别 3 和背景动态常驻",
+   "preview": "docs/previews/cards/L-N01.jpg",
+   "example": {
+    "layout": "L-N01",
+    "fill": {
+     "t1": {
+      "ic": "title",
+      "data": {
+       "title": "三个角色",
+       "fs": 104
+      }
+     },
+     "l1": {
+      "t": "一次测试里，\n谁在做什么",
+      "fs": 52,
+      "cls": "wrap dim"
+     },
+     "c1": {
+      "ic": "step",
+      "data": {
+       "idx": "01",
+       "name": "白帽",
+       "en": "HUNTER",
+       "icon": null,
+       "desc": "写报告"
+      },
+      "tone": "card"
+     },
+     "c2": {
+      "ic": "step",
+      "data": {
+       "idx": "02",
+       "name": "复核",
+       "en": "REVIEWER",
+       "icon": null,
+       "desc": "逐条核"
+      },
+      "tone": "card"
+     },
+     "c3": {
+      "ic": "step",
+      "data": {
+       "idx": "03",
+       "name": "审核",
+       "en": "TRIAGE",
+       "icon": null,
+       "desc": "等结果"
+      },
+      "tone": "card"
+     },
+     "m1": {
+      "img": "cards/images/samples/sc02/sc02p_report.png",
+      "cls": "stk diecut"
+     },
+     "m2": {
+      "img": "cards/images/samples/sc02/sc02_magnifier.png",
+      "cls": "stk diecut"
+     },
+     "m3": {
+      "img": "cards/images/samples/sc02/sc02_waiting.png",
+      "cls": "stk diecut"
+     }
+    },
+    "deco": [
+     [
+      64,
+      200,
+      "ROLES · 角色"
+     ]
+    ]
+   }
+  },
+  {
+   "id": "L-N02",
+   "layout": "L-N02",
+   "name": "章节大图",
+   "function": "章节开场",
+   "scene": "A",
+   "focus": [],
+   "images": [
+    "1 实物贴纸"
+   ],
+   "components": [
+    "title"
+   ],
+   "motion": "标题逐行 maskUp → 贴纸 drop（落定回弹 2%） → 文字 rise → 焦点（朱橙）在强调拍 blockSweep；类别 3 和背景动态常驻",
+   "preview": "docs/previews/cards/L-N02.jpg",
+   "example": {
+    "layout": "L-N02",
+    "fill": {
+     "m1": {
+      "img": "cards/images/samples/anime/anime_lock.png"
+     },
+     "l1": {
+      "t": "第 2 章",
+      "fs": 52,
+      "cls": "dim"
+     },
+     "t1": {
+      "ic": "title",
+      "data": {
+       "title": "越权",
+       "fs": 240
+      }
+     },
+     "k1": {
+      "t": "CHAPTER 02 · ACCESS CONTROL",
+      "fs": 20,
+      "cls": "mic"
+     },
+     "l2": {
+      "t": "改一个数字，就看到了别人的东西",
+      "fs": 52,
+      "cls": ""
+     }
+    },
+    "deco": [
+     [
+      64,
+      800,
+      "03 CASES · 12 MIN"
+     ]
+    ]
+   }
+  },
+  {
+   "id": "L-N03",
+   "layout": "L-N03",
+   "name": "手机屏幕",
+   "function": "证据、通知、截图放进手机",
+   "scene": "A",
+   "focus": [],
+   "images": [
+    "1 实物贴纸",
+    "3 氛围装饰"
+   ],
+   "components": [
+    "chip",
+    "title"
+   ],
+   "motion": "标题逐行 maskUp → 卡片 / 图解按槽位顺序 rise（错开 0.12s） → 贴纸 drop（落定回弹 2%） → 焦点（朱橙）在强调拍 blockSweep；类别 3 和背景动态常驻",
+   "preview": "docs/previews/cards/L-N03.jpg",
+   "example": {
+    "layout": "L-N03",
+    "fill": {
+     "t1": {
+      "ic": "title",
+      "data": {
+       "title": "审核通过，\n会收到通知",
+       "fs": 104
+      }
+     },
+     "c1": {
+      "ic": "chip",
+      "data": {
+       "name": "报告已通过",
+       "sub": "定级：高危（示意）"
+      },
+      "tone": "card"
+     },
+     "m1": {
+      "img": "cards/images/samples/device/device_hand_示例贴图.png"
+     }
+    },
+    "deco": [
+     [
+      64,
+      200,
+      "NOTIFY · 通知"
+     ]
+    ],
+    "bokeh": [
+     [
+      1760,
+      220,
+      110
+     ],
+     [
+      900,
+      940,
+      80
+     ]
+    ]
+   }
+  },
+  {
+   "id": "L-N04",
+   "layout": "L-N04",
+   "name": "照片扇形",
+   "function": "口播时补画面（3 张照片）",
+   "scene": "A",
+   "focus": [],
+   "images": [
+    "1 实物贴纸",
+    "3 氛围装饰",
+    "证据截图"
+   ],
+   "components": [
+    "shot"
+   ],
+   "motion": "卡片 / 图解按槽位顺序 rise（错开 0.12s） → 贴纸 drop（落定回弹 2%） → 焦点（朱橙）在强调拍 blockSweep；类别 3 和背景动态常驻",
+   "preview": "docs/previews/cards/L-N04.jpg",
+   "example": {
+    "layout": "L-N04",
+    "fill": {
+     "p1": {
+      "img": "cards/images/samples/bmz_laptop.png"
+     },
+     "m1": {
+      "ic": "shot",
+      "data": {
+       "img": "cards/images/samples/evidence/shop_order_教学示例.jpg",
+       "title": "orders/1002"
+      },
+      "tilt": -6
+     },
+     "m2": {
+      "ic": "shot",
+      "data": {
+       "img": "cards/images/samples/evidence/shop_order_教学示例.jpg",
+       "title": "orders/1003"
+      },
+      "tilt": 6
+     },
+     "m3": {
+      "ic": "shot",
+      "data": {
+       "img": "cards/images/samples/evidence/shop_order_教学示例.jpg",
+       "title": "Response",
+       "mark": [
+        0.6,
+        0.42,
+        0.18,
+        0.05
+       ],
+       "note": "owner"
+      },
+      "tilt": 0
+     }
+    },
+    "amb": [
+     [
+      "keycaps",
+      1500,
+      120,
+      360,
+      260,
+      "far"
+     ]
+    ]
+   }
+  },
+  {
+   "id": "L-N05",
+   "layout": "L-N05",
+   "name": "类型墙",
+   "function": "由哪几类组成 / 一期的全貌（6 类）",
+   "scene": "A",
+   "focus": [
+    "c4"
+   ],
+   "images": [
+    "证据截图"
+   ],
+   "components": [
+    "step",
+    "title"
+   ],
+   "motion": "标题逐行 maskUp → 卡片 / 图解按槽位顺序 rise（错开 0.12s） → 贴纸 drop（落定回弹 2%） → 焦点（朱橙）在强调拍 blockSweep；类别 3 和背景动态常驻",
+   "preview": "docs/previews/cards/L-N05.jpg",
+   "example": {
+    "layout": "L-N05",
+    "fill": {
+     "t1": {
+      "ic": "title",
+      "data": {
+       "title": "常见的六类漏洞",
+       "fs": 112
+      }
+     },
+     "m1": {
+      "img": "cards/images/samples/evidence/shop_order_教学示例.jpg",
+      "cls": "photo"
+     },
+     "c1": {
+      "ic": "step",
+      "data": {
+       "idx": "01",
+       "name": "注入",
+       "en": "INJECTION",
+       "icon": "braces"
+      }
+     },
+     "c2": {
+      "ic": "step",
+      "data": {
+       "idx": "02",
+       "name": "XSS",
+       "en": "SCRIPT",
+       "icon": "code"
+      }
+     },
+     "c3": {
+      "ic": "step",
+      "data": {
+       "idx": "03",
+       "name": "SSRF",
+       "en": "SERVER FETCH",
+       "icon": "globe"
+      }
+     },
+     "c4": {
+      "ic": "step",
+      "data": {
+       "idx": "04",
+       "name": "越权",
+       "en": "IDOR",
+       "icon": "key-round"
+      },
+      "tone": "hot"
+     },
+     "c5": {
+      "ic": "step",
+      "data": {
+       "idx": "05",
+       "name": "信息泄露",
+       "en": "EXPOSURE",
+       "icon": "eye"
+      }
+     },
+     "c6": {
+      "ic": "step",
+      "data": {
+       "idx": "06",
+       "name": "逻辑漏洞",
+       "en": "LOGIC",
+       "icon": "git-branch"
+      }
+     }
+    },
+    "scene": "A",
+    "deco": [
+     [
+      68,
+      236,
+      "VULN TYPES · 06"
+     ]
+    ]
+   }
+  },
+  {
+   "id": "L-N06",
+   "layout": "L-N06",
+   "name": "剪报",
+   "function": "案例速写（必须标「示意」或注明出处）",
+   "scene": "B",
+   "focus": [
+    "l2"
+   ],
+   "images": [
+    "证据截图"
+   ],
+   "components": [
+    "shot",
+    "tag",
+    "title"
+   ],
+   "motion": "标题逐行 maskUp → 卡片 / 图解按槽位顺序 rise（错开 0.12s） → 文字 rise → 焦点（朱橙）在强调拍 blockSweep；类别 3 和背景动态常驻",
+   "preview": "docs/previews/cards/L-N06.jpg",
+   "example": {
+    "layout": "L-N06",
+    "fill": {
+     "c1": {
+      "box": "paper"
+     },
+     "t1": {
+      "ic": "title",
+      "data": {
+       "title": "某平台通报：越权读取订单",
+       "fs": 104
+      }
+     },
+     "m1": {
+      "ic": "shot",
+      "data": {
+       "img": "cards/images/samples/evidence/shop_order_教学示例.jpg",
+       "title": "案例配图（示意）"
+      },
+      "tilt": -2
+     },
+     "l1": {
+      "t": "有用户发现，改一下订单号\n就能看到别人的收货信息。\n平台已修复，并给提交者\n发放了奖励。",
+      "fs": 52,
+      "cls": "wrap"
+     },
+     "l2": {
+      "ic": "tag",
+      "data": {
+       "text": "示意案例",
+       "icon": "triangle-alert"
+      },
+      "tone": "hot"
+     }
+    },
+    "deco": [
+     [
+      128,
+      290,
+      "CASE STUDY · 示意"
+     ]
+    ]
+   }
+  },
+  {
+   "id": "L-N07",
+   "layout": "L-N07",
+   "name": "插画海报",
+   "function": "比喻：用一张插画讲一个名词",
+   "scene": "A",
+   "focus": [],
+   "images": [
+    "2 意象插画",
+    "3 氛围装饰"
+   ],
+   "components": [],
+   "motion": "贴纸 drop（落定回弹 2%） → 文字 rise → 焦点（朱橙）在强调拍 blockSweep；类别 3 和背景动态常驻",
+   "preview": "docs/previews/cards/L-N07.jpg",
+   "example": {
+    "layout": "L-N07",
+    "fill": {
+     "p1": null,
+     "m1": {
+      "img": "cards/images/samples/sc02/sc02_borrowed_key.png",
+      "cls": "stk diecut",
+      "pos": "82% 50%"
+     },
+     "l1": {
+      "t": "越权，就像拿别人的钥匙开门<small>METAPHOR · 意象</small>",
+      "fs": 64,
+      "cls": ""
+     },
+     "k1": null
+    },
+    "bokeh": [
+     [
+      300,
+      300,
+      120
+     ],
+     [
+      1700,
+      880,
+      100
+     ]
+    ]
+   }
+  },
+  {
+   "id": "L-N08",
+   "layout": "L-N08",
+   "name": "爆炸分层",
+   "function": "结构、原理、藏在哪层",
+   "scene": "B",
+   "focus": [
+    "m1"
+   ],
+   "images": [],
+   "components": [
+    "layers",
+    "title"
+   ],
+   "motion": "标题逐行 maskUp → 卡片 / 图解按槽位顺序 rise（错开 0.12s） → 焦点（朱橙）在强调拍 blockSweep；类别 3 和背景动态常驻",
+   "preview": "docs/previews/cards/L-N08.jpg",
+   "example": {
+    "layout": "L-N08",
+    "fill": {
+     "t1": {
+      "ic": "title",
+      "data": {
+       "title": "漏洞藏在\n哪一层？",
+       "fs": 104
+      }
+     },
+     "m1": {
+      "ic": "layers",
+      "data": {
+       "layers": [
+        {
+         "name": "前端",
+         "en": "FRONTEND",
+         "icon": "monitor",
+         "desc": "只是藏了按钮"
+        },
+        {
+         "name": "接口",
+         "en": "API",
+         "icon": "server",
+         "hit": true,
+         "desc": "没校验归属"
+        },
+        {
+         "name": "数据库",
+         "en": "DATABASE",
+         "icon": "database",
+         "desc": "数据没问题"
+        }
+       ]
+      },
+      "rect": [
+       576,
+       104,
+       1280,
+       768
+      ]
+     },
+     "l1": null,
+     "l2": null,
+     "l3": null
+    },
+    "deco": [
+     [
+      64,
+      200,
+      "ANATOMY · 网站三层"
+     ]
+    ]
+   }
+  },
+  {
+   "id": "L-N09",
+   "layout": "L-N09",
+   "name": "斜面板时间线",
+   "function": "步骤、流程（4 步，带图）",
+   "scene": "A",
+   "focus": [
+    "l4"
+   ],
+   "images": [
+    "证据截图"
+   ],
+   "components": [
+    "shot",
+    "tag",
+    "title"
+   ],
+   "motion": "标题逐行 maskUp → 卡片 / 图解按槽位顺序 rise（错开 0.12s） → 焦点（朱橙）在强调拍 blockSweep；类别 3 和背景动态常驻",
+   "preview": "docs/previews/cards/L-N09.jpg",
+   "example": {
+    "layout": "L-N09",
+    "fill": {
+     "t1": {
+      "ic": "title",
+      "data": {
+       "title": "复现四步",
+       "fs": 104
+      }
+     },
+     "m1": {
+      "ic": "shot",
+      "data": {
+       "img": "cards/images/samples/evidence/shop_order_教学示例.jpg",
+       "title": "登录 A"
+      },
+      "tilt": -3
+     },
+     "m2": {
+      "ic": "shot",
+      "data": {
+       "img": "cards/images/samples/evidence/shop_order_教学示例.jpg",
+       "title": "抓包"
+      },
+      "tilt": -1
+     },
+     "m3": {
+      "ic": "shot",
+      "data": {
+       "img": "cards/images/samples/evidence/shop_order_教学示例.jpg",
+       "title": "改单号"
+      },
+      "tilt": 1
+     },
+     "m4": {
+      "ic": "shot",
+      "data": {
+       "img": "cards/images/samples/evidence/shop_order_教学示例.jpg",
+       "title": "看到 B"
+      },
+      "tilt": 3
+     },
+     "l1": {
+      "ic": "tag",
+      "data": {
+       "text": "登录 A",
+       "en": "STEP 01"
+      },
+      "tone": "card"
+     },
+     "l2": {
+      "ic": "tag",
+      "data": {
+       "text": "抓包",
+       "en": "STEP 02"
+      },
+      "tone": "card"
+     },
+     "l3": {
+      "ic": "tag",
+      "data": {
+       "text": "改单号",
+       "en": "STEP 03"
+      },
+      "tone": "card"
+     },
+     "l4": {
+      "ic": "tag",
+      "data": {
+       "text": "看到 B",
+       "en": "STEP 04"
+      },
+      "tone": "hot"
+     }
+    },
+    "deco": [
+     [
+      64,
+      520,
+      "REPRO · 04 STEPS"
+     ]
+    ]
+   }
+  },
+  {
+   "id": "L-N10",
+   "layout": "L-N10",
+   "name": "英雄物件",
+   "function": "门槛、配置、一个关键物件",
+   "scene": "A",
+   "focus": [],
+   "images": [
+    "1 实物贴纸",
+    "3 氛围装饰"
+   ],
+   "components": [
+    "tag",
+    "title"
+   ],
+   "motion": "标题逐行 maskUp → 卡片 / 图解按槽位顺序 rise（错开 0.12s） → 贴纸 drop（落定回弹 2%） → 引线 / 标注在最后一个元素之后 0.15–0.25s 出现 → 焦点（朱橙）在强调拍 blockSweep；类别 3 和背景动态常驻",
+   "preview": "docs/previews/cards/L-N10.jpg",
+   "example": {
+    "layout": "L-N10",
+    "fill": {
+     "t1": {
+      "ic": "title",
+      "data": {
+       "title": "入门只要\n一台电脑",
+       "fs": 104
+      }
+     },
+     "m1": {
+      "img": "cards/images/samples/bmz_laptop.png"
+     },
+     "l1": {
+      "ic": "tag",
+      "data": {
+       "text": "8G 内存就够"
+      },
+      "tone": "card"
+     },
+     "l2": {
+      "ic": "tag",
+      "data": {
+       "text": "抓包工具",
+       "icon": "scan-search"
+      },
+      "tone": "card"
+     },
+     "l3": {
+      "ic": "tag",
+      "data": {
+       "text": "浏览器插件",
+       "icon": "globe"
+      },
+      "tone": "card"
+     }
+    },
+    "deco": [
+     [
+      64,
+      200,
+      "GEAR · 入门配置"
+     ]
+    ],
+    "lines": [
+     [
+      1010,
+      380,
+      904,
+      272
+     ],
+     [
+      1330,
+      400,
+      1408,
+      300
+     ],
+     [
+      1300,
+      620,
+      1376,
+      764
+     ]
+    ],
+    "amb": [
+     [
+      "keycaps",
+      1520,
+      860,
+      420,
+      300,
+      "near"
+     ],
+     [
+      "cable",
+      620,
+      780,
+      260,
+      200,
+      "far"
+     ]
+    ]
+   }
+  },
+  {
+   "id": "L-N11",
+   "layout": "L-N11",
+   "name": "同侧叠牌",
+   "function": "先给对象，下一拍再给判断",
+   "scene": "A",
+   "focus": [
+    "c2"
+   ],
+   "images": [
+    "1 实物贴纸",
+    "3 氛围装饰"
+   ],
+   "components": [
+    "keyword",
+    "tag",
+    "verdict"
+   ],
+   "motion": "卡片 / 图解按槽位顺序 rise（错开 0.12s） → 贴纸 drop（落定回弹 2%） → 焦点（朱橙）在强调拍 blockSweep；类别 3 和背景动态常驻",
+   "preview": "docs/previews/cards/L-N11.jpg",
+   "example": {
+    "layout": "L-N11",
+    "fill": {
+     "p1": {
+      "img": "cards/images/samples/bmz_shield.png"
+     },
+     "m1": null,
+     "c1": {
+      "ic": "keyword",
+      "data": {
+       "word": "owner 字段",
+       "exp": "这单是谁的",
+       "icon": "file"
+      },
+      "tone": "card"
+     },
+     "c2": {
+      "ic": "verdict",
+      "data": {
+       "text": "没校验，\n就是越权",
+       "en": "VERDICT"
+      },
+      "tone": "hot"
+     },
+     "l1": {
+      "ic": "tag",
+      "data": {
+       "text": "单主：B"
+      },
+      "tone": "card"
+     },
+     "l2": {
+      "ic": "tag",
+      "data": {
+       "text": "我：A"
+      },
+      "tone": "card"
+     }
+    },
+    "amb": [
+     [
+      "screws",
+      120,
+      860,
+      240,
+      170,
+      "far"
+     ]
+    ]
+   }
+  },
+  {
+   "id": "L-N12A",
+   "layout": "L-N12A",
+   "name": "槽位标签 · 口播态",
+   "function": "先在主体周围固定几个标签，再切全屏讲",
+   "scene": "A",
+   "focus": [
+    "l6"
+   ],
+   "images": [
+    "1 实物贴纸",
+    "3 氛围装饰"
+   ],
+   "components": [
+    "tag"
+   ],
+   "motion": "卡片 / 图解按槽位顺序 rise（错开 0.12s） → 贴纸 drop（落定回弹 2%） → 引线 / 标注在最后一个元素之后 0.15–0.25s 出现 → 焦点（朱橙）在强调拍 blockSweep；类别 3 和背景动态常驻",
+   "preview": "docs/previews/cards/L-N12A.jpg",
+   "example": {
+    "layout": "L-N12A",
+    "fill": {
+     "p1": {
+      "img": "cards/images/samples/bmz_aichip.png"
+     },
+     "l1": {
+      "ic": "tag",
+      "data": {
+       "text": "抓包",
+       "icon": "scan-search"
+      },
+      "tone": "card"
+     },
+     "l2": {
+      "ic": "tag",
+      "data": {
+       "text": "改参数",
+       "icon": "pencil"
+      },
+      "tone": "card"
+     },
+     "l3": {
+      "ic": "tag",
+      "data": {
+       "text": "重放",
+       "icon": "repeat"
+      },
+      "tone": "card"
+     },
+     "l4": {
+      "ic": "tag",
+      "data": {
+       "text": "比对",
+       "icon": "git-branch"
+      },
+      "tone": "card"
+     },
+     "l5": {
+      "ic": "tag",
+      "data": {
+       "text": "截图",
+       "icon": "camera"
+      },
+      "tone": "card"
+     },
+     "l6": {
+      "ic": "tag",
+      "data": {
+       "text": "归属？",
+       "icon": "triangle-alert"
+      },
+      "tone": "hot"
+     }
+    },
+    "lines": [
+     [
+      740,
+      470,
+      512,
+      332
+     ],
+     [
+      720,
+      560,
+      560,
+      556
+     ],
+     [
+      740,
+      650,
+      512,
+      780
+     ],
+     [
+      1180,
+      460,
+      1408,
+      300
+     ],
+     [
+      1200,
+      540,
+      1408,
+      524
+     ],
+     [
+      1180,
+      640,
+      1408,
+      748,
+      1
+     ]
+    ],
+    "amb": [
+     [
+      "usbc",
+      1500,
+      860,
+      300,
+      220,
+      "far"
+     ]
+    ]
+   }
+  },
+  {
+   "id": "L-N12B",
+   "layout": "L-N12B",
+   "name": "槽位标签 · 换底态",
+   "function": "标签原位不动，换底后中心展开",
+   "scene": "B",
+   "focus": [
+    "l6"
+   ],
+   "images": [],
+   "components": [
+    "tag",
+    "verdict"
+   ],
+   "motion": "卡片 / 图解按槽位顺序 rise（错开 0.12s） → 文字 rise → 引线 / 标注在最后一个元素之后 0.15–0.25s 出现 → 焦点（朱橙）在强调拍 blockSweep；类别 3 和背景动态常驻",
+   "preview": "docs/previews/cards/L-N12B.jpg",
+   "example": {
+    "layout": "L-N12B",
+    "fill": {
+     "c1": {
+      "ic": "verdict",
+      "data": {
+       "text": "每一步\n都留证据",
+       "en": "KEEP EVIDENCE"
+      }
+     },
+     "m1": null,
+     "l1": {
+      "ic": "tag",
+      "data": {
+       "text": "抓包",
+       "icon": "scan-search"
+      },
+      "tone": "card"
+     },
+     "l2": {
+      "ic": "tag",
+      "data": {
+       "text": "改参数",
+       "icon": "pencil"
+      },
+      "tone": "card"
+     },
+     "l3": {
+      "ic": "tag",
+      "data": {
+       "text": "重放",
+       "icon": "repeat"
+      },
+      "tone": "card"
+     },
+     "l4": {
+      "ic": "tag",
+      "data": {
+       "text": "比对",
+       "icon": "git-branch"
+      },
+      "tone": "card"
+     },
+     "l5": {
+      "ic": "tag",
+      "data": {
+       "text": "截图",
+       "icon": "camera"
+      },
+      "tone": "card"
+     },
+     "l6": {
+      "ic": "tag",
+      "data": {
+       "text": "归属？",
+       "icon": "triangle-alert"
+      },
+      "tone": "hot"
+     },
+     "k1": {
+      "t": "NOTE · 先存证",
+      "fs": 20,
+      "cls": "mic"
+     }
+    },
+    "lines": [
+     [
+      580,
+      400,
+      512,
+      332
+     ],
+     [
+      560,
+      500,
+      560,
+      556
+     ],
+     [
+      600,
+      640,
+      512,
+      780
+     ],
+     [
+      1340,
+      400,
+      1408,
+      300
+     ],
+     [
+      1360,
+      500,
+      1408,
+      524
+     ],
+     [
+      1330,
+      640,
+      1408,
+      748,
+      1
+     ]
+    ]
+   }
+  },
+  {
+   "id": "L-N13",
+   "layout": "L-N13",
+   "name": "提问条 + 维度",
+   "function": "一个问题拆成几个维度（3–6 个）",
+   "scene": "A",
+   "focus": [
+    "{{ }} 重点字"
+   ],
+   "images": [
+    "2 意象插画"
+   ],
+   "components": [
+    "tag"
+   ],
+   "motion": "卡片 / 图解按槽位顺序 rise（错开 0.12s） → 贴纸 drop（落定回弹 2%） → 文字 rise → 焦点（朱橙）在强调拍 blockSweep；类别 3 和背景动态常驻",
+   "preview": "docs/previews/cards/L-N13.jpg",
+   "example": {
+    "layout": "L-N13",
+    "fill": {
+     "p1": {
+      "img": "cards/images/samples/sc02/sc02_magnifier.png",
+      "cls": "stk diecut"
+     },
+     "c1": {
+      "ic": "tag",
+      "data": {
+       "text": "这个漏洞值几级？",
+       "dot": true
+      },
+      "tone": "card"
+     },
+     "m1": null,
+     "l1": {
+      "t": "影响面<small>IMPACT</small>",
+      "fs": 88,
+      "cls": ""
+     },
+     "l2": {
+      "t": "利用难度<small>COMPLEXITY</small>",
+      "fs": 88,
+      "cls": ""
+     },
+     "l3": {
+      "t": "数据敏感<small>SENSITIVITY</small>",
+      "fs": 88,
+      "cls": ""
+     },
+     "l4": {
+      "t": "要不要登录<small>AUTH REQUIRED</small>",
+      "fs": 88,
+      "cls": ""
+     },
+     "l5": {
+      "t": "{{能否批量}}<small>SCALE</small>",
+      "fs": 88,
+      "cls": ""
+     }
+    }
+   }
+  },
+  {
+   "id": "L-N14",
+   "layout": "L-N14",
+   "name": "让半屏证据板",
+   "function": "边看主体边看证据（复盘）",
+   "scene": "A",
+   "focus": [
+    "c2"
+   ],
+   "images": [
+    "2 意象插画"
+   ],
+   "components": [
+    "keyword",
+    "title"
+   ],
+   "motion": "标题逐行 maskUp → 卡片 / 图解按槽位顺序 rise（错开 0.12s） → 贴纸 drop（落定回弹 2%） → 焦点（朱橙）在强调拍 blockSweep；类别 3 和背景动态常驻",
+   "preview": "docs/previews/cards/L-N14.jpg",
+   "example": {
+    "layout": "L-N14",
+    "fill": {
+     "p1": {
+      "img": "cards/images/samples/sc02/sc02p_report.png",
+      "cls": "stk diecut"
+     },
+     "t1": {
+      "ic": "title",
+      "data": {
+       "title": "复盘：\n三条证据",
+       "fs": 104
+      }
+     },
+     "c1": {
+      "ic": "keyword",
+      "data": {
+       "idx": "01",
+       "word": "请求",
+       "en": "REQUEST",
+       "exp": "改了单号"
+      }
+     },
+     "c2": {
+      "ic": "keyword",
+      "data": {
+       "idx": "02",
+       "word": "响应",
+       "en": "RESPONSE",
+       "exp": "owner 变了"
+      },
+      "tone": "hot"
+     },
+     "c3": {
+      "ic": "keyword",
+      "data": {
+       "idx": "03",
+       "word": "页面",
+       "en": "PAGE",
+       "exp": "别人信息"
+      }
+     },
+     "m1": null,
+     "m2": null,
+     "m3": null
+    },
+    "deco": [
+     [
+      880,
+      360,
+      "REVIEW · 复盘"
+     ]
+    ]
+   }
+  },
+  {
+   "id": "L-N15",
+   "layout": "L-N15",
+   "name": "问号章节",
+   "function": "第 N 步章节开场（几章共用一个容器）",
+   "scene": "A",
+   "focus": [],
+   "images": [
+    "1 实物贴纸",
+    "3 氛围装饰"
+   ],
+   "components": [
+    "title"
+   ],
+   "motion": "标题逐行 maskUp → 贴纸 drop（落定回弹 2%） → 文字 rise → 焦点（朱橙）在强调拍 blockSweep；类别 3 和背景动态常驻",
+   "preview": "docs/previews/cards/L-N15.jpg",
+   "example": {
+    "layout": "L-N15",
+    "fill": {
+     "l1": {
+      "t": "共 4 步 · 第 3 步",
+      "fs": 52,
+      "cls": "dim"
+     },
+     "l2": {
+      "t": "✓ 抓包",
+      "fs": 56,
+      "cls": "dim"
+     },
+     "t1": {
+      "ic": "title",
+      "data": {
+       "title": "改包",
+       "fs": 240
+      }
+     },
+     "k1": {
+      "t": "STEP 03 · TAMPER",
+      "fs": 20,
+      "cls": "mic"
+     },
+     "l3": {
+      "t": "下一步：？？？",
+      "fs": 56,
+      "cls": "dim"
+     },
+     "m1": {
+      "img": "cards/images/samples/bmz_key.png"
+     }
+    },
+    "amb": [
+     [
+      "screws",
+      1560,
+      820,
+      300,
+      220,
+      "far"
+     ],
+     [
+      "cable",
+      1600,
+      130,
+      240,
+      180,
+      "far"
+     ]
+    ]
+   }
+  },
+  {
+   "id": "L-N16",
+   "layout": "L-N16",
+   "name": "主句 + 四角",
+   "function": "一句结论 + 旁人的反应",
+   "scene": "A",
+   "focus": [
+    "{{ }} 重点字"
+   ],
+   "images": [
+    "证据截图"
+   ],
+   "components": [
+    "tag"
+   ],
+   "motion": "卡片 / 图解按槽位顺序 rise（错开 0.12s） → 贴纸 drop（落定回弹 2%） → 文字 rise → 焦点（朱橙）在强调拍 blockSweep；类别 3 和背景动态常驻",
+   "preview": "docs/previews/cards/L-N16.jpg",
+   "example": {
+    "layout": "L-N16",
+    "fill": {
+     "m1": {
+      "img": "cards/images/samples/evidence/shop_order_教学示例.jpg",
+      "cls": "photo dim"
+     },
+     "l1": {
+      "t": "{{没校验}}，\n就是越权",
+      "fs": 120,
+      "cls": "c wrap"
+     },
+     "l2": {
+      "ic": "tag",
+      "data": {
+       "text": "“改个号就行？”",
+       "icon": "message-square"
+      },
+      "tone": "card"
+     },
+     "l3": {
+      "ic": "tag",
+      "data": {
+       "text": "“这也算漏洞？”",
+       "icon": "message-square"
+      },
+      "tone": "card"
+     },
+     "l4": {
+      "ic": "tag",
+      "data": {
+       "text": "“我以为有校验”",
+       "icon": "message-square"
+      },
+      "tone": "card"
+     },
+     "l5": {
+      "ic": "tag",
+      "data": {
+       "text": "“赶紧提交”",
+       "icon": "message-square"
+      },
+      "tone": "card"
+     }
+    }
+   }
+  },
+  {
+   "id": "L-N17",
+   "layout": "L-N17",
+   "name": "主干 → 分支",
+   "function": "先讲主线，再展开出事的分支",
+   "scene": "B",
+   "focus": [
+    "l3"
+   ],
+   "images": [],
+   "components": [
+    "keyword",
+    "step",
+    "tag",
+    "title"
+   ],
+   "motion": "标题逐行 maskUp → 卡片 / 图解按槽位顺序 rise（错开 0.12s） → 引线 / 标注在最后一个元素之后 0.15–0.25s 出现 → 焦点（朱橙）在强调拍 blockSweep；类别 3 和背景动态常驻",
+   "preview": "docs/previews/cards/L-N17.jpg",
+   "example": {
+    "layout": "L-N17",
+    "fill": {
+     "t1": {
+      "ic": "title",
+      "data": {
+       "title": "一次请求，\n五种走向",
+       "fs": 104
+      }
+     },
+     "c1": {
+      "ic": "step",
+      "data": {
+       "idx": "01",
+       "name": "登录",
+       "en": "LOGIN",
+       "icon": "user-round"
+      }
+     },
+     "c2": {
+      "ic": "step",
+      "data": {
+       "idx": "02",
+       "name": "发请求",
+       "en": "REQUEST",
+       "icon": "arrow-right"
+      }
+     },
+     "c3": {
+      "ic": "keyword",
+      "data": {
+       "word": "服务器",
+       "en": "SERVER",
+       "exp": "查不查归属？",
+       "icon": "server"
+      }
+     },
+     "m1": null,
+     "l1": {
+      "ic": "tag",
+      "data": {
+       "text": "查了 · 403"
+      },
+      "tone": "card"
+     },
+     "l2": {
+      "ic": "tag",
+      "data": {
+       "text": "没查 · 200"
+      },
+      "tone": "card"
+     },
+     "l3": {
+      "ic": "tag",
+      "data": {
+       "text": "读到别人订单"
+      },
+      "tone": "hot"
+     },
+     "l4": {
+      "ic": "tag",
+      "data": {
+       "text": "改了别人订单"
+      },
+      "tone": "card"
+     },
+     "l5": {
+      "ic": "tag",
+      "data": {
+       "text": "删了别人订单"
+      },
+      "tone": "card"
+     }
+    },
+    "lines": [
+     [
+      1248,
+      556,
+      1440,
+      388
+     ],
+     [
+      1248,
+      556,
+      1440,
+      496
+     ],
+     [
+      1248,
+      556,
+      1440,
+      600,
+      1
+     ],
+     [
+      1248,
+      556,
+      1440,
+      708
+     ],
+     [
+      1248,
+      556,
+      1440,
+      812
+     ],
+     [
+      400,
+      728,
+      432,
+      640
+     ],
+     [
+      768,
+      640,
+      800,
+      556
+     ]
+    ]
+   }
+  },
+  {
+   "id": "L-N18",
+   "layout": "L-N18",
+   "name": "来源 → 分类 → 聚焦",
+   "function": "引用标准 / 公告，并在分类里定位本期",
+   "scene": "A",
+   "focus": [
+    "c2"
+   ],
+   "images": [
+    "1 实物贴纸"
+   ],
+   "components": [
+    "tag",
+    "title"
+   ],
+   "motion": "标题逐行 maskUp → 卡片 / 图解按槽位顺序 rise（错开 0.12s） → 贴纸 drop（落定回弹 2%） → 文字 rise → 引线 / 标注在最后一个元素之后 0.15–0.25s 出现 → 焦点（朱橙）在强调拍 blockSweep；类别 3 和背景动态常驻",
+   "preview": "docs/previews/cards/L-N18.jpg",
+   "example": {
+    "layout": "L-N18",
+    "fill": {
+     "m1": {
+      "img": "cards/images/samples/bmz_briefcase.png"
+     },
+     "t1": {
+      "ic": "title",
+      "data": {
+       "title": "漏洞分类",
+       "fs": 104
+      }
+     },
+     "l1": {
+      "t": "参考 OWASP 2021",
+      "fs": 52,
+      "cls": "dim"
+     },
+     "c1": {
+      "ic": "tag",
+      "data": {
+       "text": "访问控制",
+       "icon": "shield"
+      },
+      "tone": "card"
+     },
+     "l2": {
+      "t": "注入",
+      "fs": 52,
+      "cls": "c dim"
+     },
+     "l3": {
+      "t": "加密失效",
+      "fs": 52,
+      "cls": "c dim"
+     },
+     "l4": {
+      "t": "错误配置",
+      "fs": 52,
+      "cls": "c dim"
+     },
+     "c2": {
+      "ic": "tag",
+      "data": {
+       "text": "本期：越权（IDOR）"
+      },
+      "tone": "hot"
+     },
+     "l5": {
+      "t": "水平越权",
+      "fs": 52,
+      "cls": "c"
+     },
+     "l6": {
+      "t": "{{垂直越权}}",
+      "fs": 64,
+      "cls": "c"
+     }
+    },
+    "lines": [
+     [
+      1280,
+      256,
+      1280,
+      192
+     ],
+     [
+      1104,
+      320,
+      1056,
+      332
+     ],
+     [
+      1456,
+      320,
+      1504,
+      332
+     ],
+     [
+      1280,
+      384,
+      1280,
+      464
+     ],
+     [
+      1100,
+      568,
+      960,
+      688
+     ],
+     [
+      1460,
+      568,
+      1600,
+      680,
+      1
+     ]
+    ]
+   }
+  },
+  {
+   "id": "L-N19",
+   "layout": "L-N19",
+   "name": "中轴物件串联",
+   "function": "两个容易混的概念之间的关系",
+   "scene": "B",
+   "focus": [
+    "[[ ]] 色块"
+   ],
+   "images": [
+    "1 实物贴纸"
+   ],
+   "components": [],
+   "motion": "贴纸 drop（落定回弹 2%） → 文字 rise → 焦点（朱橙）在强调拍 blockSweep；类别 3 和背景动态常驻",
+   "preview": "docs/previews/cards/L-N19.jpg",
+   "example": {
+    "layout": "L-N19",
+    "fill": {
+     "l1": {
+      "t": "认证<small>AUTHN · 你是谁</small>",
+      "fs": 140,
+      "cls": "c"
+     },
+     "m1": {
+      "img": "cards/images/samples/bmz_key.png"
+     },
+     "l2": {
+      "t": "[[授权]]<small>AUTHZ · 你能做什么</small>",
+      "fs": 140,
+      "cls": "c"
+     },
+     "l3": {
+      "t": "“我登录了”",
+      "fs": 52,
+      "cls": "c dim"
+     },
+     "l4": {
+      "t": "“但这不是我的”",
+      "fs": 52,
+      "cls": "c dim"
+     },
+     "k1": {
+      "t": "AUTHN ≠ AUTHZ",
+      "fs": 20,
+      "cls": "mic"
+     }
+    }
+   }
+  },
+  {
+   "id": "L-N20",
+   "layout": "L-N20",
+   "name": "对象 + 两侧判断",
+   "function": "一个对象，两个判断",
+   "scene": "B",
+   "focus": [
+    "[[ ]] 色块"
+   ],
+   "images": [
+    "1 实物贴纸"
+   ],
+   "components": [],
+   "motion": "贴纸 drop（落定回弹 2%） → 文字 rise → 焦点（朱橙）在强调拍 blockSweep；类别 3 和背景动态常驻",
+   "preview": "docs/previews/cards/L-N20.jpg",
+   "example": {
+    "layout": "L-N20",
+    "fill": {
+     "l1": {
+      "t": "能用<small>WORKS</small>",
+      "fs": 160,
+      "cls": "c"
+     },
+     "m1": {
+      "img": "cards/images/samples/bmz_lock_open.png"
+     },
+     "l2": {
+      "t": "[[不安全]]<small>UNSAFE</small>",
+      "fs": 160,
+      "cls": "c"
+     },
+     "k1": null
+    },
+    "deco": [
+     [
+      64,
+      860,
+      "SAME LOCK · 同一把锁"
+     ]
+    ]
+   }
+  },
+  {
+   "id": "L-N21",
+   "layout": "L-N21",
+   "name": "弧线清单",
+   "function": "准备清单、门槛（5–6 项）",
+   "scene": "A",
+   "focus": [
+    "c2"
+   ],
+   "images": [
+    "1 实物贴纸"
+   ],
+   "components": [
+    "step",
+    "title"
+   ],
+   "motion": "标题逐行 maskUp → 卡片 / 图解按槽位顺序 rise（错开 0.12s） → 贴纸 drop（落定回弹 2%） → 文字 rise → 引线 / 标注在最后一个元素之后 0.15–0.25s 出现 → 焦点（朱橙）在强调拍 blockSweep；类别 3 和背景动态常驻",
+   "preview": "docs/previews/cards/L-N21.jpg",
+   "example": {
+    "layout": "L-N21",
+    "fill": {
+     "m1": {
+      "img": "cards/images/samples/bmz_laptop.png"
+     },
+     "t1": {
+      "ic": "title",
+      "data": {
+       "title": "动手前备齐",
+       "fs": 104
+      }
+     },
+     "k1": {
+      "t": "CHECKLIST · 05",
+      "fs": 20,
+      "cls": "mic"
+     },
+     "c1": {
+      "ic": "step",
+      "data": {
+       "idx": "01",
+       "name": "授权书",
+       "en": "AUTH",
+       "icon": "file-check"
+      }
+     },
+     "c2": {
+      "ic": "step",
+      "data": {
+       "idx": "02",
+       "name": "测试账号",
+       "en": "ACCOUNTS",
+       "icon": "users"
+      },
+      "tone": "hot"
+     },
+     "c3": {
+      "ic": "step",
+      "data": {
+       "idx": "03",
+       "name": "抓包工具",
+       "en": "PROXY",
+       "icon": "scan-search"
+      }
+     },
+     "c4": {
+      "ic": "step",
+      "data": {
+       "idx": "04",
+       "name": "AI 助手",
+       "en": "AI",
+       "icon": "bot"
+      }
+     },
+     "c5": {
+      "ic": "step",
+      "data": {
+       "idx": "05",
+       "name": "记录模板",
+       "en": "NOTES",
+       "icon": "clipboard-check"
+      }
+     }
+    },
+    "lines": [
+     [
+      800,
+      300,
+      232,
+      312
+     ],
+     [
+      860,
+      420,
+      568,
+      600
+     ],
+     [
+      1120,
+      420,
+      1352,
+      600
+     ],
+     [
+      1120,
+      300,
+      1688,
+      312
+     ]
+    ]
+   }
+  },
+  {
+   "id": "L-N22",
+   "layout": "L-N22",
+   "name": "一群里的一个",
+   "function": "比喻：一群里有一个不一样",
+   "scene": "A",
+   "focus": [],
+   "images": [],
+   "components": [
+    "crowd",
+    "tag",
+    "title",
+    "zoom"
+   ],
+   "motion": "标题逐行 maskUp → 卡片 / 图解按槽位顺序 rise（错开 0.12s） → 引线 / 标注在最后一个元素之后 0.15–0.25s 出现 → 焦点（朱橙）在强调拍 blockSweep；类别 3 和背景动态常驻",
+   "preview": "docs/previews/cards/L-N22.jpg",
+   "example": {
+    "layout": "L-N22",
+    "fill": {
+     "t1": {
+      "ic": "title",
+      "data": {
+       "title": "一百个里\n只有\n一个是真",
+       "fs": 104
+      }
+     },
+     "m1": {
+      "ic": "crowd",
+      "data": {
+       "rows": 4,
+       "cols": 5,
+       "odd": 13,
+       "icon": "bug"
+      },
+      "rect": [
+       544,
+       104,
+       880,
+       768
+      ]
+     },
+     "l1": {
+      "ic": "tag",
+      "data": {
+       "text": "都一样"
+      },
+      "tone": "card"
+     },
+     "m2": {
+      "ic": "zoom",
+      "data": {
+       "icon": "bug",
+       "label": "这一个",
+       "en": "REAL ONE"
+      }
+     },
+     "l2": null
+    },
+    "deco": [
+     [
+      64,
+      200,
+      "NOISE · 100 : 1"
+     ]
+    ],
+    "lines": [
+     [
+      1250,
+      578,
+      1460,
+      640,
+      1
+     ]
+    ]
+   }
+  },
+  {
+   "id": "L-N23",
+   "layout": "L-N23",
+   "name": "框选取证",
+   "function": "证据只看一行",
+   "scene": "B",
+   "focus": [
+    "{{ }} 重点字"
+   ],
+   "images": [
+    "证据截图"
+   ],
+   "components": [
+    "shot",
+    "title",
+    "verdict"
+   ],
+   "motion": "标题逐行 maskUp → 卡片 / 图解按槽位顺序 rise（错开 0.12s） → 文字 rise → 焦点（朱橙）在强调拍 blockSweep；类别 3 和背景动态常驻",
+   "preview": "docs/previews/cards/L-N23.jpg",
+   "example": {
+    "layout": "L-N23",
+    "fill": {
+     "t1": {
+      "ic": "title",
+      "data": {
+       "title": "证据只看\n这一行",
+       "fs": 104
+      }
+     },
+     "l1": {
+      "t": "详情接口里\n{{owner}} 变了",
+      "fs": 52,
+      "cls": "wrap"
+     },
+     "m1": {
+      "ic": "shot",
+      "data": {
+       "img": "cards/images/samples/evidence/shop_order_教学示例.jpg",
+       "title": "订单列表（示意）"
+      },
+      "tilt": -3
+     },
+     "m2": {
+      "ic": "shot",
+      "data": {
+       "img": "cards/images/samples/evidence/shop_order_教学示例.jpg",
+       "title": "Response",
+       "mark": [
+        0.6,
+        0.42,
+        0.18,
+        0.05
+       ],
+       "note": "owner"
+      },
+      "tilt": 2
+     },
+     "m3": null,
+     "c1": {
+      "ic": "verdict",
+      "data": {
+       "text": "越权成立",
+       "why": "owner ≠ 当前用户"
+      }
+     }
+    },
+    "deco": [
+     [
+      64,
+      200,
+      "PROOF · 1 LINE"
+     ]
+    ]
+   }
+  },
+  {
+   "id": "L-N24",
+   "layout": "L-N24",
+   "name": "输入 → 输出",
+   "function": "修复前后、关系式收尾",
+   "scene": "B",
+   "focus": [
+    "[[ ]] 色块"
+   ],
+   "images": [
+    "1 实物贴纸"
+   ],
+   "components": [
+    "term",
+    "title"
+   ],
+   "motion": "标题逐行 maskUp → 卡片 / 图解按槽位顺序 rise（错开 0.12s） → 贴纸 drop（落定回弹 2%） → 文字 rise → 焦点（朱橙）在强调拍 blockSweep；类别 3 和背景动态常驻",
+   "preview": "docs/previews/cards/L-N24.jpg",
+   "example": {
+    "layout": "L-N24",
+    "fill": {
+     "t1": {
+      "ic": "title",
+      "data": {
+       "title": "补一行校验",
+       "fs": 112
+      }
+     },
+     "l1": {
+      "t": "修复前",
+      "fs": 64,
+      "cls": "c"
+     },
+     "l2": {
+      "t": "修复后",
+      "fs": 64,
+      "cls": "c"
+     },
+     "m1": {
+      "img": "cards/images/samples/bmz_lock_open.png"
+     },
+     "m2": {
+      "ic": "term",
+      "data": {
+       "title": "修复前 · 200",
+       "lines": [
+        "GET /orders/1002",
+        "\"owner\": \"user_b\""
+       ]
+      }
+     },
+     "m3": {
+      "ic": "term",
+      "data": {
+       "title": "修复后 · 403",
+       "lines": [
+        "GET /orders/1002",
+        "[[\"not owner\"]]"
+       ]
+      }
+     },
+     "m4": {
+      "img": "cards/images/samples/bmz_lock_closed.png"
+     },
+     "l3": {
+      "t": "+ 归属校验",
+      "fs": 52,
+      "cls": "c"
+     },
+     "l4": {
+      "t": "不是我的 → 403",
+      "fs": 52,
+      "cls": "c"
+     }
+    },
+    "deco": [
+     [
+      68,
+      236,
+      "PATCH · 修复"
+     ]
+    ]
+   }
+  },
+  {
+   "id": "L-N25",
+   "layout": "L-N25",
+   "name": "噪音 → 收束",
+   "function": "一堆噪音，最后只剩一个结论",
+   "scene": "B",
+   "focus": [],
+   "images": [
+    "1 实物贴纸"
+   ],
+   "components": [
+    "stat"
+   ],
+   "motion": "卡片 / 图解按槽位顺序 rise（错开 0.12s） → 贴纸 drop（落定回弹 2%） → 文字 rise → 引线 / 标注在最后一个元素之后 0.15–0.25s 出现 → 焦点（朱橙）在强调拍 blockSweep；类别 3 和背景动态常驻",
+   "preview": "docs/previews/cards/L-N25.jpg",
+   "example": {
+    "layout": "L-N25",
+    "fill": {
+     "m1": {
+      "img": "cards/images/samples/bmz_radar.png"
+     },
+     "l1": {
+      "t": "~~版本泄露~~",
+      "fs": 56,
+      "cls": ""
+     },
+     "l2": {
+      "t": "~~缺少头部~~",
+      "fs": 56,
+      "cls": ""
+     },
+     "l3": {
+      "t": "~~弱密码？~~",
+      "fs": 56,
+      "cls": ""
+     },
+     "l4": {
+      "t": "~~XSS？~~",
+      "fs": 56,
+      "cls": ""
+     },
+     "l5": {
+      "t": "~~端口开放~~",
+      "fs": 56,
+      "cls": ""
+     },
+     "l6": {
+      "t": "~~重复报告~~",
+      "fs": 56,
+      "cls": ""
+     },
+     "l7": {
+      "t": "~~误报~~",
+      "fs": 56,
+      "cls": ""
+     },
+     "l8": {
+      "t": "~~低危~~",
+      "fs": 56,
+      "cls": ""
+     },
+     "c1": {
+      "ic": "stat",
+      "data": {
+       "value": "1",
+       "unit": "个",
+       "label": "能提交（示意）",
+       "en": "SIGNAL"
+      }
+     }
+    },
+    "deco": [
+     [
+      96,
+      128,
+      "NOISE · 扫描器输出"
+     ]
+    ],
+    "lines": [
+     [
+      992,
+      488,
+      1040,
+      488,
+      1
+     ]
+    ]
+   }
+  },
+  {
+   "id": "R-AI-CHAT",
+   "layout": "L-K21",
+   "name": "AI 对话",
+   "function": "演示怎么问 AI、AI 怎么答（提示词 → 回答 → 人来确认）",
+   "scene": "A",
+   "focus": [
+    "{{ }} 重点字"
+   ],
+   "images": [
+    "1 实物贴纸",
+    "3 氛围装饰"
+   ],
+   "components": [
+    "chat"
+   ],
+   "motion": "卡片 / 图解按槽位顺序 rise（错开 0.12s） → 贴纸 drop（落定回弹 2%） → 焦点（朱橙）在强调拍 blockSweep；类别 3 和背景动态常驻",
+   "preview": "docs/previews/cards/R-AI-CHAT.jpg",
+   "example": {
+    "layout": "L-K21",
+    "fill": {
+     "p1": {
+      "img": "cards/images/samples/bmz_aichip.png"
+     },
+     "c1": {
+      "ic": "chat",
+      "data": {
+       "msgs": [
+        {
+         "who": "me",
+         "text": "这个接口\n能越权吗？"
+        },
+        {
+         "who": "ai",
+         "text": "改 uid 能读到\n别人的手机号"
+        },
+        {
+         "who": "me",
+         "text": "先确认\n{{授权范围}}"
+        }
+       ]
+      }
+     }
+    },
+    "amb": [
+     [
+      "keycaps",
+      820,
+      760,
+      420,
+      330,
+      "near"
+     ]
+    ],
+    "deco": [
+     [
+      96,
+      140,
+      "PROMPT · AI 对话"
+     ]
+    ]
+   }
+  },
+  {
+   "id": "R-AI-REVIEW",
+   "layout": "L-K24",
+   "name": "AI 输出 vs 人工复核",
+   "function": "讲 AI 的结论哪些要人确认（逐条核对，划掉误报）",
+   "scene": "A",
+   "focus": [
+    "{{ }} 重点字"
+   ],
+   "images": [],
+   "components": [
+    "review",
+    "title"
+   ],
+   "motion": "标题逐行 maskUp → 卡片 / 图解按槽位顺序 rise（错开 0.12s） → 文字 rise → 焦点（朱橙）在强调拍 blockSweep；类别 3 和背景动态常驻",
+   "preview": "docs/previews/cards/R-AI-REVIEW.jpg",
+   "example": {
+    "layout": "L-K24",
+    "fill": {
+     "t1": {
+      "ic": "title",
+      "data": {
+       "title": "AI 报的，\n要一条条核",
+       "fs": 104
+      }
+     },
+     "l1": {
+      "t": "左 AI　右人工",
+      "fs": 52,
+      "cls": "dim"
+     },
+     "l2": {
+      "t": "成立：{{1 / 4}}",
+      "fs": 56
+     },
+     "c1": {
+      "ic": "review",
+      "data": {
+       "rows": [
+        {
+         "ai": "越权读订单",
+         "human": "确认",
+         "ok": true
+        },
+        {
+         "ai": "SQL 注入",
+         "human": "误报",
+         "ok": false
+        },
+        {
+         "ai": "XSS",
+         "human": "误报",
+         "ok": false
+        },
+        {
+         "ai": "版本泄露",
+         "human": "低危",
+         "ok": true
+        }
+       ]
+      }
+     }
+    },
+    "deco": [
+     [
+      68,
+      210,
+      "REVIEW · AI vs HUMAN"
+     ]
+    ]
+   }
+  },
+  {
+   "id": "R-SKILL",
+   "layout": "L-K08",
+   "name": "技能树 / 学习路线",
+   "function": "就业、入门路线：已会 / 正在学 / 未解锁",
+   "scene": "B",
+   "focus": [],
+   "images": [],
+   "components": [
+    "skill",
+    "title",
+    "vtrack"
+   ],
+   "motion": "标题逐行 maskUp → 卡片 / 图解按槽位顺序 rise（错开 0.12s） → 焦点（朱橙）在强调拍 blockSweep；类别 3 和背景动态常驻",
+   "preview": "docs/previews/cards/R-SKILL.jpg",
+   "example": {
+    "layout": "L-K08",
+    "scene": "B",
+    "fill": {
+     "t1": {
+      "ic": "title",
+      "data": {
+       "title": "白帽入门，按顺序学",
+       "fs": 112
+      }
+     },
+     "c1": {
+      "ic": "skill",
+      "data": {
+       "lv": "01",
+       "name": "HTTP 基础",
+       "state": "done"
+      }
+     },
+     "c2": {
+      "ic": "skill",
+      "data": {
+       "lv": "02",
+       "name": "抓包改包",
+       "state": "done"
+      }
+     },
+     "c3": {
+      "ic": "skill",
+      "data": {
+       "lv": "03",
+       "name": "常见漏洞",
+       "state": "now",
+       "pct": 60
+      }
+     },
+     "c4": {
+      "ic": "skill",
+      "data": {
+       "lv": "04",
+       "name": "写报告",
+       "state": "lock"
+      }
+     },
+     "c5": {
+      "ic": "skill",
+      "data": {
+       "lv": "05",
+       "name": "AI 辅助",
+       "state": "lock"
+      }
+     },
+     "c6": {
+      "ic": "skill",
+      "data": {
+       "lv": "06",
+       "name": "挖真实 SRC",
+       "state": "lock"
+      }
+     },
+     "c7": {
+      "ic": "vtrack",
+      "data": {
+       "en": "ROADMAP · 03 / 06",
+       "items": [
+        "HTTP 基础",
+        "抓包改包",
+        "常见漏洞",
+        "写报告",
+        "AI 辅助",
+        "挖真实 SRC"
+       ],
+       "now": 2
+      }
+     }
+    },
+    "deco": [
+     [
+      68,
+      236,
+      "SKILL TREE · 学习路线"
+     ]
+    ]
+   }
+  },
+  {
+   "id": "R-JD",
+   "layout": "L-K23",
+   "name": "岗位 JD 拆解",
+   "function": "网安就业：一份 JD 拆成几条硬要求，标出最关键的一条",
+   "scene": "A",
+   "focus": [
+    "[[ ]] 色块"
+   ],
+   "images": [
+    "2 意象插画"
+   ],
+   "components": [
+    "jd",
+    "tag",
+    "title"
+   ],
+   "motion": "标题逐行 maskUp → 卡片 / 图解按槽位顺序 rise（错开 0.12s） → 贴纸 drop（落定回弹 2%） → 文字 rise → 焦点（朱橙）在强调拍 blockSweep；类别 3 和背景动态常驻",
+   "preview": "docs/previews/cards/R-JD.jpg",
+   "example": {
+    "layout": "L-K23",
+    "fill": {
+     "p1": {
+      "img": "cards/images/samples/sc02/sc02p_report.png",
+      "cls": "stk diecut"
+     },
+     "t1": {
+      "ic": "title",
+      "data": {
+       "title": "岗位要求，拆开看",
+       "fs": 104
+      }
+     },
+     "c1": {
+      "t": "渗透测试工程师 · 15–25K（示意）",
+      "fs": 52,
+      "cls": "dim"
+     },
+     "c2": {
+      "ic": "jd",
+      "data": {
+       "role": "渗透测试工程师",
+       "reqs": [
+        "Web 漏洞",
+        "内网基础",
+        "[[会用 AI 工具]]",
+        "写报告"
+       ]
+      }
+     },
+     "l1": {
+      "ic": "tag",
+      "data": {
+       "text": "最关键",
+       "dot": true,
+       "en": "MUST HAVE"
+      },
+      "tone": "card"
+     }
+    },
+    "deco": [
+     [
+      740,
+      236,
+      "JD · 示意"
+     ]
+    ]
+   }
+  },
+  {
+   "id": "R-TOOLS",
+   "layout": "L-K10",
+   "name": "工具对比",
+   "function": "AI 工具 / 安全工具横评：两样东西各适合干什么",
+   "scene": "A",
+   "focus": [
+    "c2"
+   ],
+   "images": [
+    "1 实物贴纸",
+    "3 氛围装饰"
+   ],
+   "components": [
+    "chip"
+   ],
+   "motion": "卡片 / 图解按槽位顺序 rise（错开 0.12s） → 贴纸 drop（落定回弹 2%） → 文字 rise → 焦点（朱橙）在强调拍 blockSweep；类别 3 和背景动态常驻",
+   "preview": "docs/previews/cards/R-TOOLS.jpg",
+   "example": {
+    "layout": "L-K10",
+    "fill": {
+     "p1": {
+      "img": "cards/images/samples/bmz_laptop.png"
+     },
+     "c1": {
+      "ic": "chip",
+      "data": {
+       "name": "抓包工具",
+       "en": "PROXY",
+       "sub": "看清每个请求",
+       "icon": "scan-search"
+      },
+      "tone": "card"
+     },
+     "l1": {
+      "t": "VS",
+      "fs": 72,
+      "cls": "num c"
+     },
+     "c2": {
+      "ic": "chip",
+      "data": {
+       "name": "AI 助手",
+       "en": "ASSISTANT",
+       "sub": "批量出思路",
+       "icon": "bot"
+      },
+      "tone": "hot"
+     },
+     "l2": {
+      "t": "准，但要手动",
+      "fs": 52,
+      "cls": "c"
+     },
+     "l3": {
+      "t": "快，但要复核",
+      "fs": 52,
+      "cls": "c"
+     }
+    },
+    "amb": [
+     [
+      "cable",
+      1580,
+      130,
+      260,
+      200,
+      "far"
+     ]
+    ]
+   }
+  },
+  {
+   "id": "R-INTERVIEW",
+   "layout": "L-K27",
+   "name": "面试题",
+   "function": "就业：一道高频面试题 + 一句答题要点",
+   "scene": "A",
+   "focus": [
+    "{{ }} 重点字"
+   ],
+   "images": [
+    "2 意象插画",
+    "3 氛围装饰"
+   ],
+   "components": [
+    "quote",
+    "title"
+   ],
+   "motion": "标题逐行 maskUp → 卡片 / 图解按槽位顺序 rise（错开 0.12s） → 贴纸 drop（落定回弹 2%） → 焦点（朱橙）在强调拍 blockSweep；类别 3 和背景动态常驻",
+   "preview": "docs/previews/cards/R-INTERVIEW.jpg",
+   "example": {
+    "layout": "L-K27",
+    "fill": {
+     "p1": {
+      "img": "cards/images/samples/sc02/sc02_magnifier.png",
+      "cls": "stk diecut"
+     },
+     "t1": {
+      "ic": "title",
+      "data": {
+       "title": "面试常问这一题",
+       "fs": 112
+      }
+     },
+     "c1": {
+      "ic": "quote",
+      "data": {
+       "text": "越权漏洞怎么修？\n答：服务端校验{{归属}}",
+       "src": "高频面试题（示意）"
+      },
+      "tone": "card"
+     }
+    },
+    "deco": [
+     [
+      68,
+      236,
+      "INTERVIEW · Q&A"
+     ]
+    ],
+    "bokeh": [
+     [
+      1700,
+      880,
+      100
+     ]
+    ]
+   }
+  }
+ ]
+}
