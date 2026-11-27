@@ -1,5 +1,5 @@
 {
-  "note": "2026-11-27 P5 风格样张（视觉系统 1.4：写实为核心，动漫为辅）。文件名沿用旧的陶瓷样张（bmz_*），内容已换成写实；旧陶瓷样张在 git 历史里（提交 bacc451 及以前）。全部抠图后过 tools/grade.py。样张不进正片。",
+  "note": "2026-11-27 P5 风格样张（视觉系统 1.4：写实为核心，动漫为辅）。文件名沿用旧的陶瓷样张（bmz_*），内容已换成写实；旧陶瓷样张在 git 历史里（提交 bacc451 及以前）。全部抠图后过 tools/grade.py。样张不进正片。 1.7：新增类别 2（sc02/，铅笔漫画模切贴纸）和类别 3（ambient/）样张；device/ 改为透明的手 + 手机；flat、anime 场景停用并移除。",
   "model": "agnes-image-2.5-flash",
   "real": {
     "preset": "real",
@@ -109,5 +109,37 @@
   "regenerated": [
     "bmz_lock_open（第一版锁梁抬得不明显）",
     "anime_radar（第一版光束出画、底座有杂笔触）"
-  ]
+  ],
+  "sc02": {
+    "preset": "sc02-line（前 4 张为 1.6 时的提示词，后 2 张 sc02p_* 为 1.7 铅笔 + 一处克莱因蓝）",
+    "post": "tools/diecut.py（默认铅笔灰）；sc02_boundary 先 --crop 330,280,860,850",
+    "regenerated": [
+      "sc02_borrowed_key（第一版门顶出画）",
+      "sc02_boundary（前两版头部被裁、第一版鞋上有类似品牌的标志）"
+    ],
+    "items": [
+      "sc02_borrowed_key 越权",
+      "sc02_waiting 审核慢",
+      "sc02_magnifier AI 给线索人来核",
+      "sc02_boundary 授权边界",
+      "sc02p_report 写报告（蓝：马克杯）",
+      "sc02p_ladder 一步步往上（蓝：旗）"
+    ]
+  },
+  "ambient": {
+    "preset": "real（1.7 后用 ambient）",
+    "post": "抠图 → grade.py --sat 0.3",
+    "items": [
+      "amb_keycaps",
+      "amb_cable",
+      "amb_screws",
+      "amb_pcb",
+      "amb_usbc",
+      "amb_ssd"
+    ]
+  },
+  "device": {
+    "preset": "raw + 1.7 device 后缀（透明：只有手和手机）",
+    "post": "抠图 --fill-holes → grade → device_paste（mock_notice 为教学示例截图）"
+  }
 }

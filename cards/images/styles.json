@@ -1,9 +1,9 @@
 {
-  "note": "知识卡片板块 · 图片风格提示词。不设品牌素材层：每期按口播现生成，图片每期都不一样，只有风格后缀固定。1.4 起：写实 real 为核心，动漫 anime 为辅；生成后一律过统一调色 tools/grade.py。陶瓷 / 粘土类（sticker、toy、iso）停用（status = 停用），genimg.py 默认拒绝。tools/genimg.py 的 preset：普通风格用 id（如 real），带做法的风格用 id-做法（如 sc02-line）。新风格按同样的格式往里加。",
+  "note": "知识卡片板块 · 图片风格提示词。不设品牌素材层：每期按口播现生成。1.7 起图片分三类（brand.json → imagery.categories）：类别 1 实物贴纸（口播直接说到的东西：real 写实为核心，anime 做高光版，device 手持手机）；类别 2 意象插画（口播没直说、要让观众意会的意思：sc02 铅笔漫画模切贴纸）；类别 3 氛围装饰（不讲内容，只加质感：ambient 写实虚化道具 + 程序化光斑）。素材尽量透明底。停用的风格 / 做法（status = 停用）genimg.py 默认拒绝。preset：普通风格用 id（如 real），带做法的用 id-做法（如 sc02-line）。",
   "styles": {
     "real": {
       "name": "写实产品摄影",
-      "role": "核心",
+      "role": "类别 1 · 核心",
       "use": "名词实物化：芯片、服务器、锁、钥匙、手机、硬盘……知识卡片里最常用的图片；也用于需要「真东西」的镜头",
       "prompt_suffix": "photorealistic studio product photography, real physical materials such as brushed metal, anodized aluminium, glass and matte plastic, low-key lighting, one soft warm key light from the upper left and a clear warm rim light outlining the whole silhouette, subtle realistic reflections, slightly desaturated natural colors, macro lens, sharp focus, isolated on a plain medium grey (#8A8A8A) seamless background, centered, full object visible, no text, no letters, no numbers, no labels, no logo, no watermark",
       "post": "python3 -I tools/cutout.py object 原图 抠图.png（实心物件加 --fill-holes）→ python3 -I tools/grade.py 抠图.png 输出.png",
@@ -14,14 +14,15 @@
         "a single 1U rack-mounted server, three-quarter view, black anodized aluminium front panel with fine ventilation mesh, a few tiny warm orange status LEDs"
       ],
       "rules": "物件保留本来的颜色（金属就是金属色），不再限制三色；高饱和的点只允许朱橙（状态灯、发光写成 warm orange），不要绿灯、蓝光、紫光。AI 生成硬件容易出假细节：提示词里不要求屏幕、标签、文字，挑图时检查乱码和错误结构。暗色物件在提示词里写明 warm rim light。",
-      "samples": "cards/images/samples/bmz_*.png（P5 样张 12 张，提示词 samples/prompts.json）；预览 docs/previews/sheet_stickers.jpg"
+      "samples": "cards/images/samples/bmz_*.png（P5 样张 12 张，提示词 samples/prompts.json）；预览 docs/previews/sheet_stickers.jpg",
+      "category": 1
     },
     "anime": {
       "name": "动漫光效",
-      "role": "辅助",
-      "use": "主角镜头、高光时刻：开场主体、金句、「AI 扫描」这类关键一步；物件或场景都可以",
+      "role": "类别 1 · 高光版（全期 1–2 个关键时刻）",
+      "use": "类别 1 的高光版：开场主体、金句、关键一步这类全期最重要的一两个时刻；只画物件",
       "prompt_suffix": "detailed anime film background art style, painterly hand-drawn object, rich lighting with glowing light bloom and lens glow, deep night-blue shadows and warm vermilion orange light, fine clean line work, highly detailed, cinematic, isolated object on a plain light grey (#D6D6D6) seamless background, three-quarter view, full object visible, no characters, no text, no letters, no numbers, no logo, no watermark",
-      "post": "python3 -I tools/cutout.py object 原图 抠图.png → python3 -I tools/grade.py 抠图.png 输出.png；场景用 anime-scene（不抠图，只调色）",
+      "post": "python3 -I tools/cutout.py object 原图 抠图.png → python3 -I tools/grade.py 抠图.png 输出.png",
       "placement": "炭黑场；一屏最多一个动漫图，作为该屏的焦点（它自带朱橙光，等于这一屏的朱橙焦点）；不和写实图放在同一个镜头",
       "subjects": [
         "a square AI processor chip with a glowing core, pins on all four sides",
@@ -35,9 +36,31 @@
           "name": "动漫场景",
           "use": "空场景：金库门、机房走廊、深夜工位……放进卡片 / 窗口里，或做章节卡、金句卡的画面",
           "prompt_suffix": "detailed anime film background art, painterly hand-drawn environment, cinematic composition, rich lighting with glowing light bloom, deep night-blue shadows and warm vermilion orange light sources, highly detailed, no characters, no people, no text, no letters, no numbers, no logo, no watermark",
-          "post": "python3 -I tools/grade.py 原图 输出（不抠图）；位图只放在卡片 / 窗口里，不整屏铺底"
+          "post": "python3 -I tools/grade.py 原图 输出（不抠图）；位图只放在卡片 / 窗口里，不整屏铺底",
+          "status": "停用",
+          "retired_reason": "整张带背景，和「素材尽量透明」冲突（2026-11-27 用户确认停用）"
         }
-      }
+      },
+      "category": 1
+    },
+    "ambient": {
+      "name": "氛围道具（写实虚化）",
+      "category": 3,
+      "role": "类别 3 · 氛围装饰",
+      "use": "不讲内容，只加画面丰富度和质感：键帽、网线、螺丝、电路板碎片、数据线、硬盘这类和账号相关的小物件，放在画面边缘做前景 / 远景",
+      "prompt_suffix": "photorealistic studio product photography, real physical materials such as brushed metal, anodized aluminium, matte plastic and braided cable, low-key lighting, soft warm key light from the upper left and a subtle rim light, neutral desaturated colors only, no orange, no colored lights, no glowing parts, macro lens, sharp focus, isolated on a plain medium grey (#8A8A8A) seamless background, centered, full object visible, no text, no letters, no numbers, no labels, no logo, no watermark",
+      "post": "python3 -I tools/cutout.py object 原图 抠图.png → python3 -I tools/grade.py 抠图.png 输出.png --sat 0.3（素材保持清晰；虚化、压暗在渲染时加）",
+      "placement": "网页 .amb.near（前景：大、blur 14px、亮度 0.6，可出血）/ .amb.far（远景：小、blur 4px、亮度 0.48）；AE 高斯模糊 + 曝光。每屏 ≤ 3 个，不进章节进度条区，不挡主体和字",
+      "subjects": [
+        "three loose mechanical keyboard keycaps in matte charcoal grey",
+        "a loosely coiled grey ethernet network cable with a transparent RJ45 connector",
+        "four small brushed steel screws scattered loosely",
+        "a small broken fragment of a dark graphite circuit board",
+        "a black braided USB-C cable loosely curled",
+        "a small M.2 SSD memory stick"
+      ],
+      "rules": "不带朱橙（一屏一个朱橙焦点）；永远不抢焦点；主体是 SC02 模切贴纸的镜头不用写实道具，只用程序化光斑 .bokeh。",
+      "samples": "cards/images/samples/ambient/；预览 docs/previews/styles/categories_amb.jpg、categories_A.jpg"
     },
     "sticker": {
       "name": "陶瓷贴纸",
@@ -55,29 +78,31 @@
       "retired_reason": "粘土 / 陶瓷质感显得廉价、像模板（2026-11-27 用户确认，改用 real）"
     },
     "sc02": {
-      "name": "SC02 · 蓝调漫画",
-      "use": "漫画质感的角色、情境和情绪画面；白帽志版的漫画风（挖洞号 SC-01 不得使用）",
+      "name": "SC02 · 铅笔漫画",
+      "use": "类别 2 · 意象插画：口播没有直接说、但要让观众意会的意思（越权 = 用别人的钥匙开门；审核慢 = 趴在桌上等）。先写「要传达的意思」，再写画面",
       "variants": {
         "line": {
-          "name": "蓝线漫画（做法一）",
-          "use": "角色、情境、人物反应",
-          "prompt_suffix": "manga ink illustration on cream white paper (#F5EEDF), charcoal black ink lines with detailed crosshatching, all shading and screentone dots printed in Klein blue (#002FA7) only, vermilion orange (#FF5A1F) only as a tiny accent such as a screen glow, no red, no black clothing, clean white background around the subject, no text, no letters, no numbers, no logo, no watermark",
-          "post": "直接放进卡片，或 python3 -I tools/cutout.py object 原图 输出 抠透明底"
+          "name": "铅笔漫画（默认）",
+          "use": "角色、情境、人物反应、比喻",
+          "prompt_suffix": "manga pencil illustration on cream white paper (#F5EEDF), graphite pencil lines with fine crosshatching and soft neutral grey pencil shading, exactly one small object in the scene colored Klein blue (#002FA7) as the only colored accent, vermilion orange (#FF5A1F) only as a tiny glow of light if any (objects themselves are never orange), no other colors, no black clothing, the entire subject fully inside the frame with wide empty paper margins on all four sides, no logos or brand marks, no text, no letters, no numbers, no watermark",
+          "post": "python3 -I tools/diecut.py 原图 输出.png（模切贴纸：奶油白描边 10px，默认 --tone none 保留铅笔灰；画面伸到边上的先 --crop）"
         },
         "duo": {
-          "name": "蓝调双色漫画（做法二）",
-          "use": "物件、场景、情绪节点（金库门、钥匙、走廊……）",
-          "prompt_suffix": "black-and-white manga ink illustration, bold ink lines, detailed crosshatching and screentone shading, high contrast monochrome, pure white background, no color at all, no text, no letters, no numbers, no logo, no watermark",
-          "post": "python3 -I tools/duotone.py 原图 输出.jpg --map klein --grain 0（映射成 炭黑 → 克莱因蓝 → 奶油白）"
+          "name": "黑白漫画（可选）",
+          "use": "需要更硬朗的黑白线条时；整体冷色情绪（极少用）可加 --tone klein 映射成蓝调",
+          "prompt_suffix": "black-and-white manga ink illustration, bold ink lines, detailed crosshatching and screentone shading, high contrast monochrome, pure white background, the entire subject fully inside the frame with wide empty margins on all four sides, no logos or brand marks, no color at all, no text, no letters, no numbers, no watermark",
+          "post": "python3 -I tools/diecut.py 原图 输出.png（默认铅笔灰；--tone klein 为蓝调，只给冷色情绪的极少数画面）"
         }
       },
-      "placement": "优先奶油白场；放炭黑场时做成奶油白纸底的卡片，不把人物抠出来直接压在炭黑底上",
+      "placement": "做成模切贴纸（tools/diecut.py），炭黑场、奶油白场都能直接用；投影渲染时加（.stk.diecut / AE 图层样式「投影」）",
       "subjects": [
         "a young security researcher with round glasses leaning toward a laptop late at night, surprised",
         "a hand holding a key in front of a huge vault door with a small gap of light"
       ],
-      "rules": "不得用 SC-01 的形象特征（黑帽压低遮眼、黑色工装夹克、瘦削剪影）；不做「炭黑底 + 黑白人物 + 暖色轮廓光」的组合；朱橙只做极小点缀；同一镜头不和 3D 贴纸混用；道具颜色要在提示词里写明（模型默认会给灰色笔记本）。",
-      "samples": "docs/previews/styles/SC02.jpg"
+      "rules": "铅笔灰打底，克莱因蓝只做一处小物件点缀（像宝石一样），不整张染蓝；提示词固定写「整个人物在画面内、四周留白」，挑图时检查有没有被裁切、有没有 logo；不得用 SC-01 的形象特征（黑帽压低遮眼、黑色工装夹克、瘦削剪影）；朱橙只做极小点缀；主体是 SC02 的镜头，类别 3 只用程序化光斑，不放写实道具。",
+      "samples": "cards/images/samples/sc02/（铅笔灰模切贴纸）；色调对比 docs/previews/styles/sc02_tone_compare.jpg",
+      "category": 2,
+      "role": "类别 2 · 意象插画"
     },
     "toy": {
       "name": "设计师玩具角色",
@@ -129,15 +154,17 @@
     "device": {
       "name": "手持设备实拍",
       "use": "把用户提供的截图放进手机 / 平板屏幕里：通知、APP 界面、短信、审核结果",
-      "prompt_suffix": "realistic photograph of a hand holding a modern smartphone with a completely blank pure white screen, screen facing the camera, dark moody background with warm orange rim light, shallow depth of field, no text, no logo, no brand marks",
-      "post": "python3 -I tools/grade.py 照片 调色.png → python3 -I tools/device_paste.py 调色.png 截图.png 输出.png（自动找白屏四角、透视贴入，保留圆角和刘海；截图保留原色）",
-      "placement": "炭黑场；照片占画面一侧，截图在屏幕里保持原色",
+      "prompt_suffix": "realistic photograph of a hand holding a modern smartphone with a completely blank pure white screen, screen facing the camera, only the hand, wrist and phone, isolated on a plain medium grey (#8A8A8A) seamless background, soft warm key light and a warm rim light along the edges, shallow depth of field, no text, no logo, no brand marks",
+      "post": "python3 -I tools/cutout.py object 原图 抠图.png --fill-holes → python3 -I tools/grade.py 抠图.png 调色.png → python3 -I tools/device_paste.py 调色.png 截图.png 输出.png（透明底保留；截图保留原色）",
+      "placement": "透明素材，只有手和手机，不带桌面和环境；炭黑场直接放",
       "subjects": [
         "one hand holding a phone, slight tilt",
         "phone lying on a dark desk next to a keyboard"
       ],
-      "rules": "屏幕必须是纯白空屏，后期贴用户截图；禁止品牌标识。",
-      "samples": "cards/images/samples/device/（P5 样张 2 张 + 贴入示意截图的效果）；预览 docs/previews/styles/flat_device.jpg"
+      "rules": "屏幕必须是纯白空屏，后期贴用户截图；禁止品牌标识；不要桌面、键盘这类环境。",
+      "samples": "cards/images/samples/device/（P5 样张 2 张 + 贴入示意截图的效果）；预览 docs/previews/styles/flat_device.jpg",
+      "category": 1,
+      "role": "类别 1 · 手持手机（透明素材）"
     },
     "flat": {
       "name": "几何平面插画",
@@ -151,7 +178,9 @@
         "a crowd of identical cubes with one orange cube"
       ],
       "rules": "同一个镜头里不和 3D 贴纸混用，避免两种画风打架。样张见 samples/flat/。",
-      "samples": "cards/images/samples/flat/（P5 样张 2 张）；预览 docs/previews/styles/flat_device.jpg"
+      "samples": "cards/images/samples/flat/（P5 样张 2 张）；预览 docs/previews/styles/flat_device.jpg",
+      "status": "停用",
+      "retired_reason": "用途（比喻、类比）和类别 2 重叠，比喻统一交给 SC02（2026-11-27 用户确认）"
     }
   }
 }

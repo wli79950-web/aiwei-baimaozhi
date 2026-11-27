@@ -4,7 +4,8 @@
   1. 找屏幕：亮度 ≥ --white、饱和度低的像素里最大的一块（device 提示词要求「纯白空屏」）
   2. 四个角：x+y 最小 / x−y 最大 / x+y 最大 / x−y 最小 → 左上 / 右上 / 右下 / 左下
   3. 截图按四个角做透视变换贴上去，再用屏幕本身的形状做遮罩：圆角、刘海、手指压住的地方都保留照片原样
-截图保留原色（用户素材不调色）；照片本身要过 tools/grade.py 的话，先调色再贴截图。"""
+截图保留原色（用户素材不调色）；照片本身要过 tools/grade.py 的话，先调色再贴截图。
+1.7：照片可以是抠好的透明 PNG（只有手和手机），透明通道原样保留。"""
 import sys
 import numpy as np
 from PIL import Image, ImageFilter
@@ -15,9 +16,11 @@ opt = lambda k, d: float(sys.argv[sys.argv.index(k) + 1]) if k in sys.argv else 
 photo_p, shot_p, out_p = args[:3]
 WHITE, FEATHER = opt('--white', 225), opt('--feather', 1)
 
-photo = Image.open(photo_p).convert('RGB'); P = np.asarray(photo).astype(np.int16)
+src_img = Image.open(photo_p); has_a = src_img.mode in ('RGBA', 'LA') or 'transparency' in src_img.info
+photo = src_img.convert('RGB'); P = np.asarray(photo).astype(np.int16)
+A0 = np.asarray(src_img.convert('RGBA'))[:, :, 3] if has_a else np.full(P.shape[:2], 255, np.uint8)
 lum = P.mean(axis=2); sat = P.max(axis=2) - P.min(axis=2)
-cand = (lum >= WHITE) & (sat <= 30)   # 调过色的照片白屏是奶油白（饱和差约 22）
+cand = (lum >= WHITE) & (sat <= 30) & (A0 > 200)   # 调过色的照片白屏是奶油白（饱和差约 22）
 lab, n = ndimage.label(cand)
 if not n: sys.exit('没找到白屏：调低 --white，或确认照片是纯白空屏')
 sizes = ndimage.sum(cand, lab, range(1, n + 1))
@@ -53,5 +56,6 @@ warped = shot.transform(photo.size, Image.PERSPECTIVE, tuple(coef), Image.BICUBI
 mask = Image.fromarray((ndimage.binary_dilation(screen, iterations=2) * 255).astype(np.uint8))
 if FEATHER: mask = mask.filter(ImageFilter.GaussianBlur(FEATHER))
 out = photo.copy(); out.paste(warped, (0, 0), mask)
+if has_a: out.putalpha(Image.fromarray(A0))
 out.save(out_p)
 print(out_p, '屏幕四角', quad.astype(int).tolist())

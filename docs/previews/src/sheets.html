@@ -47,8 +47,8 @@ table.ct td.r{font:900 26px var(--f-num);text-align:right}
 
 <div class="sheet" id="stickers">
   <div class="k">Aiwei Whitehat Log · Image samples</div>
-  <h1>图片样张 · 写实 12 + 动漫 6</h1>
-  <h2>只作风格样张，不进正片<small>写实为核心、动漫为辅（1.4）；全部抠图后过 tools/grade.py 统一调色。正片素材每期按口播重新生成</small></h2>
+  <h1>图片样张 · 类别 1 实物贴纸</h1>
+  <h2>只作风格样张，不进正片<small>写实 12 张 + 动漫高光版 4 张，全部抠图后过 tools/grade.py。类别 2 / 3 的样张见 docs/previews/styles/categories_*.jpg。正片素材每期按口播重新生成</small></h2>
   <div class="st" id="strow1" style="background:var(--char)"></div>
   <div class="st" id="strow2" style="background:var(--cream)"></div>
   <div class="st" id="strow3" style="background:var(--char)"></div>
@@ -87,10 +87,10 @@ if (sheet === 'stickers') {
   const cell = n => `<div><img src="../../../cards/images/samples/bmz_${n}.png"></div>`;
   document.getElementById('strow1').innerHTML = N.map(cell).join('');
   document.getElementById('strow2').innerHTML = N.map(cell).join('');
-  const AN = ['anime_chip', 'anime_key', 'anime_lock', 'anime_radar'], SC = ['anime_vault', 'anime_datacenter'];
+  const AN = ['anime_chip', 'anime_key', 'anime_lock', 'anime_radar'];
   document.getElementById('strow3').innerHTML = AN.map(n => `<div><img src="../../../cards/images/samples/anime/${n}.png"></div>`).join('') +
-    SC.map(n => `<div style="padding:26px 10px"><img style="border-radius:20px;filter:none" src="../../../cards/images/samples/anime/${n}.jpg"></div>`).join('');
-  document.getElementById('stnames').textContent = '第 1 行：写实 · 炭黑底　第 2 行：写实 · 奶油白底　第 3 行：动漫（4 个物件 + 2 个场景，场景只放进卡片 / 窗口）｜　' + N.map(n => 'bmz_' + n).join(' · ');
+    ['device/device_hand_示例贴图.png'].map(n => `<div><img src="../../../cards/images/samples/${n}"></div>`).join('');
+  document.getElementById('stnames').textContent = '第 1 行：写实 · 炭黑底　第 2 行：写实 · 奶油白底　第 3 行：动漫高光版 4 张 + 手持手机（透明，屏幕已贴示意截图）｜　' + N.map(n => 'bmz_' + n).join(' · ');
 }
 </script>
 </body></html>

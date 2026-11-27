@@ -1,11 +1,11 @@
 #!/usr/bin/env python3
 """模切贴纸：把纸底漫画（SC02）做成带奶油白描边的透明贴纸，放在炭黑场上也立得住（类别 2 · 意象插画）。
-用法：python3 -I tools/diecut.py 原图.png 输出.png [--border 10] [--tone klein|ink|none] [--crop x0,y0,x1,y1] [--close 12]
+用法：python3 -I tools/diecut.py 原图.png 输出.png [--border 10] [--tone none|klein|ink] [--crop x0,y0,x1,y1] [--close 12]
   1. 找墨迹：比纸色暗一截的像素 + 有颜色的像素（朱橙点缀、蓝色网点）
   2. 轮廓：闭运算把排线连起来 → 填洞 → 去掉碎点 → 平滑，得到人物 / 物件的剪影
   3. 描边：剪影外扩 --border px（圆角），描边区填奶油白；边缘抗锯齿，输出透明 PNG
-  4. 调色（--tone klein，默认）：灰阶按 炭黑 → 克莱因蓝 → 奶油白 映射（和 sc02-duo 同一组色标，见 brand.json → imagery.duotone.klein），
-     有颜色的像素（朱橙点缀）保留；--tone ink 蓝黑墨（只有最深的墨线偏蓝，中间调是中性铅笔灰）；--tone none 只把纸白映射成奶油白、墨黑映射成炭黑
+  4. 调色（默认 --tone none，1.7 用户确认）：铅笔灰原样保留，只把纸白映射成奶油白、墨黑映射成炭黑；有颜色的像素（克莱因蓝点缀、朱橙光）保留原色。
+     --tone klein 蓝调（灰阶按 炭黑 → 克莱因蓝 → 奶油白 映射，只给冷色情绪的极少数画面）；--tone ink 蓝黑墨（对比用，不推荐）
   --crop 先裁掉画面里伸到边上的部分（例如贯穿全图的地平线），再做模切
 投影不烘焙：网页用 filter: drop-shadow，AE 用图层样式「投影」，方便调。"""
 import json, os, sys
@@ -23,7 +23,7 @@ while i < len(args):
     pos_args.append(args[i]); i += 1
 src, dst = pos_args[:2]
 opt = lambda k, d: type(d)(args[args.index(k) + 1]) if k in args else d
-BORDER, TONE, CLOSE, CROP = opt('--border', 10), opt('--tone', 'klein'), opt('--close', 12), opt('--crop', '')
+BORDER, TONE, CLOSE, CROP = opt('--border', 10), opt('--tone', 'none'), opt('--close', 12), opt('--crop', '')
 
 img = Image.open(src).convert('RGB')
 if CROP: img = img.crop(tuple(int(v) for v in CROP.split(',')))

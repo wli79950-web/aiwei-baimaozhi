@@ -44,9 +44,9 @@ if (F === 'amb') {
 }
 if (F === 'sc02') {
   BGLIB.mount(fr, 'BG3', BG);
-  add('div', 'cap', 'left:64px;top:104px', '类别 2 · 意象插画 · SC02 模切贴纸（炭黑场直接用，奶油白描边 10px，投影渲染时加）');
-  const N = [['sc02_borrowed_key', '越权：用别人的钥匙开门'], ['sc02_waiting', '审核很慢：只能等'], ['sc02_magnifier', 'AI 给线索，人来逐条核'], ['sc02_boundary', '授权边界：到线就停']];
-  N.forEach(([n, l], i) => { const x = 64 + i * 456; img('stk diecut', IMG + `sc02/${n}.png`, x, 170, 420, 700); add('div', 'lab', `left:${x}px;top:900px;width:420px`, l); });
+  add('div', 'cap', 'left:64px;top:104px', '类别 2 · 意象插画 · SC02 铅笔漫画模切贴纸（铅笔灰 + 一处克莱因蓝点缀，奶油白描边 10px，投影渲染时加）');
+  const N = [['sc02_borrowed_key', '越权：用别人的钥匙开门'], ['sc02_waiting', '审核很慢：只能等'], ['sc02_magnifier', 'AI 给线索，人来核'], ['sc02_boundary', '授权边界：到线就停'], ['sc02p_report', '写报告（蓝：马克杯）'], ['sc02p_ladder', '一步步往上（蓝：旗）']];
+  N.forEach(([n, l], i) => { const x = 64 + i * 304; img('stk diecut', IMG + `sc02/${n}.png`, x, 170, 280, 700); add('div', 'lab', `left:${x}px;top:900px;width:290px;font-size:26px`, l); });
 }
 add('div', 'chapter-zone', '');
 window.ready = () => Promise.all([document.fonts.ready, ...[...document.images].map(i => i.decode().catch(() => {}))]);

@@ -8,14 +8,17 @@
 | preset | 风格 | 用来讲什么 | 后期 | 样张 |
 |---|---|---|---|---|
 | **`real`** | **写实产品摄影（核心）** | 名词实物化：芯片、服务器、锁、钥匙、手机…… | 抠透明底 → `tools/grade.py` | `samples/bmz_*.png` |
-| `anime` / `anime-scene` | 动漫光效（辅助）：物件 / 空场景 | 主角镜头、高光时刻，一屏最多一个；场景放进卡片 / 窗口 | 物件抠图 → `tools/grade.py`；场景只调色 | `samples/anime/` |
-| `sc02-line` | **SC02 · 蓝调漫画** · 做法一 蓝线漫画 | 角色、情境、人物反应 | 直接用 / 抠透明底 | `docs/previews/styles/SC02.jpg` |
-| `sc02-duo` | **SC02 · 蓝调漫画** · 做法二 黑白漫画 → 蓝调 | 物件、场景、情绪节点 | `tools/duotone.py --map klein --grain 0` | 同上 |
+| `anime` | 动漫高光版（类别 1）；`anime-scene` 已停用 | 全期最关键的 1–2 个时刻，只画物件 | 抠图 → `tools/grade.py` | `samples/anime/` |
+| `sc02-line` | **SC02 · 铅笔漫画**（类别 2）：铅笔灰 + 一处克莱因蓝 | 意象插画：要让观众意会的意思 | `tools/diecut.py` 模切贴纸 | `samples/sc02/` |
+| `sc02-duo` | SC02 · 黑白漫画（可选） | 需要更硬朗的线条时 | `tools/diecut.py`（`--tone klein` 蓝调只给冷色情绪） | — |
+| `ambient` | **氛围道具**（类别 3）：写实虚化道具 | 只加质感，不讲内容；每屏 ≤ 3 个 | 抠图 → `tools/grade.py --sat 0.3`；虚化在渲染时加 | `samples/ambient/` |
 | `tone` | 双色调摄影 | 章节卡、反转、金句 | `tools/duotone.py` | 提交 `adbbc35` |
-| `device` | 手持设备实拍 | 把用户截图放进手机屏幕 | 调色 → `tools/device_paste.py` | `samples/device/` |
-| `flat` | 几何平面插画 | 比喻、类比 | 放进卡片 | `samples/flat/` |
+| `device` | 手持手机（类别 1，透明：只有手和手机） | 把用户截图放进手机屏幕 | 抠图 → 调色 → `tools/device_paste.py` | `samples/device/` |
+| `flat` | 几何平面插画（**停用**：比喻交给 SC02） | — | — | git 历史 |
 
 每个风格的完整提示词后缀、放法、示例主题和注意事项都在 `styles.json`。
+
+**1.7 起图片分三类**（`STYLE.md` 6.1）：类别 1 实物贴纸（`real` 核心、`anime` 高光版、`device` 手持手机）· 类别 2 意象插画（`sc02` 铅笔漫画 → `tools/diecut.py` 模切贴纸）· 类别 3 氛围装饰（`ambient` 写实虚化道具 + 程序化光斑）。下表里标「停用」的不再使用。
 
 **停用**（2026-11-27，视觉系统 1.4）：`sticker` 陶瓷贴纸、`toy` 设计师玩具、`iso` 等距微缩。三者同为粘土 / 陶瓷质感，显得廉价、像模板；`styles.json` 里保留条目（`status: 停用`）作记录，`tools/genimg.py` 默认拒绝。
 

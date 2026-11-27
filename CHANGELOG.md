@@ -1,5 +1,14 @@
 # 更新记录
 
+## 1.13.0 · 2026-11-27 · 视觉系统 1.7：图片三类、SC02 铅笔漫画、素材尽量透明
+- **图片分三类**（用户确认）：类别 1 实物贴纸（`real` 写实为核心、`anime` 高光版、`device` 手持手机）· 类别 2 意象插画（`sc02` 铅笔漫画模切贴纸）· 类别 3 氛围装饰（新增 `ambient` 写实虚化道具 + 程序化光斑）。`brand.json` → `imagery.categories` / `subject_rule` / `transparent`，版本 1.7.0。
+- **SC02 改为铅笔漫画**：铅笔灰打底 + 一处克莱因蓝点缀（用户认可铅笔灰更高级）；提示词固定写「整个人物在画面内、四周留白」「物件不画成朱橙」。新增 `tools/diecut.py` 模切贴纸（默认 `--tone none` 保留铅笔灰，`--tone klein` 蓝调可选，`--crop` 先裁掉伸到边上的部分）。样张 6 张（`samples/sc02/`），三种色调对比 `docs/previews/styles/sc02_tone_compare.jpg`。
+- **素材尽量透明**：`device` 改为「只有手和手机」的透明素材（抠图 → 调色 → `device_paste.py`，透明通道保留）。
+- **停用**：`flat`（比喻交给 SC02）、`anime-scene`（整张带背景）；样张移除（git 历史里有）。`genimg.py` 支持停用某个做法。
+- 类别 3：`samples/ambient/` 6 张；`grade.py --sat`；`base.css` 新增 `.amb.near` / `.amb.far`（渲染时虚化压暗）、`.stk.diecut`、`.bokeh`。镜头示意 `docs/previews/styles/categories_A.jpg`（实物贴纸 + 氛围道具）、`categories_B.jpg`（模切贴纸 + 光斑）。
+- 生图清单模板加「类别」「要传达的意思」两列；`genimg_list.py` 检查类别和风格对得上、类别 2 必须写要传达的意思。
+- 同步 `CLAUDE.md`、`STYLE.md` 6.1、`cards/images/README.md`、`docs/rules/`。
+
 ## 1.12.0 · 2026-11-27 · 视觉系统 1.6：顶部章节进度条区；P5 完成
 - **顶部章节进度条区**（用户要求）：画面顶部 7% = 76px 留给章节进度条（用户剪辑时放置），内容和出血都不进这一条，内容从 y = 104 开始。`brand.json` → `layout.chapter_bar`（h 76、gap 28），`gen_tokens.py` 输出 `--chapter-h` / `--content-top`。
 - `layout_lint`：顶部页边距改为 104，压到章节进度条区（含出血）报错；利用率按去掉这一条后的画面算。50 个排版整体下移（y 56–872 线性映射到 104–872，872 以下不动，按 8 对齐；S/M/L/XL 卡只移位置；标题保持原高度），全部通过、零提醒。自检加「压到章节进度条区」，夹具 L-T01 同步，90 项通过。
