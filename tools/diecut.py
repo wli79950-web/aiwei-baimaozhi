@@ -1,11 +1,11 @@
 #!/usr/bin/env python3
 """模切贴纸：把纸底漫画（SC02）做成带奶油白描边的透明贴纸，放在炭黑场上也立得住（类别 2 · 意象插画）。
-用法：python3 -I tools/diecut.py 原图.png 输出.png [--border 10] [--tone klein|none] [--crop x0,y0,x1,y1] [--close 12]
+用法：python3 -I tools/diecut.py 原图.png 输出.png [--border 10] [--tone klein|ink|none] [--crop x0,y0,x1,y1] [--close 12]
   1. 找墨迹：比纸色暗一截的像素 + 有颜色的像素（朱橙点缀、蓝色网点）
   2. 轮廓：闭运算把排线连起来 → 填洞 → 去掉碎点 → 平滑，得到人物 / 物件的剪影
   3. 描边：剪影外扩 --border px（圆角），描边区填奶油白；边缘抗锯齿，输出透明 PNG
   4. 调色（--tone klein，默认）：灰阶按 炭黑 → 克莱因蓝 → 奶油白 映射（和 sc02-duo 同一组色标，见 brand.json → imagery.duotone.klein），
-     有颜色的像素（朱橙点缀）保留；--tone none 只把纸白映射成奶油白、墨黑映射成炭黑
+     有颜色的像素（朱橙点缀）保留；--tone ink 蓝黑墨（只有最深的墨线偏蓝，中间调是中性铅笔灰）；--tone none 只把纸白映射成奶油白、墨黑映射成炭黑
   --crop 先裁掉画面里伸到边上的部分（例如贯穿全图的地平线），再做模切
 投影不烘焙：网页用 filter: drop-shadow，AE 用图层样式「投影」，方便调。"""
 import json, os, sys
@@ -55,6 +55,10 @@ g = np.asarray(ImageOps.autocontrast(img.convert('L'), cutoff=0.5), np.float32) 
 if TONE == 'klein':
     stops = B['imagery']['duotone']['klein']
     pos = np.array([s[0] for s in stops], np.float32); cols = np.stack([C[s[1]] for s in stops])
+    mapped = np.stack([np.interp(g, pos, cols[:, k]) for k in range(3)], -1)
+elif TONE == 'ink':      # 蓝黑墨：只有最深的墨线偏克莱因蓝，中间调保持中性的铅笔灰，纸是奶油白
+    navy = C['char'] * 0.5 + C['klein'] * 0.5; grey = np.array([150, 145, 136], np.float32)
+    pos = np.array([0, .18, .6, 1], np.float32); cols = np.stack([navy, navy * .6 + grey * .4, grey, C['cream']])
     mapped = np.stack([np.interp(g, pos, cols[:, k]) for k in range(3)], -1)
 else:
     mapped = C['char'] + g[..., None] * (C['cream'] - C['char'])
