@@ -23,7 +23,8 @@
 .scene-A .ic.t-lit{box-shadow:0 40px 80px rgba(0,0,0,.35)}
 /* 一屏一个朱橙焦点（1.5）：炭黑场的炭灰卡里，编号 / 数字改用奶油白，朱橙只留给当前项（朱橙卡）和 {{重点字}} */
 .scene-A .ic.t-card,.scene-A .ic.t-dark{--ic-num:var(--cream)}
-/* 白底卡（卡片白）的编号 / 数字用炭黑（1.6，用户确认），不再用克莱因蓝 */
+/* 白底卡（卡片白）的编号 / 数字用炭黑（1.6，用户确认），不再用克莱因蓝；奶油白场的默认卡也是白底，同样用炭黑 */
+.scene-B .ic.t-card{--ic-num:var(--char)}
 
 .ic-body{position:absolute;inset:0;padding:var(--pad);display:flex;flex-direction:column;overflow:hidden}
 .ic.t-none .ic-body{overflow:visible;padding:0}
