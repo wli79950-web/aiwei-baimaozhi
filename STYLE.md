@@ -74,6 +74,8 @@
 | BG2 奶油白·纸面 | `plates/BG2_cream_plate.png` | `layers/BG2_radar_lines.svg`（炭黑 6%，可关） | B |
 | FX 朱橙 / 蓝闪切 | `plates/FX_orange.png` · `plates/FX_klein.png` | — | 转场 ≤ 6 帧 |
 
+网页里一律用 `libs/backgrounds/backgrounds.js`（`BGLIB.mount` / `BGLIB.animate`）挂背景板，演示和预览也一样。
+
 ## 6. 知识卡片板块（`cards/`）
 挖洞号的一张知识卡片 = **图片 + 画面排版 + 信息卡**（再加动效）。白帽志把三样拆开、各自扩充，但同属一个板块，放在同一个文件夹 `cards/` 下（总说明见 `cards/README.md`）。
 
@@ -81,7 +83,7 @@
 |---|---|---|---|
 | 图片 | `cards/images/` | 风格提示词 `styles.json` + 后期处理 + 风格样张；图片每期现生成 | ✅ 风格提示词，持续扩充 |
 | 排版 | `cards/layouts/` | 构图 + 槽位，由挖洞号 49 张卡的构图迁来（50 个，总览 `docs/previews/layouts/sheet.jpg`） | ✅ P3，持续扩充 |
-| 信息卡 | `cards/infocards/` | 承载信息的组件 × A/B 场景 × S–XL（`IC.render` + `IC.fit` + `IC.animate`） | P4 进行中：第一批 8 个，持续扩充 |
+| 信息卡 | `cards/infocards/` | 承载信息的组件 × A/B 场景 × S–XL（`IC.render` + `IC.fit` + `IC.animate`） | ✅ P4：20 个，持续扩充 |
 | 配方 | `cards/recipes/` | 叙事功能 → 排版 + 信息卡 + 图片 + 动效 | P6 |
 
 ### 6.1 图片风格（`cards/images/styles.json`）

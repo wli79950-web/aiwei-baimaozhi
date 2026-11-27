@@ -10,5 +10,5 @@
 | FX 克莱因蓝闪切 | `FX_klein.png` | — | 对照 / 切话题，≤ 6 帧 |
 
 - 雷达中心 (1440, 540)，圆环半径 170 / 270 / 370 / 470。扫描扇区单独一层，AE 里把锚点设在雷达中心、旋转即可做扫掠。
-- 网页里：`<img class="bg-layer" src="libs/backgrounds/layers/...svg">` 叠在场景类 `scene-A` / `scene-B` 的 section 上（场景类自带底色渐变，和底板 PNG 一致）。
+- 网页里：用挂载器 `backgrounds.js`（全局 `BGLIB`）——`const bg = BGLIB.mount(section, 'BG1', 'libs/backgrounds/')` 会按顺序插入底板 PNG + 动态层 SVG 并加上场景类；`renderAt(t)` 里调 `BGLIB.animate(bg, t)` 让扫描扇区按 `BM.sweepSpin` 旋转。**所有画面和预览都用它挂背景**，不要只用场景类的 CSS 渐变代替底板。
 - AE 里：底板做图片层 `背景板_BG1`；动态层图层名以 `背景动态_` 开头。

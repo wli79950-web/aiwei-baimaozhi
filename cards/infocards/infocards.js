@@ -152,7 +152,7 @@
         return '<div class="ic-ln' + (dim ? ' dim' : '') + '" data-role="tline">' + body + '</div>';
       }).join('');
       return '<div class="ic-body">' +
-        '<div class="ic-bar"><i></i><i></i><i></i>' + (d.title ? '<span data-fs="' + MIN + '" data-min="' + MIN + '" style="font-size:' + MIN + 'px">' + esc(d.title) + '</span>' : '') + '</div>' +
+        winBar(d.title) +
         part('ic-lines', ls, fs, MIN) + '</div>';
     }
   };
@@ -168,6 +168,172 @@
     }
   };
 
+  /* ---------- 第二批 ---------- */
+  function winBar(title) {   // 窗口标题栏：朱橙 + 两个奶油白圆点 + 等宽标题（终端卡、截图框共用）
+    return '<div class="ic-bar"><i></i><i></i><i></i>' + (title ? '<span data-fs="' + MIN + '" data-min="' + MIN + '" style="font-size:' + MIN + 'px">' + esc(title) + '</span>' : '') + '</div>';
+  }
+  // 图标用 SVG 画（不是文字，不受 52px 下限约束）；描边跟随文字色
+  var ICON = {
+    check: '<svg viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>',
+    arrow: '<svg viewBox="0 0 24 24"><path d="M5 12h13M13 6.5l5.5 5.5-5.5 5.5"/></svg>'
+  };
+  function isHl(s) { return /^\[\[.*\]\]$/.test(String(s)); }
+  function unHl(s) { return String(s).replace(/^\[\[|\]\]$/g, ''); }
+
+  C.quote = {
+    name: '引用卡', tone: 'card', sizes: 'M / L / XL（L：原话 2 行 + 出处一行 ≤ 12 字）',
+    fields: { text: '引用的原话（1–3 行，[[ ]] 色块）', src: '出处（可省；新闻公告类标「示意」）' },
+    beats: { in: '卡片 rise → 引号、原话、出处依次 rise', emph: '原话里的色块 blockSweep', out: 'sink' },
+    html: function (d, w, h) {
+      return '<div class="ic-body">' +
+        part('ic-qm', '“', clamp(h * 0.24, 80, 180), 80, ' data-role="text"') +
+        part('ic-text ic-qt', rich(d.text), clamp(h * 0.14, MIN, 80), MIN, ' data-role="text"') +
+        (d.src ? part('ic-text ic-src', '— ' + rich(d.src), MIN, MIN, ' data-role="text"') : '') + '</div>';
+    }
+  };
+
+  C.list = {
+    name: '清单卡', tone: 'card', sizes: 'L / XL（3–6 项）',
+    fields: { title: '清单标题（可省）', items: '项目数组：字符串，或 {text, state}；state = done 打勾 / now 当前项（整行朱橙）/ 省略为未做' },
+    beats: { in: '卡片 rise → 标题 maskUp → 各项依次 rise（错开 0.08s）', emph: '当前项的色块 blockSweep', out: 'sink' },
+    html: function (d, w, h, pad) {
+      var items = (d.items || []).map(function (x) { return typeof x === 'string' ? { text: x } : x; });
+      var th = d.title ? clamp(h * 0.13, 56, 88) : 0;
+      var fs = clamp((h - 2 * pad - th * 1.4) / Math.max(1, items.length) / 1.55, MIN, 72);
+      return '<div class="ic-body">' + (d.title ? part('ic-heavy ic-lt', masked(d.title), th, MIN) : '') +
+        '<div class="ic-items">' + items.map(function (it) {
+          var st = it.state || 'todo', mk = st === 'done' ? ICON.check : st === 'now' ? ICON.arrow : '';
+          return part('ic-it st-' + st + (st === 'now' ? ' bm-sweep' : ''), '<i class="mk">' + mk + '</i><span>' + rich(it.text) + '</span>', fs, MIN, ' data-role="' + (st === 'now' ? 'hl' : 'text') + '"');
+        }).join('') + '</div></div>';
+    }
+  };
+
+  C.tag = {
+    name: '标签 / 胶囊', tone: 'lit', sizes: '高 72–120（排版里的 label 槽位）',
+    fields: { text: '标签文字（2–8 字）', dot: '前面加一个重点色圆点（true / false）' },
+    beats: { in: 'rise（多个标签错开 0.1s）', emph: '—', out: 'sink' },
+    html: function (d, w, h) {
+      return '<div class="ic-body">' + part('ic-text ic-tg', (d.dot ? '<i class="dot"></i>' : '') + rich(d.text), clamp(h * 0.56, MIN, 72), MIN, ' data-role="text"') + '</div>';
+    }
+  };
+
+  C.shot = {
+    name: '截图框', tone: 'dark', sizes: 'L / XL 或任意窗口槽位（核心录屏用 libs/screencast 的录屏窗口）',
+    fields: { img: '截图路径（用户素材，保留原色）', title: '窗口标题（可省）', mark: '框选区域 [x, y, w, h]（0–1，相对截图区，可省）', note: '框选处的标注（可省）' },
+    beats: { in: '窗口 rise → 框选 drop → 标注 rise', emph: '—', out: 'sink' },
+    html: function (d) {
+      var m = d.mark, mk = m ? '<div class="ic-mark" data-role="mk" style="left:' + m[0] * 100 + '%;top:' + m[1] * 100 + '%;width:' + m[2] * 100 + '%;height:' + m[3] * 100 + '%"></div>' : '';
+      var note = d.note && m ? '<div class="ic-note" data-role="text" style="left:' + m[0] * 100 + '%;top:calc(' + (m[1] + m[3]) * 100 + '% + 14px)">' + part('', rich(d.note), MIN, MIN) + '</div>' : '';
+      return '<div class="ic-body">' + winBar(d.title) + '<div class="ic-area">' +
+        (d.img ? '<img src="' + esc(d.img) + '" alt="">' : '<div class="ph" data-role="decor">截图位</div>') + mk + note + '</div></div>';
+    }
+  };
+
+  C.phone = {
+    name: '手机屏幕', tone: 'none', sizes: '竖条槽位，宽 : 高 ≈ 1 : 2（如 432×816）',
+    fields: { img: '屏幕截图（可省）', notes: '通知数组 [{app, text}]（没有截图时用，2–3 条）', time: '锁屏时间（可省，如 21:36）' },
+    beats: { in: '手机 rise → 通知依次 rise（错开 0.25s）', emph: '通知里的色块 blockSweep', out: 'sink' },
+    html: function (d, w, h) {
+      var pw = Math.min(w, Math.round(h * 0.5)), left = Math.round((w - pw) / 2);
+      var inner = d.img ? '<img class="ic-scrimg" src="' + esc(d.img) + '" alt="">' :
+        (d.time ? part('ic-num ic-time', esc(d.time), clamp(pw * 0.26, 72, 140), MIN, ' data-role="text"') : '') +
+        (d.notes || []).map(function (n) {
+          return '<div class="ic-noti" data-role="row">' + (n.app ? part('ic-text ic-app', esc(n.app), MIN, MIN) : '') + part('ic-text', rich(n.text), MIN, MIN) + '</div>';
+        }).join('');
+      return '<div class="ic-ph" data-role="box" style="left:' + left + 'px;width:' + pw + 'px"><div class="ic-scr">' + inner + '</div></div>';
+    }
+  };
+
+  C.review = {
+    name: 'AI 输出 vs 人工复核', tone: 'card', sizes: 'L / XL（2–4 行）',
+    fields: { rows: '[{ai: "AI 的结论", human: "复核结果", ok: true | false}]；ok=false 时 AI 那句划掉', head: '表头（默认 ["AI 说", "人工复核"]）' },
+    beats: { in: '卡片 rise → 表头 → 每行依次 rise（错开 0.25s）', emph: '—', out: 'sink' },
+    html: function (d, w, h, pad) {
+      var rows = d.rows || [], hd = d.head || ['说', '人工复核'];
+      var fs = clamp((h - 2 * pad) / (rows.length + 1) / 1.7, MIN, 72);
+      return '<div class="ic-body"><div class="ic-rv-head" data-role="text">' + part('ic-text', '<b class="ic-who">AI</b> ' + esc(hd[0]), MIN, MIN) + part('ic-text', esc(hd[1]), MIN, MIN) + '</div>' +
+        rows.map(function (r) {
+          return '<div class="ic-rv-row' + (r.ok === false ? ' no' : '') + '" data-role="row">' + part('ic-text ic-ai', rich(r.ai), fs, MIN) +
+            part('ic-text ic-pill ' + (r.ok === false ? 'ghost' : 'hot'), (r.ok === false ? '✗ ' : '✓ ') + esc(r.human), fs, MIN) + '</div>';
+        }).join('') + '</div>';
+    }
+  };
+
+  C.jd = {
+    name: '岗位 / JD 卡', tone: 'card', sizes: 'L 放 2 个短要求、XL 放 4–6 个（要求胶囊放不下会报溢出）',
+    fields: { role: '岗位名', meta: '薪资 / 城市 / 年限一行（可省，示意数据要标）', reqs: '要求数组；用 [[ ]] 包住整条的那项高亮' },
+    beats: { in: '卡片 rise → 岗位名 maskUp → 要求胶囊依次 rise（错开 0.06s）', emph: '高亮那项本来就是朱橙底', out: 'sink' },
+    html: function (d, w, h) {
+      return '<div class="ic-body">' + part('ic-heavy ic-role', masked(d.role), clamp(h * 0.15, 64, 104), MIN) +
+        (d.meta ? part('ic-text ic-meta', rich(d.meta), MIN, MIN, ' data-role="text"') : '') +
+        '<div class="ic-pills">' + (d.reqs || []).map(function (r) {
+          return part('ic-text ic-pill ' + (isHl(r) ? 'hot' : 'ghost'), esc(unHl(r)), MIN, MIN, ' data-role="pill"');
+        }).join('') + '</div></div>';
+    }
+  };
+
+  C.skill = {
+    name: '技能树节点', tone: 'card', sizes: 'S / M（节点之间的连线在配方里画）',
+    fields: { name: '技能名（2–6 字）', lv: '编号 / 等级（可省）', state: 'done 已会（打勾）/ now 正在学（朱橙）/ lock 未解锁（虚线框）', pct: '进度 0–100（可省）' },
+    beats: { in: '节点 rise', emph: '进度条从左画出 underline', out: 'sink' },
+    html: function (d, w, h) {
+      var st = d.state || 'done', glyph = st === 'done' ? '✓' : st === 'lock' ? '' : '';
+      return '<div class="ic-body"><div class="ic-sk-top">' + (d.lv ? part('ic-num', esc(d.lv), clamp(h * 0.2, MIN, 72), MIN, ' data-role="text"') : '<span></span>') +
+        (glyph ? part('ic-num ic-glyph', glyph, clamp(h * 0.2, MIN, 72), MIN, ' data-role="text"') : '') + '</div>' +
+        part('ic-heavy ic-name', masked(d.name), clamp(h * 0.24, 56, 96), MIN) +
+        (d.pct != null ? '<div class="ic-prog"><div class="ic-fill" data-role="bar" style="width:' + clamp(+d.pct, 0, 100) + '%"></div></div>' : '') + '</div>';
+    }
+  };
+
+  var RISK = { '严重': 'r4', '高危': 'r3', '中危': 'r2', '低危': 'r1' };
+  C.risk = {
+    name: '风险卡', tone: 'card', sizes: 'M / L',
+    fields: { level: '严重 / 高危 / 中危 / 低危', title: '风险名', impact: '影响一句话（可省）', score: '分数（可省，如 9.8）' },
+    beats: { in: '卡片 rise → 顶部等级条 unfold → 风险名 maskUp → 影响 rise', emph: '分数 countUp', out: 'sink' },
+    html: function (d, w, h) {
+      return '<div class="ic-strip ' + (RISK[d.level] || 'r3') + '" data-role="rule">' + part('ic-heavy', esc(d.level || '高危'), MIN, MIN) +
+        (d.score ? part('ic-num', esc(d.score), MIN, MIN, ' data-role="num" data-to="' + esc(d.score) + '"') : '') + '</div>' +
+        '<div class="ic-body">' + part('ic-heavy ic-rt', masked(d.title), clamp(h * 0.17, 56, 96), MIN) +
+        (d.impact ? part('ic-text ic-imp', rich(d.impact), clamp(h * 0.11, MIN, 64), MIN, ' data-role="text"') : '') + '</div>';
+    }
+  };
+
+  C.verdict = {
+    name: '结论卡', tone: 'lit', sizes: 'M / L / XL',
+    fields: { text: '结论（1–2 行，[[ ]] 色块）', why: '理由一句（可省）', mark: '✓ / ✗ / !（默认 ✓）' },
+    beats: { in: '卡片 rise → 圆形记号 drop → 结论 maskUp → 理由 rise', emph: '结论里的色块 blockSweep', out: 'sink' },
+    html: function (d, w, h, pad) {
+      var ms = Math.round(clamp(Math.min(h - 2 * pad, w * 0.26), 88, 220));
+      return '<div class="ic-body"><div class="ic-mk" data-role="mk" style="width:' + ms + 'px;height:' + ms + 'px">' + part('ic-num', esc(d.mark || '✓'), ms * 0.56, MIN) + '</div>' +
+        '<div class="ic-vt">' + part('ic-heavy', masked(d.text), clamp(h * 0.17, 56, 112), MIN) +
+        (d.why ? part('ic-text ic-why', rich(d.why), MIN, MIN, ' data-role="text"') : '') + '</div></div>';
+    }
+  };
+
+  C.tier = {
+    name: '档位卡', tone: 'card', sizes: '宽条：高 160–240，宽 ≥ 720（多档竖排，讲到的那档换 hot）',
+    fields: { level: '档名', desc: '说明一句（可省）', value: '数值（如 9.0–10）', band: '左侧色带 hot / aux / lit / card（默认 hot）', img: '贴纸（可省，压在色带上）' },
+    beats: { in: '票从下 rise（多张错开 0.12s）→ 贴纸 drop', emph: '讲到的那张换 hot', out: 'sink' },
+    html: function (d, w, h, pad) {
+      var bw = Math.round(Math.min(w * 0.2, h * 1.1));
+      return '<div class="ic-band b-' + (d.band || 'hot') + '" style="width:' + bw + 'px"></div>' +
+        '<div class="ic-body" style="padding-left:' + (bw + pad) + 'px"><div class="ic-mid">' +
+        part('ic-heavy', masked(d.level), clamp(h * 0.3, 56, 88), MIN) + (d.desc ? part('ic-text ic-desc', rich(d.desc), MIN, MIN, ' data-role="text"') : '') + '</div>' +
+        (d.value ? part('ic-num ic-val', esc(d.value), clamp(h * 0.34, 56, 104), MIN, ' data-role="text"') : '') + '</div>' +
+        stk(d, [bw * 0.1, h * 0.1, bw * 0.8, h * 0.8]);
+    }
+  };
+
+  C.lens = {
+    name: '放大镜', tone: 'dark', shape: 'circle', sizes: '正方形槽位（≥ 384×384），圆形',
+    fields: { text: '放大的字段（等宽，[[ ]] 色块）', label: '上方一句说明（可省）', note: '下方一句（可省）' },
+    beats: { in: '圆 rise → 字段 maskUp', emph: '字段色块 blockSweep', out: 'sink' },
+    html: function (d, w, h) {
+      return '<div class="ic-body">' + (d.label ? part('ic-text ic-lb', rich(d.label), MIN, MIN, ' data-role="text"') : '') +
+        part('ic-lt', masked(d.text), clamp(h * 0.14, 64, 150), MIN) + (d.note ? part('ic-text ic-nt', rich(d.note), MIN, MIN, ' data-role="text"') : '') + '</div>';
+    }
+  };
+
   /* ---------- 渲染 ---------- */
   var SIZE = { S: [336, 192], M: [528, 288], L: [720, 384], XL: [1104, 576] };
   // 圆角半径：min(宽,高) × 比例，夹在上下限之间（数值来自 tokens/brand.json → shape，经 engine/tokens.css 注入）
@@ -180,13 +346,14 @@
     var c = C[type]; if (!c) throw new Error('IC：没有这个信息卡 ' + type);
     o = o || {}; d = d || {};
     var rect = o.rect || [0, 0].concat(SIZE[o.size || 'L']);
-    var w = rect[2], h = rect[3], tone = o.tone || c.tone;
+    var w = rect[2], h = rect[3], tone = o.tone || (type === 'skill' ? ({ now: 'hot', lock: 'ghost' }[d.state] || 'card') : c.tone);
     var pad = tone === 'none' ? 0 : r8(clamp(Math.min(w, h) * 0.1, 24, 48));
     var el = document.createElement('div');
     el.className = 'ic ic-' + type + ' t-' + tone;
     el.dataset.ic = type; el.dataset.tone = tone;
     el.style.cssText = 'left:' + rect[0] + 'px;top:' + rect[1] + 'px;width:' + w + 'px;height:' + h + 'px;--pad:' + pad + 'px;--r:' + radius(w, h) + 'px';
-    if (o.shape === 'circle') el.classList.add('shape-circle');
+    if (o.shape === 'circle' || c.shape === 'circle') el.classList.add('shape-circle');
+    if (c.shape === 'circle') el.style.setProperty('--pad', r8(Math.min(w, h) * 0.15) + 'px');
     el.innerHTML = c.html(d, w, h, pad);
     return el;
   }
@@ -238,6 +405,10 @@
     q('[data-role="tline"]').forEach(function (e, i) { BM.set(e, BM.rise(t, lt + 0.15 + i * 0.08, { dy: 16 })); });
     q('[data-role="msg"]').forEach(function (e, i) { BM.set(e, BM.rise(t, t0 + i * (cue.gap || 0.7))); });
     q('[data-role="stk"]').forEach(function (e) { BM.set(e, BM.drop(t, t0 + 0.15)); });
+    q('[data-role="row"]').forEach(function (e, i) { BM.set(e, BM.rise(t, lt + 0.2 + i * 0.25, { dy: 24 })); });
+    q('[data-role="pill"]').forEach(function (e, i) { BM.set(e, BM.rise(t, lt + 0.25 + i * 0.06, { dy: 16 })); });
+    q('[data-role="mk"]').forEach(function (e) { BM.set(e, BM.drop(t, lt + 0.2)); });
+    q('[data-role="box"]').forEach(function (e) { BM.set(e, BM.rise(t, t0)); });
     q('[data-role="rule"]').forEach(function (e) { BM.set(e, BM.unfold(t, t0)); });
     q('[data-role="bar"]').forEach(function (e) { BM.set(e, BM.underline(t, te)); });
     q('[data-role="hl"]').forEach(function (e, i) { BM.set(e, BM.blockSweep(t, te + i * 0.15)); });
@@ -250,7 +421,7 @@
 
   function spec() {
     var out = {};
-    Object.keys(C).forEach(function (k) { var c = C[k]; out[k] = { name: c.name, tone: c.tone, sizes: c.sizes, fields: c.fields, beats: c.beats }; });
+    Object.keys(C).forEach(function (k) { var c = C[k]; out[k] = { name: c.name, tone: c.tone, shape: c.shape || 'rect', sizes: c.sizes, fields: c.fields, beats: c.beats }; });
     return out;
   }
 
