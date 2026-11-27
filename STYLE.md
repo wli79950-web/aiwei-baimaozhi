@@ -1,4 +1,4 @@
-# 艾唯白帽志 · 视觉系统 1.2
+# 艾唯白帽志 · 视觉系统 1.3
 
 所有数值以 `tokens/brand.json` 为准（本文件是说明）。网页用 `engine/tokens.css`（由 `tools/gen_tokens.py` 生成）+ `engine/base.css`。
 预览：`docs/previews/`（`sheet_palette.jpg` 配色、`sheet_backgrounds.jpg` 背景板、`sheet_stickers.jpg` 贴纸样张、`demo_F1–F4.jpg` 演示关键帧、`phone_demo.jpg` 手机竖屏模拟）。各图片风格的样张预览在 `docs/previews/styles/`；`toy` / `tone` 样张和演示帧 F5 / F6 在提交 `adbbc35`（`main` 历史中）。
@@ -64,6 +64,7 @@
 - 一屏一个标题 + 一个主体；标题默认左对齐，放在左上或左侧中线。主体尽量做大：宁可让贴纸出血，也不要让它缩在画面中间。
 - 字幕：底部居中，距底 104px，MiSans Bold 50px，实色底板（见 2.1），关键词用朱橙。
 - 信息卡尺寸档（宽 × 高，均为 48 的倍数）：S 336×192 · M 528×288 · L 720×384 · XL 1104×576。
+- **圆角（1.3，苹果式）**：信息卡半径 = 短边 × 12%，夹在 28–64px（接近 iOS 小组件比例）；窗口 / 终端 36px；小块（箭头、VS、占位框）20px；字幕底板 18px；行内色块 0.22em；对话气泡 0.72em。用圆弧圆角（`corner: round`）：Chromium 的连续曲率 squircle 逐帧渲染不稳定，AE 圆角矩形也是圆弧，用 round 网页和 AE 一致。数值在 `tokens/brand.json` → `shape`。贴纸、录屏原片、背景板不加圆角。
 - 不做：HUD、时间码、编号角标、进度条、手持晃动。
 
 ## 5. 背景板库（`libs/backgrounds/`，由 `node tools/make_backgrounds.js` 生成）

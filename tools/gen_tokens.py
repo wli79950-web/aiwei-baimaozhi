@@ -21,6 +21,11 @@ out += [
 ]
 for k, (w, h) in LY['size_class'].items():
     out.append(f'  --sz-{k}-w:{w}px; --sz-{k}-h:{h}px;')
+SH = B.get('shape')
+if SH:   # 圆角：苹果式连续曲率（squircle）。卡片半径由 infocards.js 按 min(宽,高) × card_ratio 算，夹在 card_min–card_max 之间
+    out += [f'  --corner:{SH["corner"]}; --r-card:{SH["card"]}px; --r-win:{SH["window"]}px; --r-sm:{SH["small"]}px; --r-sub:{SH["subtitle"]}px;',
+            f'  --r-block:{SH["block_em"]}em; --r-bubble:{SH["bubble_em"]}em;',
+            f'  --r-card-ratio:{SH["card_ratio"]}; --r-card-min:{SH["card_min"]}; --r-card-max:{SH["card_max"]};']
 out.append('}')
 
 

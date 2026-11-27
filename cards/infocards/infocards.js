@@ -170,6 +170,12 @@
 
   /* ---------- 渲染 ---------- */
   var SIZE = { S: [336, 192], M: [528, 288], L: [720, 384], XL: [1104, 576] };
+  // 圆角半径：min(宽,高) × 比例，夹在上下限之间（数值来自 tokens/brand.json → shape，经 engine/tokens.css 注入）
+  function radius(w, h) {
+    var cs = typeof getComputedStyle !== 'undefined' ? getComputedStyle(document.documentElement) : null;
+    var g = function (k, d) { var v = cs && parseFloat(cs.getPropertyValue(k)); return isNaN(v) || v == null ? d : v; };
+    return Math.round(clamp(Math.min(w, h) * g('--r-card-ratio', 0.12), g('--r-card-min', 28), g('--r-card-max', 64)));
+  }
   function render(type, d, o) {
     var c = C[type]; if (!c) throw new Error('IC：没有这个信息卡 ' + type);
     o = o || {}; d = d || {};
@@ -179,7 +185,8 @@
     var el = document.createElement('div');
     el.className = 'ic ic-' + type + ' t-' + tone;
     el.dataset.ic = type; el.dataset.tone = tone;
-    el.style.cssText = 'left:' + rect[0] + 'px;top:' + rect[1] + 'px;width:' + w + 'px;height:' + h + 'px;--pad:' + pad + 'px';
+    el.style.cssText = 'left:' + rect[0] + 'px;top:' + rect[1] + 'px;width:' + w + 'px;height:' + h + 'px;--pad:' + pad + 'px;--r:' + radius(w, h) + 'px';
+    if (o.shape === 'circle') el.classList.add('shape-circle');
     el.innerHTML = c.html(d, w, h, pad);
     return el;
   }

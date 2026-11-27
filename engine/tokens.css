@@ -1,4 +1,4 @@
-/* 自动生成：python3 tools/gen_tokens.py ← tokens/brand.json（v1.2.0）。不要手改。 */
+/* 自动生成：python3 tools/gen_tokens.py ← tokens/brand.json（v1.3.0）。不要手改。 */
 :root{
   --char:#16130F;  /* 炭黑 */
   --char-hi:#241F19;  /* 炭黑·中心 */
@@ -18,6 +18,9 @@
   --sz-M-w:528px; --sz-M-h:288px;
   --sz-L-w:720px; --sz-L-h:384px;
   --sz-XL-w:1104px; --sz-XL-h:576px;
+  --corner:round; --r-card:44px; --r-win:36px; --r-sm:20px; --r-sub:18px;
+  --r-block:0.22em; --r-bubble:0.72em;
+  --r-card-ratio:0.12; --r-card-min:28; --r-card-max:64;
 }
 /* 场景 A · 炭黑场：主场：开场 / 章节 / 讲解 / 金句 / 录屏 */
 .scene-A{background:radial-gradient(circle at 72% 46%,var(--char-hi) 0,var(--char) 58%,var(--char-lo) 100%);color:var(--cream);--s-title:var(--cream);--s-accent:var(--orange);--s-blk:var(--orange);--s-blk-fg:var(--char);--s-aux:var(--klein);--s-aux-fg:var(--cream);--s-card:var(--slate);--s-card-fg:var(--cream);--s-sub:var(--slate);--s-sub-fg:var(--cream);--s-sub-em:var(--orange);--s-line:var(--cream);--s-line-op:0.13;--s-focus:var(--orange)}
