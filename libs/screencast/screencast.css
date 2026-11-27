@@ -1,0 +1,34 @@
+/* libs/screencast/screencast.css — 录屏组件（P4 第二部分）
+   引入顺序：tokens.css → base.css → motion.css → infocards.css（联动信息卡时）→ 本文件 → tokens.js → motion.js → backgrounds.js → screencast.js
+   结构与 AE 一一对应：.sc-win = 窗口边框图片层；.sc-view = 「录屏窗口」预合成；.sc-cam = 原片层的缩放 / 位置（推镜）；
+   .sc-mask = 预合成里的打码调整层；.sc-ann / .sc-labels / .sc-cursor = 标注形状层、文字层、光标层；.sc-links = 主合成里的联动引线。 */
+
+.sc-win{position:absolute;background:var(--slate);border-radius:var(--r-win);overflow:hidden}
+.scene-B .sc-win{background:var(--char);box-shadow:0 24px 56px rgba(90,40,10,.16),0 0 0 2px rgba(22,19,15,.06)}
+.sc-bar{position:absolute;left:0;right:0;top:0;height:52px;display:flex;align-items:center;gap:12px;padding:0 24px}
+.sc-bar i{width:16px;height:16px;border-radius:50%;background:var(--cream);opacity:.45;flex:none}
+.sc-bar i:first-child{background:var(--orange);opacity:1}
+.sc-view{position:absolute;left:12px;right:12px;top:52px;bottom:12px;overflow:hidden;border-radius:calc(var(--r-win) - 12px);background:var(--char-lo)}
+.sc-cam{position:absolute;left:0;top:0;transform-origin:0 0}
+.sc-media{position:absolute;left:0;top:0;display:block}
+
+/* 打码：在原片坐标里，跟着推镜一起动 */
+.sc-mask{position:absolute;border-radius:10px;overflow:hidden}
+.sc-mask.blur{background:var(--char-lo)}
+.sc-mask-img{position:absolute;max-width:none;filter:blur(18px) saturate(.5) brightness(.85)}
+.sc-mask.blur::after{content:'';position:absolute;inset:0;background:rgba(22,19,15,.22)}
+.sc-mask.block{background:var(--slate);background-image:repeating-linear-gradient(135deg,rgba(245,238,223,.10) 0 10px,transparent 10px 20px)}
+
+/* 标注：屏幕坐标（推镜时线宽、字号不跟着放大） */
+.sc-ann,.sc-links{position:absolute;left:0;top:0;overflow:visible;pointer-events:none}
+.sc-ann path,.sc-links path{fill:none;stroke:var(--orange);stroke-width:6;stroke-linecap:round;stroke-linejoin:round}
+.sc-ann .spot{fill:rgba(15,13,10,.62);stroke:none}
+.sc-labels{position:absolute;inset:0;pointer-events:none}
+.sc-label{position:absolute;white-space:nowrap;font-family:var(--f-cn);font-weight:900;font-size:52px;line-height:1.2;
+  background:var(--orange);color:var(--char);padding:6px 22px;border-radius:var(--r-sm)}
+.sc-label.alt{background:var(--paper);color:var(--char)}
+
+/* 光标：放大 1.6 倍的箭头 + 点击涟漪 */
+.sc-cursor{position:absolute;left:0;top:0;width:44px;height:60px;transform-origin:0 0;filter:drop-shadow(0 6px 10px rgba(0,0,0,.45))}
+.sc-cursor path{fill:var(--cream);stroke:var(--char);stroke-width:2.4;stroke-linejoin:round}
+.sc-ripple{position:absolute;left:0;top:0;border:6px solid var(--orange);border-radius:50%;pointer-events:none}

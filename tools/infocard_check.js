@@ -22,56 +22,7 @@ const HEAD = `<meta charset="utf-8"><base href="file://${IC_DIR}/">
 <script src="../../libs/backgrounds/backgrounds.js"></script>`;
 const BGBASE = '../../libs/backgrounds/';
 
-/* ---------- 在页面里跑的检查（颜色按实际渲染结果算） ---------- */
-function pageCheck(palette, forbidden, textMin, decorMin, contrastMin) {
-  const P = Object.fromEntries(Object.entries(palette).map(([k, h]) => [k, [1, 3, 5].map(i => parseInt(h.slice(i, i + 2), 16))]));
-  const rgba = s => { const m = s.match(/rgba?\(([^)]+)\)/); if (!m) return null; const v = m[1].split(/[ ,/]+/).filter(Boolean).map(Number); return [v[0], v[1], v[2], v[3] == null ? 1 : v[3]]; };
-  const parseCol = s => { s = String(s).trim(); if (s[0] === '#') return [1, 3, 5].map(i => parseInt(s.slice(i, i + 2), 16)).concat(1); return rgba(s); };
-  const blend = (f, b) => [0, 1, 2].map(i => f[i] * f[3] + b[i] * (1 - f[3]));
-  const lum = c => { const l = c.map(v => { v /= 255; return v <= .03928 ? v / 12.92 : Math.pow((v + .055) / 1.055, 2.4); }); return .2126 * l[0] + .7152 * l[1] + .0722 * l[2]; };
-  const ratio = (a, b) => { const x = lum(a), y = lum(b); return (Math.max(x, y) + .05) / (Math.min(x, y) + .05); };
-  const near = (c, k) => P[k].every((v, i) => Math.abs(v - c[i]) <= 3);
-  const nameOf = c => Object.keys(P).find(k => near(c, k));
-  const opac = (e, stop) => { let o = 1; for (let x = e; x && x !== stop.parentElement; x = x.parentElement) o *= +getComputedStyle(x).opacity; return o; };
-  function bgOf(e) {   // 实际底色：往上找第一个不透明的底；色块（.blk）用它的扫入色
-    const stack = [];
-    for (let x = e; x; x = x.parentElement) {
-      const cs = getComputedStyle(x);
-      if (x.classList && (x.classList.contains('blk') || x.classList.contains('bm-sweep'))) { stack.push(parseCol((cs.getPropertyValue('--sweep') || '').trim() || cs.getPropertyValue('--s-blk'))); break; }
-      const c = rgba(cs.backgroundColor);
-      if (c && c[3] > 0) { stack.push(c); if (c[3] >= 0.999) break; }
-      if (x.classList && (x.classList.contains('scene-A') || x.classList.contains('scene-B'))) {
-        stack.push(parseCol(palette[x.classList.contains('scene-A') ? 'char' : 'cream'])); break;
-      }
-    }
-    let b = stack.pop().slice(0, 3);
-    while (stack.length) b = blend(stack.pop(), b);
-    return b;
-  }
-  const errs = [], used = new Set();
-  document.querySelectorAll('.ic').forEach(ic => {
-    const who = ic.dataset.label || ic.dataset.ic;
-    if (ic.dataset.fit !== 'ok') errs.push(`${who}：放不下（字号缩到下限仍溢出，内容太长或槽位太小）`);
-    let decor = 0;
-    const els = [ic, ...ic.querySelectorAll('*')].filter(e => [...e.childNodes].some(n => n.nodeType === 3 && n.textContent.trim()));
-    els.forEach(e => {
-      const cs = getComputedStyle(e), fsz = parseFloat(cs.fontSize), isDecor = !!e.closest('[data-role="decor"]');
-      const txt = [...e.childNodes].filter(n => n.nodeType === 3).map(n => n.textContent.trim()).join('').slice(0, 12);
-      if (isDecor) { decor++; if (fsz < decorMin) errs.push(`${who}「${txt}」：装饰字 ${fsz}px < ${decorMin}`); }
-      else if (fsz < textMin - 0.5) errs.push(`${who}「${txt}」：${fsz}px < ${textMin}px`);
-      const fc = rgba(cs.color); if (!fc) return;
-      const a = fc[3] * opac(e, ic), bg = bgOf(e), fg = blend([fc[0], fc[1], fc[2], a], bg);
-      const fn = nameOf(fc), bn = nameOf(bg);
-      if (fn) used.add(fn); if (bn) used.add(bn);
-      if (!bn) errs.push(`${who}「${txt}」：底色 rgb(${bg.map(Math.round)}) 不在色板里`);
-      if (!fn) errs.push(`${who}「${txt}」：字色 ${cs.color} 不在色板里`);
-      for (const [f, b, why] of forbidden) if (fn === f && bn === b) errs.push(`${who}「${txt}」：禁用组合 —— ${why}`);
-      const r = ratio(fg, bg); if (!isDecor && r < contrastMin) errs.push(`${who}「${txt}」：对比 ${r.toFixed(2)} < ${contrastMin}`);
-    });
-    if (decor > 1) errs.push(`${who}：英文小标注 ${decor} 处，每屏最多 1 处`);
-  });
-  return { errs, used: [...used] };
-}
+const pageCheck = require('./lib/pagecheck.js');
 
 /* ---------- 预览板：一个场景一张 ---------- */
 // 每页一个 1920×1080 画面：背景板库 BG1 / BG2（底板 + 雷达线 + 扫描扇区）上排样例，样例上方的小字是说明（只在预览里有）
@@ -259,7 +210,7 @@ function demoHTML(d) {
         return { n, mx };
       }, [a1.toString('base64'), a2.toString('base64')]);
       fs.writeFileSync(path.join(TMP, `nondet_${d.id}_a.png`), a1); fs.writeFileSync(path.join(TMP, `nondet_${d.id}_b.png`), a2);
-      if (dd.n <= 64 && dd.mx <= 32) warns.push(`[${d.id}] 乱序渲染有 ${dd.n} 颗像素的边缘抖动（最大 ${dd.mx} 色阶，肉眼不可见）`);
+      if (dd.mx <= 8) warns.push(`[${d.id}] 乱序渲染有 ${dd.n} 颗像素差 ≤ ${dd.mx} 色阶（Chromium 合成层抖动，肉眼不可见）`);
       else errs.push(`[${d.id}] 同一时间点乱序渲染结果不一致：${dd.n} 颗像素，最大 ${dd.mx} 色阶（两帧存在 out/infocards/nondet_${d.id}_a/b.png）`);
     }
     await p.evaluate(() => renderAt(4));

@@ -198,8 +198,9 @@
     beats: { in: '卡片 rise → 标题 maskUp → 各项依次 rise（错开 0.08s）', emph: '当前项的色块 blockSweep', out: 'sink' },
     html: function (d, w, h, pad) {
       var items = (d.items || []).map(function (x) { return typeof x === 'string' ? { text: x } : x; });
-      var th = d.title ? clamp(h * 0.13, 56, 88) : 0;
-      var fs = clamp((h - 2 * pad - th * 1.4) / Math.max(1, items.length) / 1.55, MIN, 72);
+      var th = d.title ? clamp(Math.min(h * 0.13, (w - 2 * pad) / (units(d.title) + 0.4)), 56, 88) : 0;
+      var mu = items.reduce(function (m, it) { return Math.max(m, units(String(it.text).replace(/\[\[|\]\]|\{\{|\}\}/g, ''))); }, 2);
+      var fs = clamp(Math.min((h - 2 * pad - th * 1.4) / Math.max(1, items.length) / 1.55, (w - 2 * pad) / (mu + 1.6)), MIN, 72);
       return '<div class="ic-body">' + (d.title ? part('ic-heavy ic-lt', masked(d.title), th, MIN) : '') +
         '<div class="ic-items">' + items.map(function (it) {
           var st = it.state || 'todo', mk = st === 'done' ? ICON.check : st === 'now' ? ICON.arrow : '';
