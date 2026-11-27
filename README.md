@@ -17,6 +17,7 @@
 | `tokens/` | `brand.json`：色值、场景配色、字体、字号、网格、背景板、贴纸预设 |
 | `engine/` | `tokens.css`（自动生成）、`base.css`、渲染与运动模糊、音效合成；`motion/` 动效库（P2） |
 | `libs/backgrounds/` | 背景板库：底板 PNG + 动态层 SVG |
+| `libs/icons/` | 线性图标库（Lucide 子集，ISC 许可）：`node tools/make_icons.js` 生成 `icons.js` |
 | `cards/` | **知识卡片板块** = 图片 + 排版 + 信息卡（见 `cards/README.md`） |
 | `cards/images/` | 图片：风格提示词 `styles.json`（写实 `real` 为核心、动漫 `anime` 为辅，另有 SC02、tone、device、flat……持续扩充）；图片每期现生成，抠图后过 `tools/grade.py` 统一调色 |
 | `cards/layouts/` | 排版（P3）：由挖洞号 49 张卡的构图迁来，50 个 `layout.json` + 线框预览，只含构图和槽位，持续扩充 |

@@ -1,5 +1,15 @@
 # 更新记录
 
+## 1.14.0 · 2026-11-27 · 视觉系统 1.8：画面丰富度
+- 用户对照挖洞号的知识卡片，认为白帽志画面丰富度与美感有差距；先出 6 张改版候选（`docs/previews/rich/compare_1/2.jpg`），用户确认后改库。
+- **装饰小字放宽**：每屏 ≤ 16、每张卡 ≤ 6（`brand.json` 1.8.0 → `type.decor`）；图解组件按一组元素算，只计入每屏上限（`pagecheck`）。`test_layouts` 同步。
+- **线性图标库** `libs/icons/`：从 Lucide（ISC 许可，可商用）挑 68 个网安相关图标，`node tools/make_icons.js` 生成 `icons.js`（全局 `ICONS`），附许可文件。
+- **信息卡新字段**：`en` 英文副标（keyword / define / stat / step / chip / tag / verdict / tier）、`icon` 线性图标（keyword / step / chip / tag）、step 的 `step`（编号写成「STEP 01 / 06」）、tier 的 `score`（CVSS 刻度条）、`render(..., { tilt })` 倾斜（用独立的 rotate 属性，不会被动效的 transform 覆盖）。
+- **图解组件 8 个**：`ring` 圆环图、`flow` 徽章流转、`nest` 嵌套归属、`wall` 证据墙、`vtrack` 竖向进度、`layers` 分层结构（等距层板 + 引线标签）、`crowd` 一群里的一个、`zoom` 局部放大；`IC.callout` 引线标注。原来 4 个「待补组件」全部补齐。样例加进 `samples.json`（57 个），信息卡检查 A / B 场全部通过。
+- **50 张知识卡片预览重出**（`tools/cards_preview.js`）：每个排版按 10–15 个元素重新填充——双语副标、图标、图解组件、引线、倾斜、氛围道具、光斑；新增整屏检查：装饰小字 ≤ 16、图解 / 标注 / 倾斜卡不出画面、不进章节进度条区。50 张全部通过。
+- 终端卡的行区固定成独立合成层（`translateZ(0)`）：演示帧 D6 乱序渲染偶发 50+ 色阶的抗锯齿差异（4 次里 1 次），修复后连续 4 次一致。
+- `STYLE.md` 新增 6.2 丰富度；`CLAUDE.md`、信息卡 / 排版 README、用户要求汇总同步。
+
 ## 1.13.0 · 2026-11-27 · 视觉系统 1.7：图片三类、SC02 铅笔漫画、素材尽量透明
 - **图片分三类**（用户确认）：类别 1 实物贴纸（`real` 写实为核心、`anime` 高光版、`device` 手持手机）· 类别 2 意象插画（`sc02` 铅笔漫画模切贴纸）· 类别 3 氛围装饰（新增 `ambient` 写实虚化道具 + 程序化光斑）。`brand.json` → `imagery.categories` / `subject_rule` / `transparent`，版本 1.7.0。
 - **SC02 改为铅笔漫画**：铅笔灰打底 + 一处克莱因蓝点缀（用户认可铅笔灰更高级）；提示词固定写「整个人物在画面内、四周留白」「物件不画成朱橙」。新增 `tools/diecut.py` 模切贴纸（默认 `--tone none` 保留铅笔灰，`--tone klein` 蓝调可选，`--crop` 先裁掉伸到边上的部分）。样张 6 张（`samples/sc02/`），三种色调对比 `docs/previews/styles/sc02_tone_compare.jpg`。

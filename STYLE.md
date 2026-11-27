@@ -1,4 +1,4 @@
-# 艾唯白帽志 · 视觉系统 1.7
+# 艾唯白帽志 · 视觉系统 1.8
 
 所有数值以 `tokens/brand.json` 为准（本文件是说明）。网页用 `engine/tokens.css`（由 `tools/gen_tokens.py` 生成）+ `engine/base.css`。
 预览：`docs/previews/`（`sheet_palette.jpg` 配色、`sheet_backgrounds.jpg` 背景板、`sheet_stickers.jpg` 陶瓷贴纸样张（1.4 起停用，仅作历史参考）、`demo_F1–F4.jpg` 演示关键帧、`phone_demo.jpg` 手机竖屏模拟）。各图片风格的样张预览在 `docs/previews/styles/`；`toy` / `tone` 样张和演示帧 F5 / F6 在提交 `adbbc35`（`main` 历史中）。
@@ -56,7 +56,7 @@
 | 英文大字、数字 | **Archivo** Black 900（`--f-num`，`.num`） | 40–300 | SIL OFL 1.1（可变字体固定为 wght 900），TTF 在 `fonts/` |
 | 装饰小字、代码、终端 | **IBM Plex Mono** Medium / SemiBold（`--f-mono`，`.mic` `.kick` `.en`） | 装饰 18–24 · 字距 0.16–0.2em · 大写 | SIL OFL 1.1，TTF 在 `fonts/` |
 
-- **装饰小字层**（1.5，用户确认）：等宽小字，依附在物件、窗口、构造线上——窗口标题、栏名、行号、步骤编号、字段名、坐标（`.mic`，19px，不透明度 0.42；标题上方的 kicker 用 `.kick`）。不承载理解所需的信息，去掉也不影响看懂；每屏 ≤ 8 处、每张卡 ≤ 3 处，18–24px，不透明度 0.35–0.6；元素加 `data-role="decor"`。**不是 HUD**：不放画面四角，不做时间码 / REC / 进度 / 电量这类界面元素。
+- **装饰小字层**（1.5，用户确认）：等宽小字，依附在物件、窗口、构造线上——窗口标题、栏名、行号、步骤编号、字段名、坐标（`.mic`，19px，不透明度 0.42；标题上方的 kicker 用 `.kick`）。不承载理解所需的信息，去掉也不影响看懂；**每屏 ≤ 16 处、每张卡 ≤ 6 处**（1.8 起，用户确认；几乎每个关键标签下面都可以带一行英文副标），18–24px，不透明度 0.35–0.6；图解组件按一组元素算，只计入每屏上限；元素加 `data-role="decor"`。**不是 HUD**：不放画面四角，不做时间码 / REC / 进度 / 电量这类界面元素。
 - 中英混排：等宽 / 数字字体里的中文按字符回退到 MiSans（网页由字体栈处理，AE 端在 P6 由字体覆盖脚本处理）。
 
 ## 4. 版式：16:9 空间利用率最大化
@@ -108,6 +108,16 @@
 - **停用**：`sticker` 陶瓷贴纸、`toy` 设计师玩具、`iso` 等距微缩（粘土 / 陶瓷质感显得廉价）；`flat` 几何插画（比喻交给 SC02）；`anime-scene` 动漫场景（整张带背景）。`tools/genimg.py`、`tools/genimg_list.py` 默认拒绝。
 - **样张**（不进正片）：类别 1 `cards/images/samples/bmz_*.png`（写实 12）、`samples/anime/`（4）、`samples/device/`；类别 2 `samples/sc02/`（6）；类别 3 `samples/ambient/`（6）。预览：`docs/previews/sheet_stickers.jpg`、`docs/previews/styles/categories_A.jpg / B / amb / sc02`。提示词记录 `samples/prompts.json`。
 - 生图清单按 `docs/templates/生图清单模板.md` 写，每张标「类别」，类别 2 先写「要传达的意思」；`tools/genimg_list.py` 会检查类别和风格对得上。
+
+### 6.2 丰富度（1.8，用户确认）
+对照挖洞号的知识卡片，白帽志的差距在「一屏元素太少、像 PPT」。1.8 起每个镜头按 **10–15 个元素** 来搭，用白帽志自己的视觉语言，不搬挖洞号的纸纹、回形针、红黑配色：
+- **双语副标**：关键标签下面带一行等宽英文（信息卡的 `en` 字段），属于装饰小字层。
+- **线性图标**：`libs/icons/`（Lucide，ISC 许可），信息卡的 `icon` 字段，图解组件也用。
+- **专属图形（图解组件）**：圆环图 `ring`、徽章流转 `flow`、嵌套归属 `nest`、证据墙 `wall`、竖向进度 `vtrack`、分层结构 `layers`、一群里的一个 `crowd`、局部放大 `zoom`；档位卡加 CVSS 刻度条（`score`）。
+- **引线标注**：`IC.callout(镜头, { from, to, label, en, hot })`，或在配方里画引线把主体和标签连起来。
+- **倾斜叠放**：信息卡 / 截图 `tilt`（度）；证据墙自带倾斜。
+- **景深**：焦点光晕 + 刻度环（BG3）、类别 3 氛围道具、程序化光斑。
+- 一屏一个朱橙焦点、有意义的字 ≥ 52px 这两条不变。50 个排版的丰富度预览：`docs/previews/cards/sheet_1–5.jpg`（`node tools/cards_preview.js`）。
 
 ## 7. 其他库
 | 库 | 位置 | 状态 |

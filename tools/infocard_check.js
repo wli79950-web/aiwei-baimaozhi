@@ -19,7 +19,7 @@ const HEAD = `<meta charset="utf-8"><base href="file://${IC_DIR}/">
 <link rel="stylesheet" href="../../engine/tokens.css"><link rel="stylesheet" href="../../engine/base.css">
 <link rel="stylesheet" href="../../engine/motion/motion.css"><link rel="stylesheet" href="infocards.css">
 <script src="../../engine/motion/tokens.js"></script><script src="../../engine/motion/motion.js"></script><script src="infocards.js"></script>
-<script src="../../libs/backgrounds/backgrounds.js"></script>`;
+<script src="../../libs/backgrounds/backgrounds.js"></script><script src="../../libs/icons/icons.js"></script>`;
 const BGBASE = '../../libs/backgrounds/';
 
 const pageCheck = require('./lib/pagecheck.js');

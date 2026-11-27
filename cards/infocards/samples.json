@@ -553,6 +553,325 @@
     "text": "[[\"admin\"]]",
     "note": "权限被改了"
    }
+  },
+  {
+   "type": "step",
+   "label": "步骤卡 · 图标 + 英文副标 + STEP 编号（1.8）",
+   "size": "M",
+   "data": {
+    "idx": "03",
+    "step": 6,
+    "name": "AI 扫描",
+    "en": "AI SCAN",
+    "icon": "cpu"
+   }
+  },
+  {
+   "type": "keyword",
+   "label": "关键词卡 · 图标 + 英文副标（1.8）",
+   "size": "L",
+   "data": {
+    "word": "越权",
+    "en": "IDOR",
+    "exp": "改个号，看到别人的",
+    "icon": "key-round"
+   }
+  },
+  {
+   "type": "chip",
+   "label": "对比芯片 · 图标 + 英文副标（1.8）",
+   "size": "M",
+   "tone": "hot",
+   "data": {
+    "name": "必须人来",
+    "en": "HUMAN",
+    "icon": "user-round"
+   }
+  },
+  {
+   "type": "tag",
+   "label": "标签 · 图标（1.8）",
+   "wh": [
+    384,
+    88
+   ],
+   "tone": "card",
+   "data": {
+    "text": "已截图",
+    "icon": "camera"
+   }
+  },
+  {
+   "type": "tier",
+   "label": "档位卡 · 英文副标 + CVSS 刻度（1.8）",
+   "wh": [
+    1104,
+    192
+   ],
+   "data": {
+    "level": "高危",
+    "en": "HIGH",
+    "desc": "能读别人的数据",
+    "value": "7.0–8.9",
+    "score": 8
+   }
+  },
+  {
+   "type": "ring",
+   "label": "圆环图（1.8）",
+   "wh": [
+    1280,
+    640
+   ],
+   "data": {
+    "center": "越权",
+    "centerEn": "IDOR",
+    "items": [
+     {
+      "name": "水平越权",
+      "en": "HORIZONTAL",
+      "pct": 40,
+      "hot": true
+     },
+     {
+      "name": "垂直越权",
+      "en": "VERTICAL",
+      "pct": 25
+     },
+     {
+      "name": "未授权",
+      "en": "UNAUTH",
+      "pct": 20
+     },
+     {
+      "name": "越权下载",
+      "en": "FILE ACCESS",
+      "pct": 15
+     }
+    ]
+   }
+  },
+  {
+   "type": "flow",
+   "label": "徽章流转（1.8）",
+   "wh": [
+    1600,
+    620
+   ],
+   "data": {
+    "nodes": [
+     {
+      "name": "白帽",
+      "en": "WHITE HAT",
+      "icon": "user-round",
+      "hot": true
+     },
+     {
+      "name": "平台",
+      "en": "PLATFORM",
+      "icon": "shield-check"
+     },
+     {
+      "name": "厂商",
+      "en": "VENDOR",
+      "icon": "building-2"
+     }
+    ],
+    "links": [
+     {
+      "from": 0,
+      "to": 1,
+      "label": "提交报告",
+      "en": "REPORT"
+     },
+     {
+      "from": 1,
+      "to": 2,
+      "label": "转交厂商",
+      "en": "FORWARD"
+     },
+     {
+      "from": 2,
+      "to": 1,
+      "label": "确认修复",
+      "en": "FIXED",
+      "back": true
+     },
+     {
+      "from": 1,
+      "to": 0,
+      "label": "发放奖励",
+      "en": "BOUNTY",
+      "back": true
+     }
+    ]
+   }
+  },
+  {
+   "type": "nest",
+   "label": "嵌套归属（1.8）",
+   "wh": [
+    1200,
+    700
+   ],
+   "data": {
+    "outer": {
+     "name": "平台",
+     "en": "PLATFORM"
+    },
+    "zones": [
+     {
+      "name": "用户 A 的空间",
+      "en": "TENANT A",
+      "session": {
+       "text": "会话 A",
+       "icon": "key-round"
+      },
+      "items": [
+       {
+        "text": "订单 1002",
+        "icon": "file"
+       }
+      ]
+     },
+     {
+      "name": "用户 B 的空间",
+      "en": "TENANT B",
+      "items": [
+       {
+        "text": "订单 1003",
+        "icon": "file"
+       }
+      ]
+     }
+    ],
+    "cross": {
+     "from": 0,
+     "to": [
+      1,
+      0
+     ],
+     "label": "改单号 · 越界"
+    }
+   }
+  },
+  {
+   "type": "wall",
+   "label": "证据墙（1.8）",
+   "wh": [
+    1240,
+    700
+   ],
+   "data": {
+    "shots": [
+     {
+      "img": "../images/samples/evidence/shop_order_教学示例.jpg",
+      "title": "EV-01 · ORDER 1002"
+     },
+     {
+      "img": "../images/samples/evidence/shop_order_教学示例.jpg",
+      "title": "EV-02 · ORDER 1003"
+     },
+     {
+      "img": "../images/samples/evidence/shop_order_教学示例.jpg",
+      "title": "EV-03 · NETWORK"
+     },
+     {
+      "img": "../images/samples/evidence/shop_order_教学示例.jpg",
+      "title": "EV-04 · RESPONSE"
+     },
+     {
+      "img": "../images/samples/evidence/shop_order_教学示例.jpg",
+      "title": "EV-05 · OWNER"
+     }
+    ],
+    "mark": [
+     0.58,
+     0.41,
+     0.2,
+     0.05
+    ],
+    "note": "别人的订单"
+   }
+  },
+  {
+   "type": "vtrack",
+   "label": "竖向进度（1.8）",
+   "wh": [
+    480,
+    640
+   ],
+   "data": {
+    "en": "PROGRESS · 03 / 06",
+    "items": [
+     "确认授权",
+     "信息收集",
+     "AI 扫描",
+     "人工复核",
+     "写报告",
+     "等审核"
+    ],
+    "now": 2
+   }
+  },
+  {
+   "type": "layers",
+   "label": "分层结构（1.8）",
+   "wh": [
+    1200,
+    700
+   ],
+   "data": {
+    "layers": [
+     {
+      "name": "前端",
+      "en": "FRONTEND",
+      "icon": "monitor",
+      "desc": "只是藏了按钮"
+     },
+     {
+      "name": "接口",
+      "en": "API",
+      "icon": "server",
+      "hit": true,
+      "desc": "没校验归属"
+     },
+     {
+      "name": "数据库",
+      "en": "DATABASE",
+      "icon": "database",
+      "desc": "数据没问题"
+     }
+    ]
+   }
+  },
+  {
+   "type": "crowd",
+   "label": "一群里的一个（1.8）",
+   "wh": [
+    840,
+    480
+   ],
+   "data": {
+    "rows": 4,
+    "cols": 7,
+    "odd": 17,
+    "icon": "bug",
+    "oddIcon": "bug"
+   }
+  },
+  {
+   "type": "zoom",
+   "label": "局部放大（1.8）",
+   "wh": [
+    400,
+    400
+   ],
+   "data": {
+    "icon": "bug",
+    "label": "这一个",
+    "en": "REAL ONE"
+   }
   }
  ]
 }

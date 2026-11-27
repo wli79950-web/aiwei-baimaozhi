@@ -96,6 +96,7 @@
 .ic-term .ic-bar i:first-child{background:var(--orange);opacity:1}
 .ic-term .ic-bar span{margin-left:14px;font-family:var(--f-mono);font-weight:600;white-space:nowrap}
 .ic-term .ic-lines{flex:1;padding:16px 28px;font-family:var(--f-mono);font-weight:500;line-height:1.36;overflow:hidden}
+.ic-term .ic-lines{transform:translateZ(0)}   /* 1.8：终端行区固定成独立合成层；否则逐帧乱序渲染时偶发 50+ 色阶的抗锯齿差异（infocard_check 的 D6 实测，4 次里 1 次） */
 .ic-term .ic-ln{white-space:pre}
 .ic-term .ic-ln .pr{color:var(--ic-acc)}
 .ic-term .ic-ln.dim{opacity:var(--ic-dim)}
@@ -223,3 +224,110 @@
 .ic-lens .ic-lt{font-family:var(--f-mono);font-weight:600;line-height:1.2}
 .ic-lens .ic-lt [data-role="line"]{white-space:nowrap}
 .ic-lens .ic-lb,.ic-lens .ic-nt{opacity:.8}
+
+/* ======================= 1.8 丰富度 ======================= */
+/* 英文副标：装饰小字（等宽、低对比、不承载信息），每张卡 ≤ 6 处 */
+.ic-en{font:500 19px/1 var(--f-mono);letter-spacing:.18em;text-transform:uppercase;opacity:.45;white-space:nowrap;margin-top:.55em}
+.ic-en.ic-stepno{margin-top:0;opacity:.55}
+/* 线性图标（libs/icons）：描边跟随文字色 */
+.ic-icon{position:absolute;color:currentColor;opacity:.9}
+.ic-icon svg{display:block;width:100%;height:100%}
+.ic-icon.ic-inl{position:relative;flex:none}
+.ic-chip .ic-icon.ic-inl{margin-bottom:.4em}
+.ic-tag .tico,.ic-pillbox .tico,.ic-res .tico{display:inline-block;width:.86em;height:.86em;flex:none}
+.ic-tag .tico svg,.ic-pillbox .tico svg,.ic-res .tico svg{display:block;width:100%;height:100%}
+.ic-tag .ic-body{flex-direction:column}
+.ic-tag .ic-en{margin-top:.35em}
+/* 档位卡：档名 + 英文副标同一行；数值下面的 CVSS 刻度条 */
+.ic-tier .ic-lvrow{display:flex;align-items:baseline;gap:.6em}
+.ic-tier .ic-lvrow .ic-en{margin-top:0}
+.ic-tier .ic-right{display:flex;flex-direction:column;align-items:flex-end;gap:12px}
+.ic-tier .ic-scale{display:flex;align-items:center;gap:14px}
+.ic-tier .ic-scale .ic-en{margin-top:0}
+.ic-tier .ic-ticks{display:flex;gap:4px;width:280px;height:14px;transform-origin:left}
+.ic-tier .ic-ticks i{flex:1;border-radius:3px;background:color-mix(in srgb,currentColor 14%,transparent)}
+.ic-tier .ic-ticks i.on{background:currentColor}
+.ic-tier.t-hot .ic-ticks i.on,.ic-tier.hot .ic-ticks i.on{background:var(--char)}
+.ic-tier .b-dark{background:var(--char)}
+
+/* 图解组件公共：SVG 线条随场景文字色；朱橙 = 焦点 */
+.ic-dia{position:absolute;inset:0;color:var(--s-title)}
+.ic-svg{position:absolute;left:0;top:0;overflow:visible;pointer-events:none;color:var(--s-title);z-index:3}
+.ic-svg .ln{fill:none;stroke:currentColor;stroke-opacity:.5;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round}
+.ic-svg .ln.dash{stroke-dasharray:8 9}
+.ic-svg .ln.hot{stroke:var(--orange);stroke-opacity:1}
+.ic-svg .ln.thick{stroke-width:5}
+.ic-svg .dt{fill:currentColor}.ic-svg .dt.hot{fill:var(--orange)}
+.ic-svg .ring{fill:none;stroke:currentColor;stroke-opacity:.18;stroke-width:1.5;stroke-dasharray:3 9}
+.ic-svg .mk{fill:none;stroke:var(--orange);stroke-width:4}
+.ic-at{position:absolute;white-space:nowrap;z-index:4}
+.ic-pillbox .tico,.ic-res .tico{width:46px!important;height:46px!important}
+.ic-at.rt{transform:translateX(-100%);text-align:right}.ic-at.rt .ic-rl{align-items:flex-end}
+.ic-at.ctr{transform:translate(-50%,-50%);text-align:center;display:flex;flex-direction:column;align-items:center}
+.ic-at.ctr-x{transform:translateX(-50%)}
+.ic-rl{display:flex;flex-direction:column;align-items:flex-start}
+.ic-rl .ic-en,.ic-at .ic-en{margin-top:.45em}
+.ic-pct{font-family:var(--f-num);font-weight:900;line-height:1;margin-top:.12em;opacity:.8}
+.ic-pct.now{color:var(--orange);opacity:1}
+.scene-B .ic-pct.now{color:var(--char)}
+/* 胶囊（流转标签、会话、标注） */
+.ic-pillbox{display:inline-flex;flex-direction:column;align-items:center;justify-content:center;padding:14px 30px;border-radius:999px;background:var(--slate);color:var(--cream);
+  box-shadow:inset 0 0 0 1.5px rgba(245,238,223,.12),0 18px 36px rgba(0,0,0,.3);line-height:1.1;white-space:nowrap}
+.scene-B .ic-pillbox{background:var(--paper);color:var(--char);box-shadow:0 12px 28px rgba(90,40,10,.12),0 0 0 1.5px rgba(22,19,15,.06)}
+.ic-pillbox.row{flex-direction:row;gap:.35em}
+.ic-pillbox.hot{background:var(--orange);color:var(--char)}
+.ic-pillbox .ic-en{margin-top:.4em}
+/* 圆环图 */
+.ic-ring .seg{fill:var(--slate);stroke:rgba(245,238,223,.12);stroke-width:1.5}
+.scene-B .ic-ring .seg{fill:var(--paper);stroke:rgba(22,19,15,.12)}
+.ic-ring .seg.hot{fill:var(--orange);stroke:none}
+/* 徽章流转 */
+.ic-node{position:absolute;border-radius:50%;background:var(--slate);color:var(--cream);display:flex;flex-direction:column;align-items:center;justify-content:center;
+  box-shadow:inset 0 0 0 1.5px rgba(245,238,223,.1),0 30px 60px rgba(0,0,0,.35);text-align:center}
+.scene-B .ic-node{background:var(--paper);color:var(--char);box-shadow:0 18px 40px rgba(90,40,10,.12)}
+.ic-node.hot{background:var(--orange);color:var(--char);box-shadow:0 30px 60px rgba(0,0,0,.35),0 0 0 12px rgba(255,90,31,.14)}
+.ic-node .ic-icon.ic-inl{margin-bottom:.15em}
+.ic-node .ic-en{margin-top:.5em}
+/* 嵌套归属 */
+.ic-nest .outer{fill:color-mix(in srgb,currentColor 2%,transparent);stroke:currentColor;stroke-opacity:.3;stroke-width:2;stroke-dasharray:10 10}
+.ic-hrow{display:flex;align-items:baseline;gap:.6em}.ic-hrow .ic-en{margin-top:0}
+.ic-zone{position:absolute;border-radius:28px;background:var(--slate);color:var(--cream);box-shadow:inset 0 0 0 1.5px rgba(245,238,223,.09),0 30px 60px rgba(0,0,0,.32)}
+.scene-B .ic-zone{background:var(--paper);color:var(--char);box-shadow:0 18px 40px rgba(90,40,10,.12)}
+.ic-zh{position:absolute;left:32px;top:30px}
+.ic-res{position:absolute;border-radius:22px;background:var(--char-hi);color:var(--cream);display:flex;align-items:center;gap:.4em;padding:0 28px;box-shadow:inset 0 0 0 1.5px rgba(245,238,223,.1)}
+.scene-B .ic-res{background:var(--cream);color:var(--char)}
+.ic-svg .xmk{fill:var(--orange)}.ic-svg .xmkx{stroke:var(--char);stroke-width:4.5;stroke-linecap:round;fill:none}
+/* 证据墙 */
+.ic-sw{position:absolute;display:flex;flex-direction:column;background:var(--slate);border-radius:22px;overflow:hidden;box-shadow:inset 0 0 0 1.5px rgba(245,238,223,.1),0 36px 70px rgba(0,0,0,.45)}
+.ic-sw .ic-bar.sm{flex:none;height:44px;display:flex;align-items:center;gap:9px;padding:0 18px}
+.ic-sw .ic-bar.sm i{width:11px;height:11px;border-radius:50%;background:rgba(245,238,223,.25)}.ic-sw .ic-bar.sm i:first-child{background:var(--orange)}
+.ic-sw .ic-bar.sm .ic-en{margin:0 0 0 10px;color:var(--cream)}
+.ic-sw .ic-area{flex:1;position:relative;overflow:hidden}
+.ic-sw .ic-area img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:0 0}
+/* 竖向进度 */
+.ic-vtrack .tk{stroke:currentColor;stroke-opacity:.18;stroke-width:2.5}.ic-vtrack .tk.on{stroke-opacity:.7}
+.ic-vtrack .nd.done{fill:currentColor}.ic-vtrack .nd.now{fill:var(--orange)}.ic-vtrack .nd.next{fill:var(--s-bg,var(--char));stroke:currentColor;stroke-opacity:.45;stroke-width:2}
+.scene-B .ic-vtrack .nd.next{fill:var(--cream)}
+.ic-vtrack .glow{fill:rgba(255,90,31,.15)}
+.ic-now{color:var(--orange)}.scene-B .ic-now{color:var(--char)}
+.ic-dia .dim{opacity:.64}
+/* 分层结构（等距层板） */
+.ic-layers .face{fill:var(--slate);stroke:rgba(245,238,223,.14);stroke-width:1.5}
+.ic-layers .side{fill:var(--char-lo);stroke:rgba(245,238,223,.08);stroke-width:1}.ic-layers .side.r{fill:var(--char)}
+.scene-B .ic-layers .face{fill:var(--paper);stroke:rgba(22,19,15,.12)}.scene-B .ic-layers .side{fill:#E3DBCB}.scene-B .ic-layers .side.r{fill:#D8CFBD}
+.ic-layers .face.hot{fill:var(--orange);stroke:none}
+.ic-icon.on-hot{color:var(--char)}
+/* 一群里的一个 */
+.ic-tile{position:absolute;border-radius:22%;background:var(--slate);color:var(--cream);opacity:.75;display:flex;align-items:center;justify-content:center;box-shadow:inset 0 0 0 1.5px rgba(245,238,223,.08)}
+.scene-B .ic-tile{background:var(--paper);color:var(--char)}
+.ic-tile.hot{background:var(--orange);color:var(--char);opacity:1;box-shadow:0 0 0 10px rgba(255,90,31,.16),0 24px 48px rgba(0,0,0,.35)}
+/* 局部放大 */
+.ic-zoom{box-shadow:inset 0 0 0 8px var(--orange),0 30px 60px rgba(0,0,0,.4)!important}
+.ic-zoomb{align-items:center;justify-content:center;text-align:center;gap:.3em}
+/* 引线标注（IC.callout） */
+.ic-co-svg{position:absolute;left:0;top:0;pointer-events:none;overflow:visible;color:var(--s-title);z-index:25}
+.ic-co-svg .ln{fill:none;stroke:currentColor;stroke-opacity:.55;stroke-width:2.5}.ic-co-svg .ln.hot{stroke:var(--orange);stroke-opacity:1}
+.ic-co-svg .dt{fill:currentColor}.ic-co-svg .dt.hot{fill:var(--orange)}
+.ic.ic-callout{display:flex;flex-direction:column;align-items:flex-start;padding:14px 30px;border-radius:999px;transform:translateY(-50%);z-index:26;white-space:nowrap;height:auto;width:auto}
+.ic.ic-callout.rt{transform:translate(-100%,-50%);align-items:flex-end}
+.ic-callout .ic-en{margin-top:.4em}

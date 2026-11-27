@@ -47,7 +47,8 @@ function pageCheck(palette, forbidden, textMin, decorMin, contrastMin, decorPerC
       for (const [f, b, why] of forbidden) if (fn === f && bn === b) errs.push(`${who}「${txt}」：禁用组合 —— ${why}`);
       const r = ratio(fg, bg); if (!isDecor && r < contrastMin) errs.push(`${who}「${txt}」：对比 ${r.toFixed(2)} < ${contrastMin}`);
     });
-    if (decor > (decorPerCard || 1)) errs.push(`${who}：装饰小字 ${decor} 处，每张卡最多 ${decorPerCard || 1} 处`);
+    // 图解组件（.ic-dia）是一组元素，只算进每屏上限（由预览脚本查），不按单张卡算
+    if (!ic.querySelector('.ic-dia') && decor > (decorPerCard || 1)) errs.push(`${who}：装饰小字 ${decor} 处，每张卡最多 ${decorPerCard || 1} 处`);
   });
   return { errs, used: [...used] };
 }

@@ -1,4 +1,4 @@
-# 信息卡片库（P4 · 20 个）
+# 信息卡片库（P4 · 20 个 + 1.8 图解组件 8 个）
 
 信息输出的关键组件，放进排版库（`cards/layouts/`）的 `card` / `title` 槽位，常搭配贴纸和用户素材。全新编写，不含挖洞号卡片样式或 lieflat 代码。
 
@@ -10,7 +10,7 @@
 | `samples.json` | 样例内容（示意文案 + 风格样张贴纸），只给预览和自检用 |
 | `../../tools/infocard_check.js` | 自检 + 预览：`node tools/infocard_check.js` |
 
-页面引入顺序：`engine/tokens.css` → `engine/base.css` → `engine/motion/motion.css` → `cards/infocards/infocards.css` → `engine/motion/tokens.js` → `engine/motion/motion.js` → `cards/infocards/infocards.js`。
+页面引入顺序：`engine/tokens.css` → `engine/base.css` → `engine/motion/motion.css` → `cards/infocards/infocards.css` → `engine/motion/tokens.js` → `engine/motion/motion.js` → `libs/icons/icons.js`（用到图标时）→ `cards/infocards/infocards.js`。
 
 ## 用法
 ```js
@@ -26,7 +26,7 @@ window.renderAt = t => IC.animate(el, t, { in: 0.3, emph: 1.0, out: 4.2 });   //
 - **炭黑场里不放大块蓝色**：`aux` 只用在 B 场，或 A 场里的 S / M 小片（用户偏好：蓝色像宝石一样小面积点缀）。
 - **字号**：按槽位大小算初值，`IC.fit` 同比缩小直到放得下；有意义的文字下限 52px、标题 104px，到下限还放不下就报 overflow——**改短文案或换大一档的槽位，不许缩到 52 以下**。
 - **圆角**：信息卡半径按短边 12% 自动算（28–64px），终端卡用窗口圆角 36px，色块 / 气泡 / 小标签按 em 比例；`shape: 'circle'` 出圆形（放大镜、圆盘）。数值在 `tokens/brand.json` → `shape`。
-- **装饰小字**：标题组的 `kicker`、截图框的占位等加 `data-role="decor"`，每张卡 ≤ 3 处（1.5 起，原来每屏一处）。炭黑场的炭灰卡加细描边 + 深投影，编号 / 数字用奶油白（一屏一个朱橙焦点）。
+- **装饰小字**：标题组的 `kicker`、英文副标 `en`、截图框的占位等加 `data-role="decor"`，每张卡 ≤ 6 处、每屏 ≤ 16 处（1.8）；图解组件按一组元素算，只计入每屏上限。炭黑场的炭灰卡加细描边 + 深投影，编号 / 数字用奶油白（一屏一个朱橙焦点）。
 - **动效**只用 `engine/motion/` 的预设，cue 的 `in / emph / out` 对应入场、强调、退场三个拍点（下表）。
 
 ## 组件（20 个）
@@ -51,12 +51,22 @@ window.renderAt = t => IC.animate(el, t, { in: 0.3, emph: 1.0, out: 4.2 });   //
 | `risk` | 风险卡 | card | M / L | `level` 严重 / 高危 / 中危 / 低危；`title` 风险名；`impact` 影响一句话（可省）；`score` 分数（可省，如 9.8） | 卡片 rise → 顶部等级条 unfold → 风险名 maskUp → 影响 rise ／ 分数 countUp ／ sink |
 | `verdict` | 结论卡 | lit | M / L / XL | `text` 结论（1–2 行，[[ ]] 色块）；`why` 理由一句（可省）；`mark` ✓ / ✗ / !（默认 ✓） | 卡片 rise → 圆形记号 drop → 结论 maskUp → 理由 rise ／ 结论里的色块 blockSweep ／ sink |
 | `tier` | 档位卡 | card | 宽条：高 160–240，宽 ≥ 720（多档竖排，讲到的那档换 hot） | `level` 档名；`desc` 说明一句（可省）；`value` 数值（如 9.0–10）；`band` 左侧色带 hot / aux / lit / card（默认 hot）；`img` 贴纸（可省，压在色带上） | 票从下 rise（多张错开 0.12s）→ 贴纸 drop ／ 讲到的那张换 hot ／ sink |
+| **1.8 新增字段** | — | — | — | `en` 英文副标（keyword / define / stat / step / chip / tag / verdict / tier）；`icon` 线性图标名（keyword / step / chip / tag，`libs/icons/`）；step 的 `step`（总数，编号写成「STEP 01 / 06」）；tier 的 `score`（0–10 的 CVSS 刻度条）；任意卡 `render(..., { tilt })` 倾斜 | — |
+| `ring` | 圆环图 | none | 宽 ≥ 1000、高 ≥ 600（两侧各约 280px 放标签） | `center` 中心名词；`centerEn`；`items` [{name, en, pct, hot}]，3–6 类，hot = 本期那类（朱橙、外移） | 整体 rise → 标签 rise |
+| `flow` | 徽章流转 | none | 宽条，高 ≥ 560 | `nodes` [{name, en, icon, hot}]（2–4 个）；`links` [{from, to, label, en, back}]（back 画在下沿虚线） | 节点 rise → 连线 → 胶囊 |
+| `nest` | 嵌套归属 | none | 宽 ≥ 1000、高 ≥ 600 | `outer` {name, en}；`zones` [{name, en, session: {text, icon}, items: [{text, icon}]}]；`cross` {from, to: [区, 项], label}（越界箭头 + 边界打叉，朱橙） | 外框 → 区域 → 资源 → 越界箭头 |
+| `wall` | 证据墙 | none | 宽 ≥ 1000、高 ≥ 600 | `shots` [{img, title}]（3–5 张，最后一张在最上面是焦点）；`mark` 框选；`note` 标注 | 截图依次 rise → 框选 → 标注 |
+| `vtrack` | 竖向进度 | none | 竖条，宽 ≥ 400 | `items` 步骤名；`now` 当前序号；`en` 顶部装饰小字 | 自上而下 rise |
+| `layers` | 分层结构 | none | 宽 ≥ 900、高 ≥ 600 | `layers` [{name, en, icon, hit, desc}]（2–4 层，hit 朱橙） | 层板自下而上 rise → 引线 → 标签 |
+| `crowd` | 一群里的一个 | none | 任意 | `rows` / `cols`；`odd` 不一样的那个；`icon` / `oddIcon` | 方块依次 rise → 那一个变朱橙 |
+| `zoom` | 局部放大 | dark（圆形） | 正方形 ≥ 320 | `icon`；`label`；`en` | 圆 rise → 图标 drop |
+| `IC.callout` | 引线标注（挂在镜头上，不是卡片） | card / hot | — | `IC.callout(镜头, { from: [x, y], to: [x, y], label, en, hot })` | 引线画出 → 胶囊 rise |
 | `lens` | 放大镜 | dark（圆形） | 正方形槽位（≥ 384×384），圆形 | `text` 放大的字段（等宽，[[ ]] 色块）；`label` 上方一句说明（可省）；`note` 下方一句（可省） | 圆 rise → 字段 maskUp ／ 字段色块 blockSweep ／ sink |
 
 ## 检查：`node tools/infocard_check.js`
 每个样例分别放进 A 炭黑场（BG3 工作台）/ B 奶油白场（BG2）的真实画面里——**背景一律用背景板库**（`libs/backgrounds/backgrounds.js` 挂底板 + 动态层），再用排版库搭 10 张演示关键帧，逐张检查：
 - 放得下（`IC.fit`）；另有 3 个故意放不下的反例，确认检查没失灵。
-- 有意义的文字 ≥ 52px，装饰字 ≥ 18px，装饰小字每张 ≤ 3 处。
+- 有意义的文字 ≥ 52px，装饰字 ≥ 18px，装饰小字每张 ≤ 6 处（图解组件不按单张算）。
 - **按实际渲染结果**取字色和底色（含透明度、色块扫入色）：不是三条禁用组合，对比 ≥ 4.5，颜色都在色板里。
 - 演示关键帧乱序渲染，同一时间点像素一致（逐帧确定性）。圆角边缘在运动中偶发几颗像素的抗锯齿差异（Chromium 自动决定哪些层走 GPU 合成；实测 6 颗像素、≤ 8 色阶，约 1/4 的运行出现一次），最大差 ≤ 8 色阶（3%，肉眼不可见）记为提醒，超过才算失败。运动中的文字偶尔也会这样（实测一次 1.2 万颗像素、最大 6 色阶）：Chromium 会按渲染历史决定哪些元素走 GPU 合成层，抗锯齿结果略有不同。
 
