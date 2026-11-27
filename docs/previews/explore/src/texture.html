@@ -1,0 +1,196 @@
+<!doctype html>
+<!-- 质感版探索（候选，未定稿）：D1 / D6 的同一内容，横屏 h / 竖屏 v。?f=D1h | D1v | D6h | D6v
+     与现版的差别：工作台背景（点阵 + 构造线 + 十字标）、一屏一个朱橙焦点、卡片改成细描边、装饰字层（等宽小字，低对比，不承载信息）。 -->
+<html><head><meta charset="utf-8">
+<link rel="stylesheet" href="../../../../engine/tokens.css"><link rel="stylesheet" href="../../../../engine/base.css">
+<style>
+  :root{--cr:245,238,223;--or:255,90,31}
+  body.v,body.v .frame{width:1080px;height:1920px}
+  html:has(body.v){width:1080px;height:1920px}
+  .plate{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+  /* 工作台背景：点阵（48px 网格）+ 径向淡出 */
+  .dots{position:absolute;inset:0;background-image:radial-gradient(circle,rgba(var(--cr),.17) 1.5px,transparent 2.2px);background-size:48px 48px;background-position:-24px -24px;
+    -webkit-mask-image:radial-gradient(ellipse 75% 70% at 50% 46%,#000 30%,transparent 100%);mask-image:radial-gradient(ellipse 75% 70% at 50% 46%,#000 30%,transparent 100%)}
+  svg.deco{position:absolute;left:0;top:0;pointer-events:none}
+  /* 装饰字：等宽小字，低对比，不承载信息（data-role=decor） */
+  .mic{position:absolute;font:500 19px/1 var(--f-mono);letter-spacing:.18em;text-transform:uppercase;color:var(--cream);opacity:.42;white-space:nowrap}
+  .glow{position:absolute;border-radius:50%;background:radial-gradient(circle,rgba(var(--or),.30) 0%,rgba(var(--or),.10) 42%,rgba(var(--or),0) 70%)}
+  .t{position:absolute;white-space:nowrap}
+  .cn{font-family:var(--f-cn);font-weight:700;color:var(--cream)}
+  .dim{opacity:.64}
+  .disp{color:var(--cream)}
+  /* 流程轨道 */
+  .node{position:absolute;border-radius:50%}
+  .node.done{width:18px;height:18px;background:var(--cream);opacity:.8}
+  .node.next{width:18px;height:18px;border:2px solid rgba(var(--cr),.45);background:var(--char)}
+  .node.now{width:34px;height:34px;background:var(--orange);box-shadow:0 0 0 10px rgba(var(--or),.16),0 0 0 22px rgba(var(--or),.06)}
+  /* 窗口：炭灰 + 细描边，比现版的实心卡更轻 */
+  .win{position:absolute;background:var(--slate);border-radius:var(--r-win,36px);box-shadow:inset 0 0 0 1.5px rgba(var(--cr),.09),0 40px 80px rgba(0,0,0,.35);overflow:hidden}
+  .win .bar{position:absolute;left:0;right:0;top:0;height:72px;border-bottom:1.5px solid rgba(var(--cr),.07)}
+  .win .dot{position:absolute;top:29px;width:14px;height:14px;border-radius:50%;background:rgba(var(--cr),.22)}
+  .win .dot.o{background:var(--orange)}
+  .code{position:absolute;font-family:var(--f-mono);font-weight:500;color:var(--cream);white-space:pre}
+  .ln{position:absolute;font:500 19px/1 var(--f-mono);color:var(--cream);opacity:.3;text-align:right;width:40px}
+  .band{position:absolute;left:0;right:0;background:rgba(var(--or),.10)}
+  .mark{position:absolute;left:0;width:5px;background:var(--orange)}
+  .code .blk{border-radius:10px;padding:0 .12em;margin:0}
+  .sub{z-index:50}
+  body.v .sub{bottom:auto;top:1452px}
+</style></head>
+<body><section class="frame scene-A" id="fr"></section>
+<div class="sub" id="sub"></div>
+<script>
+const F = new URLSearchParams(location.search).get('f') || 'D1h';
+const V = F.endsWith('v'), W = V ? 1080 : 1920, H = V ? 1920 : 1080;
+if (V) document.body.classList.add('v');
+const fr = document.getElementById('fr'), SMP = '../../../../cards/images/samples/';
+const NS = 'http://www.w3.org/2000/svg';
+const el = (tag, cls, css, html, parent) => { const e = document.createElement(tag); if (cls) e.className = cls; if (css) e.style.cssText = css; if (html != null) e.innerHTML = html; (parent || fr).appendChild(e); return e; };
+const t = (x, y, html, cls, fs, extra) => el('div', 't ' + (cls || 'cn'), `left:${x}px;top:${y}px;font-size:${fs}px;line-height:1;${extra || ''}`, html);
+const mic = (x, y, s, extra) => { const e = el('div', 'mic', `left:${x}px;top:${y}px;${extra || ''}`, s); e.dataset.role = 'decor'; return e; };
+const svg = el('div', '', 'position:absolute;inset:0', '');
+const S = document.createElementNS(NS, 'svg'); S.setAttribute('class', 'deco'); S.setAttribute('width', W); S.setAttribute('height', H); svg.appendChild(S);
+let TGT = S;
+const sv = (tag, a) => { const e = document.createElementNS(NS, tag); for (const k in a) e.setAttribute(k, a[k]); TGT.appendChild(e); return e; };
+// 引线层：盖在窗口上面（背景的圆环、构造线在 S，窗口下面）
+function overlay() { const o = el('div', '', 'position:absolute;inset:0;pointer-events:none', ''); const s2 = document.createElementNS(NS, 'svg'); s2.setAttribute('class', 'deco'); s2.setAttribute('width', W); s2.setAttribute('height', H); o.appendChild(s2); return s2; }
+const CR = a => `rgba(245,238,223,${a})`, OR = a => `rgba(255,90,31,${a})`;
+
+/* ---- 背景：BG1 底板 + 点阵 + 构造线（候选「工作台」背景，AE 里是单独图层） ---- */
+el('img', 'plate', '', null).src = '../../../../libs/backgrounds/plates/BG1_char_plate.png';
+el('div', 'dots', '');
+fr.appendChild(svg);
+const rings = (cx, cy, rs, a) => rs.forEach((r, i) => sv('circle', { cx, cy, r, fill: 'none', stroke: CR(a * (1 - i * .18)), 'stroke-width': 1.5 }));
+const ticks = (cx, cy, r, n, len, a) => { for (let i = 0; i < n; i++) { const g = i / n * Math.PI * 2, c = Math.cos(g), s = Math.sin(g), L = i % 6 === 0 ? len * 2 : len;
+  sv('line', { x1: cx + c * r, y1: cy + s * r, x2: cx + c * (r - L), y2: cy + s * (r - L), stroke: CR(a), 'stroke-width': 1.5 }); } };
+const guide = (x1, y1, x2, y2, a, dash) => sv('line', { x1, y1, x2, y2, stroke: CR(a), 'stroke-width': 1.5, 'stroke-dasharray': dash || '6 10' });
+const plus = (x, y, a) => { guide(x - 11, y, x + 11, y, a || .32, 'none'); guide(x, y - 11, x, y + 11, a || .32, 'none'); };
+const wire = (pts, w) => sv('polyline', { points: pts.map(p => p.join(',')).join(' '), fill: 'none', stroke: 'var(--orange)', 'stroke-width': w || 3, 'stroke-linejoin': 'round' });
+const pin = (x, y, r) => sv('circle', { cx: x, cy: y, r: r || 7, fill: 'var(--orange)' });
+const sub = html => { document.getElementById('sub').innerHTML = html; fr.appendChild(document.getElementById('sub')); };
+const meaningful = [];
+const M = e => { meaningful.push(e); return e; };
+
+/* ================= D1：AI 挖洞，按顺序来 ================= */
+const STEPS = ['确认授权', '信息收集', 'AI 扫描', '人工复核', '写报告', '等审核'], NOW = 2;
+function chip(cx, cy, size) {
+  el('div', 'glow', `left:${cx - size * .78}px;top:${cy - size * .78}px;width:${size * 1.56}px;height:${size * 1.56}px`);
+  rings(cx, cy, [size * .62, size * .86, size * 1.12], .13); ticks(cx, cy, size * .86, 72, 8, .22);
+  const im = el('img', 'stk', `left:${cx - size / 2}px;top:${cy - size / 2}px;width:${size}px;height:${size}px`); im.src = SMP + 'bmz_aichip.png';
+}
+if (F === 'D1h') {
+  M(t(64, 56, 'AI 挖洞，按顺序来', 'disp', 112));
+  mic(68, 196, 'Workflow — 06 steps');
+  const cx = 811, cy = 392; chip(cx, cy, 420);
+  guide(cx, cy + 250, cx, 640, .35); mic(cx + 268, 214, 'Step 03 / 06'); guide(cx + 150, 228, cx + 256, 228, .3, 'none');
+  // 轨道
+  const Y = 660, xs = STEPS.map((_, i) => 64 + (i + .5) * 1792 / 6);
+  guide(64, Y, 1856, Y, .16, 'none'); sv('line', { x1: xs[0], y1: Y, x2: xs[NOW], y2: Y, stroke: CR(.6), 'stroke-width': 2.5 });
+  STEPS.forEach((s, i) => {
+    const st = i < NOW ? 'done' : i === NOW ? 'now' : 'next', d = st === 'now' ? 34 : 18;
+    el('div', 'node ' + st, `left:${xs[i] - d / 2}px;top:${Y - d / 2}px`);
+    const n = mic(xs[i], 704, String(i + 1).padStart(2, '0'), 'transform:translateX(-50%)');
+    const lab = M(t(xs[i], 742, s, 'cn' + (st === 'now' ? '' : ' dim'), st === 'now' ? 64 : 52, 'transform:translateX(-50%);' + (st === 'now' ? 'color:var(--orange)' : '')));
+  });
+  // 数字
+  mic(1336, 214, 'Manual → AI');
+  M(t(1326, 248, '80<span style="font-size:.42em;margin-left:.06em">%</span>', 'num', 236, 'color:var(--cream)'));
+  M(t(1336, 500, '体力活交给 AI', 'cn', 56));
+  M(t(1336, 572, '示意数据', 'cn dim', 52));
+  [[112, 330], [1808, 120], [1808, 860], [184, 860], [1200, 130]].forEach(p => plus(...p));
+  sub('五步，<em>按顺序</em>一步一步来');
+}
+if (F === 'D1v') {
+  M(t(64, 168, 'AI 挖洞，<br>按顺序来', 'disp', 140, 'line-height:1.04'));
+  mic(70, 480, 'Workflow — 06 steps');
+  M(t(56, 560, '80<span style="font-size:.42em;margin-left:.06em">%</span>', 'num', 210, 'color:var(--cream)'));
+  M(t(556, 586, '体力活交给 AI', 'cn', 56)); M(t(556, 662, '示意数据', 'cn dim', 52));
+  guide(64, 820, 1016, 820, .14, 'none');
+  const X = 100, ys = STEPS.map((_, i) => 900 + i * 94);
+  guide(X, ys[0], X, ys[5], .16, 'none'); sv('line', { x1: X, y1: ys[0], x2: X, y2: ys[NOW], stroke: CR(.6), 'stroke-width': 2.5 });
+  const cx = 790, cy = ys[NOW]; chip(cx, cy, 440);
+  STEPS.forEach((s, i) => {
+    const st = i < NOW ? 'done' : i === NOW ? 'now' : 'next', d = st === 'now' ? 34 : 18;
+    el('div', 'node ' + st, `left:${X - d / 2}px;top:${ys[i] - d / 2}px`);
+    mic(140, ys[i] - 9, String(i + 1).padStart(2, '0'));
+    M(t(204, ys[i] - (st === 'now' ? 32 : 26), s, 'cn' + (st === 'now' ? '' : ' dim'), st === 'now' ? 64 : 52, st === 'now' ? 'color:var(--orange)' : ''));
+  });
+  guide(440, ys[NOW], cx - 250, ys[NOW], .35);
+  mic(cx - 110, cy + 262, 'Step 03 / 06');
+  [[1016, 168], [1016, 760], [64, 1420], [940, 1420]].forEach(p => plus(...p));
+  sub('五步，<em>按顺序</em>一步一步来');
+}
+
+/* ================= D6：普通用户把自己改成了 admin ================= */
+function win(x, y, w, h, fs, lh, gutter) {
+  const wv = el('div', 'win', `left:${x}px;top:${y}px;width:${w}px;height:${h}px`);
+  el('div', 'bar', '', '', wv); [0, 1, 2].forEach(i => el('div', 'dot' + (i ? '' : ' o'), `left:${30 + i * 26}px`, '', wv));
+  const tl = el('div', 'mic', 'left:122px;top:27px', 'Proxy · history / 1002', wv); tl.dataset.role = 'decor';
+  const cx = gutter + 24; let yy = 72 + 30; const out = {};
+  const pane = (label, lines, startNo) => {
+    const lb = el('div', 'mic', `left:${cx}px;top:${yy}px`, label, wv); lb.dataset.role = 'decor'; yy += 44;
+    lines.forEach((L, i) => {
+      el('div', 'ln', `left:${gutter - 52}px;top:${yy + (lh - 19) / 2}px`, String(startNo + i), wv);
+      if (L.focus) { el('div', 'band', `top:${yy}px;height:${lh}px`, '', wv); el('div', 'mark', `top:${yy}px;height:${lh}px`, '', wv); }
+      const c = M(el('div', 'code' + (L.dim ? ' dim' : ''), `left:${cx}px;top:${yy}px;font-size:${fs}px;line-height:${lh}px`, L.s, wv));
+      if (L.focus) out.focus = c;
+      yy += lh;
+    });
+  };
+  pane('Request', [{ s: 'PUT /api/me', dim: 1 }, { s: '"role": "admin"', dim: 1 }], 1);
+  el('div', '', `position:absolute;left:0;right:0;top:${yy + 14}px;height:1.5px;background:rgba(245,238,223,.07)`, '', wv); yy += 34;
+  pane('Response', [{ s: 'HTTP/1.1 200 OK', dim: 1 }, { s: '{', dim: 1 }, { s: '  "uid": 1002,', dim: 1 }, { s: '  "role": <span class="blk" id="adm">"admin"</span>', focus: 1 }, { s: '}', dim: 1 }], 3);
+  return wv;
+}
+const box = e => { const r = e.getBoundingClientRect(); return { l: r.left, t: r.top, r: r.right, b: r.bottom, cx: (r.left + r.right) / 2, cy: (r.top + r.bottom) / 2 }; };
+function layoutD6() {
+  const a = box(document.getElementById('adm'));
+  if (F === 'D6h') {
+    const tx = 1272, cyc = 714; rings(1560, cyc, [210, 300, 390], .12); ticks(1560, cyc, 300, 96, 8, .2);
+    TGT = overlay(); fr.appendChild(document.getElementById('sub'));
+    wire([[a.r + 6, a.cy], [tx - 40, a.cy], [tx - 40, cyc]]); pin(a.r + 6, a.cy); pin(tx - 40, cyc, 9);
+  } else {
+    const cyc = 1210; rings(540, cyc, [220, 300], .12); ticks(540, cyc, 300, 96, 8, .2);
+    TGT = overlay(); fr.appendChild(document.getElementById('sub'));
+    wire([[a.cx, a.b + 6], [a.cx, 996]]); pin(a.cx, a.b + 6); pin(a.cx, 996, 9);
+  }
+}
+if (F === 'D6h') {
+  win(64, 56, 1112, 816, 54, 78, 112);
+  mic(1272, 470, 'Field · role · escalated');
+  M(t(1272, 512, '普通用户', 'cn dim', 56));
+  M(t(1262, 600, 'admin', 'code', 172, 'font-weight:600;letter-spacing:-.02em'));
+  M(t(1272, 806, '自己改的，服务器照收', 'cn', 52));
+  [[1808, 120], [1240, 120], [1808, 860]].forEach(p => plus(...p));
+  sub('放大这一行：<em>权限</em>被改成了 admin');
+}
+if (F === 'D6v') {
+  win(64, 160, 952, 780, 52, 74, 96);
+  mic(540, 1020, 'Field · role · escalated', 'transform:translateX(-50%)');
+  M(t(540, 1058, '普通用户', 'cn dim', 56, 'transform:translateX(-50%)'));
+  M(t(540, 1118, 'admin', 'code', 176, 'font-weight:600;letter-spacing:-.02em;transform:translateX(-50%)'));
+  M(t(540, 1332, '自己改的，服务器照收', 'cn', 56, 'transform:translateX(-50%)'));
+  [[64, 100], [1016, 100], [64, 1420], [1016, 1420]].forEach(p => plus(...p));
+  sub('放大这一行：<em>权限</em>被改成了 admin');
+}
+
+/* ---- 自检：有意义的文字 ≥ 52px、对比 ≥ 4.5（按实际不透明度混到底色上算） ---- */
+window.check = function () {
+  const hex = h => [1, 3, 5].map(i => parseInt(h.slice(i, i + 2), 16));
+  const lum = c => { const l = c.map(v => { v /= 255; return v <= .03928 ? v / 12.92 : Math.pow((v + .055) / 1.055, 2.4); }); return .2126 * l[0] + .7152 * l[1] + .0722 * l[2]; };
+  const ratio = (a, b) => { const x = lum(a), y = lum(b); return (Math.max(x, y) + .05) / (Math.min(x, y) + .05); };
+  const errs = [];
+  meaningful.forEach(e => {
+    const fs = parseFloat(getComputedStyle(e).fontSize); if (fs < 51.5) errs.push(`「${e.textContent.slice(0, 10)}」${fs}px < 52`);
+    let o = 1; for (let x = e; x && x !== document.body; x = x.parentElement) o *= +getComputedStyle(x).opacity;
+    const bg = hex(e.closest('.win') ? '#2B2520' : '#16130F');
+    // band 底：朱橙 10% 叠在炭灰上
+    const b2 = e.closest('.win') && e.previousSibling && e.previousSibling.classList && e.previousSibling.classList.contains('mark') ? bg.map((v, i) => v * .9 + [255, 90, 31][i] * .1) : bg;
+    const col = getComputedStyle(e).color.match(/\d+(\.\d+)?/g).map(Number).slice(0, 3);
+    const fg = col.map((v, i) => v * o + b2[i] * (1 - o)), r = ratio(fg, b2);
+    if (r < 4.5) errs.push(`「${e.textContent.slice(0, 10)}」对比 ${r.toFixed(2)} < 4.5`);
+  });
+  return errs;
+};
+window.layout = () => { if (F.startsWith('D6')) layoutD6(); };
+</script></body></html>
