@@ -1,0 +1,91 @@
+{
+  "id": "L-K30",
+  "name": "抓包字段放大",
+  "from": "K30 抓包字段放大卡",
+  "function": "抓包、响应字段讲解",
+  "scene": [
+    "A"
+  ],
+  "slots": [
+    {
+      "id": "c1",
+      "type": "card",
+      "size": "custom",
+      "rect": [
+        64,
+        56,
+        1024,
+        280
+      ],
+      "font_px": 52,
+      "need": "请求（终端卡，等宽）"
+    },
+    {
+      "id": "c2",
+      "type": "card",
+      "size": "custom",
+      "rect": [
+        64,
+        368,
+        1024,
+        504
+      ],
+      "font_px": 52,
+      "need": "响应（终端卡，关键字段框出）",
+      "subject": true
+    },
+    {
+      "id": "c3",
+      "type": "card",
+      "size": "custom",
+      "rect": [
+        1152,
+        56,
+        704,
+        704
+      ],
+      "font_px": 88,
+      "need": "放大镜：放大的字段",
+      "subject": true,
+      "shape": "circle"
+    },
+    {
+      "id": "l1",
+      "type": "label",
+      "rect": [
+        1152,
+        784,
+        320,
+        88
+      ],
+      "font_px": 52,
+      "need": "左值",
+      "fill": "card"
+    },
+    {
+      "id": "l2",
+      "type": "label",
+      "rect": [
+        1488,
+        784,
+        96,
+        88
+      ],
+      "font_px": 56,
+      "need": "≠"
+    },
+    {
+      "id": "l3",
+      "type": "label",
+      "rect": [
+        1600,
+        784,
+        256,
+        88
+      ],
+      "font_px": 52,
+      "need": "右值",
+      "fill": "accent"
+    }
+  ]
+}

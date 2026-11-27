@@ -1,0 +1,165 @@
+{
+  "id": "L-N25",
+  "name": "噪音 → 收束",
+  "from": "N25 噪音堆 → 圆形收束",
+  "function": "一堆噪音，最后只剩一个结论",
+  "scene": [
+    "B"
+  ],
+  "slots": [
+    {
+      "id": "g1",
+      "type": "group",
+      "rect": [
+        64,
+        56,
+        928,
+        816
+      ],
+      "contains": [
+        "m1",
+        "l1",
+        "l2",
+        "l3",
+        "l4",
+        "l5",
+        "l6",
+        "l7",
+        "l8"
+      ],
+      "need": "噪音堆：贴纸 + 8 个噪音标签",
+      "subject": true
+    },
+    {
+      "id": "m1",
+      "type": "media",
+      "rect": [
+        384,
+        336,
+        224,
+        320
+      ],
+      "need": "贴纸：噪音来源（扫描器 / 工具）"
+    },
+    {
+      "id": "l1",
+      "type": "label",
+      "rect": [
+        96,
+        136,
+        288,
+        96
+      ],
+      "font_px": 56,
+      "need": "噪音标签 1",
+      "fill": "accent"
+    },
+    {
+      "id": "l2",
+      "type": "label",
+      "rect": [
+        480,
+        104,
+        288,
+        96
+      ],
+      "font_px": 56,
+      "need": "噪音标签 2",
+      "fill": "card_lit"
+    },
+    {
+      "id": "l3",
+      "type": "label",
+      "rect": [
+        64,
+        336,
+        320,
+        96
+      ],
+      "font_px": 56,
+      "need": "噪音标签 3",
+      "fill": "card_lit"
+    },
+    {
+      "id": "l4",
+      "type": "label",
+      "rect": [
+        640,
+        296,
+        288,
+        96
+      ],
+      "font_px": 56,
+      "need": "噪音标签 4",
+      "fill": "card_lit"
+    },
+    {
+      "id": "l5",
+      "type": "label",
+      "rect": [
+        96,
+        560,
+        272,
+        96
+      ],
+      "font_px": 56,
+      "need": "噪音标签 5",
+      "fill": "accent"
+    },
+    {
+      "id": "l6",
+      "type": "label",
+      "rect": [
+        448,
+        680,
+        320,
+        96
+      ],
+      "font_px": 56,
+      "need": "噪音标签 6",
+      "fill": "card_lit"
+    },
+    {
+      "id": "l7",
+      "type": "label",
+      "rect": [
+        704,
+        552,
+        288,
+        96
+      ],
+      "font_px": 56,
+      "need": "噪音标签 7",
+      "fill": "card_lit"
+    },
+    {
+      "id": "l8",
+      "type": "label",
+      "rect": [
+        704,
+        784,
+        288,
+        88
+      ],
+      "font_px": 56,
+      "need": "噪音标签 8",
+      "fill": "card_lit"
+    },
+    {
+      "id": "c1",
+      "type": "card",
+      "size": "custom",
+      "rect": [
+        1040,
+        56,
+        816,
+        816
+      ],
+      "font_px": 280,
+      "need": "收束圆：结论数字 + 一句话（标「示意数据」）",
+      "subject": true,
+      "shape": "circle"
+    }
+  ],
+  "notes": "圆从贴纸的位置展开（炭黑圆，结论数字朱橙）。"
+}

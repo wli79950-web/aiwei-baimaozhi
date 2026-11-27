@@ -1,0 +1,72 @@
+{
+  "id": "L-N07",
+  "name": "插画海报",
+  "from": "N7 插画海报卡",
+  "function": "比喻：用一张插画讲一个名词",
+  "scene": [
+    "A"
+  ],
+  "slots": [
+    {
+      "id": "p1",
+      "type": "media",
+      "rect": [
+        448,
+        56,
+        1024,
+        968
+      ],
+      "need": "素材位：角色 / 贴纸 / 双色调照片 / 用户素材（原 A-roll 人物位，以后可切回真人口播）",
+      "person_optional": true,
+      "subject": true
+    },
+    {
+      "id": "m1",
+      "type": "media",
+      "rect": [
+        160,
+        296,
+        1600,
+        576
+      ],
+      "need": "插画：本期比喻（flat / SC02）",
+      "subject": true,
+      "over": [
+        "p1"
+      ]
+    },
+    {
+      "id": "l1",
+      "type": "label",
+      "rect": [
+        224,
+        744,
+        1024,
+        112
+      ],
+      "font_px": 64,
+      "need": "一句比喻",
+      "over": [
+        "p1",
+        "m1"
+      ]
+    },
+    {
+      "id": "k1",
+      "type": "label",
+      "rect": [
+        1440,
+        800,
+        256,
+        40
+      ],
+      "font_px": 24,
+      "decor": true,
+      "need": "英文小标注",
+      "over": [
+        "p1",
+        "m1"
+      ]
+    }
+  ]
+}

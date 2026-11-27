@@ -1,0 +1,122 @@
+{
+  "id": "L-K26",
+  "name": "透视卡片队列",
+  "from": "K26 透视卡片队列",
+  "function": "列举：能做什么、有几种方法（3–7 项）",
+  "scene": [
+    "A"
+  ],
+  "slots": [
+    {
+      "id": "p1",
+      "type": "media",
+      "rect": [
+        448,
+        56,
+        1024,
+        968
+      ],
+      "need": "素材位：角色 / 贴纸 / 双色调照片 / 用户素材（原 A-roll 人物位，以后可切回真人口播）",
+      "person_optional": true,
+      "subject": true
+    },
+    {
+      "id": "l1",
+      "type": "label",
+      "rect": [
+        736,
+        400,
+        448,
+        72
+      ],
+      "font_px": 52,
+      "need": "队列名 + 计数（02 / 05）",
+      "fill": "card",
+      "over": [
+        "p1"
+      ]
+    },
+    {
+      "id": "c1",
+      "type": "card",
+      "size": "custom",
+      "rect": [
+        64,
+        568,
+        304,
+        264
+      ],
+      "font_px": 52,
+      "need": "队列项（两侧带透视、变淡）",
+      "over": [
+        "p1"
+      ]
+    },
+    {
+      "id": "c2",
+      "type": "card",
+      "size": "custom",
+      "rect": [
+        384,
+        536,
+        336,
+        296
+      ],
+      "font_px": 52,
+      "need": "队列项",
+      "over": [
+        "p1"
+      ]
+    },
+    {
+      "id": "c3",
+      "type": "card",
+      "size": "custom",
+      "rect": [
+        736,
+        488,
+        448,
+        384
+      ],
+      "font_px": 64,
+      "need": "当前项（转正、放大）",
+      "fill": "card_lit",
+      "subject": true,
+      "over": [
+        "p1"
+      ]
+    },
+    {
+      "id": "c4",
+      "type": "card",
+      "size": "custom",
+      "rect": [
+        1200,
+        536,
+        336,
+        296
+      ],
+      "font_px": 52,
+      "need": "队列项",
+      "over": [
+        "p1"
+      ]
+    },
+    {
+      "id": "c5",
+      "type": "card",
+      "size": "custom",
+      "rect": [
+        1552,
+        568,
+        304,
+        264
+      ],
+      "font_px": 52,
+      "need": "队列项",
+      "over": [
+        "p1"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,124 @@
+{
+  "id": "L-N14",
+  "name": "让半屏证据板",
+  "from": "N14 让半屏证据板",
+  "function": "边看主体边看证据（复盘）",
+  "scene": [
+    "A"
+  ],
+  "slots": [
+    {
+      "id": "p1",
+      "type": "media",
+      "rect": [
+        64,
+        56,
+        768,
+        968
+      ],
+      "need": "素材位：角色 / 贴纸 / 双色调照片 / 用户素材（原 A-roll 人物位，以后可切回真人口播）",
+      "person_optional": true,
+      "subject": true
+    },
+    {
+      "id": "t1",
+      "type": "title",
+      "rect": [
+        880,
+        56,
+        976,
+        240
+      ],
+      "font_px": 104,
+      "need": "标题（2 行）"
+    },
+    {
+      "id": "c1",
+      "type": "card",
+      "size": "custom",
+      "rect": [
+        880,
+        360,
+        304,
+        512
+      ],
+      "font_px": 52,
+      "need": "证据卡 1：编号 + 名称 + 一段代码",
+      "fill": "card_lit",
+      "subject": true
+    },
+    {
+      "id": "c2",
+      "type": "card",
+      "size": "custom",
+      "rect": [
+        1216,
+        360,
+        304,
+        512
+      ],
+      "font_px": 52,
+      "need": "证据卡 2：编号 + 名称 + 一段代码（关键卡亮起）",
+      "fill": "card_lit",
+      "subject": true
+    },
+    {
+      "id": "c3",
+      "type": "card",
+      "size": "custom",
+      "rect": [
+        1552,
+        360,
+        304,
+        512
+      ],
+      "font_px": 52,
+      "need": "证据卡 3：编号 + 名称 + 一段代码",
+      "fill": "card_lit",
+      "subject": true
+    },
+    {
+      "id": "m1",
+      "type": "media",
+      "rect": [
+        1040,
+        320,
+        144,
+        144
+      ],
+      "need": "贴纸：卡 1 的物件",
+      "over": [
+        "c1"
+      ]
+    },
+    {
+      "id": "m2",
+      "type": "media",
+      "rect": [
+        1376,
+        320,
+        144,
+        144
+      ],
+      "need": "贴纸：卡 2 的物件",
+      "over": [
+        "c2"
+      ]
+    },
+    {
+      "id": "m3",
+      "type": "media",
+      "rect": [
+        1712,
+        320,
+        144,
+        144
+      ],
+      "need": "贴纸：卡 3 的物件",
+      "over": [
+        "c3"
+      ]
+    }
+  ],
+  "notes": "右半屏垫奶油白纸面（B 场底板的半屏版，从右推入）。"
+}

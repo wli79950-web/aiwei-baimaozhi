@@ -1,0 +1,90 @@
+{
+  "id": "L-K25",
+  "name": "排除法收束",
+  "from": "K25 排除法收束卡",
+  "function": "排查原因、误区纠正（先排除，再给答案）",
+  "scene": [
+    "A"
+  ],
+  "slots": [
+    {
+      "id": "p1",
+      "type": "media",
+      "rect": [
+        448,
+        56,
+        1024,
+        968
+      ],
+      "need": "素材位：角色 / 贴纸 / 双色调照片 / 用户素材（原 A-roll 人物位，以后可切回真人口播）",
+      "person_optional": true,
+      "subject": true
+    },
+    {
+      "id": "l1",
+      "type": "label",
+      "rect": [
+        64,
+        248,
+        544,
+        112
+      ],
+      "font_px": 56,
+      "need": "被排除的猜测 1（划线打叉）",
+      "fill": "card",
+      "over": [
+        "p1"
+      ]
+    },
+    {
+      "id": "l2",
+      "type": "label",
+      "rect": [
+        64,
+        408,
+        544,
+        112
+      ],
+      "font_px": 56,
+      "need": "被排除的猜测 2（划线打叉）",
+      "fill": "card",
+      "over": [
+        "p1"
+      ]
+    },
+    {
+      "id": "l3",
+      "type": "label",
+      "rect": [
+        64,
+        568,
+        544,
+        112
+      ],
+      "font_px": 56,
+      "need": "被排除的猜测 3（划线打叉）",
+      "fill": "card",
+      "over": [
+        "p1"
+      ]
+    },
+    {
+      "id": "c1",
+      "type": "card",
+      "size": "custom",
+      "rect": [
+        1248,
+        392,
+        608,
+        224
+      ],
+      "font_px": 64,
+      "need": "唯一答案",
+      "fill": "accent",
+      "subject": true,
+      "over": [
+        "p1"
+      ]
+    }
+  ]
+}

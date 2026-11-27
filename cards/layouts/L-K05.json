@@ -1,0 +1,56 @@
+{
+  "id": "L-K05",
+  "name": "手持关键词",
+  "from": "K5 手持卡 + 粒子换卡",
+  "function": "一个名词是什么",
+  "scene": [
+    "A"
+  ],
+  "slots": [
+    {
+      "id": "p1",
+      "type": "media",
+      "rect": [
+        160,
+        56,
+        1600,
+        968
+      ],
+      "need": "素材位：角色 / 贴纸 / 双色调照片 / 用户素材（原 A-roll 人物位，以后可切回真人口播）",
+      "person_optional": true,
+      "subject": true
+    },
+    {
+      "id": "c1",
+      "type": "card",
+      "size": "custom",
+      "rect": [
+        432,
+        488,
+        1056,
+        384
+      ],
+      "font_px": 64,
+      "need": "关键词卡：名词 + 一句白话解释（换卡时同位置替换）",
+      "subject": true,
+      "over": [
+        "p1"
+      ]
+    },
+    {
+      "id": "m1",
+      "type": "media",
+      "rect": [
+        1248,
+        392,
+        288,
+        288
+      ],
+      "need": "贴纸：与名词相关的物件",
+      "over": [
+        "p1",
+        "c1"
+      ]
+    }
+  ]
+}

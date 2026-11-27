@@ -1,0 +1,65 @@
+{
+  "id": "L-N20",
+  "name": "对象 + 两侧判断",
+  "from": "N20 对象 + 两侧判断大字",
+  "function": "一个对象，两个判断",
+  "scene": [
+    "B"
+  ],
+  "slots": [
+    {
+      "id": "l1",
+      "type": "label",
+      "rect": [
+        64,
+        296,
+        608,
+        400
+      ],
+      "font_px": 160,
+      "need": "判断 1 + 英文",
+      "subject": true
+    },
+    {
+      "id": "m1",
+      "type": "media",
+      "rect": [
+        672,
+        56,
+        576,
+        816
+      ],
+      "need": "贴纸：被评判的对象（垫圆盘 + 圆环）",
+      "subject": true
+    },
+    {
+      "id": "l2",
+      "type": "label",
+      "rect": [
+        1248,
+        296,
+        608,
+        400
+      ],
+      "font_px": 160,
+      "need": "判断 2 + 英文（色块强调）",
+      "subject": true
+    },
+    {
+      "id": "k1",
+      "type": "label",
+      "rect": [
+        672,
+        800,
+        576,
+        40
+      ],
+      "font_px": 24,
+      "decor": true,
+      "need": "英文小标注",
+      "over": [
+        "m1"
+      ]
+    }
+  ]
+}

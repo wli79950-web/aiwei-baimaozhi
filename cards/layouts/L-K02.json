@@ -1,0 +1,64 @@
+{
+  "id": "L-K02",
+  "name": "圆环定义",
+  "from": "K2 圆环定义卡",
+  "function": "由哪几类组成（3–6 类）",
+  "scene": [
+    "A"
+  ],
+  "slots": [
+    {
+      "id": "c1",
+      "type": "card",
+      "size": "custom",
+      "rect": [
+        64,
+        56,
+        1152,
+        816
+      ],
+      "font_px": 56,
+      "need": "圆环定义图：中心名词 + 3–6 个扇区，扇区名标在圆环外侧",
+      "subject": true
+    },
+    {
+      "id": "k1",
+      "type": "label",
+      "rect": [
+        1248,
+        168,
+        608,
+        40
+      ],
+      "font_px": 24,
+      "decor": true,
+      "need": "英文小标注（可省）"
+    },
+    {
+      "id": "t1",
+      "type": "title",
+      "rect": [
+        1248,
+        232,
+        608,
+        256
+      ],
+      "font_px": 104,
+      "need": "标题（2 行）"
+    },
+    {
+      "id": "c2",
+      "type": "card",
+      "size": "custom",
+      "rect": [
+        1248,
+        544,
+        576,
+        200
+      ],
+      "font_px": 52,
+      "need": "本期命中：哪一类、具体是什么",
+      "fill": "card_lit"
+    }
+  ]
+}

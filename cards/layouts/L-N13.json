@@ -1,0 +1,136 @@
+{
+  "id": "L-N13",
+  "name": "提问条 + 维度",
+  "from": "N13 提问条 + 维度词",
+  "function": "一个问题拆成几个维度（3–6 个）",
+  "scene": [
+    "A"
+  ],
+  "slots": [
+    {
+      "id": "p1",
+      "type": "media",
+      "rect": [
+        448,
+        56,
+        1024,
+        968
+      ],
+      "need": "素材位：角色 / 贴纸 / 双色调照片 / 用户素材（原 A-roll 人物位，以后可切回真人口播）",
+      "person_optional": true,
+      "subject": true
+    },
+    {
+      "id": "c1",
+      "type": "card",
+      "size": "custom",
+      "rect": [
+        1024,
+        56,
+        832,
+        128
+      ],
+      "font_px": 56,
+      "need": "提问条：一个问题",
+      "fill": "card_lit",
+      "over": [
+        "p1"
+      ]
+    },
+    {
+      "id": "m1",
+      "type": "media",
+      "rect": [
+        904,
+        56,
+        136,
+        128
+      ],
+      "need": "贴纸：提问图标（放大镜等）",
+      "over": [
+        "p1",
+        "c1"
+      ]
+    },
+    {
+      "id": "l1",
+      "type": "label",
+      "rect": [
+        64,
+        264,
+        448,
+        160
+      ],
+      "font_px": 88,
+      "need": "维度 1 + 英文",
+      "subject": true,
+      "over": [
+        "p1"
+      ]
+    },
+    {
+      "id": "l2",
+      "type": "label",
+      "rect": [
+        160,
+        472,
+        448,
+        160
+      ],
+      "font_px": 88,
+      "need": "维度 2 + 英文",
+      "subject": true,
+      "over": [
+        "p1"
+      ]
+    },
+    {
+      "id": "l3",
+      "type": "label",
+      "rect": [
+        64,
+        680,
+        448,
+        160
+      ],
+      "font_px": 88,
+      "need": "维度 3 + 英文",
+      "subject": true,
+      "over": [
+        "p1"
+      ]
+    },
+    {
+      "id": "l4",
+      "type": "label",
+      "rect": [
+        1408,
+        264,
+        448,
+        160
+      ],
+      "font_px": 88,
+      "need": "维度 4 + 英文",
+      "subject": true,
+      "over": [
+        "p1"
+      ]
+    },
+    {
+      "id": "l5",
+      "type": "label",
+      "rect": [
+        1408,
+        504,
+        448,
+        160
+      ],
+      "font_px": 88,
+      "need": "维度 5 + 英文（关键维度，朱橙）",
+      "subject": true,
+      "over": [
+        "p1"
+      ]
+    }
+  ]
+}

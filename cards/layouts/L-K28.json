@@ -1,0 +1,69 @@
+{
+  "id": "L-K28",
+  "name": "原件分层摘录",
+  "from": "K28 原件分层摘录卡",
+  "function": "一份报告 / 公告里有多条重点",
+  "scene": [
+    "B"
+  ],
+  "slots": [
+    {
+      "id": "m1",
+      "type": "media",
+      "rect": [
+        64,
+        56,
+        736,
+        1080
+      ],
+      "need": "用户素材：报告 / 公告原件（底部出血），或标「示意」的排版原文",
+      "subject": true,
+      "bleed": true
+    },
+    {
+      "id": "c1",
+      "type": "card",
+      "size": "custom",
+      "rect": [
+        912,
+        56,
+        944,
+        160
+      ],
+      "font_px": 52,
+      "need": "上一条摘录（后退、变淡）"
+    },
+    {
+      "id": "c2",
+      "type": "card",
+      "size": "custom",
+      "rect": [
+        848,
+        200,
+        1008,
+        288
+      ],
+      "font_px": 56,
+      "need": "当前摘录：出处 + 原句",
+      "fill": "card_lit",
+      "subject": true,
+      "over": [
+        "c1"
+      ]
+    },
+    {
+      "id": "c3",
+      "type": "card",
+      "size": "custom",
+      "rect": [
+        1280,
+        520,
+        576,
+        352
+      ],
+      "font_px": 120,
+      "need": "大数字块：数字 + 单位（示意数据要标明）",
+      "fill": "accent"
+    }
+  ]
+}

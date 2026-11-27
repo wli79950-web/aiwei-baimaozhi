@@ -1,0 +1,118 @@
+{
+  "id": "L-N12A",
+  "name": "槽位标签 · 口播态",
+  "from": "N12 槽位标签（A 口播态）",
+  "function": "先在主体周围固定几个标签，再切全屏讲",
+  "scene": [
+    "A"
+  ],
+  "slots": [
+    {
+      "id": "p1",
+      "type": "media",
+      "rect": [
+        512,
+        56,
+        896,
+        968
+      ],
+      "need": "素材位：角色 / 贴纸 / 双色调照片 / 用户素材（原 A-roll 人物位，以后可切回真人口播）",
+      "person_optional": true,
+      "subject": true
+    },
+    {
+      "id": "l1",
+      "type": "label",
+      "rect": [
+        64,
+        232,
+        448,
+        128
+      ],
+      "font_px": 56,
+      "need": "槽位标签 1",
+      "fill": "card_lit",
+      "subject": true,
+      "over": [
+        "p1"
+      ]
+    },
+    {
+      "id": "l2",
+      "type": "label",
+      "rect": [
+        112,
+        472,
+        448,
+        128
+      ],
+      "font_px": 56,
+      "need": "槽位标签 2",
+      "fill": "card_lit",
+      "subject": true,
+      "over": [
+        "p1"
+      ]
+    },
+    {
+      "id": "l3",
+      "type": "label",
+      "rect": [
+        64,
+        712,
+        448,
+        128
+      ],
+      "font_px": 56,
+      "need": "槽位标签 3",
+      "fill": "card_lit",
+      "subject": true,
+      "over": [
+        "p1"
+      ]
+    },
+    {
+      "id": "l4",
+      "type": "label",
+      "rect": [
+        1408,
+        200,
+        448,
+        128
+      ],
+      "font_px": 56,
+      "need": "槽位标签 4",
+      "fill": "card_lit",
+      "subject": true
+    },
+    {
+      "id": "l5",
+      "type": "label",
+      "rect": [
+        1408,
+        440,
+        448,
+        128
+      ],
+      "font_px": 56,
+      "need": "槽位标签 5",
+      "fill": "card_lit",
+      "subject": true
+    },
+    {
+      "id": "l6",
+      "type": "label",
+      "rect": [
+        1408,
+        680,
+        448,
+        128
+      ],
+      "font_px": 56,
+      "need": "槽位标签 6（问题那格）",
+      "fill": "accent",
+      "subject": true
+    }
+  ],
+  "notes": "标签位置和 L-N12B 完全一致：换底时标签原位不动。"
+}

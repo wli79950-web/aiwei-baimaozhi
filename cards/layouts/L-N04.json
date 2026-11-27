@@ -1,0 +1,72 @@
+{
+  "id": "L-N04",
+  "name": "照片扇形",
+  "from": "N4 人物 + 照片扇形",
+  "function": "口播时补画面（3 张照片）",
+  "scene": [
+    "A"
+  ],
+  "slots": [
+    {
+      "id": "p1",
+      "type": "media",
+      "rect": [
+        448,
+        56,
+        1024,
+        968
+      ],
+      "need": "素材位：角色 / 贴纸 / 双色调照片 / 用户素材（原 A-roll 人物位，以后可切回真人口播）",
+      "person_optional": true,
+      "subject": true
+    },
+    {
+      "id": "m1",
+      "type": "media",
+      "rect": [
+        64,
+        456,
+        704,
+        472
+      ],
+      "need": "照片 1（相纸 + 一行图注）",
+      "subject": true,
+      "over": [
+        "p1"
+      ]
+    },
+    {
+      "id": "m2",
+      "type": "media",
+      "rect": [
+        1152,
+        456,
+        704,
+        472
+      ],
+      "need": "照片 3",
+      "subject": true,
+      "over": [
+        "p1"
+      ]
+    },
+    {
+      "id": "m3",
+      "type": "media",
+      "rect": [
+        608,
+        520,
+        704,
+        440
+      ],
+      "need": "照片 2（中间压在最上）",
+      "subject": true,
+      "over": [
+        "p1",
+        "m1",
+        "m2"
+      ]
+    }
+  ],
+  "notes": "照片图注写在相纸上半部分，避开字幕区。"
+}

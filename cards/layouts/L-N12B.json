@@ -1,0 +1,138 @@
+{
+  "id": "L-N12B",
+  "name": "槽位标签 · 换底态",
+  "from": "N12 槽位标签（B 换底态）",
+  "function": "标签原位不动，换底后中心展开",
+  "scene": [
+    "B"
+  ],
+  "slots": [
+    {
+      "id": "c1",
+      "type": "card",
+      "size": "custom",
+      "rect": [
+        560,
+        56,
+        800,
+        816
+      ],
+      "font_px": 56,
+      "need": "中心圆盘：一句话总结（连线画向各标签）",
+      "fill": "card_lit",
+      "subject": true,
+      "shape": "circle"
+    },
+    {
+      "id": "m1",
+      "type": "media",
+      "rect": [
+        784,
+        120,
+        352,
+        320
+      ],
+      "need": "贴纸：本期的核心对象",
+      "over": [
+        "c1"
+      ]
+    },
+    {
+      "id": "l1",
+      "type": "label",
+      "rect": [
+        64,
+        232,
+        448,
+        128
+      ],
+      "font_px": 56,
+      "need": "槽位标签 1",
+      "fill": "card_lit",
+      "subject": true
+    },
+    {
+      "id": "l2",
+      "type": "label",
+      "rect": [
+        112,
+        472,
+        448,
+        128
+      ],
+      "font_px": 56,
+      "need": "槽位标签 2",
+      "fill": "card_lit",
+      "subject": true
+    },
+    {
+      "id": "l3",
+      "type": "label",
+      "rect": [
+        64,
+        712,
+        448,
+        128
+      ],
+      "font_px": 56,
+      "need": "槽位标签 3",
+      "fill": "card_lit",
+      "subject": true
+    },
+    {
+      "id": "l4",
+      "type": "label",
+      "rect": [
+        1408,
+        200,
+        448,
+        128
+      ],
+      "font_px": 56,
+      "need": "槽位标签 4",
+      "fill": "card_lit",
+      "subject": true
+    },
+    {
+      "id": "l5",
+      "type": "label",
+      "rect": [
+        1408,
+        440,
+        448,
+        128
+      ],
+      "font_px": 56,
+      "need": "槽位标签 5",
+      "fill": "card_lit",
+      "subject": true
+    },
+    {
+      "id": "l6",
+      "type": "label",
+      "rect": [
+        1408,
+        680,
+        448,
+        128
+      ],
+      "font_px": 56,
+      "need": "槽位标签 6（问题那格）",
+      "fill": "accent",
+      "subject": true
+    },
+    {
+      "id": "k1",
+      "type": "label",
+      "rect": [
+        1408,
+        824,
+        448,
+        48
+      ],
+      "font_px": 36,
+      "decor": true,
+      "need": "英文手写批注（可省）"
+    }
+  ]
+}

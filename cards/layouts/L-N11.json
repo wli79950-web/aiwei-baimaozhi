@@ -1,0 +1,94 @@
+{
+  "id": "L-N11",
+  "name": "同侧叠牌",
+  "from": "N11 同侧叠牌",
+  "function": "先给对象，下一拍再给判断",
+  "scene": [
+    "A"
+  ],
+  "slots": [
+    {
+      "id": "p1",
+      "type": "media",
+      "rect": [
+        64,
+        56,
+        1056,
+        968
+      ],
+      "need": "素材位：角色 / 贴纸 / 双色调照片 / 用户素材（原 A-roll 人物位，以后可切回真人口播）",
+      "person_optional": true,
+      "subject": true
+    },
+    {
+      "id": "c1",
+      "type": "card",
+      "size": "custom",
+      "rect": [
+        1216,
+        168,
+        640,
+        264
+      ],
+      "font_px": 56,
+      "need": "牌 A：对象（字段名 + 一句话）",
+      "fill": "card_lit",
+      "subject": true
+    },
+    {
+      "id": "m1",
+      "type": "media",
+      "rect": [
+        1120,
+        104,
+        288,
+        288
+      ],
+      "need": "贴纸：本期的证据物",
+      "over": [
+        "p1",
+        "c1"
+      ]
+    },
+    {
+      "id": "c2",
+      "type": "card",
+      "size": "custom",
+      "rect": [
+        1184,
+        456,
+        672,
+        320
+      ],
+      "font_px": 64,
+      "need": "牌 B：判断（关键词用朱橙）",
+      "subject": true
+    },
+    {
+      "id": "l1",
+      "type": "label",
+      "rect": [
+        1216,
+        792,
+        304,
+        80
+      ],
+      "font_px": 52,
+      "need": "字段 1",
+      "fill": "card_lit"
+    },
+    {
+      "id": "l2",
+      "type": "label",
+      "rect": [
+        1552,
+        792,
+        304,
+        80
+      ],
+      "font_px": 52,
+      "need": "字段 2",
+      "fill": "accent"
+    }
+  ]
+}

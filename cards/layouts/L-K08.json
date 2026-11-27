@@ -1,0 +1,123 @@
+{
+  "id": "L-K08",
+  "name": "编号网格",
+  "from": "K8 编号网格 + 竖向进度",
+  "function": "步骤、流程（3–6 步）",
+  "scene": [
+    "B",
+    "A"
+  ],
+  "slots": [
+    {
+      "id": "t1",
+      "type": "title",
+      "rect": [
+        64,
+        56,
+        1200,
+        128
+      ],
+      "font_px": 112,
+      "need": "标题"
+    },
+    {
+      "id": "c1",
+      "type": "card",
+      "size": "custom",
+      "rect": [
+        64,
+        216,
+        416,
+        312
+      ],
+      "font_px": 56,
+      "need": "步骤卡 1：编号 + 名称 + 线框图标",
+      "subject": true
+    },
+    {
+      "id": "c2",
+      "type": "card",
+      "size": "custom",
+      "rect": [
+        512,
+        216,
+        416,
+        312
+      ],
+      "font_px": 56,
+      "need": "步骤卡 2：编号 + 名称 + 线框图标",
+      "subject": true
+    },
+    {
+      "id": "c3",
+      "type": "card",
+      "size": "custom",
+      "rect": [
+        960,
+        216,
+        416,
+        312
+      ],
+      "font_px": 56,
+      "need": "步骤卡 3：编号 + 名称 + 线框图标（当前步）",
+      "subject": true
+    },
+    {
+      "id": "c4",
+      "type": "card",
+      "size": "custom",
+      "rect": [
+        64,
+        560,
+        416,
+        312
+      ],
+      "font_px": 56,
+      "need": "步骤卡 4：编号 + 名称 + 线框图标",
+      "subject": true
+    },
+    {
+      "id": "c5",
+      "type": "card",
+      "size": "custom",
+      "rect": [
+        512,
+        560,
+        416,
+        312
+      ],
+      "font_px": 56,
+      "need": "步骤卡 5：编号 + 名称 + 线框图标",
+      "subject": true
+    },
+    {
+      "id": "c6",
+      "type": "card",
+      "size": "custom",
+      "rect": [
+        960,
+        560,
+        416,
+        312
+      ],
+      "font_px": 56,
+      "need": "步骤卡 6：编号 + 名称 + 线框图标",
+      "subject": true
+    },
+    {
+      "id": "c7",
+      "type": "card",
+      "size": "custom",
+      "rect": [
+        1408,
+        216,
+        448,
+        656
+      ],
+      "font_px": 52,
+      "need": "竖向进度：开始 → 各步 → 结束，当前步亮起",
+      "subject": true
+    }
+  ],
+  "notes": "步骤不足 6 个时，最后一格可放「下一步」虚线卡。"
+}

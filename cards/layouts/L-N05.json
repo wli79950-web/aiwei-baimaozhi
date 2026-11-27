@@ -1,0 +1,121 @@
+{
+  "id": "L-N05",
+  "name": "类型墙",
+  "from": "N5 类型墙",
+  "function": "由哪几类组成 / 一期的全貌（6 类）",
+  "scene": [
+    "A"
+  ],
+  "slots": [
+    {
+      "id": "t1",
+      "type": "title",
+      "rect": [
+        64,
+        56,
+        1200,
+        128
+      ],
+      "font_px": 112,
+      "need": "标题"
+    },
+    {
+      "id": "m1",
+      "type": "media",
+      "rect": [
+        1472,
+        56,
+        384,
+        256
+      ],
+      "need": "场景照片（可省，露一角在卡片后面）"
+    },
+    {
+      "id": "c1",
+      "type": "card",
+      "size": "custom",
+      "rect": [
+        64,
+        216,
+        576,
+        312
+      ],
+      "font_px": 56,
+      "need": "类型卡 1：3D 图标 + 名称 + 英文",
+      "subject": true
+    },
+    {
+      "id": "c2",
+      "type": "card",
+      "size": "custom",
+      "rect": [
+        672,
+        216,
+        576,
+        312
+      ],
+      "font_px": 56,
+      "need": "类型卡 2：3D 图标 + 名称 + 英文",
+      "subject": true
+    },
+    {
+      "id": "c3",
+      "type": "card",
+      "size": "custom",
+      "rect": [
+        1280,
+        216,
+        576,
+        312
+      ],
+      "font_px": 56,
+      "need": "类型卡 3：3D 图标 + 名称 + 英文",
+      "subject": true,
+      "over": [
+        "m1"
+      ]
+    },
+    {
+      "id": "c4",
+      "type": "card",
+      "size": "custom",
+      "rect": [
+        64,
+        560,
+        576,
+        312
+      ],
+      "font_px": 56,
+      "need": "类型卡 4：3D 图标 + 名称 + 英文（本期那格亮起）",
+      "subject": true
+    },
+    {
+      "id": "c5",
+      "type": "card",
+      "size": "custom",
+      "rect": [
+        672,
+        560,
+        576,
+        312
+      ],
+      "font_px": 56,
+      "need": "类型卡 5：3D 图标 + 名称 + 英文",
+      "subject": true
+    },
+    {
+      "id": "c6",
+      "type": "card",
+      "size": "custom",
+      "rect": [
+        1280,
+        560,
+        576,
+        312
+      ],
+      "font_px": 56,
+      "need": "类型卡 6：3D 图标 + 名称 + 英文",
+      "subject": true
+    }
+  ]
+}

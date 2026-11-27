@@ -1,0 +1,123 @@
+{
+  "id": "L-N01",
+  "name": "角色立牌",
+  "from": "N1 角色立牌卡",
+  "function": "角色介绍（3 个角色）",
+  "scene": [
+    "B"
+  ],
+  "slots": [
+    {
+      "id": "t1",
+      "type": "title",
+      "rect": [
+        64,
+        216,
+        480,
+        240
+      ],
+      "font_px": 104,
+      "need": "标题（2 行）"
+    },
+    {
+      "id": "l1",
+      "type": "label",
+      "rect": [
+        64,
+        488,
+        480,
+        192
+      ],
+      "font_px": 52,
+      "need": "说明（3 行）"
+    },
+    {
+      "id": "c1",
+      "type": "card",
+      "size": "custom",
+      "rect": [
+        576,
+        392,
+        416,
+        480
+      ],
+      "font_px": 56,
+      "need": "角色卡 1：编号 + 角色名 + 职责",
+      "subject": true
+    },
+    {
+      "id": "c2",
+      "type": "card",
+      "size": "custom",
+      "rect": [
+        1008,
+        392,
+        416,
+        480
+      ],
+      "font_px": 56,
+      "need": "角色卡 2：编号 + 角色名 + 职责",
+      "subject": true
+    },
+    {
+      "id": "c3",
+      "type": "card",
+      "size": "custom",
+      "rect": [
+        1440,
+        392,
+        416,
+        480
+      ],
+      "font_px": 56,
+      "need": "角色卡 3：编号 + 角色名 + 职责",
+      "subject": true
+    },
+    {
+      "id": "m1",
+      "type": "media",
+      "rect": [
+        608,
+        56,
+        352,
+        560
+      ],
+      "need": "角色 1（本期生成，探出卡片上沿）",
+      "subject": true,
+      "over": [
+        "c1"
+      ]
+    },
+    {
+      "id": "m2",
+      "type": "media",
+      "rect": [
+        1040,
+        56,
+        352,
+        560
+      ],
+      "need": "角色 2（本期生成，探出卡片上沿）",
+      "subject": true,
+      "over": [
+        "c2"
+      ]
+    },
+    {
+      "id": "m3",
+      "type": "media",
+      "rect": [
+        1472,
+        56,
+        352,
+        560
+      ],
+      "need": "角色 3（本期生成，探出卡片上沿）",
+      "subject": true,
+      "over": [
+        "c3"
+      ]
+    }
+  ],
+  "notes": "角色每期按口播现生成，不做跨期复用的固定角色。"
+}

@@ -1,0 +1,91 @@
+{
+  "id": "L-N19",
+  "name": "中轴物件串联",
+  "from": "N19 中轴物件串联",
+  "function": "两个容易混的概念之间的关系",
+  "scene": [
+    "B"
+  ],
+  "slots": [
+    {
+      "id": "l1",
+      "type": "label",
+      "rect": [
+        64,
+        200,
+        576,
+        384
+      ],
+      "font_px": 140,
+      "need": "概念 A + 英文 + 一句解释",
+      "subject": true
+    },
+    {
+      "id": "m1",
+      "type": "media",
+      "rect": [
+        640,
+        56,
+        640,
+        816
+      ],
+      "need": "贴纸：两个概念之间的「关口」物件（垫圆盘）",
+      "subject": true
+    },
+    {
+      "id": "l2",
+      "type": "label",
+      "rect": [
+        1280,
+        200,
+        576,
+        384
+      ],
+      "font_px": 140,
+      "need": "概念 B + 英文 + 一句解释（色块强调）",
+      "subject": true
+    },
+    {
+      "id": "l3",
+      "type": "label",
+      "rect": [
+        64,
+        696,
+        448,
+        96
+      ],
+      "font_px": 52,
+      "need": "引语 A",
+      "fill": "card_lit"
+    },
+    {
+      "id": "l4",
+      "type": "label",
+      "rect": [
+        1408,
+        696,
+        448,
+        96
+      ],
+      "font_px": 52,
+      "need": "引语 B",
+      "fill": "card_lit"
+    },
+    {
+      "id": "k1",
+      "type": "label",
+      "rect": [
+        1024,
+        800,
+        352,
+        56
+      ],
+      "font_px": 36,
+      "decor": true,
+      "need": "英文手写批注",
+      "over": [
+        "m1"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,104 @@
+{
+  "id": "L-K10",
+  "name": "对比双芯片",
+  "from": "K10 对比双芯片",
+  "function": "二选一对比",
+  "scene": [
+    "A"
+  ],
+  "slots": [
+    {
+      "id": "p1",
+      "type": "media",
+      "rect": [
+        480,
+        56,
+        960,
+        968
+      ],
+      "need": "素材位：角色 / 贴纸 / 双色调照片 / 用户素材（原 A-roll 人物位，以后可切回真人口播）",
+      "person_optional": true,
+      "subject": true
+    },
+    {
+      "id": "c1",
+      "type": "card",
+      "size": "custom",
+      "rect": [
+        160,
+        392,
+        736,
+        400
+      ],
+      "font_px": 72,
+      "need": "左概念：图标 + 名称",
+      "subject": true,
+      "over": [
+        "p1"
+      ]
+    },
+    {
+      "id": "l1",
+      "type": "label",
+      "rect": [
+        896,
+        528,
+        128,
+        128
+      ],
+      "font_px": 96,
+      "need": "VS",
+      "over": [
+        "p1"
+      ]
+    },
+    {
+      "id": "c2",
+      "type": "card",
+      "size": "custom",
+      "rect": [
+        1024,
+        392,
+        736,
+        400
+      ],
+      "font_px": 72,
+      "need": "右概念：图标 + 名称（判断项用朱橙）",
+      "subject": true,
+      "fill": "accent",
+      "over": [
+        "p1"
+      ]
+    },
+    {
+      "id": "l2",
+      "type": "label",
+      "rect": [
+        160,
+        808,
+        736,
+        64
+      ],
+      "font_px": 52,
+      "need": "左概念的结论",
+      "over": [
+        "p1"
+      ]
+    },
+    {
+      "id": "l3",
+      "type": "label",
+      "rect": [
+        1024,
+        808,
+        736,
+        64
+      ],
+      "font_px": 52,
+      "need": "右概念的结论",
+      "over": [
+        "p1"
+      ]
+    }
+  ]
+}

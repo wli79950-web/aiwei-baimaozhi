@@ -1,0 +1,76 @@
+{
+  "id": "L-N02",
+  "name": "章节大图",
+  "from": "N2 雕塑标题卡",
+  "function": "章节开场",
+  "scene": [
+    "A"
+  ],
+  "slots": [
+    {
+      "id": "m1",
+      "type": "media",
+      "rect": [
+        896,
+        56,
+        1024,
+        1024
+      ],
+      "need": "大图：呼应本章主题（tone 双色调 / sticker / SC02），右侧和底部出血",
+      "subject": true,
+      "bleed": true
+    },
+    {
+      "id": "l1",
+      "type": "label",
+      "rect": [
+        64,
+        184,
+        832,
+        72
+      ],
+      "font_px": 52,
+      "need": "章节编号"
+    },
+    {
+      "id": "t1",
+      "type": "title",
+      "rect": [
+        64,
+        280,
+        1024,
+        296
+      ],
+      "font_px": 240,
+      "need": "章节名（2–4 字）",
+      "over": [
+        "m1"
+      ]
+    },
+    {
+      "id": "k1",
+      "type": "label",
+      "rect": [
+        64,
+        600,
+        832,
+        40
+      ],
+      "font_px": 24,
+      "decor": true,
+      "need": "英文章节名"
+    },
+    {
+      "id": "l2",
+      "type": "label",
+      "rect": [
+        64,
+        680,
+        832,
+        80
+      ],
+      "font_px": 52,
+      "need": "一句引子"
+    }
+  ]
+}

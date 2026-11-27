@@ -1,11 +1,17 @@
 # 更新记录
 
+## 1.4.0 · 2026-11-27 · P3 排版库
+- 挖洞号 49 张卡的构图全部迁成白帽志排版：`cards/layouts/L-K01…L-K30`、`L-N01…L-N25`（N12 拆成口播态 `L-N12A` / 换底态 `L-N12B`），共 50 个，全部通过 `layout_lint`，零提醒。只借构图，没有带挖洞号的样式、素材、样例文案和角色。
+- 迁移做法：删掉 IP 角标区、HUD、人物小窗；标题移到左上或左侧中线；主体 ≥ 45%、内容铺开 ≥ 70%；带字槽位底边停在 y = 872；原 A-roll 人物位改成大素材位 `person_optional`；原「品牌固定角色」改成本期现生成。
+- 线框预览 `cards/layouts/previews/*.jpg` + 总览板 `docs/previews/layouts/sheet.jpg`。
+- `layout_lint`：新增 `group`（一组元素的范围，可整体当主体）、`shape: circle`；信息卡默认带底；`custom` 尺寸改为 8 的倍数（1792 宽不能被 48 整除）；`over` 指向后面的槽位时提醒；内容利用率按外接范围算（用户确认）。自检扩到 89 项。
+
 ## 1.3.1 · 2026-11-27 · P3 排版库（第一步：工具）
 - 新增 `tools/layout_lint.py`：边界 / 出血、字幕安全区（底部居中 1560×84，距底 104）、字号（标题 ≥ 104、文字 ≥ 52）、一屏一个标题、英文小标注 ≤ 1、尺寸档、录屏宽度、人物小窗、配色禁用组合与对比度、色块面积、利用率（主体并集 ≥ 45%，内容外接范围 ≥ 70%）。数值全部从 `brand.json` 读。
 - 新增 `tools/layout_preview.js`：线框预览（A 炭黑场配色，字按真实字号画）+ 总览板。
 - 新增 `tools/test_layouts.py` 自检（33 项）和测试夹具 `tools/fixtures/layouts/L-T01.json`。
 - `cards/layouts/README.md`：写清 `layout.json` 全部字段、检查规则、预览图例；新增槽位类型 `screen`（录屏窗口）。
-- 49 个构图尚未迁入（等挖洞号原卡的构图来源）。
+- 49 个构图在 1.4.0 迁入。
 
 ## 1.3.0 · 2026-11-27 · P2 动效库
 - 新增动效参数 `tokens/motion.json`（唯一数值来源）：6 条贝塞尔缓动、5 档时长、17 个预设参数。`tools/gen_tokens.py` 同时生成 `engine/motion/tokens.js`（网页）和 `ae/motion_data.jsx`（AE），并拦截 AE 无法精确还原的曲线。

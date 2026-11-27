@@ -1,0 +1,38 @@
+{
+  "id": "L-K21",
+  "name": "侧板关系链",
+  "from": "K21 口播侧板 · 关系链",
+  "function": "谁 → 做了什么 → 结果（主体不离开画面）",
+  "scene": [
+    "A"
+  ],
+  "slots": [
+    {
+      "id": "p1",
+      "type": "media",
+      "rect": [
+        64,
+        56,
+        1056,
+        968
+      ],
+      "need": "素材位：角色 / 贴纸 / 双色调照片 / 用户素材（原 A-roll 人物位，以后可切回真人口播）",
+      "person_optional": true,
+      "subject": true
+    },
+    {
+      "id": "c1",
+      "type": "card",
+      "size": "custom",
+      "rect": [
+        1184,
+        56,
+        672,
+        816
+      ],
+      "font_px": 56,
+      "need": "关系链侧板：3 个节点 + 向下箭头 + 动作词，最后一个节点用朱橙",
+      "subject": true
+    }
+  ]
+}

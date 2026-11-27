@@ -17,12 +17,12 @@ UT = LY['utilization']
 HEX = {k: v['hex'] for k, v in B['color'].items()}
 FORBID = {(fg, bg): why for fg, bg, why in CT['forbidden']}
 
-TYPES = {'title', 'card', 'media', 'screen', 'person', 'label'}
+TYPES = {'title', 'card', 'media', 'screen', 'person', 'label', 'group'}
 TEXT_TYPES = {'title', 'card', 'label'}          # 带字的槽位：不许压字幕区、要写字号
 FILLS = {'none', 'card', 'card_lit', 'accent', 'aux'}
 LAYOUT_KEYS = {'id', 'name', 'from', 'function', 'scene', 'canvas', 'notes', 'slots'}
 SLOT_KEYS = {'id', 'type', 'rect', 'size', 'need', 'subject', 'bleed', 'font_px', 'decor',
-             'fill', 'ink', 'stroke', 'over', 'person_optional', 'count', 'notes'}
+             'fill', 'ink', 'stroke', 'over', 'person_optional', 'count', 'contains', 'shape', 'notes'}
 PIP_MAX = 0.25         # 人物槽位小于画面 25% 视为人物小窗（白帽志不做）
 INSIDE_MIN = 0.5       # 出血槽位至少一半留在画面内
 
@@ -152,6 +152,19 @@ def lint(path):
         ov = inter(r, subz)
         if ov and ty in TEXT_TYPES: E(P + f'{ty} 压到字幕安全区 {subz}')
 
+        # 组：一组元素（如图解的各个节点）的范围，可作主体；子槽位必须在组内
+        if ty == 'group':
+            kids = s.get('contains')
+            if not kids: E(P + 'group 要写 contains（组里有哪些槽位）')
+            for k in kids or []:
+                if k not in by_id: E(P + f'contains 指向不存在的槽位「{k}」'); continue
+                kr = by_id[k].get('rect')
+                if isinstance(kr, list) and len(kr) == 4 and (kr[0] < r[0] or kr[1] < r[1] or kr[0] + kr[2] > r[0] + r[2] or kr[1] + kr[3] > r[1] + r[3]):
+                    E(P + f'[{k}] 超出组的范围')
+            for k in ('font_px', 'fill', 'ink', 'decor'):
+                if k in s: E(P + f'group 不放内容，不写 {k}')
+        elif 'contains' in s: E(P + 'contains 只用在 group 上')
+
         # 字号
         fp = s.get('font_px')
         if ty == 'title':
@@ -172,7 +185,7 @@ def lint(path):
             sz = s.get('size')
             if sz is None: E(P + '信息卡要写 size（S / M / L / XL / custom）')
             elif sz == 'custom':
-                if r[2] % LY['grid'] or r[3] % LY['grid']: E(P + f'custom 尺寸的宽高要是 {LY["grid"]} 的倍数，实际 {r[2]}×{r[3]}')
+                if r[2] % 8 or r[3] % 8: E(P + f'custom 尺寸的宽高要是 8 的倍数，实际 {r[2]}×{r[3]}')
             elif sz in SIZE:
                 if (r[2], r[3]) != SIZE[sz]: E(P + f'size {sz} 应为 {SIZE[sz][0]}×{SIZE[sz][1]}，实际 {r[2]}×{r[3]}')
             else: E(P + f'size「{sz}」不在 S / M / L / XL / custom 里')
@@ -199,6 +212,7 @@ def lint(path):
 
         # 配色：fill / ink / stroke 按场景解析，检查禁用组合和对比度
         fill = s.get('fill')
+        if s.get('shape', 'rect') not in ('rect', 'circle'): E(P + f'shape 只能是 rect / circle')
         if fill is not None and fill not in FILLS: E(P + f'fill「{fill}」不在 {sorted(FILLS)} 里')
         for sc in scenes:
             bg, dfg = resolve_fill(sc, fill)
@@ -215,11 +229,19 @@ def lint(path):
 
     # 叠放：两个带字槽位不能重叠；其他重叠要在上层槽位用 over 声明
     good = [s for s in slots if s.get('type') in TYPES and isinstance(s.get('rect'), list) and len(s['rect']) == 4]
+    has_bg = lambda s: s.get('fill', 'card' if s['type'] == 'card' else 'none') != 'none'
+    order = {s.get('id'): i for i, s in enumerate(slots)}
+    for s in good:
+        for oid in s.get('over', []):
+            if oid in order and order[oid] > order.get(s.get('id'), -1): Wn(f'[{s.get("id")}] over [{oid}]，但 [{oid}] 排在后面（数组顺序就是叠放顺序，下层写在前面）')
     for i, a in enumerate(good):
         for b in good[i + 1:]:
             if not inter(a['rect'], b['rect']): continue
             ia, ib = a.get('id', '?'), b.get('id', '?')
-            if a['type'] in TEXT_TYPES and b['type'] in TEXT_TYPES and not (a.get('fill') or b.get('fill')):
+            if (a['type'] == 'group' and ib in a.get('contains', [])) or (b['type'] == 'group' and ia in b.get('contains', [])): continue
+            if a['type'] == 'group' or b['type'] == 'group':
+                Wn(f'[{ia}] 和 [{ib}] 重叠，但不在同一个组里（写进 contains，或挪开）'); continue
+            if a['type'] in TEXT_TYPES and b['type'] in TEXT_TYPES and not (has_bg(a) or has_bg(b)):
                 E(f'[{ia}] 和 [{ib}] 都是不带底的文字，不能重叠')
             elif ib not in a.get('over', []) and ia not in b.get('over', []):
                 Wn(f'[{ia}] 和 [{ib}] 重叠；有意叠放就在上层槽位写 "over": ["下层 id"]')

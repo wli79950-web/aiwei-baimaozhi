@@ -1,0 +1,56 @@
+{
+  "id": "L-K11",
+  "name": "侧向跟读大字",
+  "from": "K11 侧向跟读大字",
+  "function": "一句话分左右两半说完",
+  "scene": [
+    "A"
+  ],
+  "slots": [
+    {
+      "id": "p1",
+      "type": "media",
+      "rect": [
+        576,
+        56,
+        768,
+        968
+      ],
+      "need": "素材位：角色 / 贴纸 / 双色调照片 / 用户素材（原 A-roll 人物位，以后可切回真人口播）",
+      "person_optional": true,
+      "subject": true
+    },
+    {
+      "id": "l1",
+      "type": "label",
+      "rect": [
+        64,
+        280,
+        608,
+        400
+      ],
+      "font_px": 120,
+      "need": "前半句（大字 + 英文副标）",
+      "subject": true,
+      "over": [
+        "p1"
+      ]
+    },
+    {
+      "id": "l2",
+      "type": "label",
+      "rect": [
+        1248,
+        280,
+        608,
+        400
+      ],
+      "font_px": 120,
+      "need": "后半句（关键词用朱橙）",
+      "subject": true,
+      "over": [
+        "p1"
+      ]
+    }
+  ]
+}

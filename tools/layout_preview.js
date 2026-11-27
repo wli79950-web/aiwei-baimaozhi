@@ -25,10 +25,14 @@ const esc = s => String(s ?? '').replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '
 const FILL = { card: ['slate', 'cream'], card_lit: ['paper', 'char'], accent: ['orange', 'char'], aux: ['klein', 'cream'] };
 
 function slotHTML(s) {
-  const [x, y, w, h] = s.rect, fp = Math.max(18, Math.min(s.font_px || 52, h * 0.8));
+  const [x, y, w, h] = s.rect;
+  // 大字（≥104）按「一行放得下 need」缩小，只为线框好看；小字按真实字号画，方便判断手机上看不看得清
+  const units = [...String(s.need || '')].reduce((n, c) => n + (/[\u0000-\u00ff]/.test(c) ? 0.6 : 1), 0) || 1;
+  let fp = Math.max(18, Math.min(s.font_px || 52, h * 0.8));
+  if ((s.font_px || 0) >= 104) fp = Math.max(40, Math.min(fp, Math.floor((w - 24) / units)));
   const tag = `<i class="tag">${esc(s.id)} · ${esc(s.type)}${s.size ? ' ' + esc(s.size) : ''}${s.font_px ? ' · ' + s.font_px + 'px' : ''}${s.count ? ' · ×' + s.count.join('–') : ''}</i>`;
   const need = esc(s.need) + (s.person_optional ? '<br><small>（素材位 · 可切回人物）</small>' : '');
-  const st = `left:${x}px;top:${y}px;width:${w}px;height:${h}px`;
+  const st = `left:${x}px;top:${y}px;width:${w}px;height:${h}px` + (s.shape === 'circle' ? ';border-radius:50%;overflow:hidden' : '');
   const corners = s.subject ? '<b class="cn tl"></b><b class="cn tr"></b><b class="cn bl"></b><b class="cn br"></b>' : '';
   let body = '', cls = s.type;
   if (s.type === 'title' || s.type === 'label') {
@@ -37,12 +41,16 @@ function slotHTML(s) {
     body = `<div class="txt" style="font-family:${ff};font-size:${fp}px;color:${C[fg]};${bg ? 'background:' + C[bg] : ''}">${esc(s.need)}</div>`;
   } else if (s.type === 'card') {
     const [bg, fg] = FILL[s.fill || 'card'];
-    body = `<div class="cardb" style="background:${C[bg]};color:${C[fg]}"><div style="font-size:${fp}px">${esc(s.need)}</div></div>`;
+    const circ = s.shape === 'circle' ? ';display:flex;align-items:center;justify-content:center;text-align:center;padding:12%' : '';
+    body = `<div class="cardb" style="background:${C[bg]};color:${C[fg]}${circ}"><div style="font-size:${fp}px">${esc(s.need)}</div></div>`;
+  } else if (s.type === 'group') {
+    body = `<div class="gname">${esc(s.need)}</div>`;
   } else if (s.type === 'screen') {
     body = `<div class="win"><div class="bar"><u style="background:${C.orange}"></u><u></u><u></u><span>录屏</span></div><div class="shot">${need}</div></div>`;
   } else {  // media / person
     body = `<svg viewBox="0 0 ${w} ${h}" preserveAspectRatio="none"><line x1="0" y1="0" x2="${w}" y2="${h}"/><line x1="${w}" y1="0" x2="0" y2="${h}"/></svg><div class="mneed">${need}</div>`;
   }
+  if (s.type === 'group') return `<div class="slot group" style="${st};z-index:0">${body}${corners}</div>`;
   return `<div class="slot ${cls}${s.bleed ? ' bleed' : ''}" style="${st}">${body}${corners}${tag}</div>`;
 }
 
@@ -72,6 +80,8 @@ body{background:radial-gradient(ellipse at 60% 45%,var(--char-hi),var(--char) 60
 .bar{height:48px;display:flex;align-items:center;gap:12px;padding:0 20px;font:500 20px var(--f-mono);color:rgba(245,238,223,.6)}
 .bar u{width:16px;height:16px;border-radius:50%;background:rgba(245,238,223,.5)} .bar span{margin-left:12px}
 .shot{flex:1;margin:0 8px 8px;background:var(--char-lo);display:flex;align-items:center;justify-content:center;text-align:center;font-size:32px;color:rgba(245,238,223,.7)}
+.group{border:2px dashed rgba(255,90,31,.55);background:rgba(255,90,31,.04)}
+.gname{position:absolute;right:12px;bottom:8px;font-size:22px;color:rgba(245,238,223,.7);text-align:right;max-width:90%}
 .cn{position:absolute;width:40px;height:40px;border:0 solid var(--orange);z-index:55}
 .tl{left:-6px;top:-6px;border-width:6px 0 0 6px}.tr{right:-6px;top:-6px;border-width:6px 6px 0 0}
 .bl{left:-6px;bottom:-6px;border-width:0 0 6px 6px}.br{right:-6px;bottom:-6px;border-width:0 6px 6px 0}

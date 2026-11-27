@@ -1,0 +1,76 @@
+{
+  "id": "L-K23",
+  "name": "并排证据板",
+  "from": "K23 人物并排证据板",
+  "function": "看完证据，下判断",
+  "scene": [
+    "A"
+  ],
+  "slots": [
+    {
+      "id": "p1",
+      "type": "media",
+      "rect": [
+        64,
+        56,
+        640,
+        816
+      ],
+      "need": "素材位：角色 / 贴纸 / 双色调照片 / 用户素材（原 A-roll 人物位，以后可切回真人口播）",
+      "person_optional": true,
+      "subject": true
+    },
+    {
+      "id": "t1",
+      "type": "title",
+      "rect": [
+        736,
+        56,
+        1120,
+        128
+      ],
+      "font_px": 104,
+      "need": "标题：看哪几个字段"
+    },
+    {
+      "id": "c1",
+      "type": "card",
+      "size": "custom",
+      "rect": [
+        736,
+        216,
+        1120,
+        112
+      ],
+      "font_px": 52,
+      "need": "请求行（等宽）"
+    },
+    {
+      "id": "c2",
+      "type": "card",
+      "size": "custom",
+      "rect": [
+        736,
+        360,
+        1120,
+        368
+      ],
+      "font_px": 52,
+      "need": "响应 / 证据（终端卡，关键字段框出）",
+      "subject": true
+    },
+    {
+      "id": "l1",
+      "type": "label",
+      "rect": [
+        1280,
+        752,
+        576,
+        120
+      ],
+      "font_px": 56,
+      "need": "结论标签",
+      "fill": "accent"
+    }
+  ]
+}
