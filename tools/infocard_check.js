@@ -122,7 +122,7 @@ function demoHTML(d) {
   .lab.num{font-family:var(--f-num);font-weight:900;justify-content:center}
   .lab.wrap{white-space:normal;line-height:1.32;align-items:flex-start;opacity:.9}</style></head>
   <body><section class="frame" id="fr" data-label="${d.id}">
-  <div class="sub" id="sub" style="z-index:50">${d.sub}</div></section>
+  <div class="sub" id="sub" style="z-index:50">${d.sub}</div><div class="chapter-zone"></div></section>
   <script>
   const L = ${JSON.stringify(L)}, F = ${JSON.stringify(d.fill)}, fr = document.getElementById('fr'), cards = [];
   const bg = BGLIB.mount(fr, '${d.scene === 'A' ? 'BG3' : 'BG2'}', '${BGBASE}');

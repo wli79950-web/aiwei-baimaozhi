@@ -26,25 +26,25 @@ const SRC = { type: 'frames', url: 'demo_rec/%05d.jpg', fps: R.fps, count: R.cou
 const OWNER = [1140, 458, 300, 44], JSONBLK = [1110, 380, 780, 220], PHONE = [84, 404, 560, 72];
 const SHOTS = [
   { id: 'S1', bg: 'BG3', sub: '改一个数字，返回的就是<em>别人的订单</em>', keys: [1.05, 3.9], mid: 2.6, spec: {
-      rect: [64, 56, 1792, 968], src: SRC, enter: { at: 0 },
+      rect: [64, 104, 1792, 920], src: SRC, enter: { at: 0 },
       push: [{ at: 2.2, rect: JSONBLK, dur: 0.8 }],
       ann: [{ type: 'mark', rect: OWNER, at: 3.05, label: '别人的订单', side: 'right', leader: true }],
-      cursor: [{ at: 0.5, x: 700, y: 400 }, { at: 1.0, x: 560, y: 88, click: true }, { at: 1.9, x: 1500, y: 640 }],
+      cursor: [{ at: 0.5, x: 700, y: 400 }, { at: 1.0, x: 560, y: 136, click: true }, { at: 1.9, x: 1500, y: 640 }],
       mask: [{ rect: [1124, 300, 600, 40], mode: 'blur' }] } },
   { id: 'S2', bg: 'BG3', sub: '问题出在这一步：<em>没核对归属</em>', keys: [3.9], mid: 3.2, ic: { rect: [1264, 232, 592, 400], type: 'keyword', tone: 'lit', data: { word: '归属校验', exp: '这一步[[没做]]' }, cue: { in: 3.3, emph: 3.9 } }, spec: {
-      rect: [64, 56, 1632, 968], src: SRC, remap: [[0, 0], [2.6, 2.6], [6, 2.6]],
+      rect: [64, 104, 1632, 920], src: SRC, remap: [[0, 0], [2.6, 2.6], [6, 2.6]],
       ann: [{ type: 'underline', rect: PHONE, at: 2.7 }],
       mask: [{ rect: [1124, 300, 600, 40], mode: 'blur' }],
       links: [{ from: PHONE, to: '.ic', at: 2.95 }] } },
-  { id: 'S3', bg: 'BG2', sub: '页面上直接显示了<em>别人的手机号</em>', keys: [3.6], mid: 2.75, ic: { rect: [1408, 56, 448, 816], type: 'list', tone: 'card', data: { title: '复现三步', items: [{ text: '登录 A', state: 'done' }, { text: '改订单号', state: 'done' }, { text: '看到 B', state: 'now' }] }, cue: { in: 0.4, emph: 2.6 } }, spec: {
-      rect: [64, 56, 1312, 816], narrow: true, src: SRC, remap: [[0, 0], [2.0, 2.0], [4.0, 2.4]],
+  { id: 'S3', bg: 'BG2', sub: '页面上直接显示了<em>别人的手机号</em>', keys: [3.6], mid: 2.75, ic: { rect: [1408, 104, 448, 768], type: 'list', tone: 'card', data: { title: '复现三步', items: [{ text: '登录 A', state: 'done' }, { text: '改订单号', state: 'done' }, { text: '看到 B', state: 'now' }] }, cue: { in: 0.4, emph: 2.6 } }, spec: {
+      rect: [64, 104, 1312, 768], narrow: true, src: SRC, remap: [[0, 0], [2.0, 2.0], [4.0, 2.4]],
       ann: [{ type: 'spot', rect: PHONE, at: 2.4, label: '别人的手机号', side: 'below' }],
       mask: [{ rect: [264, 476, 420, 72], mode: 'block' }] } }
 ];
 
 /* ---------- 1. 纯数学 ---------- */
 console.log('1. 时间重映射 / 推镜 / 光标 / 检查规则');
-const S0 = { src: SRC, rect: [64, 56, 1792, 968] };
+const S0 = { src: SRC, rect: [64, 104, 1792, 920] };
 near(SC.srcTime(S0, 1.5), 1.5, 1e-9, '默认重映射 = 合成时间');
 near(SC.srcTime({ ...S0, remap: [[0, 0], [2, 2], [4, 2]] }, 3.3), 2, 1e-9, '重映射定格');
 near(SC.srcTime({ ...S0, remap: [[0, 0], [2, 1]] }, 1), 0.5, 1e-9, '重映射慢放');
@@ -76,7 +76,7 @@ const HEAD = `<meta charset="utf-8"><base href="file://${TMP}/">
 <script src="file://${ROOT}/engine/motion/tokens.js"></script><script src="file://${ROOT}/engine/motion/motion.js"></script>
 <script src="file://${ROOT}/cards/infocards/infocards.js"></script><script src="file://${ROOT}/libs/backgrounds/backgrounds.js"></script>
 <script src="file://${ROOT}/libs/screencast/screencast.js"></script>`;
-const pageHTML = s => `<!doctype html><html><head>${HEAD}</head><body><section class="frame" id="fr"><div class="sub" id="sub" style="z-index:50">${s.sub}</div></section>
+const pageHTML = s => `<!doctype html><html><head>${HEAD}</head><body><section class="frame" id="fr"><div class="sub" id="sub" style="z-index:50">${s.sub}</div><div class="chapter-zone"></div></section>
 <script>
 const fr = document.getElementById('fr'), bg = BGLIB.mount(fr, '${s.bg}', 'file://${ROOT}/libs/backgrounds/');
 const IC1 = ${JSON.stringify(s.ic || null)};

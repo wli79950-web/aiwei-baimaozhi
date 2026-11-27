@@ -65,7 +65,8 @@ expect('内容铺不开', lambda L: L.update(slots=[s for s in L['slots'] if s['
 expect('录屏太窄', lambda L: L['slots'].append({'id': 's1', 'type': 'screen', 'rect': [64, 208, 960, 540], 'need': '录屏'}), '录屏窗口宽')
 expect('装饰小字超量', lambda L: L['slots'].extend({'id': f'k{i}', 'type': 'label', 'rect': [64 + i * 220, 900, 200, 40], 'decor': True, 'font_px': 20, 'need': 'x'} for i in range(2, 10)), '装饰小字每屏最多')
 expect('色块面积超限', lambda L: [slot(L, c).update(fill='accent') for c in ('c1', 'c2')], '朱橙块 + 蓝块')
-expect('文字重叠', lambda L: slot(L, 'k1').update(rect=[1200, 96, 576, 40]), '不能重叠')
+expect('文字重叠', lambda L: slot(L, 'k1').update(rect=[1200, 144, 576, 40]), '不能重叠')
+expect('压到章节进度条区', lambda L: slot(L, 'm1').update(rect=[400, 40, 240, 240], bleed=True), '章节进度条区')
 expect('over 指向不存在', lambda L: slot(L, 'm1').update(over=['zz']), 'over 指向不存在')
 expect('person_optional 用错', lambda L: slot(L, 'c1').update(person_optional=True), 'person_optional 只用在 media')
 expect('id 格式', lambda L: L.update(id='K8'), 'id「K8」格式', name='K8')
@@ -74,7 +75,7 @@ expect('场景取值', lambda L: L.update(scene=['C']), 'scene 只能取')
 expect('画布尺寸', lambda L: L.update(canvas=[1280, 720]), 'canvas 只能是')
 expect('缺 need', lambda L: slot(L, 'm2').pop('need'), '缺少 need')
 
-L = copy.deepcopy(GOOD); L['slots'].append({'id': 'g1', 'type': 'group', 'rect': [64, 192, 1792, 688], 'contains': ['c1', 'c2', 'c3', 'm1', 'm2', 'm3'], 'subject': True, 'need': '步骤组'})
+L = copy.deepcopy(GOOD); L['slots'].append({'id': 'g1', 'type': 'group', 'rect': [64, 232, 1792, 640], 'contains': ['c1', 'c2', 'c3', 'm1', 'm2', 'm3'], 'subject': True, 'need': '步骤组'})
 for s in L['slots']:
     if s['id'] in ('c1', 'c2', 'c3'): s.pop('subject')
 r = run(L); ok(not r['errors'] and r['stats']['subject'] >= 0.45, f'用 group 当主体应通过：{r["errors"]} {r["stats"]}')

@@ -24,6 +24,8 @@ mkdir -p models && curl -sSL -o /tmp/p.tar.bz2 https://github.com/k2-fsa/sherpa-
 |---|---|
 | 改配色后重新生成 | `python3 tools/gen_tokens.py && python3 tools/contrast_check.py && node tools/make_backgrounds.js && node tools/build_previews.js` |
 | 生图 | `python3 tools/genimg.py jobs.json 输出目录`（物件用 preset `real`，高光时刻用 `anime`） |
+| 生图清单 → 任务文件 | `python3 tools/genimg_list.py 生图清单.md > jobs.json`（模板 `docs/templates/生图清单模板.md`） |
+| 截图贴进手机 | `python3 -I tools/device_paste.py 调色后的照片.png 截图.png 输出.png` |
 | 统一调色 | `python3 -I tools/grade.py 抠图.png 输出.png`（写实、动漫生图抠图后都要过；用户素材不过） |
 | 抠图 | `python3 -I tools/cutout.py object 原图.png 透明.png`；实心物件加 `--fill-holes` |
 | 口播转时间轴 | `ffmpeg -i voice.mp3 -ac 1 -ar 16000 a16.wav && python3 -I tools/asr_segments.py a16.wav segs.json` |

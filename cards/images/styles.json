@@ -130,14 +130,14 @@
       "name": "手持设备实拍",
       "use": "把用户提供的截图放进手机 / 平板屏幕里：通知、APP 界面、短信、审核结果",
       "prompt_suffix": "realistic photograph of a hand holding a modern smartphone with a completely blank pure white screen, screen facing the camera, dark moody background with warm orange rim light, shallow depth of field, no text, no logo, no brand marks",
-      "post": "测出屏幕四角坐标，把用户截图透视贴进屏幕；照片本身放在卡片或画面一侧，不整屏铺底",
+      "post": "python3 -I tools/grade.py 照片 调色.png → python3 -I tools/device_paste.py 调色.png 截图.png 输出.png（自动找白屏四角、透视贴入，保留圆角和刘海；截图保留原色）",
       "placement": "炭黑场；照片占画面一侧，截图在屏幕里保持原色",
       "subjects": [
         "one hand holding a phone, slight tilt",
         "phone lying on a dark desk next to a keyboard"
       ],
       "rules": "屏幕必须是纯白空屏，后期贴用户截图；禁止品牌标识。",
-      "samples": "暂无"
+      "samples": "cards/images/samples/device/（P5 样张 2 张 + 贴入示意截图的效果）；预览 docs/previews/styles/flat_device.jpg"
     },
     "flat": {
       "name": "几何平面插画",
@@ -150,8 +150,8 @@
         "a hand showing its cards to a stranger",
         "a crowd of identical cubes with one orange cube"
       ],
-      "rules": "同一个镜头里不和 3D 贴纸混用，避免两种画风打架。首次使用先出 2 张给用户看风格（还没有样张）。",
-      "samples": "暂无"
+      "rules": "同一个镜头里不和 3D 贴纸混用，避免两种画风打架。样张见 samples/flat/。",
+      "samples": "cards/images/samples/flat/（P5 样张 2 张）；预览 docs/previews/styles/flat_device.jpg"
     }
   }
 }

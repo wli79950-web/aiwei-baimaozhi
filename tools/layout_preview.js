@@ -55,14 +55,14 @@ function slotHTML(s) {
 }
 
 function pageHTML(L, R) {
-  const [W, H] = L.canvas || [BRAND.spec.w, BRAND.spec.h], mx = LY.margin_x, my = LY.margin_y ?? mx;
+  const [W, H] = L.canvas || [BRAND.spec.w, BRAND.spec.h], mx = LY.margin_x, my = LY.margin_y ?? mx, cb = LY.chapter_bar || { h: 0, gap: 0 }, top = cb.h + cb.gap;
   const [sx, sy, sw, sh] = R.stats.subtitle_zone || [0, 0, 0, 0];
   return `<!doctype html><html><head><meta charset="utf-8">
 <link rel="stylesheet" href="file://${ROOT}/engine/tokens.css"><link rel="stylesheet" href="file://${ROOT}/engine/base.css">
 <style>
 html,body{width:${W}px;height:${H}px;overflow:hidden}
 body{background:radial-gradient(ellipse at 60% 45%,var(--char-hi),var(--char) 60%,var(--char-lo));font-family:var(--f-cn);color:var(--cream)}
-.guide{position:absolute;left:${mx}px;top:${my}px;width:${W - 2 * mx}px;height:${H - 2 * my}px;border:2px dashed rgba(245,238,223,.16)}
+.guide{position:absolute;left:${mx}px;top:${top}px;width:${W - 2 * mx}px;height:${H - top - my}px;border:2px dashed rgba(245,238,223,.16)}
 .subz{position:absolute;left:${sx}px;top:${sy}px;width:${sw}px;height:${sh}px;border:2px solid rgba(245,238,223,.35);
   background:repeating-linear-gradient(135deg,rgba(245,238,223,.10) 0 10px,transparent 10px 22px);display:flex;align-items:center;justify-content:center;
   font-size:26px;color:rgba(245,238,223,.6);z-index:50}
@@ -85,7 +85,7 @@ body{background:radial-gradient(ellipse at 60% 45%,var(--char-hi),var(--char) 60
 .cn{position:absolute;width:40px;height:40px;border:0 solid var(--orange);z-index:55}
 .tl{left:-6px;top:-6px;border-width:6px 0 0 6px}.tr{right:-6px;top:-6px;border-width:6px 6px 0 0}
 .bl{left:-6px;bottom:-6px;border-width:0 0 6px 6px}.br{right:-6px;bottom:-6px;border-width:0 6px 6px 0}
-</style></head><body><div class="guide"></div><div class="subz">字幕安全区</div>${(L.slots || []).map(slotHTML).join('')}</body></html>`;
+</style></head><body><div class="chapter-zone"></div><div class="guide"></div><div class="subz">字幕安全区</div>${(L.slots || []).map(slotHTML).join('')}</body></html>`;
 }
 
 (async () => {

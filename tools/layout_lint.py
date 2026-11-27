@@ -12,6 +12,7 @@ ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 B = json.load(open(os.path.join(ROOT, 'tokens', 'brand.json'), encoding='utf-8'))
 LY, T, CT = B['layout'], B['type'], B['contrast']
 MX, MY = LY['margin_x'], LY.get('margin_y', LY['margin_x'])
+BAR = LY.get('chapter_bar', {'h': 0, 'gap': 0}); TOP = BAR['h'] + BAR['gap']   # 顶部章节进度条区（1.6）：内容从 TOP 开始
 SIZE = {k: tuple(v) for k, v in LY['size_class'].items()}
 UT = LY['utilization']
 HEX = {k: v['hex'] for k, v in B['color'].items()}
@@ -118,7 +119,7 @@ def lint(path):
     slots = L.get('slots', [])
     if not isinstance(slots, list) or not slots: E('slots 不能为空'); slots = []
 
-    safe = [MX, MY, W - 2 * MX, H - 2 * MY]
+    safe = [MX, TOP, W - 2 * MX, H - TOP - MY]
     subz = subtitle_zone(W, H)
     ids, by_id = set(), {}
     for i, s in enumerate(slots):
@@ -146,7 +147,8 @@ def lint(path):
             if inside < INSIDE_MIN: E(P + f'出血过多：只有 {inside:.0%} 在画面内（至少 {INSIDE_MIN:.0%}）')
         else:
             if r[0] < safe[0] or r[1] < safe[1] or r[0] + r[2] > safe[0] + safe[2] or r[1] + r[3] > safe[1] + safe[3]:
-                E(P + f'超出页边距（左右 {MX} / 上下 {MY}px）；要出血就写 "bleed": true')
+                E(P + f'超出页边距（左右 {MX} / 顶部从 {TOP} 起 / 底部 {MY}px）；要出血就写 "bleed": true')
+        if r[1] < BAR['h']: E(P + f'压到顶部章节进度条区（y < {BAR["h"]}），出血也不行')
 
         # 字幕安全区：带字的槽位不许压
         ov = inter(r, subz)
@@ -251,7 +253,7 @@ def lint(path):
 
     # ---- 利用率 ----
     subj = [s['rect'] for s in good if s.get('subject')]
-    full = W * H
+    full = W * (H - BAR['h'])   # 1.6：去掉顶部章节进度条区后的画面
     # 主体 = 主体槽位的并集面积；内容 = 全部槽位铺开的范围（外接矩形，裁到画面内），另记一个并集面积备查
     sa = union_area(subj, W, H) / full
     cu = union_area([s['rect'] for s in good], W, H) / full

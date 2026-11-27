@@ -11,7 +11,7 @@
 /* 圆角：苹果式比例的圆弧圆角（corner 用 round，squircle 逐帧渲染不稳定）。半径 --r 由 infocards.js 按 min(宽,高) × --r-card-ratio 算（28–64px） */
 .ic:not(.t-none){border-radius:var(--r,var(--r-card));corner-shape:var(--corner)}
 .ic.shape-circle{border-radius:50%;corner-shape:round}
-.ic.t-lit{--ic-bg:var(--paper);--ic-fg:var(--char);--ic-acc:var(--klein);--ic-num:var(--klein);--ic-blk:var(--orange);--ic-blk-fg:var(--char)}
+.ic.t-lit{--ic-bg:var(--paper);--ic-fg:var(--char);--ic-acc:var(--klein);--ic-num:var(--char);--ic-blk:var(--orange);--ic-blk-fg:var(--char)}
 .ic.t-hot{--ic-bg:var(--orange);--ic-fg:var(--char);--ic-acc:var(--char);--ic-num:var(--char);--ic-blk:var(--char);--ic-blk-fg:var(--cream)}
 .ic.t-aux{--ic-bg:var(--klein);--ic-fg:var(--cream);--ic-acc:var(--cream);--ic-num:var(--cream);--ic-blk:var(--orange);--ic-blk-fg:var(--char)}
 .ic.t-dark{--ic-bg:var(--char);--ic-fg:var(--cream);--ic-acc:var(--orange);--ic-num:var(--orange);--ic-blk:var(--orange);--ic-blk-fg:var(--char)}
@@ -23,6 +23,7 @@
 .scene-A .ic.t-lit{box-shadow:0 40px 80px rgba(0,0,0,.35)}
 /* 一屏一个朱橙焦点（1.5）：炭黑场的炭灰卡里，编号 / 数字改用奶油白，朱橙只留给当前项（朱橙卡）和 {{重点字}} */
 .scene-A .ic.t-card,.scene-A .ic.t-dark{--ic-num:var(--cream)}
+/* 白底卡（卡片白）的编号 / 数字用炭黑（1.6，用户确认），不再用克莱因蓝 */
 
 .ic-body{position:absolute;inset:0;padding:var(--pad);display:flex;flex-direction:column;overflow:hidden}
 .ic.t-none .ic-body{overflow:visible;padding:0}

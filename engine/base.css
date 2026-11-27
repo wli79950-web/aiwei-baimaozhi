@@ -45,6 +45,14 @@ html,body{width:1920px;height:1080px;overflow:hidden;background:var(--char)}
 .scene-A .stk{filter:drop-shadow(0 30px 38px rgba(0,0,0,.45))}
 .scene-B .stk{filter:drop-shadow(0 24px 28px rgba(90,40,10,.18))}
 
+/* 顶部章节进度条区（1.6）：画面顶部 76px（7%）留给章节进度条，由用户剪辑时放置；内容从 y = 104 开始。
+   .chapter-zone 只在预览 / 检查页里画出这一条，正片和 AE 包里不放 */
+.chapter-zone{position:absolute;left:0;top:0;width:1920px;height:var(--chapter-h,76px);z-index:60;pointer-events:none;
+  background:repeating-linear-gradient(135deg,rgba(245,238,223,.06) 0 10px,transparent 10px 20px);border-bottom:1.5px dashed rgba(245,238,223,.28)}
+.chapter-zone::after{content:'CHAPTER BAR · 76PX · 剪辑时放置';position:absolute;left:64px;top:28px;font:500 18px/1 var(--f-mono);letter-spacing:.18em;color:var(--cream);opacity:.45}
+.scene-B .chapter-zone{background:repeating-linear-gradient(135deg,rgba(22,19,15,.05) 0 10px,transparent 10px 20px);border-bottom-color:rgba(22,19,15,.25)}
+.scene-B .chapter-zone::after{color:var(--char)}
+
 /* 背景动态层（libs/backgrounds/layers/*.svg），铺满画面 */
 .bg-layer{position:absolute;left:0;top:0;width:1920px;height:1080px;pointer-events:none;transform:translateZ(0)}
 /* translateZ(0)：背景层固定成独立合成层。否则上面的卡片动起来时，背景线稿会按不同的渲染历史重新栅格化，

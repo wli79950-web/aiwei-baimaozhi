@@ -12,8 +12,8 @@
 | `sc02-line` | **SC02 · 蓝调漫画** · 做法一 蓝线漫画 | 角色、情境、人物反应 | 直接用 / 抠透明底 | `docs/previews/styles/SC02.jpg` |
 | `sc02-duo` | **SC02 · 蓝调漫画** · 做法二 黑白漫画 → 蓝调 | 物件、场景、情绪节点 | `tools/duotone.py --map klein --grain 0` | 同上 |
 | `tone` | 双色调摄影 | 章节卡、反转、金句 | `tools/duotone.py` | 提交 `adbbc35` |
-| `device` | 手持设备实拍 | 把用户截图放进手机屏幕 | 截图透视贴进白屏 | 暂无 |
-| `flat` | 几何平面插画 | 比喻、类比 | 放进卡片 | 暂无，首次使用先出 2 张确认 |
+| `device` | 手持设备实拍 | 把用户截图放进手机屏幕 | 调色 → `tools/device_paste.py` | `samples/device/` |
+| `flat` | 几何平面插画 | 比喻、类比 | 放进卡片 | `samples/flat/` |
 
 每个风格的完整提示词后缀、放法、示例主题和注意事项都在 `styles.json`。
 
@@ -33,7 +33,8 @@ python3 -I tools/duotone.py footage/gen/bm01_vault.png episodes/BM01_xxx/assets/
 python3 -I tools/cutout.py object footage/gen/x.png episodes/BM01_xxx/assets/x.png              # 有镂空的物件（锁、钥匙）
 python3 -I tools/cutout.py object footage/gen/x.png episodes/BM01_xxx/assets/x.png --fill-holes # 实心物件（盾牌、徽章）
 ```
-- 生图清单（剪辑思路汇报的附件）里每张写明：preset、用在哪个镜头、对应哪句口播、文件名、本期的画面描述。
+- 生图清单（剪辑思路汇报的附件）按模板 `docs/templates/生图清单模板.md` 写：preset、用在哪个镜头、对应哪句口播、文件名、本期的画面描述；确认后 `python3 tools/genimg_list.py 清单.md > jobs.json` 生成任务文件。
+- 手持设备：`python3 -I tools/grade.py 照片 调色.png && python3 -I tools/device_paste.py 调色.png 截图.png 输出.png`（截图保留原色）。
 - **写实为核心，动漫为辅**。一期尽量只用 2–3 种风格；写实（`real`）、动漫（`anime`）、漫画（`sc02-*`）、平面（`flat`）不在同一个镜头里混用。
 - **统一调色，不统一配色**：生图保留物件本来的颜色，抠图后一律过 `tools/grade.py`；画面里高饱和的点只有朱橙（提示词里状态灯、发光写 warm orange）。
 - 挑图检查：没有文字 / Logo / 水印 / 乱码标签，硬件结构没有明显错误，暗色物件有完整的轮廓光，抠图边缘干净、没有残影。
