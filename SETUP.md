@@ -35,4 +35,5 @@ mkdir -p models && curl -sSL -o /tmp/p.tar.bz2 https://github.com/k2-fsa/sherpa-
 | 动效样片 | 3 个进程：`node engine/render_mb.js docs/previews/src/motion_demo.html 0 5 out/motion 5 <0/1/2> 3`，再 `bash engine/mb_encode.sh out/motion 5 out/motion_demo.mp4` |
 | 排版检查 | `python3 tools/layout_lint.py`（全部排版）；改了检查规则后跑 `python3 tools/test_layouts.py` |
 | 排版线框预览 | `node tools/layout_preview.js`（→ `cards/layouts/previews/` + `docs/previews/layouts/sheet.jpg`） |
+| 信息卡自检 + 预览 | `node tools/infocard_check.js`（→ `docs/previews/infocards/`；只检查加 `--no-preview`） |
 | AE 重建包 | P6 建好后：`python3 ae/build_ae.py episodes/X` |

@@ -41,7 +41,9 @@ html,body{width:1920px;height:1080px;overflow:hidden;background:var(--char)}
 .scene-B .stk{filter:drop-shadow(0 24px 28px rgba(90,40,10,.18))}
 
 /* 背景动态层（libs/backgrounds/layers/*.svg），铺满画面 */
-.bg-layer{position:absolute;left:0;top:0;width:1920px;height:1080px;pointer-events:none}
+.bg-layer{position:absolute;left:0;top:0;width:1920px;height:1080px;pointer-events:none;transform:translateZ(0)}
+/* translateZ(0)：背景层固定成独立合成层。否则上面的卡片动起来时，背景线稿会按不同的渲染历史重新栅格化，
+   同一时间点乱序渲染差 1–8 个色阶（P4 自检实际踩到）。只给静态层用；会动的层由 BM.set 写行内 transform 覆盖。 */
 
 /* 字幕：MiSans Bold 50px，底部居中，距底 104px，实色底板 */
 .sub{position:absolute;left:50%;bottom:var(--sub-bottom);transform:translateX(-50%);white-space:nowrap;

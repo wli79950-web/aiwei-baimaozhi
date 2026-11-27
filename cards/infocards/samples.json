@@ -1,0 +1,33 @@
+{
+  "note": "信息卡样例：只给预览和自检用（tools/infocard_check.js）。文案是示意，贴纸用风格样张（不进正片）。",
+  "items": [
+    { "type": "title", "label": "标题组 · 带小标注 + 色块 + 短线", "wh": [1200, 300], "data": { "kicker": "AI Bug Hunting", "title": "让 AI 先跑[[一遍]]", "bar": true } },
+    { "type": "title", "label": "标题组 · 两行 + 副标题", "wh": [1000, 420], "data": { "title": "提示词注入，\n到底注入了什么", "sub": "先看一次完整的攻击链", "fs": 112 } },
+
+    { "type": "keyword", "label": "关键词卡 · L · 贴纸", "size": "L", "data": { "idx": "01", "word": "提示词注入", "exp": "让 AI [[听错话]]", "img": "../images/samples/bmz_aichip.png" } },
+    { "type": "keyword", "label": "关键词卡 · M · 亮卡", "size": "M", "tone": "lit", "data": { "word": "越狱", "exp": "绕开安全限制" } },
+    { "type": "keyword", "label": "关键词卡 · XL", "size": "XL", "data": { "word": "Agent 越权", "exp": "AI 替你点了[[不该点的按钮]]", "img": "../images/samples/bmz_key.png" } },
+
+    { "type": "define", "label": "定义卡 · L", "size": "L", "data": { "term": "SSRF", "def": "让服务器替你\n去访问[[内网地址]]" } },
+    { "type": "define", "label": "定义卡 · XL · 亮卡", "size": "XL", "tone": "lit", "data": { "term": "漏洞赏金", "eq": "就是", "def": "厂商按危害给白帽的报酬，\n{{先授权}}，再测试" } },
+
+    { "type": "stat", "label": "数字卡 · S", "size": "S", "data": { "value": "403", "label": "被拦了" } },
+    { "type": "stat", "label": "数字卡 · M · 当前项", "size": "M", "tone": "hot", "data": { "value": "80", "unit": "%", "label": "体力活交给 AI" } },
+    { "type": "stat", "label": "数字卡 · L · 带补充", "size": "L", "data": { "value": "12,000", "unit": "条", "label": "日志里只有 [[1 条]]是真的", "note": "示意数据" } },
+
+    { "type": "step", "label": "步骤卡 · M · 贴纸", "size": "M", "data": { "idx": "01", "name": "确认授权", "img": "../images/samples/bmz_key.png" } },
+    { "type": "step", "label": "步骤卡 · M · 当前步", "size": "M", "tone": "hot", "data": { "idx": "03", "name": "AI 扫描", "img": "../images/samples/bmz_aichip.png" } },
+    { "type": "step", "label": "步骤卡 · L · 带说明", "size": "L", "data": { "idx": "04", "name": "人工复核", "desc": "AI 说有洞，人来确认", "img": "../images/samples/bmz_shield.png" } },
+    { "type": "step", "label": "步骤卡 · S", "size": "S", "data": { "idx": "05", "name": "提交报告" } },
+
+    { "type": "chip", "label": "对比芯片 · M · 辅助", "size": "M", "tone": "aux", "data": { "name": "AI 能做", "sub": "批量扫接口" } },
+    { "type": "chip", "label": "对比芯片 · M · 判断", "size": "M", "tone": "hot", "data": { "name": "必须人来", "sub": "判断真假" } },
+    { "type": "chip", "label": "对比芯片 · L · 默认卡", "size": "L", "tone": "card", "data": { "name": "授权测试", "sub": "有边界，合法" } },
+
+    { "type": "term", "label": "终端卡 · L", "size": "L", "data": { "title": "Response · 200", "lines": ["GET /api/me", "\"role\": [[\"admin\"]]", "\"uid\": 1002"] } },
+    { "type": "term", "label": "终端卡 · XL · 命令", "size": "XL", "data": { "title": "bash", "lines": ["$ nuclei -u test.local", "# 扫描 312 个模板", "[[critical]] 未授权接口", "[low] 版本泄露"] } },
+
+    { "type": "chat", "label": "AI 对话卡 · XL", "size": "XL", "data": { "msgs": [ { "who": "me", "text": "这个接口有越权吗？" }, { "who": "ai", "text": "改 uid 能读到别人数据，\n[[需要人工确认]]" } ] } },
+    { "type": "chat", "label": "AI 对话卡 · L", "size": "L", "data": { "msgs": [ { "who": "me", "text": "帮我写个 payload" }, { "who": "ai", "text": "先确认{{授权范围}}" } ] } }
+  ]
+}

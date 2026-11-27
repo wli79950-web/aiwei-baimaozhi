@@ -1,0 +1,104 @@
+/* cards/infocards/infocards.css — 信息卡库（P4）
+   引入顺序：engine/tokens.css → engine/base.css → engine/motion/motion.css → 本文件 → engine/motion/tokens.js → engine/motion/motion.js → infocards.js
+   只用场景变量（--s-*）和色板变量，不写私有色值。字号由 infocards.js 按槽位大小算好后写进行内样式，最小 52px。 */
+
+/* ---------- 外壳与底色（tone） ---------- */
+.ic{position:absolute;box-sizing:border-box;overflow:hidden;font-family:var(--f-cn);font-weight:700;line-height:1.22;
+  background:var(--ic-bg);color:var(--ic-fg);
+  --ic-bg:var(--s-card);--ic-fg:var(--s-card-fg);--ic-acc:var(--s-accent);--ic-num:var(--s-accent);
+  --ic-blk:var(--s-blk);--ic-blk-fg:var(--s-blk-fg);--ic-dim:.62;--pad:40px}
+.ic *{box-sizing:border-box}
+.ic.t-lit{--ic-bg:var(--paper);--ic-fg:var(--char);--ic-acc:var(--klein);--ic-num:var(--klein);--ic-blk:var(--orange);--ic-blk-fg:var(--char)}
+.ic.t-hot{--ic-bg:var(--orange);--ic-fg:var(--char);--ic-acc:var(--char);--ic-num:var(--char);--ic-blk:var(--char);--ic-blk-fg:var(--cream)}
+.ic.t-aux{--ic-bg:var(--klein);--ic-fg:var(--cream);--ic-acc:var(--cream);--ic-num:var(--cream);--ic-blk:var(--orange);--ic-blk-fg:var(--char)}
+.ic.t-dark{--ic-bg:var(--char);--ic-fg:var(--cream);--ic-acc:var(--orange);--ic-num:var(--orange);--ic-blk:var(--orange);--ic-blk-fg:var(--char)}
+.scene-A .ic.t-dark{--ic-bg:var(--slate)}
+.ic.t-none{--ic-bg:transparent;--ic-fg:var(--s-title);overflow:visible}
+.scene-B .ic:not(.t-none){box-shadow:0 18px 40px rgba(90,40,10,.10),0 0 0 2px rgba(22,19,15,.06)}
+
+.ic-body{position:absolute;inset:0;padding:var(--pad);display:flex;flex-direction:column;overflow:hidden}
+.ic.t-none .ic-body{overflow:visible;padding:0}
+
+/* 行内标记：[[重点色块]] {{重点字}} `等宽` */
+.ic .blk.bm-sweep{background-size:100% 100%}   /* 静帧默认扫满；逐帧渲染时 BM.blockSweep 写行内样式覆盖 */
+.ic .blk{color:var(--ic-blk-fg);--s-blk:var(--ic-blk);padding:0 .16em;margin:0 .06em;box-decoration-break:clone;-webkit-box-decoration-break:clone}
+.ic .acc{color:var(--ic-acc)}
+.ic code{font-family:var(--f-mono);font-weight:600}
+
+/* 遮罩行：卡片里不往外借 0.14em（否则会被算成溢出）；行本身不换行的部件由 IC.fit 检查行宽 */
+.ic .bm-mask{margin-right:0}
+.ic-word [data-role="line"],.ic-name [data-role="line"],.ic-term [data-role="line"]{white-space:nowrap}
+
+/* 通用文字部件 */
+.ic .disp{color:var(--ic-fg)}
+.ic-heavy{font-weight:900;line-height:1.08;letter-spacing:.01em}
+.ic-num{font-family:var(--f-num);font-weight:900;line-height:1;color:var(--ic-num);font-variant-numeric:tabular-nums}
+.ic-text{font-weight:700;line-height:1.32}
+.ic-stk{position:absolute;object-fit:contain;pointer-events:none}
+.scene-A .ic-stk{filter:drop-shadow(0 22px 28px rgba(0,0,0,.45))}
+.scene-B .ic-stk{filter:drop-shadow(0 18px 22px rgba(90,40,10,.18))}
+.ic-stk.ph{border:3px dashed currentColor;opacity:.35;display:flex;align-items:center;justify-content:center;font-size:52px}
+
+/* ---------- title 标题组 ---------- */
+.ic-title .ic-body{justify-content:flex-start;gap:0}
+.ic-title .kick{margin:0 0 .5em .1em;color:var(--s-accent);opacity:.9}
+.scene-A .ic-title .kick{color:var(--cream);opacity:.6}
+.ic-title .ic-t{font-family:var(--f-disp);font-weight:400;line-height:1.06;letter-spacing:.01em}
+.ic-title .ic-t .blk{margin-left:0}
+.ic-title .ic-sub{margin-top:.5em;font-weight:700;line-height:1.32;opacity:.88}
+.ic-title .ic-bar{height:12px;background:var(--orange);margin-top:22px;transform-origin:left}
+
+/* ---------- keyword 关键词卡 ---------- */
+.ic-keyword .ic-body{justify-content:center}
+.ic-keyword .ic-idx{margin-bottom:.35em}
+.ic-keyword .ic-word{white-space:nowrap}
+.ic-keyword .ic-exp{margin-top:.42em}
+
+/* ---------- define 定义卡 ---------- */
+.ic-define .ic-body{padding-left:calc(var(--pad) + 22px);justify-content:center}
+.ic-define .ic-rule{position:absolute;left:0;top:0;bottom:0;width:12px;background:var(--ic-acc);transform-origin:top}
+.ic-define .ic-term{white-space:nowrap}
+.ic-define .ic-eq{color:var(--ic-acc);margin:.18em 0 .22em}
+.ic-define .ic-def{}
+
+/* ---------- stat 数字卡 ---------- */
+.ic-stat .ic-body{justify-content:center}
+.ic-stat .ic-row{display:flex;align-items:baseline;white-space:nowrap;gap:.12em}
+.ic-stat .ic-unit{font-weight:900;color:var(--ic-fg)}
+.ic-stat .ic-lab{margin-top:.3em}
+.ic-stat .ic-note{margin-top:.3em;opacity:var(--ic-dim)}
+
+/* ---------- step 步骤卡 ---------- */
+.ic-step .ic-body{justify-content:space-between}
+.ic-step .ic-name{white-space:nowrap}
+.ic-step .ic-desc{margin-top:.25em;opacity:.9}
+
+/* ---------- chip 对比芯片 ---------- */
+.ic-chip .ic-body{align-items:center;justify-content:center;text-align:center}
+.ic-chip .ic-name{white-space:nowrap}
+.ic-chip .ic-sub{margin-top:.3em;opacity:.9}
+
+/* ---------- term 终端卡 ---------- */
+.ic-term .ic-body{padding:0}
+.ic-term .ic-bar{flex:none;display:flex;align-items:center;gap:14px;padding:18px 28px;border-bottom:2px solid rgba(245,238,223,.12)}
+.ic-term .ic-bar i{width:18px;height:18px;border-radius:50%;background:var(--cream);opacity:.45;flex:none}
+.ic-term .ic-bar i:first-child{background:var(--orange);opacity:1}
+.ic-term .ic-bar span{margin-left:14px;font-family:var(--f-mono);font-weight:600;white-space:nowrap}
+.ic-term .ic-lines{flex:1;padding:22px 32px;font-family:var(--f-mono);font-weight:500;line-height:1.36;overflow:hidden}
+.ic-term .ic-ln{white-space:pre}
+.ic-term .ic-ln .pr{color:var(--ic-acc)}
+.ic-term .ic-ln.dim{opacity:var(--ic-dim)}
+
+/* ---------- chat AI 对话卡 ---------- */
+.ic-chat .ic-body{justify-content:flex-start;gap:28px}
+.ic-chat .ic-msg{position:relative;max-width:86%;padding:.5em .7em;line-height:1.32}
+.ic-chat .ic-msg.me{align-self:flex-end;background:var(--paper);color:var(--char)}
+.scene-B .ic-chat .ic-msg.me{background:var(--char);color:var(--cream)}
+.ic-chat .ic-msg.ai{align-self:flex-start;background:var(--slate);color:var(--cream);padding-left:calc(.7em + 1.9em)}
+.scene-B .ic-chat .ic-msg.ai{background:var(--paper);color:var(--char);box-shadow:0 12px 28px rgba(90,40,10,.10),0 0 0 2px rgba(22,19,15,.06)}
+.ic-chat .ic-msg.ai .who{position:absolute;left:.5em;top:.5em;font-family:var(--f-num);font-weight:900;background:var(--orange);color:var(--char);padding:0 .14em;line-height:1.25}
+.scene-B .ic-chat .ic-msg.ai .who{background:var(--klein);color:var(--cream)}
+.ic-chat .ic-msg.ai .acc{color:var(--orange)}
+.scene-B .ic-chat .ic-msg.ai .acc{color:var(--klein)}
+.ic-chat .ic-msg.me .acc{color:var(--klein)}
+.scene-B .ic-chat .ic-msg.me .acc{color:var(--orange)}

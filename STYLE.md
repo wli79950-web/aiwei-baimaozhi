@@ -80,7 +80,7 @@
 |---|---|---|---|
 | 图片 | `cards/images/` | 风格提示词 `styles.json` + 后期处理 + 风格样张；图片每期现生成 | ✅ 风格提示词，持续扩充 |
 | 排版 | `cards/layouts/` | 构图 + 槽位，由挖洞号 49 张卡的构图迁来（50 个，总览 `docs/previews/layouts/sheet.jpg`） | ✅ P3，持续扩充 |
-| 信息卡 | `cards/infocards/` | 承载信息的组件 × A/B 场景 × S–XL | P4，持续扩充 |
+| 信息卡 | `cards/infocards/` | 承载信息的组件 × A/B 场景 × S–XL（`IC.render` + `IC.fit` + `IC.animate`） | P4 进行中：第一批 8 个，持续扩充 |
 | 配方 | `cards/recipes/` | 叙事功能 → 排版 + 信息卡 + 图片 + 动效 | P6 |
 
 ### 6.1 图片风格（`cards/images/styles.json`）
