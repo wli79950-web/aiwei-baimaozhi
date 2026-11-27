@@ -105,7 +105,7 @@
 - **统一调色，不统一配色**：生图保留物件本来的颜色，不再限制奶油白 / 克莱因蓝 / 朱橙三色；抠图后一律过 `python3 -I tools/grade.py`（参数在 `brand.json` → `imagery.grade`）：朱橙附近色相保留饱和度、其他色相压到一半，纯黑 → 炭黑、纯白 → 奶油白。状态灯、发光在提示词里写成 warm orange，不要绿灯、蓝光、紫光。
 - 写实的暗色物件（黑机箱、深色锁体）放在炭黑场会被吃掉轮廓：提示词必须写 warm rim light，挑图时检查轮廓。
 - **停用**：`sticker` 陶瓷贴纸、`toy` 设计师玩具、`iso` 等距微缩（同为粘土 / 陶瓷质感，显得廉价、像模板）。`tools/genimg.py` 默认拒绝这三个 preset。结构、流程类内容改用矢量图形和信息卡画。
-- 风格对比样张：`docs/previews/explore/styles_sheet.jpg`（粘土 / 写实 / 动漫 × 芯片、锁、服务器）。`cards/images/samples/` 是旧的陶瓷贴纸样张，**不进正片**，仅作历史参考。
+- **样张（P5，2026-11-27）**：`cards/images/samples/bmz_*.png` 写实 12 张，`cards/images/samples/anime/` 动漫 6 张（物件 4 + 场景 2），预览 `docs/previews/sheet_stickers.jpg`，提示词 `samples/prompts.json`。**样张不进正片**。风格对比见 `docs/previews/explore/styles_sheet.jpg`。动漫有两种做法：`anime`（物件，抠图）和 `anime-scene`（空场景，只调色，放进卡片 / 窗口）。
 - 用户提供的截图、图片、录屏一律**保留原色**，放进窗口 / 卡片 / 手机屏幕里，不重新调色；需要时只加朱橙标注。
 
 ## 7. 其他库

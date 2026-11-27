@@ -1,67 +1,113 @@
 {
- "note": "2026-11-26 风格样张。生成时的后缀是金色点缀版（warm gold #F7C73E），朱橙定稿前生成；现在的预设见 tokens/brand.json 的 sticker.prompt_suffix。样张不进正片。",
- "suffix_at_generation": "premium 3D product render, soft matte ceramic and frosted resin materials, color palette strictly limited to cream white (#F5EEDF), Klein blue (#002FA7) and warm gold (#F7C73E), clean geometric Bauhaus-inspired forms, smooth rounded edges, soft diffused studio lighting, gentle contact shadow, isolated on a plain light grey (#D6D6D6) seamless background, centered, full object visible, no text, no letters, no numbers, no logo, no watermark",
- "model": "agnes-image-2.5-flash",
- "items": [
-  {
-   "file": "bmz_whitehat.png",
-   "subject": "a classic fedora hat in cream white with a Klein blue hat band and a small gold round pin on the band, three-quarter view",
-   "cutout": "默认"
+  "note": "2026-11-27 P5 风格样张（视觉系统 1.4：写实为核心，动漫为辅）。文件名沿用旧的陶瓷样张（bmz_*），内容已换成写实；旧陶瓷样张在 git 历史里（提交 bacc451 及以前）。全部抠图后过 tools/grade.py。样张不进正片。",
+  "model": "agnes-image-2.5-flash",
+  "real": {
+    "preset": "real",
+    "items": [
+      {
+        "file": "bmz_whitehat.png",
+        "subject": "a cream white felt fedora hat with a Klein blue grosgrain hat band, three-quarter view",
+        "cutout": "--fill-holes"
+      },
+      {
+        "file": "bmz_aichip.png",
+        "subject": "a square AI processor chip, black ceramic package with brushed aluminium heat spreader, gold pins on all four sides, a faint warm orange glow leaking from the die edge, three-quarter view from above",
+        "cutout": "默认"
+      },
+      {
+        "file": "bmz_shield.png",
+        "subject": "a brushed steel security shield emblem badge with an engraved keyhole in the center, beveled edges, three-quarter view",
+        "cutout": "--fill-holes"
+      },
+      {
+        "file": "bmz_radar.png",
+        "subject": "a compact radar dish antenna on a short brushed metal pedestal, white painted dish, three-quarter view",
+        "cutout": "默认"
+      },
+      {
+        "file": "bmz_key.png",
+        "subject": "an old heavy brass key with an ornate round bow, lying at a slight angle, three-quarter view",
+        "cutout": "默认"
+      },
+      {
+        "file": "bmz_lock_closed.png",
+        "subject": "a closed heavy padlock, brushed stainless steel shackle, matte dark graphite body, three-quarter view",
+        "cutout": "默认"
+      },
+      {
+        "file": "bmz_lock_open.png",
+        "subject": "an open heavy padlock with the stainless steel shackle raised and unlocked, matte dark graphite body, three-quarter view",
+        "cutout": "默认"
+      },
+      {
+        "file": "bmz_laptop.png",
+        "subject": "a slim space grey aluminium laptop half open, screen switched off and dark, three-quarter view",
+        "cutout": "--fill-holes"
+      },
+      {
+        "file": "bmz_coin.png",
+        "subject": "a single thick gold coin standing on its edge, completely plain smooth faces with no engraving, no symbols, no text",
+        "cutout": "--fill-holes"
+      },
+      {
+        "file": "bmz_briefcase.png",
+        "subject": "a dark brown leather briefcase with small brass clasps, three-quarter view",
+        "cutout": "--fill-holes"
+      },
+      {
+        "file": "bmz_bug.png",
+        "subject": "a small beetle sculpture made of polished brushed steel, sitting on nothing, three-quarter view",
+        "cutout": "默认"
+      },
+      {
+        "file": "bmz_building.png",
+        "subject": "a minimalist architectural scale model of a modern glass office tower, three-quarter view",
+        "cutout": "--fill-holes"
+      }
+    ]
   },
-  {
-   "file": "bmz_aichip.png",
-   "subject": "a chunky square AI processor chip, Klein blue body with cream pins around the edges and a glowing warm gold core on top, three-quarter view from above",
-   "cutout": "默认"
+  "anime": {
+    "items": [
+      {
+        "file": "anime/anime_chip.png",
+        "preset": "anime",
+        "subject": "a square AI processor chip with a blazing glowing core, pins on all four sides",
+        "post": "抠图 + 调色"
+      },
+      {
+        "file": "anime/anime_key.png",
+        "preset": "anime",
+        "subject": "an old ornate key glowing with warm light along its edges",
+        "post": "抠图 + 调色"
+      },
+      {
+        "file": "anime/anime_lock.png",
+        "preset": "anime",
+        "subject": "a heavy padlock springing open with sparks of orange light from the keyhole",
+        "post": "抠图 + 调色"
+      },
+      {
+        "file": "anime/anime_radar.png",
+        "preset": "anime",
+        "subject": "a radar dish antenna on a pedestal emitting a sweeping beam of orange light",
+        "post": "抠图 + 调色"
+      },
+      {
+        "file": "anime/anime_vault.jpg",
+        "preset": "anime-scene",
+        "subject": "a massive round bank vault door slightly ajar in a dark corridor, warm orange light pouring out of the gap",
+        "post": "只调色（场景，不抠图）"
+      },
+      {
+        "file": "anime/anime_datacenter.jpg",
+        "preset": "anime-scene",
+        "subject": "a long empty data center corridor between tall server racks at night, tiny orange status lights receding into the distance",
+        "post": "只调色（场景，不抠图）"
+      }
+    ]
   },
-  {
-   "file": "bmz_shield.png",
-   "subject": "a geometric shield emblem in cream white with a thick Klein blue rim and a gold keyhole in the center, slight three-quarter view",
-   "cutout": "--fill-holes"
-  },
-  {
-   "file": "bmz_radar.png",
-   "subject": "a small radar dish antenna on a short pedestal, cream white dish with Klein blue inner rings and a gold receiver tip, three-quarter view",
-   "cutout": "默认"
-  },
-  {
-   "file": "bmz_key.png",
-   "subject": "an oversized key with a circular geometric bow, gold key with a Klein blue ring inlay, lying diagonally",
-   "cutout": "默认"
-  },
-  {
-   "file": "bmz_briefcase.png",
-   "subject": "a compact modern briefcase in Klein blue with a cream handle and a gold clasp, three-quarter view",
-   "cutout": "默认"
-  },
-  {
-   "file": "bmz_bug.png",
-   "subject": "a cute stylized beetle made of simple geometric shapes, cream white shell split into two halves with Klein blue spots and gold antennae, top three-quarter view",
-   "cutout": "默认"
-  },
-  {
-   "file": "bmz_lock_closed.png",
-   "subject": "a closed padlock, Klein blue body with a cream white shackle and a small gold keyhole, front three-quarter view",
-   "cutout": "默认"
-  },
-  {
-   "file": "bmz_lock_open.png",
-   "subject": "an open padlock with the shackle lifted, cream white body with a Klein blue shackle and a small gold keyhole, front three-quarter view",
-   "cutout": "默认"
-  },
-  {
-   "file": "bmz_laptop.png",
-   "subject": "a compact open laptop, cream white body, Klein blue screen with a small gold radar ring icon on it, keyboard visible, three-quarter view",
-   "cutout": "--fill-holes"
-  },
-  {
-   "file": "bmz_building.png",
-   "subject": "a small modern office building block, cream white facade with Klein blue window grid and a gold flag on the roof, three-quarter view",
-   "cutout": "--fill-holes"
-  },
-  {
-   "file": "bmz_coin.png",
-   "subject": "a thick gold coin standing on its edge with a cream white shield emblem embossed in the center and a Klein blue rim, three-quarter view",
-   "cutout": "--fill-holes"
-  }
- ]
+  "regenerated": [
+    "bmz_lock_open（第一版锁梁抬得不明显）",
+    "anime_radar（第一版光束出画、底座有杂笔触）"
+  ]
 }

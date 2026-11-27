@@ -7,8 +7,8 @@
 ## 风格一览（`styles.json`，后续继续扩充）
 | preset | 风格 | 用来讲什么 | 后期 | 样张 |
 |---|---|---|---|---|
-| **`real`** | **写实产品摄影（核心）** | 名词实物化：芯片、服务器、锁、钥匙、手机…… | 抠透明底 → `tools/grade.py` | `docs/previews/explore/img/real_*` |
-| `anime` | 动漫光效（辅助） | 主角镜头、高光时刻，一屏最多一个 | 抠透明底 → `tools/grade.py` | `docs/previews/explore/img/anime2_*` |
+| **`real`** | **写实产品摄影（核心）** | 名词实物化：芯片、服务器、锁、钥匙、手机…… | 抠透明底 → `tools/grade.py` | `samples/bmz_*.png` |
+| `anime` / `anime-scene` | 动漫光效（辅助）：物件 / 空场景 | 主角镜头、高光时刻，一屏最多一个；场景放进卡片 / 窗口 | 物件抠图 → `tools/grade.py`；场景只调色 | `samples/anime/` |
 | `sc02-line` | **SC02 · 蓝调漫画** · 做法一 蓝线漫画 | 角色、情境、人物反应 | 直接用 / 抠透明底 | `docs/previews/styles/SC02.jpg` |
 | `sc02-duo` | **SC02 · 蓝调漫画** · 做法二 黑白漫画 → 蓝调 | 物件、场景、情绪节点 | `tools/duotone.py --map klein --grain 0` | 同上 |
 | `tone` | 双色调摄影 | 章节卡、反转、金句 | `tools/duotone.py` | 提交 `adbbc35` |
@@ -45,7 +45,7 @@ python3 -I tools/cutout.py object footage/gen/x.png episodes/BM01_xxx/assets/x.p
 | 位置 | 内容 | 能否用进正片 |
 |---|---|---|
 | `styles.json` | 全部风格提示词 | — |
-| `samples/` | 旧的陶瓷贴纸风格样张 12 张（2026-11-26，金色点缀版；1.4 起该风格停用），提示词 `samples/prompts.json` | ❌ 只作历史参考 |
+| `samples/` | P5 风格样张（2026-11-27）：`bmz_*.png` 写实 12 张，`anime/` 动漫 6 张（物件 4 + 场景 2），提示词 `samples/prompts.json`；预览 `docs/previews/sheet_stickers.jpg`。旧陶瓷样张在 git 历史（提交 bacc451 及以前） | ❌ 只作参考，正片每期现生成 |
 | `docs/previews/explore/img/` | 2026-11-27 风格对比样张：粘土 / 写实 / 动漫 × 芯片、锁、服务器（原色和统一调色后） | ❌ 只作参考 |
 | `docs/previews/styles/` | 各风格的样张预览图 | ❌ 只作参考 |
 | 提交 `adbbc35` | `toy` / `tone` 样张：`git fetch --depth=10 origin main && git checkout adbbc35 -- libs/imagery/candidates` | ❌ 只作参考 |

@@ -14,14 +14,14 @@
         "a single 1U rack-mounted server, three-quarter view, black anodized aluminium front panel with fine ventilation mesh, a few tiny warm orange status LEDs"
       ],
       "rules": "物件保留本来的颜色（金属就是金属色），不再限制三色；高饱和的点只允许朱橙（状态灯、发光写成 warm orange），不要绿灯、蓝光、紫光。AI 生成硬件容易出假细节：提示词里不要求屏幕、标签、文字，挑图时检查乱码和错误结构。暗色物件在提示词里写明 warm rim light。",
-      "samples": "docs/previews/explore/img/real_*（2026-11-27 风格对比样张，不进正片）；对比图 docs/previews/explore/styles_sheet.jpg"
+      "samples": "cards/images/samples/bmz_*.png（P5 样张 12 张，提示词 samples/prompts.json）；预览 docs/previews/sheet_stickers.jpg"
     },
     "anime": {
       "name": "动漫光效",
       "role": "辅助",
       "use": "主角镜头、高光时刻：开场主体、金句、「AI 扫描」这类关键一步；物件或场景都可以",
       "prompt_suffix": "detailed anime film background art style, painterly hand-drawn object, rich lighting with glowing light bloom and lens glow, deep night-blue shadows and warm vermilion orange light, fine clean line work, highly detailed, cinematic, isolated object on a plain light grey (#D6D6D6) seamless background, three-quarter view, full object visible, no characters, no text, no letters, no numbers, no logo, no watermark",
-      "post": "python3 -I tools/cutout.py object 原图 抠图.png → python3 -I tools/grade.py 抠图.png 输出.png",
+      "post": "python3 -I tools/cutout.py object 原图 抠图.png → python3 -I tools/grade.py 抠图.png 输出.png；场景用 anime-scene（不抠图，只调色）",
       "placement": "炭黑场；一屏最多一个动漫图，作为该屏的焦点（它自带朱橙光，等于这一屏的朱橙焦点）；不和写实图放在同一个镜头",
       "subjects": [
         "a square AI processor chip with a glowing core, pins on all four sides",
@@ -29,7 +29,15 @@
         "a single rack-mounted server unit with ventilation grille and small status lights"
       ],
       "rules": "一期里用得少才显得贵：只给高光时刻。同一期多次出现时用同一段描述保持一致。人物和情境仍用 SC02；anime 只画物件和空场景，不画人物。",
-      "samples": "docs/previews/explore/img/anime2_*（2026-11-27 风格对比样张，不进正片）"
+      "samples": "cards/images/samples/anime/（P5 样张：物件 4 张 + 场景 2 张）；预览 docs/previews/sheet_stickers.jpg",
+      "variants": {
+        "scene": {
+          "name": "动漫场景",
+          "use": "空场景：金库门、机房走廊、深夜工位……放进卡片 / 窗口里，或做章节卡、金句卡的画面",
+          "prompt_suffix": "detailed anime film background art, painterly hand-drawn environment, cinematic composition, rich lighting with glowing light bloom, deep night-blue shadows and warm vermilion orange light sources, highly detailed, no characters, no people, no text, no letters, no numbers, no logo, no watermark",
+          "post": "python3 -I tools/grade.py 原图 输出（不抠图）；位图只放在卡片 / 窗口里，不整屏铺底"
+        }
+      }
     },
     "sticker": {
       "name": "陶瓷贴纸",
@@ -42,7 +50,7 @@
         "a chunky square AI processor chip with a glowing orange core"
       ],
       "rules": "提示词只写物件本身和三色分工；模型偶尔加灰、加金，挑图时重生。",
-      "samples": "cards/images/samples/（12 张，金色点缀版，朱橙定稿前生成，不进正片）",
+      "samples": "旧陶瓷样张在 git 历史（提交 bacc451 及以前的 cards/images/samples/）；samples/ 里现在是写实样张",
       "status": "停用",
       "retired_reason": "粘土 / 陶瓷质感显得廉价、像模板（2026-11-27 用户确认，改用 real）"
     },
