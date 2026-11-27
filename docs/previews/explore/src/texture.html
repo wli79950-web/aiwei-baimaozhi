@@ -76,7 +76,7 @@ const STEPS = ['确认授权', '信息收集', 'AI 扫描', '人工复核', '写
 function chip(cx, cy, size) {
   el('div', 'glow', `left:${cx - size * .78}px;top:${cy - size * .78}px;width:${size * 1.56}px;height:${size * 1.56}px`);
   rings(cx, cy, [size * .62, size * .86, size * 1.12], .13); ticks(cx, cy, size * .86, 72, 8, .22);
-  const im = el('img', 'stk', `left:${cx - size / 2}px;top:${cy - size / 2}px;width:${size}px;height:${size}px`); im.src = SMP + 'bmz_aichip.png';
+  const im = el('img', 'stk', `left:${cx - size / 2}px;top:${cy - size / 2}px;width:${size}px;height:${size}px`); const q = new URLSearchParams(location.search).get('img'); im.src = q ? '../img/' + q + '.png' : SMP + 'bmz_aichip.png';
 }
 if (F === 'D1h') {
   M(t(64, 56, 'AI 挖洞，按顺序来', 'disp', 112));
