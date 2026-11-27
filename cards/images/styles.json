@@ -1,6 +1,36 @@
 {
-  "note": "知识卡片板块 · 图片风格提示词。不设品牌素材层：每期按口播现生成，图片每期都不一样，只有风格后缀固定。tools/genimg.py 的 preset：普通风格用 id（如 toy），带做法的风格用 id-做法（如 sc02-line、sc02-duo）。新风格按同样的格式往里加。",
+  "note": "知识卡片板块 · 图片风格提示词。不设品牌素材层：每期按口播现生成，图片每期都不一样，只有风格后缀固定。1.4 起：写实 real 为核心，动漫 anime 为辅；生成后一律过统一调色 tools/grade.py。陶瓷 / 粘土类（sticker、toy、iso）停用（status = 停用），genimg.py 默认拒绝。tools/genimg.py 的 preset：普通风格用 id（如 real），带做法的风格用 id-做法（如 sc02-line）。新风格按同样的格式往里加。",
   "styles": {
+    "real": {
+      "name": "写实产品摄影",
+      "role": "核心",
+      "use": "名词实物化：芯片、服务器、锁、钥匙、手机、硬盘……知识卡片里最常用的图片；也用于需要「真东西」的镜头",
+      "prompt_suffix": "photorealistic studio product photography, real physical materials such as brushed metal, anodized aluminium, glass and matte plastic, low-key lighting, one soft warm key light from the upper left and a clear warm rim light outlining the whole silhouette, subtle realistic reflections, slightly desaturated natural colors, macro lens, sharp focus, isolated on a plain medium grey (#8A8A8A) seamless background, centered, full object visible, no text, no letters, no numbers, no labels, no logo, no watermark",
+      "post": "python3 -I tools/cutout.py object 原图 抠图.png（实心物件加 --fill-holes）→ python3 -I tools/grade.py 抠图.png 输出.png",
+      "placement": "炭黑场为主，可以出血；一屏一个主体。暗色物件（黑色机箱、深色锁体）必须有完整的暖色轮廓光，否则轮廓会被炭黑底吃掉",
+      "subjects": [
+        "a square AI processor chip, black ceramic package with brushed aluminium heat spreader, gold pins on all four sides, a faint warm orange glow leaking from the die edge",
+        "a closed heavy padlock, brushed stainless steel shackle, matte dark graphite body",
+        "a single 1U rack-mounted server, three-quarter view, black anodized aluminium front panel with fine ventilation mesh, a few tiny warm orange status LEDs"
+      ],
+      "rules": "物件保留本来的颜色（金属就是金属色），不再限制三色；高饱和的点只允许朱橙（状态灯、发光写成 warm orange），不要绿灯、蓝光、紫光。AI 生成硬件容易出假细节：提示词里不要求屏幕、标签、文字，挑图时检查乱码和错误结构。暗色物件在提示词里写明 warm rim light。",
+      "samples": "docs/previews/explore/img/real_*（2026-11-27 风格对比样张，不进正片）；对比图 docs/previews/explore/styles_sheet.jpg"
+    },
+    "anime": {
+      "name": "动漫光效",
+      "role": "辅助",
+      "use": "主角镜头、高光时刻：开场主体、金句、「AI 扫描」这类关键一步；物件或场景都可以",
+      "prompt_suffix": "detailed anime film background art style, painterly hand-drawn object, rich lighting with glowing light bloom and lens glow, deep night-blue shadows and warm vermilion orange light, fine clean line work, highly detailed, cinematic, isolated object on a plain light grey (#D6D6D6) seamless background, three-quarter view, full object visible, no characters, no text, no letters, no numbers, no logo, no watermark",
+      "post": "python3 -I tools/cutout.py object 原图 抠图.png → python3 -I tools/grade.py 抠图.png 输出.png",
+      "placement": "炭黑场；一屏最多一个动漫图，作为该屏的焦点（它自带朱橙光，等于这一屏的朱橙焦点）；不和写实图放在同一个镜头",
+      "subjects": [
+        "a square AI processor chip with a glowing core, pins on all four sides",
+        "a closed padlock",
+        "a single rack-mounted server unit with ventilation grille and small status lights"
+      ],
+      "rules": "一期里用得少才显得贵：只给高光时刻。同一期多次出现时用同一段描述保持一致。人物和情境仍用 SC02；anime 只画物件和空场景，不画人物。",
+      "samples": "docs/previews/explore/img/anime2_*（2026-11-27 风格对比样张，不进正片）"
+    },
     "sticker": {
       "name": "陶瓷贴纸",
       "use": "名词实物化：芯片、钥匙、锁、盾牌、公文包……知识卡片里最常用的图片",
@@ -12,7 +42,9 @@
         "a chunky square AI processor chip with a glowing orange core"
       ],
       "rules": "提示词只写物件本身和三色分工；模型偶尔加灰、加金，挑图时重生。",
-      "samples": "cards/images/samples/（12 张，金色点缀版，朱橙定稿前生成，不进正片）"
+      "samples": "cards/images/samples/（12 张，金色点缀版，朱橙定稿前生成，不进正片）",
+      "status": "停用",
+      "retired_reason": "粘土 / 陶瓷质感显得廉价、像模板（2026-11-27 用户确认，改用 real）"
     },
     "sc02": {
       "name": "SC02 · 蓝调漫画",
@@ -51,7 +83,9 @@
         "a developer scratching head in front of a laptop"
       ],
       "rules": "形象每期可以不同；同一期里出现多次时，用同一段角色描述保证一致。不用黑色卫衣 + 红色抽绳（和挖洞号黏土角色区分）。道具颜色也只能是三色，灰色笔记本这类要在提示词里写明颜色。",
-      "samples": "提交 adbbc35：libs/imagery/candidates/wh_char_a.png、wh_char_b.png"
+      "samples": "提交 adbbc35：libs/imagery/candidates/wh_char_a.png、wh_char_b.png",
+      "status": "停用",
+      "retired_reason": "同为哑光陶瓷 / 搪胶玩具质感，和 sticker 一起停用（2026-11-27）"
     },
     "tone": {
       "name": "双色调摄影",
@@ -80,7 +114,9 @@
         "a vault room behind a series of doors"
       ],
       "rules": "首次使用先出 2 张给用户看风格（还没有样张）。",
-      "samples": "暂无"
+      "samples": "暂无",
+      "status": "停用",
+      "retired_reason": "同为哑光陶瓷微缩质感，和 sticker 一起停用；结构、流程改用矢量图形画（2026-11-27）"
     },
     "device": {
       "name": "手持设备实拍",

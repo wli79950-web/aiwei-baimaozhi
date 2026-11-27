@@ -5,7 +5,9 @@
 用法：python3 tools/genimg.py jobs.json 输出目录
 jobs.json: [{"name":"bm01_xxx","preset":"iso","prompt":"本期的画面内容","size":"1024x1024"}, ...]
 preset（风格提示词在 cards/images/styles.json）:
-  sticker 陶瓷贴纸 · sc02-line / sc02-duo SC02 蓝调漫画 · toy · tone · iso · device · flat ……（新风格加进 styles.json 即可用）
+  real 写实产品摄影（核心）· anime 动漫光效（辅助）· sc02-line / sc02-duo SC02 蓝调漫画 · tone · device · flat ……（新风格加进 styles.json 即可用）
+  停用的风格（styles.json 里 status = 停用：sticker、toy、iso）默认拒绝；确实要用（例如重做旧样张）加 --allow-retired
+生成后：python3 -I tools/cutout.py object … → python3 -I tools/grade.py …（统一调色）
   photo    写实照片（只放进手机屏幕、窗口、卡片里，不整屏铺底）
   raw      不加后缀
 注意：
@@ -18,6 +20,7 @@ import base64, json, os, subprocess, sys, time
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 BRAND = json.load(open(os.path.join(ROOT, 'tokens', 'brand.json'), encoding='utf-8'))
 STYLES = json.load(open(os.path.join(ROOT, BRAND['imagery']['styles_file']), encoding='utf-8'))['styles']
+RETIRED = {k for k, v in STYLES.items() if v.get('status') == '停用'}
 PRESET = {
     **{k: v['prompt_suffix'] for k, v in STYLES.items() if 'prompt_suffix' in v},
     **{f'{k}-{vk}': vv['prompt_suffix'] for k, v in STYLES.items() for vk, vv in v.get('variants', {}).items()},
@@ -25,6 +28,9 @@ PRESET = {
     'raw': "",
 }
 jobs = json.load(open(sys.argv[1], encoding='utf-8')); out = sys.argv[2]; os.makedirs(out, exist_ok=True)
+bad = sorted({j.get('preset', 'raw').split('-')[0] for j in jobs} & RETIRED)
+if bad and '--allow-retired' not in sys.argv:
+    sys.exit('风格已停用：%s（见 cards/images/styles.json 的 retired_reason；名词实物化改用 real）。确实要用加 --allow-retired' % '、'.join(bad))
 for j in jobs:
     path = os.path.join(out, j['name'] + '.png')
     if os.path.exists(path): print(j['name'], 'exists'); continue

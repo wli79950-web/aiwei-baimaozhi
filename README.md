@@ -18,7 +18,7 @@
 | `engine/` | `tokens.css`（自动生成）、`base.css`、渲染与运动模糊、音效合成；`motion/` 动效库（P2） |
 | `libs/backgrounds/` | 背景板库：底板 PNG + 动态层 SVG |
 | `cards/` | **知识卡片板块** = 图片 + 排版 + 信息卡（见 `cards/README.md`） |
-| `cards/images/` | 图片：风格提示词 `styles.json`（sticker、SC02、toy、tone、iso、device、flat……持续扩充）、贴纸样张；图片每期现生成 |
+| `cards/images/` | 图片：风格提示词 `styles.json`（写实 `real` 为核心、动漫 `anime` 为辅，另有 SC02、tone、device、flat……持续扩充）；图片每期现生成，抠图后过 `tools/grade.py` 统一调色 |
 | `cards/layouts/` | 排版（P3）：由挖洞号 49 张卡的构图迁来，50 个 `layout.json` + 线框预览，只含构图和槽位，持续扩充 |
 | `cards/infocards/` | 信息卡（P4），持续扩充 |
 | `cards/recipes/` | 配方（P6）：一张卡 = 排版 + 信息卡 + 图片 + 动效 |
@@ -37,7 +37,7 @@
 | P2 动效库 | 自写动效预设 + AE 对应写法 + 5 秒样片 + 自动测试 | ✅ 2026-11-27（音色重做待办） |
 | P3 排版库 | 49 张卡构图 → `layout.json` + 线框预览 + `layout_lint` | ✅ 2026-11-27（50 个排版，全部通过检查） |
 | P4 信息卡库 + 录屏组件 | 首批约 20 个组件 × A/B 场景；录屏窗口 / 推镜 / 标注 / 打码 / 联动 | ✅ 2026-11-27（信息卡 20 个 + 录屏组件网页端；AE 端在 P6） |
-| P5 素材库 | 朱橙版贴纸样张、`iso` / `flat` / `device` 风格出样张确认、生图清单模板 | 待做 |
+| P5 素材库 | 写实 / 动漫风格定稿（✅ 2026-11-27，陶瓷贴纸停用）；`real` / `anime` 正式样张、`flat` / `device` 样张、生图清单模板 | 进行中 |
 | P6 配方表 + AE | 配方表、新 AE 组件库、`build_ae.py` 分层检查 | 待做 |
 | P7 试做一期 | 30–60 秒完整流程 | 待做 |
 

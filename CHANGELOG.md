@@ -1,5 +1,15 @@
 # 更新记录
 
+## 1.9.0 · 2026-11-27 · 视觉系统 1.4：图片风格改为写实为核心、动漫为辅
+- 用户认为粘土 / 陶瓷元素拉低高级感。出了粘土 / 写实 / 动漫 × 芯片、锁、服务器的风格对比（`docs/previews/explore/styles_sheet.jpg`、`styles_D1v.jpg`、`styles_D1h.jpg`）后，用户确定：**写实为核心，动漫为辅**。
+- `cards/images/styles.json`：新增 `real` 写实产品摄影（核心，名词实物化）和 `anime` 动漫光效（辅助，高光时刻，一屏最多一个）；`sticker` 陶瓷贴纸、`toy` 设计师玩具、`iso` 等距微缩标记为停用（同为粘土 / 陶瓷质感），保留条目和停用原因。
+- 贴纸不再限制奶油白 / 克莱因蓝 / 朱橙三色，改为「统一调色」：新增 `tools/grade.py`（参数在 `brand.json` → `imagery.grade`），朱橙附近色相保留饱和度、其他色相压到一半，纯黑 → 炭黑、纯白 → 奶油白；用户素材仍保留原色。
+- `tokens/brand.json` 1.4.0：删除 `sticker`（三色陶瓷规则），`imagery` 新增 `core` / `aux` / `retired` / `grade`。`gen_tokens.py`、`contrast_check.py`（17 项）通过。
+- `tools/genimg.py`：默认拒绝停用的 preset（加 `--allow-retired` 才放行），说明里改成 real / anime 优先，并写明生成后抠图 + 统一调色。
+- 写实的暗色物件放在炭黑场会被吃掉轮廓：`real` 提示词固定加暖色轮廓光，挑图时检查。
+- 同期还出了「质感版」关键帧探索（`docs/previews/explore/compare_D1.jpg`、`compare_D6.jpg`、`phone_texture.jpg`），方向待用户拍板，未进视觉系统。
+- 同步更新 `STYLE.md`、`cards/images/README.md`、`cards/README.md`、`README.md`（P5 进行中）、`SETUP.md`、`docs/rules/`。
+
 ## 1.8.0 · 2026-11-27 · P4 录屏组件（网页端）
 - 新增 `libs/screencast/screencast.js` + `screencast.css`（全局 `SC`）：窗口、原片帧序列 + 时间重映射（慢放 / 定格）、推镜（聚焦区域留 10% 边距、原片不露边、全景顶对齐）、标注（框 / 下划线 / 聚光 + 标签 + 引线，屏幕坐标绘制，推镜时线宽字号不变）、放大光标 + 点击涟漪、打码（模糊 / 斜纹块）、联动引线到信息卡。全部是时间的函数，结构和 AE「窗口边框层 + 录屏预合成」一一对应，`SC.keyframes` 输出给 P6。
 - 打码不用 `backdrop-filter`：实测推镜放大后会失效、露出原文；改成同一帧原片的模糊副本裁到该区域。自检量打码区边缘能量（< 同尺寸清晰文字的 25%，实测 3–12%），关掉模糊时这项会失败。
