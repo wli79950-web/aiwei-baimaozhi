@@ -168,9 +168,9 @@ var BMAE = (function () {
   }
 
   /* ---------- 常驻与镜头 ---------- */
-  function sweepSpin(layer, at, tEnd) {   // 锚点 / 位置请先放在雷达中心
+  function sweepSpin(layer, at, tEnd, o) {   // 锚点 / 位置请先放在雷达中心；o.deg_per_s：BG3 焦点刻度用 4
     var r = tr(layer, "ADBE Rotate Z");
-    key(r, at, 0, tEnd, (tEnd - at) * P("sweepSpin").deg_per_s, "linear");
+    key(r, at, 0, tEnd, (tEnd - at) * opt(o, "deg_per_s", "sweepSpin"), "linear");
   }
   function slowPush(layer, at, tEnd, o) { // 镜头图层（预合成 / 空对象）锚点放在画面中心
     var k = 100 * (1 + (tEnd - at) * opt(o, "rate", "slowPush"));

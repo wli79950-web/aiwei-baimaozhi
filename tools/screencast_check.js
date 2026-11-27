@@ -25,13 +25,13 @@ const near = (a, b, tol, m) => ok(Math.abs(a - b) <= tol, `${m}：${a} ≠ ${b}`
 const SRC = { type: 'frames', url: 'demo_rec/%05d.jpg', fps: R.fps, count: R.count, w: R.w, h: R.h };
 const OWNER = [1140, 458, 300, 44], JSONBLK = [1110, 380, 780, 220], PHONE = [84, 404, 560, 72];
 const SHOTS = [
-  { id: 'S1', bg: 'BG1', sub: '改一个数字，返回的就是<em>别人的订单</em>', keys: [1.05, 3.9], mid: 2.6, spec: {
+  { id: 'S1', bg: 'BG3', sub: '改一个数字，返回的就是<em>别人的订单</em>', keys: [1.05, 3.9], mid: 2.6, spec: {
       rect: [64, 56, 1792, 968], src: SRC, enter: { at: 0 },
       push: [{ at: 2.2, rect: JSONBLK, dur: 0.8 }],
       ann: [{ type: 'mark', rect: OWNER, at: 3.05, label: '别人的订单', side: 'right', leader: true }],
       cursor: [{ at: 0.5, x: 700, y: 400 }, { at: 1.0, x: 560, y: 88, click: true }, { at: 1.9, x: 1500, y: 640 }],
       mask: [{ rect: [1124, 300, 600, 40], mode: 'blur' }] } },
-  { id: 'S2', bg: 'BG1', sub: '问题出在这一步：<em>没核对归属</em>', keys: [3.9], mid: 3.2, ic: { rect: [1264, 232, 592, 400], type: 'keyword', tone: 'lit', data: { word: '归属校验', exp: '这一步[[没做]]' }, cue: { in: 3.3, emph: 3.9 } }, spec: {
+  { id: 'S2', bg: 'BG3', sub: '问题出在这一步：<em>没核对归属</em>', keys: [3.9], mid: 3.2, ic: { rect: [1264, 232, 592, 400], type: 'keyword', tone: 'lit', data: { word: '归属校验', exp: '这一步[[没做]]' }, cue: { in: 3.3, emph: 3.9 } }, spec: {
       rect: [64, 56, 1632, 968], src: SRC, remap: [[0, 0], [2.6, 2.6], [6, 2.6]],
       ann: [{ type: 'underline', rect: PHONE, at: 2.7 }],
       mask: [{ rect: [1124, 300, 600, 40], mode: 'blur' }],
@@ -91,7 +91,7 @@ window.renderAt = async t => { BGLIB.animate(bg, t); if (card) IC.animate(card, 
 (async () => {
   const b = await chromium.launch(), p = await b.newPage({ viewport: { width: 1920, height: 1080 } });
   p.on('pageerror', e => errs.push('页面报错：' + e.message));
-  const ARGS = [Object.fromEntries(Object.entries(BRAND.color).map(([k, v]) => [k, v.hex])), BRAND.contrast.forbidden, BRAND.type.meaningful_min, BRAND.type.decor_min, BRAND.contrast.text_min];
+  const ARGS = [Object.fromEntries(Object.entries(BRAND.color).map(([k, v]) => [k, v.hex])), BRAND.contrast.forbidden, BRAND.type.meaningful_min, BRAND.type.decor_min, BRAND.contrast.text_min, BRAND.type.decor.per_card_max];
   const diff = async (a1, a2) => p.evaluate(async ([x, y]) => {
     const load = b64 => new Promise(r => { const im = new Image(); im.onload = () => r(im); im.src = 'data:image/png;base64,' + b64; });
     const [A, B] = await Promise.all([load(x), load(y)]), c = document.createElement('canvas'); c.width = A.width; c.height = A.height;

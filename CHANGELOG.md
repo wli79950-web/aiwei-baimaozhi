@@ -1,5 +1,15 @@
 # 更新记录
 
+## 1.10.0 · 2026-11-27 · 视觉系统 1.5：高质感版、只出横屏、装饰小字层、BG3 工作台
+- 用户确认：**本仓库暂时只出横屏**；**目前都用高质感版**；**装饰小字可以有**；「工作台」背景收进背景板库作 **BG3**。
+- 背景板库新增 **BG3 炭黑·工作台**（A 场默认，BG1 改为备用）：底板 `BG3_bench_plate.png` + 点阵 `BG3_dots.svg` + 十字标 `BG3_marks.svg`；焦点组件 `BG3_focus_glow / rings / ticks.svg`（1000×1000），`BGLIB.mount(..., 'BG3', base, { focus: [x, y, scale] })` 放在主体后面，刻度每秒转 4°。参数在 `brand.json` → `background.bench`，`tools/make_backgrounds.js` 生成。
+- 动效：`sweepSpin` 加可选参数 `deg_per_s`（网页 `BM` 和 AE `BMAE` 同步），焦点刻度用 4°/s；默认值不变，动效测试 102 项通过。
+- 装饰小字层：`brand.json` → `type.decor`（替代 `type.kicker`）：每屏 ≤ 8 处、每张卡 ≤ 3 处，18–24px，不透明度 0.35–0.6；`base.css` 新增 `.mic`。`layout_lint`、`pagecheck`（信息卡 / 录屏共用）按新上限检查，自检改成「9 处装饰小字应报错」。
+- 只出横屏：`brand.json` → `spec` 去掉 `portrait`，`layout_lint` 只接受 1920×1080 画布（自检加「竖屏应报错」）。
+- 信息卡高质感化：炭黑场的炭灰卡 / 卡片白卡加细描边 + 深投影；炭灰卡里的编号、数字改奶油白（一屏一个朱橙焦点）。演示关键帧去掉标题色块、D6 的 admin 胶囊改炭灰，重出全部信息卡 / 录屏预览（背景改 BG3）。
+- 规则：`CLAUDE.md`、`STYLE.md`、`AE包规范.md`、`制作流程.md`、`素材与视觉系统.md`、`用户要求汇总.md`、各库 README 同步。
+- 未完成：演示关键帧里的贴纸仍是停用的陶瓷样张（等 P5 出写实样张后替换）；`docs/previews/demo_F1–F4` 是 1.0 时期的演示帧，仍用 BG1。
+
 ## 1.9.0 · 2026-11-27 · 视觉系统 1.4：图片风格改为写实为核心、动漫为辅
 - 用户认为粘土 / 陶瓷元素拉低高级感。出了粘土 / 写实 / 动漫 × 芯片、锁、服务器的风格对比（`docs/previews/explore/styles_sheet.jpg`、`styles_D1v.jpg`、`styles_D1h.jpg`）后，用户确定：**写实为核心，动漫为辅**。
 - `cards/images/styles.json`：新增 `real` 写实产品摄影（核心，名词实物化）和 `anime` 动漫光效（辅助，高光时刻，一屏最多一个）；`sticker` 陶瓷贴纸、`toy` 设计师玩具、`iso` 等距微缩标记为停用（同为粘土 / 陶瓷质感），保留条目和停用原因。

@@ -1,6 +1,6 @@
 // 信息卡库自检 + 预览：node tools/infocard_check.js            （在仓库根目录运行；先 npm i）
-//  1. 把 cards/infocards/samples.json 的每个样例分别放进 A 炭黑场（BG1）/ B 奶油白场（BG2）的真实画面里（背景板库的底板 + 动态层），逐张检查：
-//     放得下（IC.fit）· 有意义的文字 ≥ 52px（英文小标注除外，每张卡最多一处）· 实际渲染出来的字色 / 底色
+//  1. 把 cards/infocards/samples.json 的每个样例分别放进 A 炭黑场（BG3 工作台）/ B 奶油白场（BG2）的真实画面里（背景板库的底板 + 动态层），逐张检查：
+//     放得下（IC.fit）· 有意义的文字 ≥ 52px（装饰小字除外，每张卡最多 3 处）· 实际渲染出来的字色 / 底色
 //     不是三条禁用组合、对比 ≥ 4.5 · 只用色板里的颜色
 //  2. 用 cards/layouts/ 的排版 + 背景板库搭演示关键帧（信息卡填进槽位），同样检查，并验证逐帧确定性（乱序渲染像素一致）
 //  3. 输出预览：docs/previews/infocards/sheet_A_1….jpg、sheet_B_1….jpg（1920×1080 一页）、demo_D*.jpg、phone_*.jpg
@@ -25,7 +25,7 @@ const BGBASE = '../../libs/backgrounds/';
 const pageCheck = require('./lib/pagecheck.js');
 
 /* ---------- 预览板：一个场景一张 ---------- */
-// 每页一个 1920×1080 画面：背景板库 BG1 / BG2（底板 + 雷达线 + 扫描扇区）上排样例，样例上方的小字是说明（只在预览里有）
+// 每页一个 1920×1080 画面：背景板库 BG3 / BG2（底板 + 动态层）上排样例，样例上方的小字是说明（只在预览里有）
 function sheetHTML(scene) {
   return `<!doctype html><html><head>${HEAD}<style>html,body{width:1920px;height:auto;overflow:visible}
   .frame{position:absolute;left:0}
@@ -35,7 +35,7 @@ function sheetHTML(scene) {
   const items = ${JSON.stringify(SAMPLES)}, X0 = 64, X1 = 1856, Y0 = 96, Y1 = 1024, GAP = 48, CAP = 40;
   let page = -1, fr, x, y, rowH;
   function newPage() { page++; fr = document.createElement('section'); fr.className = 'frame'; fr.style.top = page * 1080 + 'px'; fr.dataset.page = page;
-    document.body.appendChild(fr); BGLIB.mount(fr, '${scene === 'A' ? 'BG1' : 'BG2'}', '${BGBASE}'); x = X0; y = Y0; rowH = 0; }
+    document.body.appendChild(fr); BGLIB.mount(fr, '${scene === 'A' ? 'BG3' : 'BG2'}', '${BGBASE}'); x = X0; y = Y0; rowH = 0; }
   newPage();
   items.forEach(it => {
     const [w, h] = it.wh || IC.SIZE[it.size];
@@ -55,7 +55,7 @@ function sheetHTML(scene) {
 const SMP = '../images/samples/';
 const DEMOS = [
   { id: 'D1', scene: 'A', layout: 'L-K08', sub: '五步，<em>按顺序</em>一步一步来', fill: {
-    t1: { ic: 'title', data: { title: 'AI 挖洞，[[按顺序]]来', fs: 112 } },
+    t1: { ic: 'title', data: { title: 'AI 挖洞，按顺序来', fs: 112 } },
     c1: { ic: 'step', data: { idx: '01', name: '确认授权', img: SMP + 'bmz_key.png' } },
     c2: { ic: 'step', data: { idx: '02', name: '信息收集', img: SMP + 'bmz_radar.png' } },
     c3: { ic: 'step', tone: 'hot', data: { idx: '03', name: 'AI 扫描', img: SMP + 'bmz_aichip.png' } },
@@ -64,7 +64,7 @@ const DEMOS = [
     c6: { ic: 'step', data: { idx: '06', name: '等审核', img: SMP + 'bmz_coin.png' } },
     c7: { ic: 'stat', tone: 'lit', data: { value: '80', unit: '%', label: '体力活\n交给 AI', note: '示意数据' } } } },
   { id: 'D2', scene: 'B', layout: 'L-K22', sub: '同一个请求，<em>补上校验</em>就读不到了', fill: {
-    t1: { ic: 'title', data: { title: '补一步校验，结果[[完全不同]]', fs: 104 } },
+    t1: { ic: 'title', data: { title: '补一步校验，结果完全不同', fs: 104 } },
     c1: { ic: 'term', data: { title: '修复前 · 200', lines: ['$ GET /api/user/1002', '# 只查了登录', '{', '  "uid": 1002,', '  "phone": [["138****"]]', '}'] } },
     l1: { text: '→', fs: 64, cls: 'blkcell' },
     c2: { ic: 'term', data: { title: '修复后 · 403', lines: ['$ GET /api/user/1002', '# 加了归属校验', '{', '  "error":', '    [["not owner"]]', '}'] } } } },
@@ -78,7 +78,7 @@ const DEMOS = [
     p1: { img: SMP + 'bmz_aichip.png' },
     c1: { ic: 'chat', data: { msgs: [{ who: 'me', text: '这个接口\n能越权吗？' }, { who: 'ai', text: '改 uid 能读到\n别人的手机号' }, { who: 'me', text: '先确认\n{{授权范围}}' }] } } } },
   { id: 'D5', scene: 'B', layout: 'L-K01', sub: '提交之前，先看它值<em>几级</em>', fill: {
-    t1: { ic: 'title', data: { title: '提交之前，\n先[[定个级]]', fs: 104 } },
+    t1: { ic: 'title', data: { title: '提交之前，\n先定个级', fs: 104 } },
     l1: { text: '平台按危害分档，档位越高，赏金越高', fs: 52, cls: 'wrap' },
     c1: { ic: 'tier', tone: 'lit', data: { level: '严重', desc: '能控制服务器', value: '9.0–10' } },
     c2: { ic: 'tier', tone: 'lit', data: { level: '高危', desc: '能读别人的数据', value: '7.0–8.9' } },
@@ -89,9 +89,9 @@ const DEMOS = [
     c1: { ic: 'term', data: { title: 'Request', lines: ['$ PUT /api/me', '"role": "admin"'] } },
     c2: { ic: 'term', data: { title: 'Response · 200', lines: ['{', '  "uid": 1002,', '  "role": [["admin"]]', '}'] } },
     c3: { ic: 'lens', data: { label: '第 3 行', text: '[["admin"]]', note: '普通用户自己改的' } },
-    l1: { ic: 'tag', tone: 'card', data: { text: '普通用户' } }, l2: { text: '≠', fs: 56, cls: 'num' }, l3: { ic: 'tag', tone: 'hot', data: { text: 'admin' } } } },
+    l1: { ic: 'tag', tone: 'card', data: { text: '普通用户' } }, l2: { text: '≠', fs: 56, cls: 'num' }, l3: { ic: 'tag', tone: 'card', data: { text: 'admin' } } } },
   { id: 'D7', scene: 'A', layout: 'L-N03', sub: '审核通过，会收到这样<em>一条通知</em>', fill: {
-    t1: { ic: 'title', data: { title: '交完报告，\n就等[[这一条]]', fs: 104 } },
+    t1: { ic: 'title', data: { title: '交完报告，\n就等这一条', fs: 104 } },
     c1: { ic: 'verdict', data: { text: '审核通过', why: '定级：高危', mark: '✓' } },
     m1: { ic: 'phone', data: { time: '21:36', notes: [{ app: 'SRC 平台', text: '报告已通过' }, { app: 'SRC 平台', text: '赏金 [[已到账]]' }] } } } },
   { id: 'D8', scene: 'B', layout: 'L-K03', sub: '每次动手之前，先建一份<em>目标档案</em>', fill: {
@@ -101,12 +101,12 @@ const DEMOS = [
     m2: { ic: 'shot', data: { title: 'test.local', mark: [0.1, 0.3, 0.46, 0.22], note: '入口' } },
     l1: { ic: 'tag', tone: 'hot', data: { text: '已授权', dot: true } } } },
   { id: 'D9', scene: 'A', layout: 'L-K24', sub: 'AI 报了三个，<em>真的只有一个</em>', fill: {
-    t1: { ic: 'title', data: { title: 'AI 报的，\n要一条条[[核]]', fs: 104 } },
+    t1: { ic: 'title', data: { title: 'AI 报的，\n要一条条核', fs: 104 } },
     l1: { text: '左边是 AI 说的，右边是你复核的结果', fs: 52, cls: 'wrap' },
     l2: { ic: 'tag', tone: 'hot', data: { text: '1 / 3 成立' } },
     c1: { ic: 'review', data: { rows: [{ ai: '越权读订单', human: '确认', ok: true }, { ai: 'SQL 注入', human: '误报', ok: false }, { ai: 'XSS', human: '误报', ok: false }, { ai: '版本泄露', human: '低危', ok: true }] } } } },
   { id: 'D10', scene: 'B', layout: 'L-K08', sub: '先把基础打牢，<em>再上 AI</em>', fill: {
-    t1: { ic: 'title', data: { title: '白帽入门，[[按顺序]]学', fs: 112 } },
+    t1: { ic: 'title', data: { title: '白帽入门，按顺序学', fs: 112 } },
     c1: { ic: 'skill', data: { lv: '01', name: 'HTTP 基础', state: 'done' } },
     c2: { ic: 'skill', data: { lv: '02', name: '抓包改包', state: 'done' } },
     c3: { ic: 'skill', data: { lv: '03', name: '常见漏洞', state: 'now', pct: 60 } },
@@ -125,7 +125,7 @@ function demoHTML(d) {
   <div class="sub" id="sub" style="z-index:50">${d.sub}</div></section>
   <script>
   const L = ${JSON.stringify(L)}, F = ${JSON.stringify(d.fill)}, fr = document.getElementById('fr'), cards = [];
-  const bg = BGLIB.mount(fr, '${d.scene === 'A' ? 'BG1' : 'BG2'}', '${BGBASE}');
+  const bg = BGLIB.mount(fr, '${d.scene === 'A' ? 'BG3' : 'BG2'}', '${BGBASE}');
   L.slots.forEach((s, i) => {
     const f = F[s.id]; if (!f || s.type === 'group') return;
     const [x, y, w, h] = s.rect; let el;
@@ -149,7 +149,7 @@ function demoHTML(d) {
 
 (async () => {
   const b = await chromium.launch(), errs = [], warns = [];
-  const ARGS = [Object.fromEntries(Object.entries(BRAND.color).map(([k, v]) => [k, v.hex])), BRAND.contrast.forbidden, BRAND.type.meaningful_min, BRAND.type.decor_min, BRAND.contrast.text_min];
+  const ARGS = [Object.fromEntries(Object.entries(BRAND.color).map(([k, v]) => [k, v.hex])), BRAND.contrast.forbidden, BRAND.type.meaningful_min, BRAND.type.decor_min, BRAND.contrast.text_min, BRAND.type.decor.per_card_max];
   const ready = async p => { await p.evaluate(() => document.fonts.ready); await p.evaluate(() => Promise.all([...document.images].map(i => i.decode().catch(() => {})))); await p.waitForTimeout(200); };
   const used = new Set();
 

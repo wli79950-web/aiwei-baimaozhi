@@ -1,6 +1,6 @@
 // 在页面里跑的检查（信息卡 .ic 和录屏标签 .sc-label 共用）：放得下、字号、实际渲染的字色 / 底色
-// 用法：await page.evaluate(`(${pageCheck})(${args.map(a => JSON.stringify(a)).join(',')})`)，args = [色板, 禁用组合, 文字下限, 装饰下限, 对比下限]
-function pageCheck(palette, forbidden, textMin, decorMin, contrastMin) {
+// 用法：await page.evaluate(`(${pageCheck})(${args.map(a => JSON.stringify(a)).join(',')})`)，args = [色板, 禁用组合, 文字下限, 装饰下限, 对比下限, 每张卡装饰小字上限]
+function pageCheck(palette, forbidden, textMin, decorMin, contrastMin, decorPerCard) {
   const P = Object.fromEntries(Object.entries(palette).map(([k, h]) => [k, [1, 3, 5].map(i => parseInt(h.slice(i, i + 2), 16))]));
   const rgba = s => { const m = s.match(/rgba?\(([^)]+)\)/); if (!m) return null; const v = m[1].split(/[ ,/]+/).filter(Boolean).map(Number); return [v[0], v[1], v[2], v[3] == null ? 1 : v[3]]; };
   const parseCol = s => { s = String(s).trim(); if (s[0] === '#') return [1, 3, 5].map(i => parseInt(s.slice(i, i + 2), 16)).concat(1); return rgba(s); };
@@ -47,7 +47,7 @@ function pageCheck(palette, forbidden, textMin, decorMin, contrastMin) {
       for (const [f, b, why] of forbidden) if (fn === f && bn === b) errs.push(`${who}「${txt}」：禁用组合 —— ${why}`);
       const r = ratio(fg, bg); if (!isDecor && r < contrastMin) errs.push(`${who}「${txt}」：对比 ${r.toFixed(2)} < ${contrastMin}`);
     });
-    if (decor > 1) errs.push(`${who}：英文小标注 ${decor} 处，每屏最多 1 处`);
+    if (decor > (decorPerCard || 1)) errs.push(`${who}：装饰小字 ${decor} 处，每张卡最多 ${decorPerCard || 1} 处`);
   });
   return { errs, used: [...used] };
 }

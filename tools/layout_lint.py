@@ -109,9 +109,9 @@ def lint(path):
     if lid and not re.fullmatch(r'L-[A-Z][A-Z0-9]*(-[A-Z0-9]+)*', lid): E(f'id「{lid}」格式应为 L-K08 / L-N04 / L-W01 这类')
     stem = os.path.splitext(os.path.basename(path))[0]
     if lid and stem != lid and not stem.startswith('_'): E(f'文件名 {stem}.json 应与 id「{lid}」一致')
-    SP = B['spec']; land, port = [SP['w'], SP['h']], list(SP['portrait'])
+    SP = B['spec']; land = [SP['w'], SP['h']]
     W, H = L.get('canvas', land)
-    if [W, H] not in (land, port): E(f'canvas 只能是 {land[0]}×{land[1]} 或 {port[0]}×{port[1]}，实际 {W}×{H}')
+    if [W, H] != land: E(f'canvas 只能是 {land[0]}×{land[1]}（本仓库只出横屏），实际 {W}×{H}')
     scenes = L.get('scene', [])
     if not scenes or any(s not in ('A', 'B') for s in scenes): E(f'scene 只能取 A / B，实际 {scenes}')
     scenes = [s for s in scenes if s in ('A', 'B')]
@@ -173,7 +173,7 @@ def lint(path):
             elif fp < T['title_min']: E(P + f'标题字号 {fp} < {T["title_min"]}')
         elif ty in ('card', 'label'):
             if s.get('decor'):
-                if ty != 'label': E(P + 'decor（英文小标注）只能用在 label 上')
+                if ty != 'label': E(P + 'decor（装饰小字）只能用在 label 上')
                 kickers += 1
                 if fp is not None and fp < T['decor_min']: E(P + f'装饰标注字号 {fp} < {T["decor_min"]}')
             elif fp is None: E(P + f'{ty} 要写 font_px（最小字号）')
@@ -247,7 +247,7 @@ def lint(path):
                 Wn(f'[{ia}] 和 [{ib}] 重叠；有意叠放就在上层槽位写 "over": ["下层 id"]')
 
     if titles > 1: E(f'一屏只放一个标题，现在有 {titles} 个 title 槽位')
-    if kickers > T['kicker']['per_frame_max']: E(f'英文小标注每屏最多 {T["kicker"]["per_frame_max"]} 处，现在 {kickers} 处')
+    if kickers > T['decor']['per_frame_max']: E(f'装饰小字每屏最多 {T["decor"]["per_frame_max"]} 处，现在 {kickers} 处')
 
     # ---- 利用率 ----
     subj = [s['rect'] for s in good if s.get('subject')]

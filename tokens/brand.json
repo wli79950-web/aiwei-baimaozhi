@@ -1,16 +1,14 @@
 {
   "name": "艾唯白帽志",
-  "version": "1.4.0",
+  "version": "1.5.0",
   "updated": "2026-11-27",
   "spec": {
     "w": 1920,
     "h": 1080,
-    "portrait": [
-      1080,
-      1920
-    ],
     "fps": 60,
-    "container": "mp4"
+    "container": "mp4",
+    "orientation": "landscape",
+    "note": "本仓库暂时只出横屏（2026-11-27 用户确认）；手机竖着看也要清楚"
   },
   "color": {
     "char": {
@@ -236,10 +234,20 @@
       96,
       112
     ],
-    "kicker": {
-      "size": 24,
-      "tracking": "0.2em",
-      "per_frame_max": 1
+    "decor": {
+      "note": "装饰小字层（1.5）：等宽小字，依附在物件、窗口、构造线上（窗口标题、栏名、行号、步骤编号、坐标、字段名），不承载理解所需的信息；不做 HUD / 时间码 / REC / 进度 / 画面四角角标",
+      "font": "mono",
+      "size": [
+        18,
+        24
+      ],
+      "opacity": [
+        0.35,
+        0.6
+      ],
+      "tracking": "0.18em",
+      "per_frame_max": 8,
+      "per_card_max": 3
     }
   },
   "layout": {
@@ -310,7 +318,8 @@
       "layers": [
         "libs/backgrounds/layers/BG1_radar_lines.svg",
         "libs/backgrounds/layers/BG1_radar_sweep.svg"
-      ]
+      ],
+      "note": "1.5 起不再是炭黑场默认（改用 BG3）；保留备用"
     },
     "BG2": {
       "name": "奶油白·纸面",
@@ -343,6 +352,87 @@
         45
       ],
       "sweep_opacity": 0.38
+    },
+    "BG3": {
+      "name": "炭黑·工作台",
+      "scene": "A",
+      "default_for": "A",
+      "plate": "libs/backgrounds/plates/BG3_bench_plate.png",
+      "layers": [
+        "libs/backgrounds/layers/BG3_dots.svg",
+        "libs/backgrounds/layers/BG3_marks.svg"
+      ],
+      "focus_layers": [
+        "libs/backgrounds/layers/BG3_focus_glow.svg",
+        "libs/backgrounds/layers/BG3_focus_rings.svg",
+        "libs/backgrounds/layers/BG3_focus_ticks.svg"
+      ],
+      "note": "高质感版主场（1.5 起炭黑场默认）：点阵 + 十字标常驻；焦点组件（朱橙光晕 + 刻度环）按镜头放在主体后面，可移动 / 缩放 / 隐藏"
+    },
+    "bench": {
+      "grid": 48,
+      "dot_r": 1.5,
+      "dot_opacity": 0.17,
+      "fade": [
+        0.75,
+        0.7,
+        0.5,
+        0.46
+      ],
+      "marks": [
+        [
+          112,
+          312
+        ],
+        [
+          1200,
+          120
+        ],
+        [
+          1808,
+          120
+        ],
+        [
+          1808,
+          864
+        ],
+        [
+          160,
+          864
+        ]
+      ],
+      "mark_len": 22,
+      "mark_opacity": 0.32,
+      "focus": {
+        "canvas": 1000,
+        "rings": [
+          260,
+          360,
+          470
+        ],
+        "ring_opacity": 0.13,
+        "ticks_r": 360,
+        "ticks": 72,
+        "tick_len": 8,
+        "tick_major_every": 6,
+        "tick_opacity": 0.22,
+        "glow_r": 330,
+        "glow_stops": [
+          [
+            0,
+            0.3
+          ],
+          [
+            0.42,
+            0.1
+          ],
+          [
+            1,
+            0
+          ]
+        ],
+        "drift_deg_per_s": 4
+      }
     }
   },
   "imagery": {

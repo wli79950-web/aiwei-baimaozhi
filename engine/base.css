@@ -21,7 +21,11 @@ html,body{width:1920px;height:1080px;overflow:hidden;background:var(--char)}
 .cn{font-family:var(--f-cn);font-weight:700}                                                                     /* 有意义的文字 ≥ 52px */
 .num{font-family:var(--f-num);font-weight:900;line-height:1}
 .mono{font-family:var(--f-mono);font-weight:500}
-.kick{font-family:var(--f-mono);font-weight:500;font-size:24px;letter-spacing:.2em;text-transform:uppercase;opacity:.55}  /* 英文小标注：每屏最多一处，装饰性 */
+.kick{font-family:var(--f-mono);font-weight:500;font-size:24px;letter-spacing:.2em;text-transform:uppercase;opacity:.55}  /* 标题上方的英文小标注（属于装饰小字层） */
+/* 装饰小字层（1.5）：等宽小字，依附在物件 / 窗口 / 构造线上（窗口标题、栏名、行号、步骤编号、字段名），不承载理解所需的信息。
+   每屏 ≤ 8 处、每张卡 ≤ 3 处，18–24px，不透明度 0.35–0.6（tokens/brand.json → type.decor）。不做 HUD、时间码、REC、进度、画面四角角标。加 data-role="decor"。 */
+.mic{font-family:var(--f-mono);font-weight:500;font-size:19px;line-height:1;letter-spacing:.18em;text-transform:uppercase;color:var(--cream);opacity:.42;white-space:nowrap}
+.scene-B .mic{color:var(--char);opacity:.5}
 .en{font-family:var(--f-mono);font-weight:500;font-size:20px;letter-spacing:.16em;text-transform:uppercase;opacity:.6}
 .accent{color:var(--s-accent)}
 
@@ -52,4 +56,5 @@ html,body{width:1920px;height:1080px;overflow:hidden;background:var(--char)}
   background:var(--s-sub);color:var(--s-sub-fg);border-radius:var(--r-sub);corner-shape:var(--corner)}
 .sub em{font-style:normal;color:var(--s-sub-em)}
 
-/* 不做：HUD、时间码、编号角标、进度条、左上角留空（白帽志 1.0 起取消） */
+/* 不做：HUD、时间码、编号角标、进度条、左上角留空（白帽志 1.0 起取消）。装饰小字层（.mic）依附在物件上，不算 HUD。
+   BG3 焦点组件：和背景层一样固定成独立合成层；刻度层由 BM.set 写行内 transform 转动 */

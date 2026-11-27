@@ -36,7 +36,7 @@ r = run(GOOD)
 ok(not r['errors'], f'L-T01 应全部通过，实际 {r["errors"]}')
 ok(r['stats']['subject'] >= 0.45 and r['stats']['content'] >= 0.70, f'利用率 {r["stats"]}')
 P = copy.deepcopy(GOOD); P['canvas'] = [1080, 1920]
-ok(LL.subtitle_zone(1080, 1920)[2] <= 1080 - 2 * LL.MX, '竖屏字幕区不超过页边距')
+ok(any('只出横屏' in e for e in run(P, '竖屏')['errors']), '竖屏 canvas 应报错（本仓库只出横屏）')
 
 print('2. 每条规则都能拦住')
 expect('标题字号', lambda L: slot(L, 't1').update(font_px=96), '标题字号')
@@ -63,7 +63,7 @@ expect('没有主体', lambda L: [s.pop('subject', None) for s in L['slots']], '
 expect('主体太小', lambda L: [slot(L, c).pop('subject') for c in ('c2', 'c3')], '主体只占画面')
 expect('内容铺不开', lambda L: L.update(slots=[s for s in L['slots'] if s['id'] in ('c1', 'm1')]), '全部内容只铺开')
 expect('录屏太窄', lambda L: L['slots'].append({'id': 's1', 'type': 'screen', 'rect': [64, 208, 960, 540], 'need': '录屏'}), '录屏窗口宽')
-expect('两处英文小标注', lambda L: L['slots'].append({'id': 'k2', 'type': 'label', 'rect': [64, 900, 200, 40], 'decor': True, 'font_px': 24, 'need': 'x'}), '英文小标注每屏最多')
+expect('装饰小字超量', lambda L: L['slots'].extend({'id': f'k{i}', 'type': 'label', 'rect': [64 + i * 220, 900, 200, 40], 'decor': True, 'font_px': 20, 'need': 'x'} for i in range(2, 10)), '装饰小字每屏最多')
 expect('色块面积超限', lambda L: [slot(L, c).update(fill='accent') for c in ('c1', 'c2')], '朱橙块 + 蓝块')
 expect('文字重叠', lambda L: slot(L, 'k1').update(rect=[1200, 96, 576, 40]), '不能重叠')
 expect('over 指向不存在', lambda L: slot(L, 'm1').update(over=['zz']), 'over 指向不存在')

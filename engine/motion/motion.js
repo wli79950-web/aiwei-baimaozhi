@@ -133,7 +133,7 @@
     return { s: lerp(1, opt(o, 'scale_to', 'stickerPush'), p), o: 1 - clamp((x - f) / (1 - f)) };
   }
   // 常驻与镜头
-  function sweepSpin(t, at) { return { r: Math.max(0, t - (at || 0)) * P('sweepSpin').deg_per_s }; }
+  function sweepSpin(t, at, o) { return { r: Math.max(0, t - (at || 0)) * opt(o, 'deg_per_s', 'sweepSpin') }; }   // o.deg_per_s：BG3 焦点刻度用 4
   function slowPush(t, at, o) { return { s: 1 + Math.max(0, t - (at || 0)) * opt(o, 'rate', 'slowPush') }; }
   function hold() { return {}; }
 

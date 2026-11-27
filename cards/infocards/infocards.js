@@ -57,7 +57,7 @@
 
   C.title = {
     name: '标题组', tone: 'none', sizes: '宽 ≥ 480；高 ≥ 128',
-    fields: { title: '标题（\\n 换行，[[ ]] 色块）', kicker: '英文小标注（可省；每屏最多一处）', sub: '副标题一行（可省）', bar: '标题下的朱橙短线（true / false）', fs: '标题字号（默认 120，104–280）' },
+    fields: { title: '标题（\\n 换行，[[ ]] 色块）', kicker: '英文小标注（可省；属于装饰小字层）', sub: '副标题一行（可省）', bar: '标题下的朱橙短线（true / false）', fs: '标题字号（默认 120，104–280）' },
     beats: { in: '小标注 rise → 标题逐行 maskUp → 副标题 rise', emph: '[[ ]] 色块扫入 blockSweep；朱橙短线 underline', out: '整体 sink' },
     html: function (d, w, h) {
       var fs = clamp(d.fs || 120, TITLE_MIN, 280);

@@ -13,7 +13,7 @@
 ```js
 // 用户录屏先转成帧序列（Chromium 没有 H.264 解码，而且帧序列才能逐帧确定性地取到同一帧）：
 //   ffmpeg -i 录屏.mp4 -vf fps=30 -q:v 2 episodes/BM01/footage/rec1/%05d.jpg
-const bg = BGLIB.mount(section, 'BG1', 'libs/backgrounds/');
+const bg = BGLIB.mount(section, 'BG3', 'libs/backgrounds/');
 const h = SC.shot(section, {
   rect: [64, 56, 1792, 968],                                    // 窗口：画面宽 85–94%（和信息卡同框写 narrow: true，≥ 68%）
   src: { type: 'frames', url: 'footage/rec1/%05d.jpg', fps: 30, count: 412, w: 1920, h: 1080 },
