@@ -53,6 +53,15 @@ html,body{width:1920px;height:1080px;overflow:hidden;background:var(--char)}
 .scene-B .chapter-zone{background:repeating-linear-gradient(135deg,rgba(22,19,15,.05) 0 10px,transparent 10px 20px);border-bottom-color:rgba(22,19,15,.25)}
 .scene-B .chapter-zone::after{color:var(--char)}
 
+/* 图片三类（1.7）：类别 1 实物贴纸 .stk（写实，主体）· 类别 2 意象插画 .stk.diecut（SC02 模切贴纸，主体）· 类别 3 氛围装饰 .amb（不讲内容，只加质感）
+   .amb：写实虚化道具，每屏 ≤ 3 个，不带朱橙，不抢焦点，不进章节进度条区；模糊 / 压暗在渲染时加（AE：高斯模糊 + 曝光），素材本身是清晰的透明 PNG */
+.stk.diecut{filter:drop-shadow(0 20px 32px rgba(0,0,0,.5))}
+.amb{position:absolute;object-fit:contain;pointer-events:none}
+.amb.near{filter:blur(14px) brightness(.6)}                 /* 前景：大、虚、暗，可出血（顶部除外） */
+.amb.far{filter:blur(4px) brightness(.48);opacity:.85}      /* 远景：小、略虚、更暗 */
+/* 程序化光效（类别 3 的另一半）：奶油白光斑，低不透明度，不用朱橙 */
+.bokeh{position:absolute;border-radius:50%;pointer-events:none;background:radial-gradient(circle,rgba(245,238,223,.16),rgba(245,238,223,0) 70%)}
+
 /* 背景动态层（libs/backgrounds/layers/*.svg），铺满画面 */
 .bg-layer{position:absolute;left:0;top:0;width:1920px;height:1080px;pointer-events:none;transform:translateZ(0)}
 /* translateZ(0)：背景层固定成独立合成层。否则上面的卡片动起来时，背景线稿会按不同的渲染历史重新栅格化，

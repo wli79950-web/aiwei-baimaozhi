@@ -1,0 +1,53 @@
+<!doctype html><html><head><meta charset="utf-8">
+<!-- 图片三类示意（1.7 候选）：?f=A 类别 1 主体 + 类别 3 氛围 · ?f=B 类别 2 模切贴纸主体 + 程序化光效 · ?f=amb 氛围道具样张 · ?f=sc02 模切贴纸样张 -->
+<link rel="stylesheet" href="../../../engine/tokens.css"><link rel="stylesheet" href="../../../engine/base.css">
+<link rel="stylesheet" href="../../../engine/motion/motion.css"><link rel="stylesheet" href="../../../cards/infocards/infocards.css">
+<script src="../../../engine/motion/tokens.js"></script><script src="../../../engine/motion/motion.js"></script>
+<script src="../../../cards/infocards/infocards.js"></script><script src="../../../libs/backgrounds/backgrounds.js"></script>
+<style>.cap{position:absolute;font:500 19px/1 var(--f-mono);letter-spacing:.16em;color:var(--cream);opacity:.55;text-transform:uppercase;white-space:nowrap}
+.lab{position:absolute;font:700 30px/1.3 var(--f-cn);color:var(--cream);opacity:.85}</style></head>
+<body><section class="frame" id="fr"></section>
+<script>
+const F = new URLSearchParams(location.search).get('f') || 'A', fr = document.getElementById('fr');
+const IMG = '../../../cards/images/samples/', BG = '../../../libs/backgrounds/';
+const add = (tag, cls, css, html) => { const e = document.createElement(tag); if (cls) e.className = cls; if (css) e.style.cssText = css; if (html != null) e.innerHTML = html; fr.appendChild(e); return e; };
+const img = (cls, src, x, y, w, h) => { const e = add('img', cls, `left:${x}px;top:${y}px;width:${w}px;height:${h}px`); e.src = src; return e; };
+const ic = (type, data, rect, tone) => { const e = IC.render(type, data, { rect, tone }); fr.appendChild(e); IC.fit(e); return e; };
+const bokeh = list => list.forEach(([x, y, r]) => add('div', 'bokeh', `left:${x - r}px;top:${y - r}px;width:${2 * r}px;height:${2 * r}px`));
+const sub = h => add('div', 'sub', 'z-index:50', h);
+if (F === 'A') {
+  BGLIB.mount(fr, 'BG3', BG, { focus: [1180, 540, 1.2] });
+  bokeh([[1760, 300, 90], [1640, 900, 60], [300, 960, 120]]);
+  img('amb far', IMG + 'ambient/amb_cable.png', 1560, 150, 280, 220);           // 类别 3：远景
+  img('amb far', IMG + 'ambient/amb_screws.png', 90, 760, 230, 170);
+  ic('title', { title: 'AI 先把接口跑一遍', fs: 112 }, [64, 104, 1000, 136]);
+  ic('keyword', { idx: '03', word: 'AI 扫描', exp: '跑完再人工复核' }, [64, 320, 560, 384], 'card');
+  img('stk', IMG + 'bmz_aichip.png', 860, 250, 640, 580);                       // 类别 1：实物贴纸（主体）
+  img('amb near', IMG + 'ambient/amb_keycaps.png', 1430, 700, 620, 480);        // 类别 3：前景，出血
+  sub('先让 AI <em>批量扫</em>一遍接口');
+}
+if (F === 'B') {
+  BGLIB.mount(fr, 'BG3', BG, { focus: [1250, 520, 1.25] });
+  bokeh([[1800, 220, 110], [1500, 940, 70], [140, 900, 100], [900, 180, 50]]);   // 类别 3：只用程序化光效
+  ic('title', { title: '审核要等多久？', fs: 112 }, [64, 104, 900, 136]);
+  ic('stat', { value: '7–15', unit: '天', label: '常见审核周期', note: '示意数据' }, [64, 320, 560, 384], 'card');
+  img('stk diecut', IMG + 'sc02/sc02_waiting.png', 800, 150, 880, 680);          // 类别 2：意象插画（主体）
+  sub('交完报告，剩下的就是<em>等</em>');
+}
+if (F === 'amb') {
+  BGLIB.mount(fr, 'BG3', BG);
+  const N = ['keycaps', 'cable', 'screws', 'pcb', 'usbc', 'ssd'];
+  add('div', 'cap', 'left:64px;top:104px', '类别 3 · 氛围装饰 · 写实虚化道具（上：素材原样 · 中：远景 .amb.far · 下：前景 .amb.near）');
+  N.forEach((n, i) => { const x = 64 + i * 300;
+    img('stk', IMG + `ambient/amb_${n}.png`, x, 160, 260, 220); img('amb far', IMG + `ambient/amb_${n}.png`, x, 420, 260, 220); img('amb near', IMG + `ambient/amb_${n}.png`, x, 680, 260, 220);
+    add('div', 'cap', `left:${x}px;top:930px`, 'amb_' + n); });
+}
+if (F === 'sc02') {
+  BGLIB.mount(fr, 'BG3', BG);
+  add('div', 'cap', 'left:64px;top:104px', '类别 2 · 意象插画 · SC02 模切贴纸（炭黑场直接用，奶油白描边 10px，投影渲染时加）');
+  const N = [['sc02_borrowed_key', '越权：用别人的钥匙开门'], ['sc02_waiting', '审核很慢：只能等'], ['sc02_magnifier', 'AI 给线索，人来逐条核'], ['sc02_boundary', '授权边界：到线就停']];
+  N.forEach(([n, l], i) => { const x = 64 + i * 456; img('stk diecut', IMG + `sc02/${n}.png`, x, 170, 420, 700); add('div', 'lab', `left:${x}px;top:900px;width:420px`, l); });
+}
+add('div', 'chapter-zone', '');
+window.ready = () => Promise.all([document.fonts.ready, ...[...document.images].map(i => i.decode().catch(() => {}))]);
+</script></body></html>
