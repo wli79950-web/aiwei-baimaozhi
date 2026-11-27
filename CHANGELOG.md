@@ -1,5 +1,12 @@
 # 更新记录
 
+## 1.3.1 · 2026-11-27 · P3 排版库（第一步：工具）
+- 新增 `tools/layout_lint.py`：边界 / 出血、字幕安全区（底部居中 1560×84，距底 104）、字号（标题 ≥ 104、文字 ≥ 52）、一屏一个标题、英文小标注 ≤ 1、尺寸档、录屏宽度、人物小窗、配色禁用组合与对比度、色块面积、利用率（主体并集 ≥ 45%，内容外接范围 ≥ 70%）。数值全部从 `brand.json` 读。
+- 新增 `tools/layout_preview.js`：线框预览（A 炭黑场配色，字按真实字号画）+ 总览板。
+- 新增 `tools/test_layouts.py` 自检（33 项）和测试夹具 `tools/fixtures/layouts/L-T01.json`。
+- `cards/layouts/README.md`：写清 `layout.json` 全部字段、检查规则、预览图例；新增槽位类型 `screen`（录屏窗口）。
+- 49 个构图尚未迁入（等挖洞号原卡的构图来源）。
+
 ## 1.3.0 · 2026-11-27 · P2 动效库
 - 新增动效参数 `tokens/motion.json`（唯一数值来源）：6 条贝塞尔缓动、5 档时长、17 个预设参数。`tools/gen_tokens.py` 同时生成 `engine/motion/tokens.js`（网页）和 `ae/motion_data.jsx`（AE），并拦截 AE 无法精确还原的曲线。
 - 新增网页动效库 `engine/motion/motion.js` + `motion.css`（全新编写，不含 lieflat 代码）：入场 rise / maskUp / drop / unfold，强调 underline / blockSweep / countUp / ringDraw，退场 sink / maskDown，转场 flash / fieldWipe / radarSweep / stickerPush，常驻与镜头 sweepSpin / slowPush / hold。

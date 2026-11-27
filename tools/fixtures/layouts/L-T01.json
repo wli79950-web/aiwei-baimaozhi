@@ -1,0 +1,17 @@
+{
+  "id": "L-T01",
+  "name": "测试用 · 三栏步骤",
+  "from": "测试夹具（不是正式排版，不进 cards/layouts/）",
+  "function": "layout_lint 自检用的合格样例",
+  "scene": ["A", "B"],
+  "slots": [
+    { "id": "t1", "type": "title", "rect": [64, 56, 1200, 128], "font_px": 112, "need": "小节标题" },
+    { "id": "k1", "type": "label", "rect": [1280, 96, 576, 40], "decor": true, "font_px": 24, "need": "英文小标注（可省）" },
+    { "id": "c1", "type": "card", "size": "custom", "rect": [64, 208, 576, 672], "font_px": 56, "subject": true, "need": "步骤卡 1" },
+    { "id": "c2", "type": "card", "size": "custom", "rect": [672, 208, 576, 672], "font_px": 56, "subject": true, "need": "步骤卡 2" },
+    { "id": "c3", "type": "card", "size": "custom", "rect": [1280, 208, 576, 672], "font_px": 56, "subject": true, "fill": "card", "need": "步骤卡 3" },
+    { "id": "m1", "type": "media", "rect": [400, 192, 240, 240], "over": ["c1"], "need": "贴纸：步骤 1 的物件" },
+    { "id": "m2", "type": "media", "rect": [1008, 192, 240, 240], "over": ["c2"], "need": "贴纸：步骤 2 的物件" },
+    { "id": "m3", "type": "media", "rect": [1616, 192, 240, 240], "over": ["c3"], "need": "贴纸：步骤 3 的物件" }
+  ]
+}
