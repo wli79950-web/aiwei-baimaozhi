@@ -1,0 +1,3525 @@
+{
+ "id": "BM01",
+ "prefix": "BM01",
+ "title": "AI 挖洞流水线：3 步让 AI 自己跑",
+ "note": "镜头表由 make_episode.py 生成，不要手改。t0 = 镜头在成片里的起点（秒）。",
+ "voice": "footage/src/图片和附件/11月28日.mp3",
+ "shots": [
+  {
+   "layout": "L-N04",
+   "fill": {
+    "p1": {
+     "img": "episodes/BM01_AI挖洞流水线/assets/gen/bm01_phone_bounty.png",
+     "rect": [
+      700,
+      104,
+      600,
+      920
+     ]
+    },
+    "m1": {
+     "ic": "shot",
+     "data": {
+      "img": "episodes/BM01_AI挖洞流水线/assets/photos/sleep.jpg",
+      "title": "人在睡"
+     },
+     "tilt": -5,
+     "rect": [
+      64,
+      300,
+      520,
+      640
+     ]
+    },
+    "m2": {
+     "img": "episodes/BM01_AI挖洞流水线/assets/gen/bm01_laptop_night.png",
+     "rect": [
+      1300,
+      600,
+      600,
+      300
+     ]
+    },
+    "m3": null
+   },
+   "cue": {
+    "m1": 0.2,
+    "m2": 0.7,
+    "p1": 1.6
+   },
+   "co": [
+    {
+     "from": [
+      1000,
+      330
+     ],
+     "to": [
+      1340,
+      300
+     ],
+     "label": "睡醒到账 ¥3,000",
+     "en": "SRC BOUNTY",
+     "hot": true
+    }
+   ],
+   "deco": [
+    [
+     64,
+     128,
+     "AUTOMATION · 01:00 → 08:00"
+    ]
+   ],
+   "amb": [
+    [
+     "usbc",
+     1560,
+     900,
+     300,
+     160,
+     "far"
+    ]
+   ],
+   "id": "S01",
+   "dur": 4.4,
+   "ambBase": "episodes/BM01_AI挖洞流水线/assets/gen/bm01_",
+   "t0": 0.0
+  },
+  {
+   "layout": "L-K11",
+   "fill": {
+    "p1": {
+     "img": "episodes/BM01_AI挖洞流水线/assets/gen/bm01_crowd_door.png",
+     "cls": "stk diecut",
+     "rect": [
+      640,
+      232,
+      1216,
+      748
+     ]
+    },
+    "l1": {
+     "ic": "shot",
+     "data": {
+      "img": "episodes/BM01_AI挖洞流水线/assets/photos/devapp.jpg",
+      "title": "传统开发岗"
+     },
+     "tilt": -3,
+     "rect": [
+      64,
+      160,
+      480,
+      700
+     ]
+    },
+    "l2": {
+     "t": "{{别再死磕}}<br>~~烂大街的开发岗~~<small>STOP GRINDING</small>",
+     "fs": 72,
+     "cls": "disp",
+     "rect": [
+      600,
+      104,
+      1256,
+      188
+     ]
+    }
+   },
+   "cue": {
+    "l1": 0.1,
+    "p1": 0.5,
+    "l2": 0.9
+   },
+   "bokeh": [
+    [
+     1780,
+     960,
+     90
+    ]
+   ],
+   "id": "S02",
+   "dur": 2.6,
+   "ambBase": "episodes/BM01_AI挖洞流水线/assets/gen/bm01_",
+   "t0": 4.4
+  },
+  {
+   "layout": "L-N19",
+   "fill": {
+    "l1": {
+     "t": "[[AI Agent]]<small>AGENT · 大脑</small>",
+     "fs": 96,
+     "cls": "c"
+    },
+    "m1": {
+     "img": "episodes/BM01_AI挖洞流水线/assets/gen/bm01_agent_core.png"
+    },
+    "l2": {
+     "t": "Skill 库<small>40 SKILLS · 工具箱</small>",
+     "fs": 96,
+     "cls": "c"
+    },
+    "l3": {
+     "ic": "tag",
+     "data": {
+      "text": "全自动挖洞拿赏金",
+      "icon": "bot"
+     },
+     "tone": "lit",
+     "rect": [
+      64,
+      704,
+      560,
+      96
+     ]
+    },
+    "l4": {
+     "ic": "chip",
+     "data": {
+      "name": "40 个 Skill",
+      "en": "WEB VULN SKILLS",
+      "img": "episodes/BM01_AI挖洞流水线/assets/gen/bm01_skill_drawer.png"
+     },
+     "tone": "card",
+     "rect": [
+      1216,
+      640,
+      640,
+      232
+     ]
+    },
+    "k1": {
+     "t": "AGENT × 40 SKILLS",
+     "fs": 20,
+     "cls": "mic"
+    }
+   },
+   "cue": {
+    "l1": 0.3,
+    "m1": 0.5,
+    "l2": 2.2,
+    "l4": 3.0,
+    "l3": 5.2,
+    "k1": 0.6
+   },
+   "lines": [
+    [
+     560,
+     420,
+     690,
+     420,
+     1
+    ],
+    [
+     1360,
+     420,
+     1230,
+     420,
+     "aux"
+    ]
+   ],
+   "deco": [
+    [
+     64,
+     128,
+     "AI AGENT + SKILL LIBRARY"
+    ]
+   ],
+   "amb": [
+    [
+     "cable",
+     1580,
+     150,
+     280,
+     160,
+     "far"
+    ]
+   ],
+   "id": "S03",
+   "dur": 6.7,
+   "ambBase": "episodes/BM01_AI挖洞流水线/assets/gen/bm01_",
+   "t0": 7.0
+  },
+  {
+   "layout": "L-N07",
+   "fill": {
+    "p1": null,
+    "m1": {
+     "img": "episodes/BM01_AI挖洞流水线/assets/gen/bm01_elevator.png",
+     "cls": "stk diecut",
+     "pos": "50% 50%",
+     "rect": [
+      480,
+      120,
+      960,
+      740
+     ]
+    },
+    "l1": {
+     "t": "降维打击<small>OVERMATCH · 别人爬楼梯，你坐电梯</small>",
+     "fs": 72,
+     "cls": "",
+     "rect": [
+      224,
+      868,
+      1472,
+      120
+     ]
+    },
+    "k1": null
+   },
+   "bokeh": [
+    [
+     260,
+     240,
+     120
+    ],
+    [
+     1680,
+     220,
+     110
+    ]
+   ],
+   "deco": [
+    [
+     128,
+     136,
+     "METAPHOR · 降维打击"
+    ]
+   ],
+   "id": "S04",
+   "dur": 2.2,
+   "ambBase": "episodes/BM01_AI挖洞流水线/assets/gen/bm01_",
+   "t0": 13.7
+  },
+  {
+   "layout": "L-N25",
+   "scene": "B",
+   "fill": {
+    "m1": {
+     "img": "episodes/BM01_AI挖洞流水线/assets/gen/bm01_cheatsheets.png",
+     "rect": [
+      700,
+      470,
+      300,
+      420
+     ]
+    },
+    "l1": {
+     "ic": "shot",
+     "data": {
+      "img": "episodes/BM01_AI挖洞流水线/assets/shots/python_tool.png",
+      "title": "脚本"
+     },
+     "tilt": -4,
+     "rect": [
+      64,
+      120,
+      470,
+      300
+     ]
+    },
+    "l2": {
+     "ic": "shot",
+     "data": {
+      "img": "episodes/BM01_AI挖洞流水线/assets/shots/python_keys.png",
+      "title": "密钥"
+     },
+     "tilt": 3,
+     "rect": [
+      520,
+      112,
+      430,
+      330
+     ]
+    },
+    "l3": {
+     "ic": "shot",
+     "data": {
+      "img": "episodes/BM01_AI挖洞流水线/assets/shots/payload_74cms.png",
+      "title": "POC"
+     },
+     "tilt": 2,
+     "rect": [
+      64,
+      450,
+      470,
+      300
+     ]
+    },
+    "l4": {
+     "ic": "shot",
+     "data": {
+      "img": "episodes/BM01_AI挖洞流水线/assets/shots/payload_weblogic.png",
+      "title": "payload"
+     },
+     "tilt": -3,
+     "rect": [
+      470,
+      480,
+      420,
+      300
+     ]
+    },
+    "l5": {
+     "t": "~~复杂 Python 脚本~~",
+     "fs": 52,
+     "cls": "",
+     "rect": [
+      64,
+      800,
+      460,
+      72
+     ]
+    },
+    "l6": {
+     "t": "~~几百条 payload~~",
+     "fs": 52,
+     "cls": "",
+     "rect": [
+      540,
+      800,
+      460,
+      72
+     ]
+    },
+    "l7": null,
+    "l8": null,
+    "c1": {
+     "ic": "stat",
+     "data": {
+      "value": "0",
+      "unit": "行",
+      "label": "要你自己写的脚本",
+      "en": "ZERO SCRIPTING"
+     }
+    }
+   },
+   "cue": {
+    "l1": 0.1,
+    "l2": 0.25,
+    "l5": 1.4,
+    "l3": 2.4,
+    "l4": 2.55,
+    "m1": 2.8,
+    "c1": 3.15,
+    "l6": 3.5
+   },
+   "deco": [
+    [
+     96,
+     108,
+     "NOISE · 不用再背的东西"
+    ]
+   ],
+   "lines": [
+    [
+     1000,
+     488,
+     1040,
+     488,
+     1
+    ]
+   ],
+   "id": "S05",
+   "dur": 4.4,
+   "ambBase": "episodes/BM01_AI挖洞流水线/assets/gen/bm01_",
+   "t0": 15.9
+  },
+  {
+   "layout": "L-K10",
+   "fill": {
+    "p1": {
+     "img": "episodes/BM01_AI挖洞流水线/assets/gen/bm01_grad_wall.png",
+     "cls": "stk diecut",
+     "rect": [
+      1500,
+      104,
+      360,
+      450
+     ]
+    },
+    "c1": {
+     "ic": "chip",
+     "data": {
+      "name": "程序员",
+      "en": "SIDE HUSTLE",
+      "sub": "想搞技术副业",
+      "icon": "laptop",
+      "img": "episodes/BM01_AI挖洞流水线/assets/photos/grad.jpg"
+     },
+     "tone": "card"
+    },
+    "l1": {
+     "t": "/",
+     "fs": 72,
+     "cls": "num c"
+    },
+    "c2": {
+     "ic": "chip",
+     "data": {
+      "name": "计算机毕业生",
+      "en": "NEW GRAD",
+      "sub": "找工作碰壁",
+      "icon": "award",
+      "img": "episodes/BM01_AI挖洞流水线/assets/photos/college.jpg"
+     },
+     "tone": "hot"
+    },
+    "l2": {
+     "t": "想多一份收入",
+     "fs": 52,
+     "cls": "c"
+    },
+    "l3": {
+     "t": "投了简历没回音",
+     "fs": 52,
+     "cls": "c"
+    }
+   },
+   "cue": {
+    "c1": 1.3,
+    "l2": 1.6,
+    "c2": 3.0,
+    "l3": 3.3,
+    "p1": 3.6
+   },
+   "id": "S06",
+   "dur": 5.1,
+   "ambBase": "episodes/BM01_AI挖洞流水线/assets/gen/bm01_",
+   "t0": 20.3
+  },
+  {
+   "layout": "L-N10",
+   "fill": {
+    "t1": {
+     "ic": "title",
+     "data": {
+      "title": "一台\n{{普通办公本}}",
+      "fs": 104,
+      "bar": true
+     }
+    },
+    "m1": {
+     "img": "episodes/BM01_AI挖洞流水线/assets/gen/bm01_office_laptop.png"
+    },
+    "l1": {
+     "ic": "tag",
+     "data": {
+      "text": "不用独显",
+      "icon": "cpu"
+     },
+     "tone": "card"
+    },
+    "l2": {
+     "ic": "tag",
+     "data": {
+      "text": "不用高配",
+      "icon": "zap"
+     },
+     "tone": "card"
+    },
+    "l3": {
+     "ic": "shot",
+     "data": {
+      "img": "episodes/BM01_AI挖洞流水线/assets/photos/laptop.jpg",
+      "title": "实拍"
+     },
+     "tilt": 3,
+     "rect": [
+      1376,
+      640,
+      480,
+      360
+     ]
+    }
+   },
+   "deco": [
+    [
+     64,
+     200,
+     "GEAR · 门槛"
+    ]
+   ],
+   "lines": [
+    [
+     1010,
+     380,
+     904,
+     272
+    ],
+    [
+     1330,
+     400,
+     1408,
+     300
+    ]
+   ],
+   "amb": [
+    [
+     "screws",
+     1560,
+     150,
+     240,
+     140,
+     "far"
+    ]
+   ],
+   "id": "S07",
+   "dur": 3.3,
+   "ambBase": "episodes/BM01_AI挖洞流水线/assets/gen/bm01_",
+   "t0": 25.4
+  },
+  {
+   "layout": "L-K14",
+   "fill": {
+    "s1": null,
+    "l1": {
+     "ic": "step",
+     "data": {
+      "idx": "01",
+      "step": 3,
+      "name": "身份授权",
+      "en": "IDENTITY & SCOPE",
+      "desc": "角色 · 权限 · 范围",
+      "img": "episodes/BM01_AI挖洞流水线/assets/gen/bm01_id_badge.png"
+     },
+     "tone": "card",
+     "rect": [
+      64,
+      264,
+      560,
+      520
+     ]
+    },
+    "l2": {
+     "ic": "step",
+     "data": {
+      "idx": "02",
+      "step": 3,
+      "name": "分阶段跑",
+      "en": "3-STAGE PIPELINE",
+      "desc": "收集 · 匹配 · 验证",
+      "img": "episodes/BM01_AI挖洞流水线/assets/gen/bm01_gears.png"
+     },
+     "tone": "card",
+     "rect": [
+      680,
+      264,
+      560,
+      520
+     ]
+    },
+    "l3": {
+     "ic": "step",
+     "data": {
+      "idx": "03",
+      "step": 3,
+      "name": "兜底规则",
+      "en": "GUARDRAIL",
+      "desc": "容错 · 蜜罐 · 报告",
+      "img": "episodes/BM01_AI挖洞流水线/assets/gen/bm01_turnstile.png"
+     },
+     "tone": "hot",
+     "rect": [
+      1296,
+      264,
+      560,
+      520
+     ]
+    }
+   },
+   "cue": {
+    "l1": 1.5,
+    "l2": 2.0,
+    "l3": 2.5
+   },
+   "lines": [
+    [
+     624,
+     524,
+     680,
+     524,
+     0
+    ],
+    [
+     1240,
+     524,
+     1296,
+     524,
+     1
+    ]
+   ],
+   "deco": [
+    [
+     64,
+     144,
+     "01 → 02 → 03 · 3 步全自动挖洞流水线"
+    ],
+    [
+     64,
+     864,
+     "PIPELINE · IDENTITY / STAGES / GUARDRAIL"
+    ]
+   ],
+   "id": "S08",
+   "dur": 8.2,
+   "ambBase": "episodes/BM01_AI挖洞流水线/assets/gen/bm01_",
+   "t0": 28.7
+  },
+  {
+   "layout": "L-K06",
+   "fill": {
+    "m1": {
+     "ic": "keyword",
+     "data": {
+      "word": "郑重声明",
+      "en": "LEGAL DISCLAIMER · WHITE-HAT ONLY",
+      "exp": "合规边界第一，不碰未授权目标",
+      "icon": "shield-check"
+     },
+     "tone": "aux",
+     "rect": [
+      160,
+      148,
+      1600,
+      312
+     ]
+    },
+    "c1": {
+     "ic": "quote",
+     "data": {
+      "text": "仅用于合法的白帽安全研究，\n禁止用于任何[[未授权]]站点测试",
+      "src": "AUTHORIZED SECURITY RESEARCH ONLY",
+      "img": "episodes/BM01_AI挖洞流水线/assets/gen/bm01_whitehat.png"
+     },
+     "rect": [
+      160,
+      496,
+      1600,
+      416
+     ]
+    }
+   },
+   "cue": {
+    "m1": 0.2,
+    "c1": 0.6
+   },
+   "deco": [
+    [
+     160,
+     112,
+     "DISCLAIMER · 合法合规底线"
+    ]
+   ],
+   "amb": [
+    [
+     "screws",
+     1620,
+     900,
+     220,
+     130,
+     "near"
+    ]
+   ],
+   "id": "S09",
+   "dur": 10.7,
+   "ambBase": "episodes/BM01_AI挖洞流水线/assets/gen/bm01_",
+   "t0": 36.9
+  },
+  {
+   "layout": "L-K25",
+   "fill": {
+    "p1": {
+     "img": "episodes/BM01_AI挖洞流水线/assets/gen/bm01_wrong_use.png",
+     "cls": "stk diecut",
+     "rect": [
+      600,
+      160,
+      760,
+      640
+     ]
+    },
+    "l1": {
+     "t": "~~技术差~~<small>NOT YOUR SKILL</small>",
+     "fs": 56,
+     "cls": ""
+    },
+    "l2": {
+     "t": "~~AI 不行~~<small>NOT THE AI</small>",
+     "fs": 56,
+     "cls": ""
+    },
+    "l3": {
+     "ic": "shot",
+     "data": {
+      "img": "episodes/BM01_AI挖洞流水线/assets/photos/rec021939.jpg",
+      "title": "跑了很久"
+     },
+     "tilt": -2,
+     "rect": [
+      64,
+      640,
+      520,
+      300
+     ]
+    },
+    "c1": {
+     "ic": "verdict",
+     "data": {
+      "text": "用法错了",
+      "en": "ROOT CAUSE",
+      "mark": "!"
+     },
+     "tone": "hot"
+    }
+   },
+   "cue": {
+    "l3": 0.3,
+    "l1": 4.8,
+    "l2": 6.6,
+    "p1": 8.4,
+    "c1": 9.9
+   },
+   "bokeh": [
+    [
+     1700,
+     260,
+     100
+    ]
+   ],
+   "id": "S10",
+   "dur": 11.3,
+   "ambBase": "episodes/BM01_AI挖洞流水线/assets/gen/bm01_",
+   "t0": 47.6
+  },
+  {
+   "layout": "L-K29",
+   "fill": {
+    "s1": null,
+    "c1": {
+     "ic": "keyword",
+     "data": {
+      "word": "一问一答",
+      "en": "BROWSER MODE",
+      "exp": "问一句，答一句，当然慢",
+      "icon": "message-square"
+     },
+     "tone": "card",
+     "rect": [
+      1400,
+      360,
+      456,
+      376
+     ]
+    }
+   },
+   "cue": {
+    "c1": 1.6
+   },
+   "sc": {
+    "slot": "sc",
+    "base": "episodes/BM01_AI挖洞流水线/",
+    "video": "footage/src/图片和附件/20261126_202538.mp4",
+    "spec": {
+     "rect": [
+      64,
+      104,
+      1312,
+      920
+     ],
+     "enter": {
+      "at": 0
+     },
+     "src": {
+      "type": "frames",
+      "url": "footage/frames/20261126_202538/%05d.jpg",
+      "fps": 30,
+      "count": 324,
+      "w": 2528,
+      "h": 1396
+     },
+     "remap": [
+      [
+       0,
+       2.7
+      ],
+      [
+       3.9,
+       2.7
+      ]
+     ],
+     "push": [
+      {
+       "at": 0.4,
+       "rect": [
+        700,
+        470,
+        1220,
+        560
+       ],
+       "dur": 0.8
+      }
+     ],
+     "ann": [
+      {
+       "type": "mark",
+       "rect": [
+        1470,
+        505,
+        390,
+        80
+       ],
+       "at": 1.3
+      }
+     ],
+     "mask": [
+      {
+       "rect": [
+        0,
+        0,
+        2528,
+        150
+       ],
+       "mode": "block"
+      },
+      {
+       "rect": [
+        12,
+        174,
+        58,
+        46
+       ],
+       "mode": "block"
+      },
+      {
+       "rect": [
+        1636,
+        520,
+        178,
+        40
+       ],
+       "mode": "block"
+      },
+      {
+       "rect": [
+        1550,
+        650,
+        174,
+        38
+       ],
+       "mode": "block"
+      },
+      {
+       "rect": [
+        700,
+        1200,
+        270,
+        50
+       ],
+       "mode": "block"
+      }
+     ]
+    }
+   },
+   "id": "S11",
+   "dur": 3.9,
+   "ambBase": "episodes/BM01_AI挖洞流水线/assets/gen/bm01_",
+   "t0": 58.9
+  },
+  {
+   "layout": "L-N12A",
+   "fill": {
+    "p1": {
+     "img": "episodes/BM01_AI挖洞流水线/assets/gen/bm01_delegate.png",
+     "cls": "stk diecut"
+    },
+    "l1": {
+     "ic": "tag",
+     "data": {
+      "text": "分工",
+      "icon": "users"
+     },
+     "tone": "card"
+    },
+    "l2": {
+     "ic": "tag",
+     "data": {
+      "text": "执行流程",
+      "icon": "list-checks"
+     },
+     "tone": "card"
+    },
+    "l3": null,
+    "l4": {
+     "ic": "tag",
+     "data": {
+      "text": "工具权限",
+      "icon": "key-round"
+     },
+     "tone": "card"
+    },
+    "l5": null,
+    "l6": {
+     "ic": "tag",
+     "data": {
+      "text": "AI 自己干活",
+      "icon": "bot"
+     },
+     "tone": "hot"
+    }
+   },
+   "cue": {
+    "p1": 0.3,
+    "l1": 3.1,
+    "l2": 4.4,
+    "l4": 6.4,
+    "l6": 7.6
+   },
+   "lines": [
+    [
+     740,
+     470,
+     512,
+     332
+    ],
+    [
+     720,
+     560,
+     560,
+     556
+    ],
+    [
+     1180,
+     460,
+     1408,
+     300
+    ],
+    [
+     1180,
+     640,
+     1408,
+     748,
+     1
+    ]
+   ],
+   "deco": [
+    [
+     64,
+     128,
+     "AI AS AN EMPLOYEE · 当员工用"
+    ]
+   ],
+   "id": "S12",
+   "dur": 9.2,
+   "ambBase": "episodes/BM01_AI挖洞流水线/assets/gen/bm01_",
+   "t0": 62.8
+  },
+  {
+   "layout": "L-K22",
+   "fill": {
+    "t1": {
+     "ic": "title",
+     "data": {
+      "title": "开奶茶店，也是一个道理",
+      "fs": 104
+     }
+    },
+    "c1": {
+     "ic": "list",
+     "data": {
+      "title": "天天追着问",
+      "items": [
+       {
+        "text": "珍珠奶茶怎么做？"
+       },
+       {
+        "text": "这一步呢？"
+       },
+       {
+        "text": "出餐慢",
+        "state": "now"
+       }
+      ],
+      "img": "episodes/BM01_AI挖洞流水线/assets/gen/bm01_milktea.png"
+     }
+    },
+    "l1": {
+     "t": "→",
+     "fs": 64,
+     "cls": "blkcell aux"
+    },
+    "c2": {
+     "ic": "list",
+     "data": {
+      "title": "直接给系统",
+      "items": [
+       {
+        "text": "配方",
+        "state": "done"
+       },
+       {
+        "text": "操作流程",
+        "state": "done"
+       },
+       {
+        "text": "点单系统",
+        "state": "done"
+       }
+      ],
+      "img": "episodes/BM01_AI挖洞流水线/assets/gen/bm01_pos.png"
+     },
+     "tone": "hot"
+    }
+   },
+   "cue": {
+    "t1": 0.2,
+    "c1": 2.5,
+    "l1": 7.4,
+    "c2": 7.9
+   },
+   "deco": [
+    [
+     68,
+     224,
+     "BEFORE / AFTER · 同一家店"
+    ]
+   ],
+   "id": "S13",
+   "dur": 13.6,
+   "ambBase": "episodes/BM01_AI挖洞流水线/assets/gen/bm01_",
+   "t0": 72.0
+  },
+  {
+   "layout": "L-K13",
+   "fill": {
+    "l1": {
+     "t": "~~AI 是浏览器~~",
+     "fs": 104,
+     "cls": "c"
+    },
+    "k1": {
+     "t": "BROWSER?",
+     "fs": 20,
+     "cls": "mic"
+    },
+    "l2": {
+     "t": "AI 是 [[员工]]<small>AN AGENT, NOT A BROWSER</small>",
+     "fs": 260,
+     "cls": "disp c"
+    }
+   },
+   "bokeh": [
+    [
+     300,
+     820,
+     130
+    ],
+    [
+     1650,
+     300,
+     110
+    ]
+   ],
+   "lines": [
+    [
+     240,
+     296,
+     1680,
+     296,
+     1
+    ]
+   ],
+   "deco": [
+    [
+     64,
+     128,
+     "MYTH vs REALITY · 金句"
+    ]
+   ],
+   "amb": [
+    [
+     "ssd",
+     88,
+     720,
+     260,
+     120,
+     "far"
+    ]
+   ],
+   "id": "S14",
+   "dur": 2.7,
+   "ambBase": "episodes/BM01_AI挖洞流水线/assets/gen/bm01_",
+   "t0": 85.6
+  },
+  {
+   "layout": "L-N15",
+   "fill": {
+    "l1": {
+     "ic": "tag",
+     "data": {
+      "text": "第 1 步 · 共 3 步",
+      "icon": "flag"
+     },
+     "tone": "aux",
+     "rect": [
+      64,
+      148,
+      580,
+      96
+     ]
+    },
+    "l2": {
+     "t": "✓ 先改用法",
+     "fs": 52,
+     "cls": "dim",
+     "rect": [
+      64,
+      272,
+      784,
+      72
+     ]
+    },
+    "t1": {
+     "ic": "title",
+     "data": {
+      "title": "{{身份}}与授权",
+      "fs": 176,
+      "bar": true
+     },
+     "rect": [
+      64,
+      360,
+      800,
+      288
+     ]
+    },
+    "k1": {
+     "t": "STEP 01 · IDENTITY & SCOPE",
+     "fs": 22,
+     "cls": "mic",
+     "rect": [
+      64,
+      672,
+      784,
+      36
+     ]
+    },
+    "l3": {
+     "t": "下一步 → 分阶段跑",
+     "fs": 54,
+     "cls": "",
+     "rect": [
+      64,
+      744,
+      784,
+      88
+     ]
+    },
+    "m1": {
+     "img": "episodes/BM01_AI挖洞流水线/assets/gen/bm01_id_badge.png"
+    }
+   },
+   "cue": {
+    "l1": 0.1,
+    "l2": 0.25,
+    "t1": 2.3,
+    "l3": 2.7
+   },
+   "amb": [
+    [
+     "screws",
+     1560,
+     840,
+     280,
+     170,
+     "far"
+    ]
+   ],
+   "id": "S15A",
+   "dur": 6.3,
+   "ambBase": "episodes/BM01_AI挖洞流水线/assets/gen/bm01_",
+   "t0": 88.3
+  },
+  {
+   "layout": "L-K29",
+   "fill": {
+    "s1": {
+     "ic": "shot",
+     "data": {
+      "img": "episodes/BM01_AI挖洞流水线/assets/shots/ask_how_to_hack.png",
+      "title": "直接问「怎么挖洞」",
+      "mark": [
+       0.765,
+       0.065,
+       0.088,
+       0.05
+      ],
+      "note": "✕ 别这么问"
+     }
+    },
+    "c1": {
+     "ic": "keyword",
+     "data": {
+      "word": "先给身份",
+      "en": "ROLE FIRST",
+      "exp": "提示词直接套模板",
+      "icon": "badge-check"
+     },
+     "tone": "hot",
+     "rect": [
+      1264,
+      540,
+      592,
+      392
+     ]
+    }
+   },
+   "cue": {
+    "s1": 0.1,
+    "c1": 2.4
+   },
+   "id": "S15B",
+   "dur": 5.5,
+   "ambBase": "episodes/BM01_AI挖洞流水线/assets/gen/bm01_",
+   "t0": 94.6
+  },
+  {
+   "layout": "L-N12A",
+   "fill": {
+    "l1": {
+     "ic": "tag",
+     "data": {
+      "text": "① 身份"
+     },
+     "tone": "hot",
+     "rect": [
+      64,
+      104,
+      420,
+      96
+     ]
+    },
+    "l2": {
+     "ic": "tag",
+     "data": {
+      "text": "② 权限 + 范围"
+     },
+     "tone": "card",
+     "rect": [
+      508,
+      104,
+      480,
+      96
+     ]
+    },
+    "l3": {
+     "ic": "tag",
+     "data": {
+      "text": "③ 时效 + 输出"
+     },
+     "tone": "card",
+     "rect": [
+      1012,
+      104,
+      436,
+      96
+     ]
+    },
+    "p1": null,
+    "l4": null,
+    "l5": null,
+    "l6": null
+   },
+   "cue": {
+    "l1": 0.1,
+    "l2": 0.2,
+    "l3": 0.3
+   },
+   "sc": {
+    "slot": "sc",
+    "base": "episodes/BM01_AI挖洞流水线/",
+    "video": "footage/src/图片和附件/20261126_202640.mp4",
+    "spec": {
+     "rect": [
+      64,
+      224,
+      1792,
+      800
+     ],
+     "enter": {
+      "at": 0
+     },
+     "src": {
+      "type": "frames",
+      "url": "footage/frames/20261126_202640/%05d.jpg",
+      "fps": 30,
+      "count": 192,
+      "w": 2528,
+      "h": 1396
+     },
+     "remap": [
+      [
+       0,
+       1.8
+      ],
+      [
+       8.0,
+       6.3
+      ],
+      [
+       11.3,
+       6.3
+      ]
+     ],
+     "push": [
+      {
+       "at": 3.5,
+       "rect": [
+        700,
+        660,
+        1180,
+        160
+       ],
+       "dur": 0.9
+      }
+     ],
+     "ann": [
+      {
+       "type": "underline",
+       "rect": [
+        714,
+        688,
+        372,
+        34
+       ],
+       "at": 6.0
+      }
+     ],
+     "mask": [
+      {
+       "rect": [
+        0,
+        0,
+        2528,
+        150
+       ],
+       "mode": "block"
+      },
+      {
+       "rect": [
+        12,
+        174,
+        58,
+        46
+       ],
+       "mode": "block"
+      },
+      {
+       "rect": [
+        1052,
+        572,
+        64,
+        56
+       ],
+       "mode": "block"
+      }
+     ]
+    }
+   },
+   "id": "S16",
+   "dur": 11.3,
+   "ambBase": "episodes/BM01_AI挖洞流水线/assets/gen/bm01_",
+   "t0": 100.1
+  },
+  {
+   "layout": "L-N12A",
+   "fill": {
+    "l1": {
+     "ic": "tag",
+     "data": {
+      "text": "① 身份"
+     },
+     "tone": "card",
+     "rect": [
+      64,
+      104,
+      420,
+      96
+     ]
+    },
+    "l2": {
+     "ic": "tag",
+     "data": {
+      "text": "② 权限 + 范围"
+     },
+     "tone": "hot",
+     "rect": [
+      508,
+      104,
+      480,
+      96
+     ]
+    },
+    "l3": {
+     "ic": "tag",
+     "data": {
+      "text": "③ 时效 + 输出"
+     },
+     "tone": "card",
+     "rect": [
+      1012,
+      104,
+      436,
+      96
+     ]
+    },
+    "p1": null,
+    "l4": null,
+    "l5": null,
+    "l6": null
+   },
+   "cue": {
+    "l1": 0.1,
+    "l2": 0.2,
+    "l3": 0.3
+   },
+   "sc": {
+    "slot": "sc",
+    "base": "episodes/BM01_AI挖洞流水线/",
+    "video": "footage/src/图片和附件/20261126_202717.mp4",
+    "spec": {
+     "rect": [
+      64,
+      224,
+      1792,
+      800
+     ],
+     "enter": {
+      "at": 0
+     },
+     "src": {
+      "type": "frames",
+      "url": "footage/frames/20261126_202717/%05d.jpg",
+      "fps": 30,
+      "count": 213,
+      "w": 2528,
+      "h": 1396
+     },
+     "remap": [
+      [
+       0,
+       1.5
+      ],
+      [
+       13.0,
+       7.0
+      ],
+      [
+       17.9,
+       7.0
+      ]
+     ],
+     "push": [
+      {
+       "at": 2.5,
+       "rect": [
+        700,
+        680,
+        1180,
+        140
+       ],
+       "dur": 0.9
+      }
+     ],
+     "ann": [
+      {
+       "type": "mark",
+       "rect": [
+        786,
+        758,
+        562,
+        38
+       ],
+       "at": 12.8,
+       "label": "合规范围",
+       "side": "bottom"
+      }
+     ],
+     "mask": [
+      {
+       "rect": [
+        0,
+        0,
+        2528,
+        150
+       ],
+       "mode": "block"
+      },
+      {
+       "rect": [
+        12,
+        174,
+        58,
+        46
+       ],
+       "mode": "block"
+      },
+      {
+       "rect": [
+        1052,
+        572,
+        64,
+        56
+       ],
+       "mode": "block"
+      }
+     ]
+    }
+   },
+   "id": "S17",
+   "dur": 17.9,
+   "ambBase": "episodes/BM01_AI挖洞流水线/assets/gen/bm01_",
+   "t0": 111.4
+  },
+  {
+   "layout": "L-N12A",
+   "fill": {
+    "l1": {
+     "ic": "tag",
+     "data": {
+      "text": "① 身份"
+     },
+     "tone": "card",
+     "rect": [
+      64,
+      104,
+      420,
+      96
+     ]
+    },
+    "l2": {
+     "ic": "tag",
+     "data": {
+      "text": "② 权限 + 范围"
+     },
+     "tone": "card",
+     "rect": [
+      508,
+      104,
+      480,
+      96
+     ]
+    },
+    "l3": {
+     "ic": "tag",
+     "data": {
+      "text": "③ 时效 + 输出"
+     },
+     "tone": "hot",
+     "rect": [
+      1012,
+      104,
+      436,
+      96
+     ]
+    },
+    "p1": null,
+    "l4": null,
+    "l5": null,
+    "l6": null
+   },
+   "cue": {
+    "l1": 0.1,
+    "l2": 0.2,
+    "l3": 0.3
+   },
+   "sc": {
+    "slot": "sc",
+    "base": "episodes/BM01_AI挖洞流水线/",
+    "video": "footage/src/图片和附件/20261126_202756.mp4",
+    "spec": {
+     "rect": [
+      64,
+      224,
+      1792,
+      800
+     ],
+     "enter": {
+      "at": 0
+     },
+     "src": {
+      "type": "frames",
+      "url": "footage/frames/20261126_202756/%05d.jpg",
+      "fps": 30,
+      "count": 216,
+      "w": 2528,
+      "h": 1396
+     },
+     "remap": [
+      [
+       0,
+       1.5
+      ],
+      [
+       12.0,
+       7.1
+      ],
+      [
+       17.3,
+       7.1
+      ]
+     ],
+     "push": [
+      {
+       "at": 2.5,
+       "rect": [
+        700,
+        680,
+        1180,
+        180
+       ],
+       "dur": 0.9
+      }
+     ],
+     "mask": [
+      {
+       "rect": [
+        0,
+        0,
+        2528,
+        150
+       ],
+       "mode": "block"
+      },
+      {
+       "rect": [
+        12,
+        174,
+        58,
+        46
+       ],
+       "mode": "block"
+      },
+      {
+       "rect": [
+        1052,
+        572,
+        64,
+        56
+       ],
+       "mode": "block"
+      }
+     ]
+    }
+   },
+   "amb": [
+    [
+     "usbc",
+     1600,
+     940,
+     260,
+     100,
+     "far"
+    ]
+   ],
+   "id": "S18",
+   "dur": 17.3,
+   "ambBase": "episodes/BM01_AI挖洞流水线/assets/gen/bm01_",
+   "t0": 129.3
+  },
+  {
+   "layout": "L-N12B",
+   "fill": {
+    "c1": {
+     "ic": "verdict",
+     "data": {
+      "text": "[[三句]]就够",
+      "en": "IDENTITY · SCOPE · DEADLINE",
+      "mark": "✓",
+      "markTone": "aux",
+      "img": "episodes/BM01_AI挖洞流水线/assets/gen/bm01_id_badge.png"
+     }
+    },
+    "m1": null,
+    "l1": {
+     "ic": "tag",
+     "data": {
+      "text": "身份",
+      "icon": "badge-check"
+     },
+     "tone": "lit"
+    },
+    "l2": {
+     "ic": "tag",
+     "data": {
+      "text": "权限 + 范围",
+      "icon": "shield"
+     },
+     "tone": "aux",
+     "rect": [
+      80,
+      496,
+      480,
+      120
+     ]
+    },
+    "l3": {
+     "ic": "tag",
+     "data": {
+      "text": "时效 + 输出",
+      "icon": "clock"
+     },
+     "tone": "lit",
+     "rect": [
+      48,
+      720,
+      480,
+      120
+     ]
+    },
+    "l4": {
+     "ic": "tag",
+     "data": {
+      "text": "5 年白帽专家",
+      "icon": "user-round"
+     },
+     "tone": "lit"
+    },
+    "l5": {
+     "ic": "tag",
+     "data": {
+      "text": "仅限授权靶场",
+      "icon": "shield-alert"
+     },
+     "tone": "hot"
+    },
+    "l6": {
+     "ic": "tag",
+     "data": {
+      "text": "2 小时出报告",
+      "icon": "file-check"
+     },
+     "tone": "lit"
+    },
+    "k1": {
+     "t": "TEMPLATE · 3 SENTENCES",
+     "fs": 22,
+     "cls": "mic"
+    }
+   },
+   "cue": {
+    "l1": 0.05,
+    "l4": 0.1,
+    "l2": 0.15,
+    "l5": 0.2,
+    "l3": 0.25,
+    "l6": 0.3,
+    "c1": 0.35
+   },
+   "lines": [
+    [
+     580,
+     400,
+     512,
+     332,
+     0
+    ],
+    [
+     560,
+     500,
+     560,
+     556,
+     "aux"
+    ],
+    [
+     600,
+     640,
+     512,
+     780,
+     0
+    ],
+    [
+     1340,
+     380,
+     1408,
+     300,
+     0
+    ],
+    [
+     1360,
+     520,
+     1408,
+     524,
+     1
+    ],
+    [
+     1320,
+     660,
+     1408,
+     748,
+     0
+    ]
+   ],
+   "id": "S19A",
+   "dur": 2.4,
+   "ambBase": "episodes/BM01_AI挖洞流水线/assets/gen/bm01_",
+   "t0": 146.6
+  },
+  {
+   "layout": "L-N10",
+   "fill": {
+    "t1": {
+     "ic": "title",
+     "data": {
+      "title": "{{90%}} 的人\n漏掉这一句",
+      "fs": 104,
+      "bar": true
+     }
+    },
+    "m1": {
+     "img": "episodes/BM01_AI挖洞流水线/assets/gen/bm01_turnstile.png"
+    },
+    "l1": {
+     "ic": "tag",
+     "data": {
+      "text": "合规范围",
+      "icon": "shield"
+     },
+     "tone": "card"
+    },
+    "l2": {
+     "ic": "tag",
+     "data": {
+      "text": "没写就被拦",
+      "icon": "circle-x"
+     },
+     "tone": "hot",
+     "rect": [
+      1376,
+      256,
+      432,
+      88
+     ]
+    },
+    "l3": null
+   },
+   "cue": {
+    "t1": 0.2,
+    "m1": 0.6,
+    "l1": 1.2,
+    "l2": 3.6
+   },
+   "deco": [
+    [
+     64,
+     200,
+     "SAFETY REVIEW · 安全审核"
+    ]
+   ],
+   "lines": [
+    [
+     1010,
+     380,
+     904,
+     272
+    ],
+    [
+     1330,
+     400,
+     1408,
+     300
+    ]
+   ],
+   "id": "S19B",
+   "dur": 6.7,
+   "ambBase": "episodes/BM01_AI挖洞流水线/assets/gen/bm01_",
+   "t0": 149.0
+  },
+  {
+   "layout": "L-K09",
+   "fill": {
+    "t1": {
+     "ic": "title",
+     "data": {
+      "title": "问啥都回复\n{{无法提供}}",
+      "fs": 104,
+      "bar": true
+     }
+    },
+    "k1": {
+     "t": "03 REFUSALS · 拒答",
+     "fs": 20,
+     "cls": "mic"
+    },
+    "g1": {
+     "ic": "wall",
+     "data": {
+      "shots": [
+       {
+        "img": "episodes/BM01_AI挖洞流水线/assets/shots/refuse_lan.png",
+        "title": "EV-01 · 没写范围"
+       },
+       {
+        "img": "episodes/BM01_AI挖洞流水线/assets/shots/refuse_baidu.png",
+        "title": "EV-02 · 没写范围"
+       },
+       {
+        "img": "episodes/BM01_AI挖洞流水线/assets/shots/refuse_scope.png",
+        "title": "EV-03 · 无法提供相关内容"
+       }
+      ]
+     }
+    },
+    "m1": null,
+    "m2": null,
+    "m3": null,
+    "m4": null,
+    "m5": null
+   },
+   "deco": [
+    [
+     64,
+     200,
+     "EVIDENCE · 拒答"
+    ]
+   ],
+   "id": "S19C",
+   "dur": 3.4,
+   "ambBase": "episodes/BM01_AI挖洞流水线/assets/gen/bm01_",
+   "t0": 155.7
+  },
+  {
+   "layout": "L-N07",
+   "fill": {
+    "p1": null,
+    "m1": {
+     "img": "episodes/BM01_AI挖洞流水线/assets/gen/bm01_potholes.png",
+     "cls": "stk diecut",
+     "rect": [
+      460,
+      124,
+      1000,
+      680
+     ]
+    },
+    "l1": {
+     "t": "踩坑 {{20+ 次}} 摸出来的<small>LEARNED THE HARD WAY</small>",
+     "fs": 72,
+     "cls": "",
+     "rect": [
+      224,
+      836,
+      1472,
+      132
+     ]
+    },
+    "k1": null
+   },
+   "bokeh": [
+    [
+     260,
+     240,
+     120
+    ],
+    [
+     1680,
+     220,
+     110
+    ]
+   ],
+   "deco": [
+    [
+     128,
+     136,
+     "LESSONS · 踩坑"
+    ]
+   ],
+   "id": "S20",
+   "dur": 5.5,
+   "ambBase": "episodes/BM01_AI挖洞流水线/assets/gen/bm01_",
+   "t0": 159.1
+  },
+  {
+   "layout": "L-N15",
+   "fill": {
+    "l1": {
+     "ic": "tag",
+     "data": {
+      "text": "第 2 步 · 共 3 步",
+      "icon": "flag"
+     },
+     "tone": "aux",
+     "rect": [
+      64,
+      148,
+      580,
+      96
+     ]
+    },
+    "l2": {
+     "t": "✓ 身份与授权",
+     "fs": 52,
+     "cls": "dim",
+     "rect": [
+      64,
+      272,
+      784,
+      72
+     ]
+    },
+    "t1": {
+     "ic": "title",
+     "data": {
+      "title": "{{分阶段}}跑",
+      "fs": 192,
+      "bar": true
+     },
+     "rect": [
+      64,
+      360,
+      800,
+      288
+     ]
+    },
+    "k1": {
+     "t": "STEP 02 · PIPELINE",
+     "fs": 22,
+     "cls": "mic",
+     "rect": [
+      64,
+      672,
+      784,
+      36
+     ]
+    },
+    "l3": {
+     "t": "收集 → 匹配 → 验证",
+     "fs": 54,
+     "cls": "",
+     "rect": [
+      64,
+      744,
+      784,
+      88
+     ]
+    },
+    "m1": {
+     "img": "episodes/BM01_AI挖洞流水线/assets/gen/bm01_gears.png"
+    }
+   },
+   "cue": {
+    "l1": 0.1,
+    "l2": 0.2,
+    "t1": 0.3,
+    "l3": 0.5
+   },
+   "amb": [
+    [
+     "cable",
+     1600,
+     860,
+     260,
+     150,
+     "far"
+    ]
+   ],
+   "id": "S21",
+   "dur": 6.2,
+   "ambBase": "episodes/BM01_AI挖洞流水线/assets/gen/bm01_",
+   "t0": 164.6
+  },
+  {
+   "layout": "L-N09",
+   "fill": {
+    "t1": null,
+    "m1": null,
+    "m2": null,
+    "m3": null,
+    "m4": null,
+    "l1": {
+     "ic": "tag",
+     "data": {
+      "text": "① 信息收集",
+      "en": "STAGE 01 · RECON"
+     },
+     "tone": "hot",
+     "rect": [
+      64,
+      104,
+      420,
+      96
+     ]
+    },
+    "l2": {
+     "ic": "tag",
+     "data": {
+      "text": "端口 · 子域名"
+     },
+     "tone": "card",
+     "rect": [
+      508,
+      104,
+      480,
+      96
+     ]
+    },
+    "l3": {
+     "ic": "tag",
+     "data": {
+      "text": "后台目录"
+     },
+     "tone": "card",
+     "rect": [
+      1012,
+      104,
+      436,
+      96
+     ]
+    },
+    "l4": {
+     "ic": "tag",
+     "data": {
+      "text": "中间件指纹"
+     },
+     "tone": "card",
+     "rect": [
+      1472,
+      104,
+      384,
+      96
+     ]
+    }
+   },
+   "cue": {
+    "l1": 0.1,
+    "l2": 2.7,
+    "l3": 5.5,
+    "l4": 6.7
+   },
+   "sc": {
+    "slot": "sc",
+    "base": "episodes/BM01_AI挖洞流水线/",
+    "spec": {
+     "rect": [
+      64,
+      224,
+      1792,
+      800
+     ],
+     "enter": {
+      "at": 0
+     },
+     "src": {
+      "type": "image",
+      "url": "assets/shots/recon_scope.png",
+      "w": 1887,
+      "h": 921
+     },
+     "push": [
+      {
+       "at": 0.6,
+       "rect": [
+        400,
+        90,
+        1480,
+        470
+       ],
+       "dur": 0.9
+      }
+     ]
+    }
+   },
+   "id": "S22A",
+   "dur": 7.8,
+   "ambBase": "episodes/BM01_AI挖洞流水线/assets/gen/bm01_",
+   "t0": 170.8
+  },
+  {
+   "layout": "L-N09",
+   "fill": {
+    "t1": null,
+    "m1": null,
+    "m2": null,
+    "m3": null,
+    "m4": null,
+    "l1": {
+     "ic": "tag",
+     "data": {
+      "text": "① 信息收集",
+      "en": "STAGE 01 · RECON"
+     },
+     "tone": "hot",
+     "rect": [
+      64,
+      104,
+      420,
+      96
+     ]
+    },
+    "l2": {
+     "ic": "tag",
+     "data": {
+      "text": "端口 · 子域名"
+     },
+     "tone": "card",
+     "rect": [
+      508,
+      104,
+      480,
+      96
+     ]
+    },
+    "l3": {
+     "ic": "tag",
+     "data": {
+      "text": "后台目录"
+     },
+     "tone": "card",
+     "rect": [
+      1012,
+      104,
+      436,
+      96
+     ]
+    },
+    "l4": {
+     "ic": "tag",
+     "data": {
+      "text": "中间件指纹"
+     },
+     "tone": "card",
+     "rect": [
+      1472,
+      104,
+      384,
+      96
+     ]
+    }
+   },
+   "cue": {
+    "l1": 0.0,
+    "l2": 0.0,
+    "l3": 0.0,
+    "l4": 0.0
+   },
+   "sc": {
+    "slot": "sc",
+    "base": "episodes/BM01_AI挖洞流水线/",
+    "video": "footage/src/图片和附件/20261127_014944.mp4",
+    "spec": {
+     "rect": [
+      64,
+      224,
+      1792,
+      800
+     ],
+     "enter": {
+      "at": 0
+     },
+     "src": {
+      "type": "frames",
+      "url": "footage/frames/20261127_014944/%05d.jpg",
+      "fps": 30,
+      "count": 1188,
+      "w": 1916,
+      "h": 984
+     },
+     "remap": [
+      [
+       0,
+       36.5
+      ],
+      [
+       2.5,
+       36.5
+      ]
+     ],
+     "push": [
+      {
+       "at": 0.3,
+       "rect": [
+        700,
+        320,
+        1180,
+        290
+       ],
+       "dur": 0.9
+      }
+     ],
+     "ann": [
+      {
+       "type": "mark",
+       "rect": [
+        704,
+        318,
+        200,
+        28
+       ],
+       "at": 1.4,
+       "label": "汇总表",
+       "side": "top"
+      }
+     ],
+     "mask": [
+      {
+       "rect": [
+        352,
+        352,
+        262,
+        30
+       ],
+       "mode": "block"
+      },
+      {
+       "rect": [
+        0,
+        936,
+        1916,
+        48
+       ],
+       "mode": "block"
+      },
+      {
+       "rect": [
+        712,
+        376,
+        142,
+        24
+       ],
+       "mode": "block"
+      },
+      {
+       "rect": [
+        903,
+        630,
+        290,
+        24
+       ],
+       "mode": "block"
+      },
+      {
+       "rect": [
+        726,
+        680,
+        108,
+        24
+       ],
+       "mode": "block"
+      },
+      {
+       "rect": [
+        726,
+        704,
+        138,
+        24
+       ],
+       "mode": "block"
+      }
+     ]
+    }
+   },
+   "id": "S22B",
+   "dur": 2.5,
+   "ambBase": "episodes/BM01_AI挖洞流水线/assets/gen/bm01_",
+   "t0": 178.6
+  },
+  {
+   "layout": "L-N09",
+   "fill": {
+    "t1": null,
+    "m1": null,
+    "m2": null,
+    "m3": null,
+    "m4": null,
+    "l1": {
+     "ic": "tag",
+     "data": {
+      "text": "② 漏洞匹配",
+      "en": "STAGE 02 · MATCH"
+     },
+     "tone": "hot",
+     "rect": [
+      64,
+      104,
+      420,
+      96
+     ]
+    },
+    "l2": {
+     "ic": "tag",
+     "data": {
+      "text": "指纹 → POC"
+     },
+     "tone": "card",
+     "rect": [
+      508,
+      104,
+      480,
+      96
+     ]
+    },
+    "l3": {
+     "ic": "tag",
+     "data": {
+      "text": "定制测试脚本"
+     },
+     "tone": "card",
+     "rect": [
+      1012,
+      104,
+      436,
+      96
+     ]
+    },
+    "l4": {
+     "ic": "tag",
+     "data": {
+      "text": "赏金高的优先"
+     },
+     "tone": "card",
+     "rect": [
+      1472,
+      104,
+      384,
+      96
+     ]
+    }
+   },
+   "cue": {
+    "l1": 0.1,
+    "l2": 6.5,
+    "l3": 10.8,
+    "l4": 12.8
+   },
+   "sc": {
+    "slot": "sc",
+    "base": "episodes/BM01_AI挖洞流水线/",
+    "spec": {
+     "rect": [
+      64,
+      224,
+      1792,
+      800
+     ],
+     "enter": {
+      "at": 0
+     },
+     "src": {
+      "type": "image",
+      "url": "assets/shots/match_list.png",
+      "w": 1892,
+      "h": 932
+     },
+     "push": [
+      {
+       "at": 0.8,
+       "rect": [
+        690,
+        120,
+        1190,
+        540
+       ],
+       "dur": 0.9
+      }
+     ],
+     "ann": [
+      {
+       "type": "mark",
+       "rect": [
+        1762,
+        196,
+        100,
+        446
+       ],
+       "at": 13.2
+      }
+     ]
+    }
+   },
+   "id": "S23",
+   "dur": 16.4,
+   "ambBase": "episodes/BM01_AI挖洞流水线/assets/gen/bm01_",
+   "t0": 181.1
+  },
+  {
+   "layout": "L-N09",
+   "fill": {
+    "t1": null,
+    "m1": null,
+    "m2": null,
+    "m3": null,
+    "m4": null,
+    "l1": {
+     "ic": "tag",
+     "data": {
+      "text": "③ 利用验证",
+      "en": "STAGE 03 · VERIFY"
+     },
+     "tone": "hot",
+     "rect": [
+      64,
+      104,
+      420,
+      96
+     ]
+    },
+    "l2": {
+     "ic": "tag",
+     "data": {
+      "text": "跑 POC 验证"
+     },
+     "tone": "card",
+     "rect": [
+      508,
+      104,
+      480,
+      96
+     ]
+    },
+    "l3": {
+     "ic": "tag",
+     "data": {
+      "text": "换 payload"
+     },
+     "tone": "card",
+     "rect": [
+      1012,
+      104,
+      436,
+      96
+     ]
+    },
+    "l4": {
+     "ic": "tag",
+     "data": {
+      "text": "写进报告"
+     },
+     "tone": "card",
+     "rect": [
+      1472,
+      104,
+      384,
+      96
+     ]
+    }
+   },
+   "cue": {
+    "l1": 0.1,
+    "l2": 2.2,
+    "l3": 9.6,
+    "l4": 5.6
+   },
+   "sc": {
+    "slot": "sc",
+    "base": "episodes/BM01_AI挖洞流水线/",
+    "video": "footage/src/图片和附件/20261127_022646.mp4",
+    "spec": {
+     "rect": [
+      64,
+      224,
+      1792,
+      800
+     ],
+     "enter": {
+      "at": 0
+     },
+     "src": {
+      "type": "frames",
+      "url": "footage/frames/20261127_022646/%05d.jpg",
+      "fps": 30,
+      "count": 462,
+      "w": 1916,
+      "h": 984
+     },
+     "remap": [
+      [
+       0,
+       14.5
+      ],
+      [
+       16.8,
+       14.5
+      ]
+     ],
+     "push": [
+      {
+       "at": 0.6,
+       "rect": [
+        700,
+        440,
+        1180,
+        330
+       ],
+       "dur": 0.9
+      }
+     ],
+     "ann": [
+      {
+       "type": "mark",
+       "rect": [
+        704,
+        698,
+        1160,
+        52
+       ],
+       "at": 11.5
+      }
+     ],
+     "mask": [
+      {
+       "rect": [
+        352,
+        352,
+        262,
+        30
+       ],
+       "mode": "block"
+      },
+      {
+       "rect": [
+        0,
+        936,
+        1916,
+        48
+       ],
+       "mode": "block"
+      },
+      {
+       "rect": [
+        726,
+        540,
+        134,
+        24
+       ],
+       "mode": "block"
+      },
+      {
+       "rect": [
+        726,
+        564,
+        168,
+        24
+       ],
+       "mode": "block"
+      },
+      {
+       "rect": [
+        726,
+        588,
+        178,
+        24
+       ],
+       "mode": "block"
+      },
+      {
+       "rect": [
+        1176,
+        540,
+        82,
+        24
+       ],
+       "mode": "block"
+      },
+      {
+       "rect": [
+        726,
+        648,
+        134,
+        24
+       ],
+       "mode": "block"
+      },
+      {
+       "rect": [
+        1006,
+        648,
+        130,
+        24
+       ],
+       "mode": "block"
+      }
+     ]
+    }
+   },
+   "id": "S24",
+   "dur": 16.8,
+   "ambBase": "episodes/BM01_AI挖洞流水线/assets/gen/bm01_",
+   "t0": 197.5
+  },
+  {
+   "layout": "L-K10",
+   "fill": {
+    "p1": null,
+    "c1": {
+     "ic": "chip",
+     "data": {
+      "name": "手动测",
+      "en": "MANUAL",
+      "sub": "一个目标 4 小时",
+      "icon": "hourglass",
+      "img": "episodes/BM01_AI挖洞流水线/assets/gen/bm01_hourglass.png"
+     },
+     "tone": "card"
+    },
+    "l1": {
+     "t": "→",
+     "fs": 72,
+     "cls": "num c"
+    },
+    "c2": {
+     "ic": "chip",
+     "data": {
+      "name": "AI 自己跑",
+      "en": "AGENT",
+      "sub": "40 分钟搞定",
+      "icon": "bot",
+      "img": "episodes/BM01_AI挖洞流水线/assets/gen/bm01_stopwatch.png"
+     },
+     "tone": "hot"
+    },
+    "l2": {
+     "t": "4 小时",
+     "fs": 52,
+     "cls": "c"
+    },
+    "l3": {
+     "t": "多出来的时间，再测 3 个目标",
+     "fs": 52,
+     "cls": "c"
+    }
+   },
+   "cue": {
+    "c1": 4.0,
+    "l2": 4.6,
+    "l1": 6.5,
+    "c2": 6.8,
+    "l3": 9.3
+   },
+   "deco": [
+    [
+     64,
+     128,
+     "EFFICIENCY · 4H → 40MIN"
+    ]
+   ],
+   "amb": [
+    [
+     "cable",
+     1580,
+     130,
+     260,
+     150,
+     "far"
+    ]
+   ],
+   "id": "S25",
+   "dur": 13.0,
+   "ambBase": "episodes/BM01_AI挖洞流水线/assets/gen/bm01_",
+   "t0": 214.3
+  },
+  {
+   "layout": "L-N15",
+   "fill": {
+    "l1": {
+     "ic": "tag",
+     "data": {
+      "text": "第 3 步 · 共 3 步",
+      "icon": "flag"
+     },
+     "tone": "aux",
+     "rect": [
+      64,
+      148,
+      580,
+      96
+     ]
+    },
+    "l2": {
+     "t": "✓ 分阶段跑",
+     "fs": 52,
+     "cls": "dim",
+     "rect": [
+      64,
+      272,
+      784,
+      72
+     ]
+    },
+    "t1": {
+     "ic": "title",
+     "data": {
+      "title": "{{兜底}}规则",
+      "fs": 192,
+      "bar": true
+     },
+     "rect": [
+      64,
+      360,
+      800,
+      288
+     ]
+    },
+    "k1": {
+     "t": "STEP 03 · GUARDRAIL",
+     "fs": 22,
+     "cls": "mic",
+     "rect": [
+      64,
+      672,
+      784,
+      36
+     ]
+    },
+    "l3": {
+     "t": "失败换 payload，最多 3 次<br>遇到蜜罐立即停",
+     "fs": 52,
+     "cls": "",
+     "rect": [
+      64,
+      744,
+      784,
+      148
+     ]
+    },
+    "m1": {
+     "img": "episodes/BM01_AI挖洞流水线/assets/gen/bm01_guardrail.png",
+     "cls": "stk diecut"
+    }
+   },
+   "cue": {
+    "l1": 0.1,
+    "l2": 0.2,
+    "t1": 0.3,
+    "l3": 1.8
+   },
+   "id": "S26",
+   "dur": 5.7,
+   "ambBase": "episodes/BM01_AI挖洞流水线/assets/gen/bm01_",
+   "t0": 227.3
+  },
+  {
+   "layout": "L-N10",
+   "fill": {
+    "t1": {
+     "ic": "title",
+     "data": {
+      "title": "遇到{{蜜罐}}\n立即停",
+      "fs": 104,
+      "bar": true
+     }
+    },
+    "m1": {
+     "img": "episodes/BM01_AI挖洞流水线/assets/gen/bm01_honeypot.png"
+    },
+    "l1": {
+     "ic": "tag",
+     "data": {
+      "text": "伪装成目标的陷阱",
+      "icon": "triangle-alert"
+     },
+     "tone": "card",
+     "rect": [
+      640,
+      150,
+      560,
+      96
+     ]
+    },
+    "l2": {
+     "ic": "tag",
+     "data": {
+      "text": "立即终止",
+      "icon": "circle-x"
+     },
+     "tone": "hot",
+     "rect": [
+      1408,
+      300,
+      400,
+      88
+     ]
+    },
+    "l3": null
+   },
+   "cue": {
+    "t1": 0.1,
+    "m1": 0.3,
+    "l1": 0.9,
+    "l2": 2.4
+   },
+   "deco": [
+    [
+     64,
+     200,
+     "HONEYPOT · 蜜罐"
+    ]
+   ],
+   "lines": [
+    [
+     1010,
+     380,
+     904,
+     272
+    ],
+    [
+     1330,
+     400,
+     1408,
+     300
+    ]
+   ],
+   "id": "S27",
+   "dur": 3.6,
+   "ambBase": "episodes/BM01_AI挖洞流水线/assets/gen/bm01_",
+   "t0": 233.0
+  },
+  {
+   "layout": "L-K28",
+   "fill": {
+    "m1": {
+     "ic": "shot",
+     "data": {
+      "img": "episodes/BM01_AI挖洞流水线/assets/shots/report_full.png",
+      "title": "SRC 漏洞报告 · 证据页"
+     },
+     "tilt": -2
+    },
+    "c1": {
+     "t": "必须保留原文",
+     "fs": 52,
+     "cls": "dim"
+    },
+    "c2": {
+     "ic": "shot",
+     "data": {
+      "img": "episodes/BM01_AI挖洞流水线/assets/shots/report_req.png",
+      "title": "请求包原文"
+     }
+    },
+    "c3": {
+     "ic": "shot",
+     "data": {
+      "img": "episodes/BM01_AI挖洞流水线/assets/shots/report_resp.png",
+      "title": "响应包原文"
+     }
+    }
+   },
+   "cue": {
+    "m1": 0.2,
+    "c1": 0.6,
+    "c2": 1.6,
+    "c3": 3.0
+   },
+   "deco": [
+    [
+     912,
+     120,
+     "REPORT · 请求 / 响应"
+    ]
+   ],
+   "id": "S28A",
+   "dur": 5.8,
+   "ambBase": "episodes/BM01_AI挖洞流水线/assets/gen/bm01_",
+   "t0": 236.6
+  },
+  {
+   "layout": "L-K09",
+   "fill": {
+    "t1": {
+     "ic": "title",
+     "data": {
+      "title": "截图指引\n{{对齐标准}}",
+      "fs": 104,
+      "bar": true
+     }
+    },
+    "k1": {
+     "t": "03 FILES · SUBMIT READY",
+     "fs": 20,
+     "cls": "mic"
+    },
+    "g1": {
+     "ic": "wall",
+     "data": {
+      "shots": [
+       {
+        "img": "episodes/BM01_AI挖洞流水线/assets/shots/report_shots.png",
+        "title": "EV-01 · 截图清单"
+       },
+       {
+        "img": "episodes/BM01_AI挖洞流水线/assets/shots/src_template.png",
+        "title": "EV-02 · SRC 提交模板"
+       },
+       {
+        "img": "episodes/BM01_AI挖洞流水线/assets/shots/report_full.png",
+        "title": "EV-03 · 完整报告"
+       }
+      ]
+     }
+    },
+    "m1": null,
+    "m2": null,
+    "m3": null,
+    "m4": null,
+    "m5": null
+   },
+   "deco": [
+    [
+     64,
+     200,
+     "SUBMIT · 提交标准"
+    ]
+   ],
+   "amb": [
+    [
+     "usbc",
+     64,
+     900,
+     280,
+     100,
+     "far"
+    ]
+   ],
+   "id": "S28B",
+   "dur": 7.2,
+   "ambBase": "episodes/BM01_AI挖洞流水线/assets/gen/bm01_",
+   "t0": 242.4
+  },
+  {
+   "layout": "L-N23",
+   "fill": {
+    "t1": {
+     "ic": "title",
+     "data": {
+      "title": "风险等级\n[[修复建议]]",
+      "fs": 104
+     }
+    },
+    "l1": {
+     "t": "修复建议要<br>具体到[[版本号]]",
+     "fs": 52,
+     "cls": "wrap"
+    },
+    "m1": {
+     "ic": "shot",
+     "data": {
+      "img": "episodes/BM01_AI挖洞流水线/assets/shots/src_risk_levels.png",
+      "title": "众测平台 · 风险等级"
+     },
+     "tilt": -3
+    },
+    "m2": {
+     "ic": "shot",
+     "data": {
+      "img": "episodes/BM01_AI挖洞流水线/assets/shots/report_fix.png",
+      "title": "修复建议",
+      "mark": [
+       0.0,
+       0.79,
+       0.52,
+       0.08
+      ]
+     },
+     "tilt": 2,
+     "rect": [
+      832,
+      412,
+      1024,
+      520
+     ]
+    },
+    "m3": null,
+    "c1": {
+     "ic": "verdict",
+     "data": {
+      "text": "具体到版本",
+      "why": "不写空话",
+      "markTone": "aux"
+     },
+     "rect": [
+      1328,
+      104,
+      528,
+      272
+     ]
+    }
+   },
+   "cue": {
+    "t1": 0.1,
+    "m1": 0.6,
+    "m2": 3.6,
+    "l1": 4.2,
+    "c1": 5.0
+   },
+   "deco": [
+    [
+     64,
+     200,
+     "SEVERITY · 定级"
+    ]
+   ],
+   "id": "S29",
+   "dur": 6.3,
+   "ambBase": "episodes/BM01_AI挖洞流水线/assets/gen/bm01_",
+   "t0": 249.6
+  },
+  {
+   "layout": "L-K14",
+   "fill": {
+    "s1": null,
+    "l1": {
+     "ic": "step",
+     "data": {
+      "idx": "01",
+      "step": 3,
+      "name": "身份授权",
+      "en": "DONE · STEP 01",
+      "desc": "✓ 三句定边界",
+      "img": "episodes/BM01_AI挖洞流水线/assets/gen/bm01_id_badge.png"
+     },
+     "tone": "lit",
+     "rect": [
+      64,
+      264,
+      560,
+      520
+     ]
+    },
+    "l2": {
+     "ic": "step",
+     "data": {
+      "idx": "02",
+      "step": 3,
+      "name": "分阶段跑",
+      "en": "DONE · STEP 02",
+      "desc": "✓ 收集·匹配·验证",
+      "img": "episodes/BM01_AI挖洞流水线/assets/gen/bm01_gears.png"
+     },
+     "tone": "lit",
+     "rect": [
+      680,
+      264,
+      560,
+      520
+     ]
+    },
+    "l3": {
+     "ic": "step",
+     "data": {
+      "idx": "03",
+      "step": 3,
+      "name": "兜底规则",
+      "en": "DONE · STEP 03",
+      "desc": "✓ 遇蜜罐即停",
+      "img": "episodes/BM01_AI挖洞流水线/assets/gen/bm01_honeypot.png"
+     },
+     "tone": "hot",
+     "rect": [
+      1296,
+      264,
+      560,
+      520
+     ]
+    }
+   },
+   "cue": {
+    "l1": 0.1,
+    "l2": 0.25,
+    "l3": 0.4
+   },
+   "lines": [
+    [
+     624,
+     524,
+     680,
+     524,
+     1
+    ],
+    [
+     1240,
+     524,
+     1296,
+     524,
+     1
+    ]
+   ],
+   "deco": [
+    [
+     64,
+     144,
+     "RECAP · 3 步流水线复盘"
+    ],
+    [
+     64,
+     864,
+     "ALL 3 STEPS READY · 照着做就行"
+    ]
+   ],
+   "amb": [
+    [
+     "ssd",
+     1600,
+     880,
+     240,
+     110,
+     "near"
+    ]
+   ],
+   "id": "S30",
+   "dur": 3.5,
+   "ambBase": "episodes/BM01_AI挖洞流水线/assets/gen/bm01_",
+   "t0": 255.9
+  },
+  {
+   "layout": "L-N04",
+   "fill": {
+    "p1": null,
+    "m1": {
+     "ic": "shot",
+     "data": {
+      "img": "episodes/BM01_AI挖洞流水线/assets/shots/bounty_3500.png",
+      "title": "¥3,500"
+     },
+     "tilt": -4,
+     "rect": [
+      64,
+      560,
+      540,
+      400
+     ]
+    },
+    "m2": {
+     "ic": "shot",
+     "data": {
+      "img": "episodes/BM01_AI挖洞流水线/assets/shots/bounty_4000.png",
+      "title": "¥4,000"
+     },
+     "rect": [
+      660,
+      400,
+      540,
+      400
+     ]
+    },
+    "m3": {
+     "ic": "shot",
+     "data": {
+      "img": "episodes/BM01_AI挖洞流水线/assets/shots/bounty_10000.png",
+      "title": "¥10,000"
+     },
+     "tilt": 3,
+     "rect": [
+      1260,
+      200,
+      596,
+      440
+     ]
+    }
+   },
+   "cue": {
+    "m1": 5.5,
+    "m2": 6.4,
+    "m3": 7.3
+   },
+   "co": [
+    {
+     "from": [
+      1500,
+      330
+     ],
+     "to": [
+      800,
+      250
+     ],
+     "label": "赏金规模一年比一年大",
+     "en": "SRC BOUNTY ↑",
+     "hot": true
+    }
+   ],
+   "deco": [
+    [
+     64,
+     128,
+     "TREND · 赏金规模"
+    ]
+   ],
+   "id": "S31A",
+   "dur": 9.2,
+   "ambBase": "episodes/BM01_AI挖洞流水线/assets/gen/bm01_",
+   "t0": 259.4
+  },
+  {
+   "layout": "L-K13",
+   "fill": {
+    "l1": {
+     "t": "市面上最缺的",
+     "fs": 104,
+     "cls": "c"
+    },
+    "k1": {
+     "t": "WANTED",
+     "fs": 20,
+     "cls": "mic"
+    },
+    "l2": {
+     "t": "实战人才<small>INDEPENDENT BUG HUNTERS</small>",
+     "fs": 300,
+     "cls": "disp c"
+    }
+   },
+   "cue": {
+    "l1": 0.2,
+    "l2": 1.6
+   },
+   "bokeh": [
+    [
+     300,
+     820,
+     130
+    ],
+    [
+     1650,
+     300,
+     110
+    ]
+   ],
+   "lines": [
+    [
+     240,
+     296,
+     1680,
+     296,
+     1
+    ]
+   ],
+   "deco": [
+    [
+     64,
+     128,
+     "DEMAND · 人才缺口"
+    ]
+   ],
+   "id": "S31B",
+   "dur": 4.9,
+   "ambBase": "episodes/BM01_AI挖洞流水线/assets/gen/bm01_",
+   "t0": 268.6
+  },
+  {
+   "layout": "L-N03",
+   "fill": {
+    "t1": {
+     "ic": "title",
+     "data": {
+      "title": "把漏洞玩法\n{{吃透}}",
+      "fs": 104,
+      "bar": true
+     }
+    },
+    "c1": {
+     "ic": "chip",
+     "data": {
+      "name": "愿意花时间",
+      "en": "PUT IN THE HOURS",
+      "icon": "clock"
+     },
+     "tone": "lit"
+    },
+    "m1": {
+     "img": "episodes/BM01_AI挖洞流水线/assets/photos/progday.jpg",
+     "cls": "photo"
+    }
+   },
+   "cue": {
+    "t1": 0.3,
+    "c1": 1.0,
+    "m1": 0.1
+   },
+   "deco": [
+    [
+     64,
+     200,
+     "PRACTICE · 动手"
+    ]
+   ],
+   "id": "S32A",
+   "dur": 5.4,
+   "ambBase": "episodes/BM01_AI挖洞流水线/assets/gen/bm01_",
+   "t0": 273.5
+  },
+  {
+   "layout": "L-K09",
+   "fill": {
+    "t1": {
+     "ic": "title",
+     "data": {
+      "title": "放心大胆\n去做",
+      "fs": 104
+     }
+    },
+    "k1": {
+     "t": "04 BOUNTIES · 赶上高峰期",
+     "fs": 20,
+     "cls": "mic"
+    },
+    "g1": {
+     "ic": "wall",
+     "data": {
+      "shots": [
+       {
+        "img": "episodes/BM01_AI挖洞流水线/assets/shots/bounty_800.png",
+        "title": "¥800"
+       },
+       {
+        "img": "episodes/BM01_AI挖洞流水线/assets/shots/bounty_1000.png",
+        "title": "¥1,000"
+       },
+       {
+        "img": "episodes/BM01_AI挖洞流水线/assets/shots/bounty_5000_notice.png",
+        "title": "漏洞通知 · ¥5,000"
+       },
+       {
+        "img": "episodes/BM01_AI挖洞流水线/assets/shots/bounty_3000.png",
+        "title": "¥3,000"
+       }
+      ]
+     }
+    },
+    "m1": null,
+    "m2": null,
+    "m3": null,
+    "m4": null,
+    "m5": {
+     "img": "episodes/BM01_AI挖洞流水线/assets/gen/bm01_whitehat_glow.png",
+     "rect": [
+      1460,
+      600,
+      420,
+      320
+     ]
+    }
+   },
+   "cue": {
+    "m5": 1.0
+   },
+   "deco": [
+    [
+     64,
+     200,
+     "NEXT WAVE · 下一波"
+    ]
+   ],
+   "amb": [
+    [
+     "ssd",
+     64,
+     880,
+     260,
+     110,
+     "near"
+    ]
+   ],
+   "id": "S32B",
+   "dur": 3.84,
+   "ambBase": "episodes/BM01_AI挖洞流水线/assets/gen/bm01_",
+   "t0": 278.9
+  }
+ ]
+}
