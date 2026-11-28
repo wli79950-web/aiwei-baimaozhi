@@ -1,5 +1,5 @@
 {
- "version": "1.1",
+ "version": "1.2.0",
  "updated": "2026-11-28",
  "note": "镜头配方表（P6）：一张知识卡片 = 排版 + 信息卡 / 图解 + 图片 + 动效。每条配方写明用来讲什么、场景、焦点、图片类别、用到的组件、动效节奏和一个示例镜头（example，可直接交给 engine/shot.js / tools/cards_preview.js / ae/build_ae.py）。示例内容是示意，图片是风格样张（不进正片）。",
  "shot_spec": "example 的字段见 engine/shot.js 开头：layout、scene、fill（槽位 → 填充）、cue（入场秒）、deco、lines、co、amb、bokeh、sc（录屏）、sub",
@@ -972,7 +972,9 @@
    "name": "反转大字",
    "function": "反差：你以为 A，其实是 B",
    "scene": "A",
-   "focus": [],
+   "focus": [
+    "lines 橙分割线"
+   ],
    "images": [
     "3 氛围装饰"
    ],
@@ -1016,7 +1018,7 @@
       296,
       1680,
       296,
-      0
+      1
      ]
     ],
     "deco": [
@@ -2773,7 +2775,8 @@
    "function": "标签原位不动，换底后中心展开",
    "scene": "B",
    "focus": [
-    "l6"
+    "l5",
+    "[[ ]] 色块"
    ],
    "images": [
     "1 实物贴纸"
@@ -2790,7 +2793,7 @@
      "c1": {
       "ic": "verdict",
       "data": {
-       "text": "每一步\n都留证据",
+       "text": "[[每一步]]\n都留证据",
        "en": "KEEP EVIDENCE",
        "img": "cards/images/samples/bmz_shield.png"
       }
@@ -2810,7 +2813,7 @@
        "text": "改参数",
        "icon": "pencil"
       },
-      "tone": "card"
+      "tone": "aux"
      },
      "l3": {
       "ic": "tag",
@@ -3031,12 +3034,16 @@
    "name": "问号章节",
    "function": "第 N 步章节开场（几章共用一个容器）",
    "scene": "A",
-   "focus": [],
+   "focus": [
+    "{{ }} 重点字",
+    "bar 橙短线"
+   ],
    "images": [
     "1 实物贴纸",
     "3 氛围装饰"
    ],
    "components": [
+    "tag",
     "title"
    ],
    "motion": "标题逐行 maskUp → 贴纸 drop（落定回弹 2%） → 文字 rise → 焦点（朱橙）在强调拍 blockSweep；类别 3 和背景动态常驻",
@@ -3045,31 +3052,65 @@
     "layout": "L-N15",
     "fill": {
      "l1": {
-      "t": "共 4 步 · 第 3 步",
-      "fs": 52,
-      "cls": "dim"
+      "ic": "tag",
+      "data": {
+       "text": "第 3 步 · 共 4 步",
+       "icon": "flag"
+      },
+      "tone": "aux",
+      "rect": [
+       64,
+       148,
+       580,
+       96
+      ]
      },
      "l2": {
       "t": "✓ 抓包",
-      "fs": 56,
-      "cls": "dim"
+      "fs": 52,
+      "cls": "dim",
+      "rect": [
+       64,
+       272,
+       784,
+       72
+      ]
      },
      "t1": {
       "ic": "title",
       "data": {
-       "title": "改包",
-       "fs": 240
-      }
+       "title": "{{改包}}测试",
+       "fs": 192,
+       "bar": true
+      },
+      "rect": [
+       64,
+       360,
+       800,
+       288
+      ]
      },
      "k1": {
       "t": "STEP 03 · TAMPER",
-      "fs": 20,
-      "cls": "mic"
+      "fs": 22,
+      "cls": "mic",
+      "rect": [
+       64,
+       672,
+       784,
+       36
+      ]
      },
      "l3": {
-      "t": "下一步：？？？",
-      "fs": 56,
-      "cls": "dim"
+      "t": "下一步 → 重放验证",
+      "fs": 54,
+      "cls": "",
+      "rect": [
+       64,
+       744,
+       784,
+       88
+      ]
      },
      "m1": {
       "img": "cards/images/samples/bmz_key.png"
@@ -4520,6 +4561,174 @@
       1700,
       880,
       100
+     ]
+    ]
+   }
+  },
+  {
+   "id": "R-STEP3",
+   "layout": "L-K14",
+   "name": "三步大卡片流转（配贴纸）",
+   "function": "三步总览 / 复盘：大号步骤卡必须内嵌实物贴纸，避免大卡片只有小图标显空",
+   "scene": "A",
+   "focus": [
+    "l3",
+    "lines 橙线"
+   ],
+   "images": [
+    "1 实物贴纸"
+   ],
+   "components": [
+    "step"
+   ],
+   "motion": "三张大步骤卡依次 rise（错开 0.15s）→ 右上贴纸 drop → 串联引线画出 → 末卡 hot 朱橙焦点",
+   "preview": "docs/previews/cards/R-STEP3.jpg",
+   "example": {
+    "layout": "L-K14",
+    "fill": {
+     "s1": null,
+     "l1": {
+      "ic": "step",
+      "data": {
+       "idx": "01",
+       "step": 3,
+       "name": "授权边界",
+       "en": "STEP 01 · SCOPE",
+       "desc": "角色 · 权限 · 范围",
+       "img": "cards/images/samples/bmz_key.png"
+      },
+      "tone": "card",
+      "rect": [
+       64,
+       264,
+       560,
+       520
+      ]
+     },
+     "l2": {
+      "ic": "step",
+      "data": {
+       "idx": "02",
+       "step": 3,
+       "name": "分阶段跑",
+       "en": "STEP 02 · PIPELINE",
+       "desc": "收集 · 匹配 · 验证",
+       "img": "cards/images/samples/bmz_aichip.png"
+      },
+      "tone": "card",
+      "rect": [
+       680,
+       264,
+       560,
+       520
+      ]
+     },
+     "l3": {
+      "ic": "step",
+      "data": {
+       "idx": "03",
+       "step": 3,
+       "name": "兜底规则",
+       "en": "STEP 03 · GUARDRAIL",
+       "desc": "容错 · 止损 · 报告",
+       "img": "cards/images/samples/bmz_lock_closed.png"
+      },
+      "tone": "hot",
+      "rect": [
+       1296,
+       264,
+       560,
+       520
+      ]
+     }
+    },
+    "lines": [
+     [
+      624,
+      524,
+      680,
+      524,
+      0
+     ],
+     [
+      1240,
+      524,
+      1296,
+      524,
+      1
+     ]
+    ],
+    "deco": [
+     [
+      64,
+      144,
+      "01 → 02 → 03 · 3 步流水线"
+     ],
+     [
+      64,
+      864,
+      "LARGE STEP CARDS MUST INCLUDE STICKER IMAGES"
+     ]
+    ]
+   }
+  },
+  {
+   "id": "R-DECL",
+   "layout": "L-K06",
+   "name": "权威声明横幅 + 引用卡",
+   "function": "合规声明、底线强调（无原文截图时用克莱因蓝横幅卡填满上半屏）",
+   "scene": "B",
+   "focus": [
+    "[[ ]] 色块"
+   ],
+   "images": [
+    "1 实物贴纸"
+   ],
+   "components": [
+    "keyword",
+    "quote"
+   ],
+   "motion": "顶部克莱因蓝横幅 rise → 下方引用卡 rise → 重点色块 blockSweep → 贴纸 drop",
+   "preview": "docs/previews/cards/R-DECL.jpg",
+   "example": {
+    "layout": "L-K06",
+    "fill": {
+     "m1": {
+      "ic": "keyword",
+      "data": {
+       "word": "郑重声明",
+       "en": "LEGAL DISCLAIMER · WHITE-HAT ONLY",
+       "exp": "合规边界第一，不碰未授权目标",
+       "icon": "shield-check"
+      },
+      "tone": "aux",
+      "rect": [
+       160,
+       148,
+       1600,
+       312
+      ]
+     },
+     "c1": {
+      "ic": "quote",
+      "data": {
+       "text": "仅用于合法的白帽安全研究，\n禁止用于任何[[未授权]]站点测试",
+       "src": "AUTHORIZED SECURITY RESEARCH ONLY",
+       "img": "cards/images/samples/bmz_lock_closed.png"
+      },
+      "rect": [
+       160,
+       496,
+       1600,
+       416
+      ]
+     }
+    },
+    "deco": [
+     [
+      160,
+      112,
+      "DISCLAIMER · 合法合规底线"
      ]
     ]
    }

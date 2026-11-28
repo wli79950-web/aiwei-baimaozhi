@@ -1,6 +1,6 @@
 # 镜头配方表
 
-> 由 `recipes.json`（v1.1，2026-11-28）生成，不要手改：`python3 tools/recipes_md.py`。
+> 由 `recipes.json`（v1.2.0，2026-11-28）生成，不要手改：`python3 tools/recipes_md.py`。
 >
 > 镜头配方表（P6）：一张知识卡片 = 排版 + 信息卡 / 图解 + 图片 + 动效。每条配方写明用来讲什么、场景、焦点、图片类别、用到的组件、动效节奏和一个示例镜头（example，可直接交给 engine/shot.js / tools/cards_preview.js / ae/build_ae.py）。示例内容是示意，图片是风格样张（不进正片）。
 
@@ -20,7 +20,7 @@
 | `L-K10` | 对比双芯片 | 二选一对比 | A | c2 | 1 实物贴纸、3 氛围装饰 | chip | [看图](../../docs/previews/cards/L-K10.jpg) |
 | `L-K11` | 侧向跟读大字 | 一句话分左右两半说完 | A | {{ }} 重点字 | 2 意象插画、3 氛围装饰 | — | [看图](../../docs/previews/cards/L-K11.jpg) |
 | `L-K12` | 引语短标签 | 复述一句原话（2–4 条） | A | — | 2 意象插画、3 氛围装饰 | tag | [看图](../../docs/previews/cards/L-K12.jpg) |
-| `L-K13` | 反转大字 | 反差：你以为 A，其实是 B | A | — | 3 氛围装饰 | — | [看图](../../docs/previews/cards/L-K13.jpg) |
+| `L-K13` | 反转大字 | 反差：你以为 A，其实是 B | A | lines 橙分割线 | 3 氛围装饰 | — | [看图](../../docs/previews/cards/L-K13.jpg) |
 | `L-K14` | 暗底三连字 | 递进三步 | A | {{ }} 重点字 | 证据截图 | — | [看图](../../docs/previews/cards/L-K14.jpg) |
 | `L-K21` | 侧板关系链 | 谁 → 做了什么 → 结果（主体不离开画面） | A | — | 1 实物贴纸、3 氛围装饰 | list | [看图](../../docs/previews/cards/L-K21.jpg) |
 | `L-K22` | 前后对照板 | 修复前 / 后、改动前 / 后（同一个输入） | B | [[ ]] 色块 | — | term、title | [看图](../../docs/previews/cards/L-K22.jpg) |
@@ -44,10 +44,10 @@
 | `L-N10` | 英雄物件 | 门槛、配置、一个关键物件 | A | — | 1 实物贴纸、3 氛围装饰 | tag、title | [看图](../../docs/previews/cards/L-N10.jpg) |
 | `L-N11` | 同侧叠牌 | 先给对象，下一拍再给判断 | A | c2 | 1 实物贴纸、3 氛围装饰 | keyword、tag、verdict | [看图](../../docs/previews/cards/L-N11.jpg) |
 | `L-N12A` | 槽位标签 · 口播态 | 先在主体周围固定几个标签，再切全屏讲 | A | l6 | 1 实物贴纸、3 氛围装饰 | tag | [看图](../../docs/previews/cards/L-N12A.jpg) |
-| `L-N12B` | 槽位标签 · 换底态 | 标签原位不动，换底后中心展开 | B | l6 | 1 实物贴纸 | tag、verdict | [看图](../../docs/previews/cards/L-N12B.jpg) |
+| `L-N12B` | 槽位标签 · 换底态 | 标签原位不动，换底后中心展开 | B | l5、[[ ]] 色块 | 1 实物贴纸 | tag、verdict | [看图](../../docs/previews/cards/L-N12B.jpg) |
 | `L-N13` | 提问条 + 维度 | 一个问题拆成几个维度（3–6 个） | A | {{ }} 重点字 | 2 意象插画 | tag | [看图](../../docs/previews/cards/L-N13.jpg) |
 | `L-N14` | 让半屏证据板 | 边看主体边看证据（复盘） | A | c2 | 2 意象插画 | keyword、title | [看图](../../docs/previews/cards/L-N14.jpg) |
-| `L-N15` | 问号章节 | 第 N 步章节开场（几章共用一个容器） | A | — | 1 实物贴纸、3 氛围装饰 | title | [看图](../../docs/previews/cards/L-N15.jpg) |
+| `L-N15` | 问号章节 | 第 N 步章节开场（几章共用一个容器） | A | {{ }} 重点字、bar 橙短线 | 1 实物贴纸、3 氛围装饰 | tag、title | [看图](../../docs/previews/cards/L-N15.jpg) |
 | `L-N16` | 主句 + 四角 | 一句结论 + 旁人的反应 | A | {{ }} 重点字 | 证据截图 | tag | [看图](../../docs/previews/cards/L-N16.jpg) |
 | `L-N17` | 主干 → 分支 | 先讲主线，再展开出事的分支 | B | l3 | — | keyword、step、tag、title | [看图](../../docs/previews/cards/L-N17.jpg) |
 | `L-N18` | 来源 → 分类 → 聚焦 | 引用标准 / 公告，并在分类里定位本期 | A | c2 | 1 实物贴纸 | tag、title | [看图](../../docs/previews/cards/L-N18.jpg) |
@@ -64,6 +64,8 @@
 | `R-JD` | 岗位 JD 拆解 | 网安就业：一份 JD 拆成几条硬要求，标出最关键的一条 | A | [[ ]] 色块 | 2 意象插画、3 氛围装饰 | jd、tag、title | [看图](../../docs/previews/cards/R-JD.jpg) |
 | `R-TOOLS` | 工具对比 | AI 工具 / 安全工具横评：两样东西各适合干什么 | A | c2 | 1 实物贴纸、3 氛围装饰 | chip | [看图](../../docs/previews/cards/R-TOOLS.jpg) |
 | `R-INTERVIEW` | 面试题 | 就业：一道高频面试题 + 一句答题要点 | A | {{ }} 重点字 | 2 意象插画、3 氛围装饰 | quote、title | [看图](../../docs/previews/cards/R-INTERVIEW.jpg) |
+| `R-STEP3` | 三步大卡片流转（配贴纸） | 三步总览 / 复盘：大号步骤卡必须内嵌实物贴纸，避免大卡片只有小图标显空 | A | l3、lines 橙线 | 1 实物贴纸 | step | [看图](../../docs/previews/cards/R-STEP3.jpg) |
+| `R-DECL` | 权威声明横幅 + 引用卡 | 合规声明、底线强调（无原文截图时用克莱因蓝横幅卡填满上半屏） | B | [[ ]] 色块 | 1 实物贴纸 | keyword、quote | [看图](../../docs/previews/cards/R-DECL.jpg) |
 
 ## 动效节奏
 
@@ -123,6 +125,8 @@
 - **`R-JD` 岗位 JD 拆解**：标题逐行 maskUp → 卡片 / 图解按槽位顺序 rise（错开 0.12s） → 贴纸 drop（落定回弹 2%） → 文字 rise → 焦点（朱橙）在强调拍 blockSweep；类别 3 和背景动态常驻
 - **`R-TOOLS` 工具对比**：卡片 / 图解按槽位顺序 rise（错开 0.12s） → 贴纸 drop（落定回弹 2%） → 文字 rise → 焦点（朱橙）在强调拍 blockSweep；类别 3 和背景动态常驻
 - **`R-INTERVIEW` 面试题**：标题逐行 maskUp → 卡片 / 图解按槽位顺序 rise（错开 0.12s） → 贴纸 drop（落定回弹 2%） → 焦点（朱橙）在强调拍 blockSweep；类别 3 和背景动态常驻
+- **`R-STEP3` 三步大卡片流转（配贴纸）**：三张大步骤卡依次 rise（错开 0.15s）→ 右上贴纸 drop → 串联引线画出 → 末卡 hot 朱橙焦点
+- **`R-DECL` 权威声明横幅 + 引用卡**：顶部克莱因蓝横幅 rise → 下方引用卡 rise → 重点色块 blockSweep → 贴纸 drop
 
 ## 怎么用
 

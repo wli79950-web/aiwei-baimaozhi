@@ -18,7 +18,7 @@ const BGNAME = { plate: '背景板', dots: '背景动态_点阵', marks: '背景
 const FOCUS_RES = 1500;   // 焦点组件栅格化边长（scale 最大 1.5 × 画布 1000）
 
 (async () => {
-  const b = await chromium.launch(), errs = [], shots = [], bgDone = {};
+  const b = await chromium.launch(process.env.PLAYWRIGHT_EXECUTABLE_PATH ? { executablePath: process.env.PLAYWRIGHT_EXECUTABLE_PATH } : {}), errs = [], shots = [], bgDone = {};
   let start = 0;
   for (const [si, s0] of EP.shots.entries()) {
     const spec = Object.assign({}, s0), name = (EP.prefix || EP.id) + '_' + (spec.id || 'S' + String(si + 1).padStart(2, '0'));

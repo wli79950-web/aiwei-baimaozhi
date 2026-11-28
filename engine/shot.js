@@ -11,6 +11,7 @@
  *   fill: { 槽位 id: 填充 },     // {ic, data, tone, tilt, rect} 信息卡 / 图解 · {img, cls, pos, tilt} 图片 · {t, fs, cls} 文字 · {box} 纸面底卡 · null 空着
  *   cue: { 槽位 id: 入场秒 },   // 可省：按排版槽位顺序自动错开（0.2s 起，每个 +0.12s）
  *   deco: [[x, y, 装饰小字]], lines: [[x1, y1, x2, y2, hot]], co: [{from, to, label, en, hot}], amb: [[名, x, y, w, h, near|far]], bokeh: [[x, y, r]],
+ *   ambBase: 'episodes/BM01_x/assets/gen/bm01_'（可省：氛围道具图片前缀，图片 = ambBase + 'amb_' + 名 + '.png'；默认风格样张目录，正片必须指到本期素材）,
  *   sc: { slot: 's1', spec: 录屏组件 spec, base }（可省，录屏镜头）, focus: [x, y, scale]（可省，默认取第一个贴纸主体）, sub: '字幕（<em>关键词</em>）'
  * }
  * 每个画面元素登记成一个 unit（{el, kind, id, at}），AE 导出按 unit 拆层、按 at 加入场关键帧。
@@ -53,7 +54,7 @@
     }
     (spec.amb || []).forEach(function (a, i) {
       var e = add(frame, 'img', 'amb ' + a[5], 'left:' + a[1] + 'px;top:' + a[2] + 'px;width:' + a[3] + 'px;height:' + a[4] + 'px');
-      e.src = (opts.imgBase || 'cards/images/samples/ambient/') + 'amb_' + a[0] + '.png'; reg(e, 'amb', 'amb' + (i + 1), 0, { name: a[0] });
+      e.src = (spec.ambBase || opts.imgBase || 'cards/images/samples/ambient/') + 'amb_' + a[0] + '.png'; reg(e, 'amb', 'amb' + (i + 1), 0, { name: a[0] });
     });
     if (spec.lines && spec.lines.length) {
       var sv = document.createElementNS(NS, 'svg'); sv.setAttribute('class', 'lines'); sv.setAttribute('width', 1920); sv.setAttribute('height', 1080);

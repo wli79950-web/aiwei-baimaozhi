@@ -14,7 +14,7 @@ fs.mkdirSync(OUT, { recursive: true }); fs.mkdirSync(TMP, { recursive: true });
 const only = process.argv.slice(2);
 
 (async () => {
-  const b = await chromium.launch(), report = [];
+  const b = await chromium.launch(process.env.PLAYWRIGHT_EXECUTABLE_PATH ? { executablePath: process.env.PLAYWRIGHT_EXECUTABLE_PATH, args: ['--disable-gpu'] } : {}), report = [];
   const ARGS = [Object.fromEntries(Object.entries(BRAND.color).map(([k, v]) => [k, v.hex])), BRAND.contrast.forbidden, BRAND.type.meaningful_min, BRAND.type.decor_min, BRAND.contrast.text_min, BRAND.type.decor.per_card_max];
   const p = await b.newPage({ viewport: { width: 1920, height: 1080 } });
   const list = RECIPES.filter(r => !only.length || only.includes(r.id));

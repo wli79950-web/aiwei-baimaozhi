@@ -11,6 +11,9 @@ episode.json：{id, title, prefix, voice?, sfx?: [{name, file, t}], shots: [{id,
 """
 import json, os, re, shutil, subprocess, sys, zipfile
 from PIL import Image
+if hasattr(sys.stdout, 'reconfigure'):
+    sys.stdout.reconfigure(encoding='utf-8', errors='replace')
+    sys.stderr.reconfigure(encoding='utf-8', errors='replace')
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 arg = os.path.abspath(sys.argv[1])
@@ -25,7 +28,7 @@ OPA_FX = {'rise', 'drop', 'unfold'}
 errs, warns = [], []
 
 def run(cmd, **kw):
-    r = subprocess.run(cmd, cwd=ROOT, text=True, capture_output=True, **kw)
+    r = subprocess.run(cmd, cwd=ROOT, text=True, encoding='utf-8', errors='replace', capture_output=True, **kw)
     if r.returncode: print(r.stdout[-3000:], r.stderr[-3000:]); sys.exit('✗ 失败：' + ' '.join(cmd[:3]))
     return r.stdout
 
@@ -142,7 +145,7 @@ readme = (tpl.replace('{TITLE}', X['title']).replace('{MAIN}', SPEC['mainName'])
 open(os.path.join(PKG, 'README.txt'), 'w', encoding='utf-8').write(readme)
 
 # 6) 模拟 AE 测试（用户 AE 24.6.2 的真实属性树）
-r = subprocess.run(['node', os.path.join(ROOT, 'ae', 'mock_ae_test.js'), os.path.join(PKG, jsx_name), os.path.join(ROOT, 'ae', 'probe', 'AE_probe_24.6.2.txt')], capture_output=True, text=True, cwd=ROOT)
+r = subprocess.run(['node', os.path.join(ROOT, 'ae', 'mock_ae_test.js'), os.path.join(PKG, jsx_name), os.path.join(ROOT, 'ae', 'probe', 'AE_probe_24.6.2.txt')], capture_output=True, text=True, encoding='utf-8', errors='replace', cwd=ROOT)
 open(os.path.join(PKG, '模拟测试报告.txt'), 'w', encoding='utf-8').write(r.stdout + r.stderr)
 print(r.stdout[-2500:] + r.stderr[-1500:])
 
