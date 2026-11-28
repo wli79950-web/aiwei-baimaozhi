@@ -1,5 +1,12 @@
 # 更新记录
 
+## 1.17.0 · 2026-11-28 · 知识卡片库 1.2.0（58 条配方）与 BM01 实战沉淀
+- **新增 2 条配方**（`cards/recipes/recipes.json` v1.2.0、`recipes.md`、`docs/previews/cards/sheet_1–6.jpg`）：
+  - `R-STEP3`（三步大卡片流转 · 配贴纸）：大号 `step` 步骤卡强制内嵌透明实物贴纸（`img`），杜绝大卡片只放小图标显得空洞；
+  - `R-DECL`（权威声明横幅 + 引用卡）：无原文截图时上半屏补克莱因蓝声明横幅（`tone: "aux"`），消除上半屏大片留白。
+- **升级 3 条已有配方**：`L-N15`（章节页增克莱因蓝步骤胶囊 + 朱橙关键词 + `bar: true` 橙短线）、`L-K13`（反转大字配朱橙分割线，保留干净奶油白大字）、`L-N12B`（左右 6 格对称 + 蓝橙撞色焦点）。
+- **工具链与校验**：`cards_preview.js` 全部 58/58 零错误重出并覆盖 `sheet_1–6.jpg` 与 `report.txt`；`ae/build_ae.py`、`ae/export_shots.js`、`tools/cards_preview.js` 兼容 Windows UTF-8 与 `PLAYWRIGHT_EXECUTABLE_PATH`；`engine/shot.js` 支持 `ambBase`。
+
 ## 1.16.0 · 2026-11-28 · 视觉系统 1.9：大号信息卡内嵌图片、B 场图纸质感与微材质升级
 - **大号信息卡内嵌图片**（`cards/infocards/infocards.js`）：除原有 `keyword` / `step` / `tier` 外，扩展 `define`、`quote`、`list`、`stat`、`verdict`、`chip`、`jd`、`skill`、`risk` 全部原生支持 `img` 贴纸内嵌与文字区自动让位（自带 `drop` 入场动效）；圆形 `stat` / `verdict` 改为居中列排保护，消除圆形裁切与孤字；`verdict` 新增 `markTone: "aux"` 支持克莱因蓝冷静确认记号。
 - **B 奶油白场「图纸工作台」升级**（`tools/make_backgrounds.js`）：`BG2_cream_plate.png` 改为暖白顶光径向渐变 + 边缘柔和暗角；`BG2_radar_lines.svg` 叠加与 `BG3` 呼应的 48px 炭黑极淡点阵与 5 处十字基准标，拉平 A/B 两场质感落差且保持 AE 分层结构不变。

@@ -88,7 +88,7 @@
 | 图片 | `cards/images/` | 风格提示词 `styles.json` + 后期处理 + 风格样张；图片每期现生成 | ✅ 风格提示词，持续扩充 |
 | 排版 | `cards/layouts/` | 构图 + 槽位，由挖洞号 49 张卡的构图迁来（50 个，总览 `docs/previews/layouts/sheet.jpg`） | ✅ P3，持续扩充 |
 | 信息卡 | `cards/infocards/` | 承载信息的组件 × A/B 场景 × S–XL（`IC.render` + `IC.fit` + `IC.animate`） | ✅ P4：20 个，持续扩充 |
-| 配方 | `cards/recipes/` | 叙事功能 → 排版 + 信息卡 + 图片 + 动效（`recipes.json`，示例镜头由 `engine/shot.js` 挂出，网页 / MP4 / AE 同一份） | ✅ P6：56 条，持续扩充 |
+| 配方 | `cards/recipes/` | 叙事功能 → 排版 + 信息卡 + 图片 + 动效（`recipes.json`，示例镜头由 `engine/shot.js` 挂出，网页 / MP4 / AE 同一份） | ✅ P6：58 条，持续扩充 |
 
 ### 6.1 图片：三类素材（1.7，用户确认）
 **不设品牌素材层，每期的图片都不一样。** 库里只放风格提示词和后期处理方法，每期按口播现生成，或用用户交来的图。**不得使用挖洞号的 SC-01、黑白雕塑或任何挖洞号素材。** **素材尽量透明底**：手持手机就是「手 + 手机」，不带桌面和环境。
@@ -118,7 +118,7 @@
 - **倾斜叠放**：信息卡 / 截图 `tilt`（度）；证据墙自带倾斜。
 - **景深**：焦点光晕 + 刻度环（BG3）、类别 3 氛围道具、程序化光斑。
 - **1.9 质感与大号信息卡内嵌图片**：大号信息卡（`keyword` / `define` / `quote` / `list` / `stat` / `verdict` / `chip` / `jd` / `skill` / `risk` / `step` / `tier`）均原生支持 `img` 实物贴纸内嵌与自动让位排版；全站卡片与图解节点在不改色板底色的前提下叠加顶边 1.5px 微高光与双层接触/氛围投影；未解锁技能卡改用蓝图点阵与虚线框；在对比、防御、人工核实等场景以小面积克莱因蓝做冷静对照。
-- 一屏一个朱橙焦点、有意义的字 ≥ 52px 这两条不变。56 条完整配方的预览：`docs/previews/cards/sheet_1–6.jpg`（`node tools/cards_preview.js`）。
+- 一屏一个朱橙焦点、有意义的字 ≥ 52px 这两条不变。58 条完整配方的预览：`docs/previews/cards/sheet_1–6.jpg`（`node tools/cards_preview.js`）。
 
 ## 7. 其他库
 | 库 | 位置 | 状态 |
