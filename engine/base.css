@@ -56,7 +56,8 @@ html,body{width:1920px;height:1080px;overflow:hidden;background:var(--char)}
 
 /* 图片三类（1.7）：类别 1 实物贴纸 .stk（写实，主体）· 类别 2 意象插画 .stk.diecut（SC02 模切贴纸，主体）· 类别 3 氛围装饰 .amb（不讲内容，只加质感）
    .amb：写实虚化道具，每屏 ≤ 3 个，不带朱橙，不抢焦点，不进章节进度条区；模糊 / 压暗在渲染时加（AE：高斯模糊 + 曝光），素材本身是清晰的透明 PNG */
-.stk.diecut{filter:drop-shadow(0 20px 32px rgba(0,0,0,.5))}
+.stk.diecut{filter:drop-shadow(0 12px 18px rgba(0,0,0,.42)) drop-shadow(0 30px 44px rgba(0,0,0,.38))}
+.scene-B .stk.diecut{filter:drop-shadow(0 10px 16px rgba(90,40,10,.16)) drop-shadow(0 24px 34px rgba(90,40,10,.14))}
 .amb{position:absolute;object-fit:contain;pointer-events:none}
 .amb.near{filter:blur(14px) brightness(.6)}                 /* 前景：大、虚、暗，可出血（顶部除外） */
 .amb.far{filter:blur(4px) brightness(.48);opacity:.85}      /* 远景：小、略虚、更暗 */

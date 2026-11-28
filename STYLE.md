@@ -1,4 +1,4 @@
-# 艾唯白帽志 · 视觉系统 1.8
+# 艾唯白帽志 · 视觉系统 1.9
 
 所有数值以 `tokens/brand.json` 为准（本文件是说明）。网页用 `engine/tokens.css`（由 `tools/gen_tokens.py` 生成）+ `engine/base.css`。
 预览：`docs/previews/`（`sheet_palette.jpg` 配色、`sheet_backgrounds.jpg` 背景板、`sheet_stickers.jpg` 陶瓷贴纸样张（1.4 起停用，仅作历史参考）、`demo_F1–F4.jpg` 演示关键帧、`phone_demo.jpg` 手机竖屏模拟）。各图片风格的样张预览在 `docs/previews/styles/`；`toy` / `tone` 样张和演示帧 F5 / F6 在提交 `adbbc35`（`main` 历史中）。
@@ -75,7 +75,7 @@
 |---|---|---|---|
 | **BG3 炭黑·工作台**（1.5 起 A 场默认） | `plates/BG3_bench_plate.png`（炭黑椭圆渐变，中心偏上） | `layers/BG3_dots.svg`（48px 点阵，奶油白 17%，椭圆淡出）· `layers/BG3_marks.svg`（十字标，奶油白 32%）· **焦点组件**（按镜头放在主体后面，可移动 / 缩放 / 隐藏）：`BG3_focus_glow.svg`（朱橙光晕）· `BG3_focus_rings.svg`（刻度环）· `BG3_focus_ticks.svg`（刻度，每秒转 4°） | A |
 | BG1 炭黑·雷达（备用） | `plates/BG1_char_plate.png`（炭黑径向渐变） | `layers/BG1_radar_lines.svg`（奶油白 13%）· `layers/BG1_radar_sweep.svg`（朱橙扇区 38%，绕 (1440,540) 旋转做扫掠） | A |
-| BG2 奶油白·纸面 | `plates/BG2_cream_plate.png` | `layers/BG2_radar_lines.svg`（炭黑 6%，可关） | B |
+| BG2 奶油白·图纸工作台（1.9 升级） | `plates/BG2_cream_plate.png`（暖白顶光径向渐变 + 边缘柔和暗角） | `layers/BG2_radar_lines.svg`（雷达线 + 与 BG3 呼应的极淡炭黑 48px 点阵与十字基准标） | B |
 | FX 朱橙 / 蓝闪切 | `plates/FX_orange.png` · `plates/FX_klein.png` | — | 转场 ≤ 6 帧 |
 
 网页里一律用 `libs/backgrounds/backgrounds.js`（`BGLIB.mount` / `BGLIB.animate`）挂背景板，演示和预览也一样。BG3 的焦点组件：`BGLIB.mount(section, 'BG3', base, { focus: [x, y, scale] })`，(x, y) 是主体中心，scale 1 约配 420px 宽的主体；焦点光晕就是这一屏的朱橙焦点，不再另放朱橙色块。
@@ -117,7 +117,8 @@
 - **引线标注**：`IC.callout(镜头, { from, to, label, en, hot })`，或在配方里画引线把主体和标签连起来。
 - **倾斜叠放**：信息卡 / 截图 `tilt`（度）；证据墙自带倾斜。
 - **景深**：焦点光晕 + 刻度环（BG3）、类别 3 氛围道具、程序化光斑。
-- 一屏一个朱橙焦点、有意义的字 ≥ 52px 这两条不变。50 个排版的丰富度预览：`docs/previews/cards/sheet_1–5.jpg`（`node tools/cards_preview.js`）。
+- **1.9 质感与大号信息卡内嵌图片**：大号信息卡（`keyword` / `define` / `quote` / `list` / `stat` / `verdict` / `chip` / `jd` / `skill` / `risk` / `step` / `tier`）均原生支持 `img` 实物贴纸内嵌与自动让位排版；全站卡片与图解节点在不改色板底色的前提下叠加顶边 1.5px 微高光与双层接触/氛围投影；未解锁技能卡改用蓝图点阵与虚线框；在对比、防御、人工核实等场景以小面积克莱因蓝做冷静对照。
+- 一屏一个朱橙焦点、有意义的字 ≥ 52px 这两条不变。56 条完整配方的预览：`docs/previews/cards/sheet_1–6.jpg`（`node tools/cards_preview.js`）。
 
 ## 7. 其他库
 | 库 | 位置 | 状态 |

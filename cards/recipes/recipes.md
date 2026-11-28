@@ -1,6 +1,6 @@
 # 镜头配方表
 
-> 由 `recipes.json`（v1.0，2026-11-27）生成，不要手改：`python3 tools/recipes_md.py`。
+> 由 `recipes.json`（v1.1，2026-11-28）生成，不要手改：`python3 tools/recipes_md.py`。
 >
 > 镜头配方表（P6）：一张知识卡片 = 排版 + 信息卡 / 图解 + 图片 + 动效。每条配方写明用来讲什么、场景、焦点、图片类别、用到的组件、动效节奏和一个示例镜头（example，可直接交给 engine/shot.js / tools/cards_preview.js / ae/build_ae.py）。示例内容是示意，图片是风格样张（不进正片）。
 
@@ -9,13 +9,13 @@
 | 配方 | 名称 | 用来讲 | 场景 | 焦点 | 图片 | 组件 | 预览 |
 |---|---|---|---|---|---|---|---|
 | `L-K01` | 票据档位 | 有档位、有价格（3–5 档） | B | c2 | 1 实物贴纸 | tier、title | [看图](../../docs/previews/cards/L-K01.jpg) |
-| `L-K02` | 圆环定义 | 由哪几类组成（3–6 类） | A | c1 | — | keyword、ring、title | [看图](../../docs/previews/cards/L-K02.jpg) |
-| `L-K03` | 目标档案 | 定目标、定范围 | B | l1 | 证据截图 | list、shot、tag、title | [看图](../../docs/previews/cards/L-K03.jpg) |
+| `L-K02` | 圆环定义 | 由哪几类组成（3–6 类） | A | c1 | 1 实物贴纸 | keyword、ring、title | [看图](../../docs/previews/cards/L-K02.jpg) |
+| `L-K03` | 目标档案 | 定目标、定范围 | B | l1 | 证据截图、1 实物贴纸 | list、shot、tag、title | [看图](../../docs/previews/cards/L-K03.jpg) |
 | `L-K04` | 徽章关系 | 谁和谁之间发生了什么（3 个角色） | A | c1 | — | flow、title | [看图](../../docs/previews/cards/L-K04.jpg) |
 | `L-K05` | 手持关键词 | 一个名词是什么 | A | — | 2 意象插画、3 氛围装饰 | keyword | [看图](../../docs/previews/cards/L-K05.jpg) |
-| `L-K06` | 原文 + 译文 | 引用原文、公告 | B | [[ ]] 色块 | 证据截图 | quote、shot | [看图](../../docs/previews/cards/L-K06.jpg) |
+| `L-K06` | 原文 + 译文 | 引用原文、公告 | B | [[ ]] 色块 | 证据截图、1 实物贴纸 | quote、shot | [看图](../../docs/previews/cards/L-K06.jpg) |
 | `L-K07` | 取景框大数字 | 一个关键数字或状态 | A | — | 证据截图 | — | [看图](../../docs/previews/cards/L-K07.jpg) |
-| `L-K08` | 编号网格 | 步骤、流程（3–6 步） | A | c3 | — | step、title、vtrack | [看图](../../docs/previews/cards/L-K08.jpg) |
+| `L-K08` | 编号网格 | 步骤、流程（3–6 步） | A | c3 | 1 实物贴纸 | step、title、vtrack | [看图](../../docs/previews/cards/L-K08.jpg) |
 | `L-K09` | 证据墙 | 证据、截图（3–5 张） | A | — | 证据截图 | title、wall | [看图](../../docs/previews/cards/L-K09.jpg) |
 | `L-K10` | 对比双芯片 | 二选一对比 | A | c2 | 1 实物贴纸、3 氛围装饰 | chip | [看图](../../docs/previews/cards/L-K10.jpg) |
 | `L-K11` | 侧向跟读大字 | 一句话分左右两半说完 | A | {{ }} 重点字 | 2 意象插画、3 氛围装饰 | — | [看图](../../docs/previews/cards/L-K11.jpg) |
@@ -29,14 +29,14 @@
 | `L-K25` | 排除法收束 | 排查原因、误区纠正（先排除，再给答案） | A | c1 | 2 意象插画、3 氛围装饰 | verdict | [看图](../../docs/previews/cards/L-K25.jpg) |
 | `L-K26` | 透视卡片队列 | 列举：能做什么、有几种方法（3–7 项） | A | c3 | 1 实物贴纸 | chip、keyword | [看图](../../docs/previews/cards/L-K26.jpg) |
 | `L-K27` | 开场三拍海报 | 设问式开场：主题 → 疑问 → 原文 | A | {{ }} 重点字 | 1 实物贴纸 | quote、title | [看图](../../docs/previews/cards/L-K27.jpg) |
-| `L-K28` | 原件分层摘录 | 一份报告 / 公告里有多条重点 | B | [[ ]] 色块 | 证据截图 | quote、shot、stat | [看图](../../docs/previews/cards/L-K28.jpg) |
-| `L-K29` | 素材关键词戳 | 在录屏、截图上点名一个概念 | A | — | 证据截图 | keyword、shot | [看图](../../docs/previews/cards/L-K29.jpg) |
+| `L-K28` | 原件分层摘录 | 一份报告 / 公告里有多条重点 | B | [[ ]] 色块 | 证据截图、1 实物贴纸 | quote、shot、stat | [看图](../../docs/previews/cards/L-K28.jpg) |
+| `L-K29` | 素材关键词戳 | 在录屏、截图上点名一个概念 | A | — | 证据截图、1 实物贴纸 | keyword、shot | [看图](../../docs/previews/cards/L-K29.jpg) |
 | `L-K30` | 抓包字段放大 | 抓包、响应字段讲解 | A | [[ ]] 色块 | — | lens、tag、term | [看图](../../docs/previews/cards/L-K30.jpg) |
 | `L-N01` | 角色立牌 | 角色介绍（3 个角色） | B | — | 2 意象插画 | step、title | [看图](../../docs/previews/cards/L-N01.jpg) |
 | `L-N02` | 章节大图 | 章节开场 | A | — | 1 实物贴纸 | title | [看图](../../docs/previews/cards/L-N02.jpg) |
 | `L-N03` | 手机屏幕 | 证据、通知、截图放进手机 | A | — | 1 实物贴纸、3 氛围装饰 | chip、title | [看图](../../docs/previews/cards/L-N03.jpg) |
 | `L-N04` | 照片扇形 | 口播时补画面（3 张照片） | A | — | 1 实物贴纸、3 氛围装饰、证据截图 | shot | [看图](../../docs/previews/cards/L-N04.jpg) |
-| `L-N05` | 类型墙 | 由哪几类组成 / 一期的全貌（6 类） | A | c4 | 证据截图 | step、title | [看图](../../docs/previews/cards/L-N05.jpg) |
+| `L-N05` | 类型墙 | 由哪几类组成 / 一期的全貌（6 类） | A | c4 | 证据截图、1 实物贴纸 | step、title | [看图](../../docs/previews/cards/L-N05.jpg) |
 | `L-N06` | 剪报 | 案例速写（必须标「示意」或注明出处） | B | l2 | 证据截图 | shot、tag、title | [看图](../../docs/previews/cards/L-N06.jpg) |
 | `L-N07` | 插画海报 | 比喻：用一张插画讲一个名词 | A | — | 2 意象插画、3 氛围装饰 | — | [看图](../../docs/previews/cards/L-N07.jpg) |
 | `L-N08` | 爆炸分层 | 结构、原理、藏在哪层 | B | m1 | — | layers、title | [看图](../../docs/previews/cards/L-N08.jpg) |
@@ -44,24 +44,24 @@
 | `L-N10` | 英雄物件 | 门槛、配置、一个关键物件 | A | — | 1 实物贴纸、3 氛围装饰 | tag、title | [看图](../../docs/previews/cards/L-N10.jpg) |
 | `L-N11` | 同侧叠牌 | 先给对象，下一拍再给判断 | A | c2 | 1 实物贴纸、3 氛围装饰 | keyword、tag、verdict | [看图](../../docs/previews/cards/L-N11.jpg) |
 | `L-N12A` | 槽位标签 · 口播态 | 先在主体周围固定几个标签，再切全屏讲 | A | l6 | 1 实物贴纸、3 氛围装饰 | tag | [看图](../../docs/previews/cards/L-N12A.jpg) |
-| `L-N12B` | 槽位标签 · 换底态 | 标签原位不动，换底后中心展开 | B | l6 | — | tag、verdict | [看图](../../docs/previews/cards/L-N12B.jpg) |
+| `L-N12B` | 槽位标签 · 换底态 | 标签原位不动，换底后中心展开 | B | l6 | 1 实物贴纸 | tag、verdict | [看图](../../docs/previews/cards/L-N12B.jpg) |
 | `L-N13` | 提问条 + 维度 | 一个问题拆成几个维度（3–6 个） | A | {{ }} 重点字 | 2 意象插画 | tag | [看图](../../docs/previews/cards/L-N13.jpg) |
 | `L-N14` | 让半屏证据板 | 边看主体边看证据（复盘） | A | c2 | 2 意象插画 | keyword、title | [看图](../../docs/previews/cards/L-N14.jpg) |
 | `L-N15` | 问号章节 | 第 N 步章节开场（几章共用一个容器） | A | — | 1 实物贴纸、3 氛围装饰 | title | [看图](../../docs/previews/cards/L-N15.jpg) |
 | `L-N16` | 主句 + 四角 | 一句结论 + 旁人的反应 | A | {{ }} 重点字 | 证据截图 | tag | [看图](../../docs/previews/cards/L-N16.jpg) |
 | `L-N17` | 主干 → 分支 | 先讲主线，再展开出事的分支 | B | l3 | — | keyword、step、tag、title | [看图](../../docs/previews/cards/L-N17.jpg) |
 | `L-N18` | 来源 → 分类 → 聚焦 | 引用标准 / 公告，并在分类里定位本期 | A | c2 | 1 实物贴纸 | tag、title | [看图](../../docs/previews/cards/L-N18.jpg) |
-| `L-N19` | 中轴物件串联 | 两个容易混的概念之间的关系 | B | [[ ]] 色块 | 1 实物贴纸 | — | [看图](../../docs/previews/cards/L-N19.jpg) |
+| `L-N19` | 中轴物件串联 | 两个容易混的概念之间的关系 | B | [[ ]] 色块 | 1 实物贴纸 | tag | [看图](../../docs/previews/cards/L-N19.jpg) |
 | `L-N20` | 对象 + 两侧判断 | 一个对象，两个判断 | B | [[ ]] 色块 | 1 实物贴纸 | — | [看图](../../docs/previews/cards/L-N20.jpg) |
 | `L-N21` | 弧线清单 | 准备清单、门槛（5–6 项） | A | c2 | 1 实物贴纸 | step、title | [看图](../../docs/previews/cards/L-N21.jpg) |
 | `L-N22` | 一群里的一个 | 比喻：一群里有一个不一样 | A | — | — | crowd、tag、title、zoom | [看图](../../docs/previews/cards/L-N22.jpg) |
 | `L-N23` | 框选取证 | 证据只看一行 | B | {{ }} 重点字 | 证据截图 | shot、title、verdict | [看图](../../docs/previews/cards/L-N23.jpg) |
-| `L-N24` | 输入 → 输出 | 修复前后、关系式收尾 | B | [[ ]] 色块 | 1 实物贴纸 | term、title | [看图](../../docs/previews/cards/L-N24.jpg) |
+| `L-N24` | 输入 → 输出 | 修复前后、关系式收尾 | B | [[ ]] 色块 | 1 实物贴纸 | term、title、tag | [看图](../../docs/previews/cards/L-N24.jpg) |
 | `L-N25` | 噪音 → 收束 | 一堆噪音，最后只剩一个结论 | B | — | 1 实物贴纸 | stat | [看图](../../docs/previews/cards/L-N25.jpg) |
 | `R-AI-CHAT` | AI 对话 | 演示怎么问 AI、AI 怎么答（提示词 → 回答 → 人来确认） | A | {{ }} 重点字 | 1 实物贴纸、3 氛围装饰 | chat | [看图](../../docs/previews/cards/R-AI-CHAT.jpg) |
-| `R-AI-REVIEW` | AI 输出 vs 人工复核 | 讲 AI 的结论哪些要人确认（逐条核对，划掉误报） | A | {{ }} 重点字 | — | review、title | [看图](../../docs/previews/cards/R-AI-REVIEW.jpg) |
-| `R-SKILL` | 技能树 / 学习路线 | 就业、入门路线：已会 / 正在学 / 未解锁 | B | — | — | skill、title、vtrack | [看图](../../docs/previews/cards/R-SKILL.jpg) |
-| `R-JD` | 岗位 JD 拆解 | 网安就业：一份 JD 拆成几条硬要求，标出最关键的一条 | A | [[ ]] 色块 | 2 意象插画 | jd、tag、title | [看图](../../docs/previews/cards/R-JD.jpg) |
+| `R-AI-REVIEW` | AI 输出 vs 人工复核 | 讲 AI 的结论哪些要人确认（逐条核对，划掉误报） | A | {{ }} 重点字 | — | review、title、tag | [看图](../../docs/previews/cards/R-AI-REVIEW.jpg) |
+| `R-SKILL` | 技能树 / 学习路线 | 就业、入门路线：已会 / 正在学 / 未解锁 | B | — | 1 实物贴纸 | skill、title、vtrack | [看图](../../docs/previews/cards/R-SKILL.jpg) |
+| `R-JD` | 岗位 JD 拆解 | 网安就业：一份 JD 拆成几条硬要求，标出最关键的一条 | A | [[ ]] 色块 | 2 意象插画、3 氛围装饰 | jd、tag、title | [看图](../../docs/previews/cards/R-JD.jpg) |
 | `R-TOOLS` | 工具对比 | AI 工具 / 安全工具横评：两样东西各适合干什么 | A | c2 | 1 实物贴纸、3 氛围装饰 | chip | [看图](../../docs/previews/cards/R-TOOLS.jpg) |
 | `R-INTERVIEW` | 面试题 | 就业：一道高频面试题 + 一句答题要点 | A | {{ }} 重点字 | 2 意象插画、3 氛围装饰 | quote、title | [看图](../../docs/previews/cards/R-INTERVIEW.jpg) |
 

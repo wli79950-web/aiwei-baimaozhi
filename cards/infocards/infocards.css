@@ -17,10 +17,26 @@
 .ic.t-dark{--ic-bg:var(--char);--ic-fg:var(--cream);--ic-acc:var(--orange);--ic-num:var(--orange);--ic-blk:var(--orange);--ic-blk-fg:var(--char)}
 .scene-A .ic.t-dark{--ic-bg:var(--slate)}
 .ic.t-none{--ic-bg:transparent;--ic-fg:var(--s-title);overflow:visible}
-.scene-B .ic:not(.t-none){box-shadow:0 18px 40px rgba(90,40,10,.10),0 0 0 2px rgba(22,19,15,.06)}
-/* 高质感版（1.5）：炭黑场的炭灰卡 / 卡片白卡加细描边 + 深投影，像放在工作台上的窗口；朱橙卡、蓝卡不加描边 */
-.scene-A .ic.t-card,.scene-A .ic.t-dark{box-shadow:inset 0 0 0 1.5px rgba(245,238,223,.09),0 40px 80px rgba(0,0,0,.35)}
-.scene-A .ic.t-lit{box-shadow:0 40px 80px rgba(0,0,0,.35)}
+/* 1.9 质感升级：保持 background-color 为纯色板值（通过色板校验），用微渐变 + 顶边高光 + 双层接触影营造实体面板厚度 */
+.scene-B .ic.t-card,.scene-B .ic.t-lit{
+  background-image:linear-gradient(180deg,rgba(255,255,255,.68) 0%,rgba(255,255,255,0) 46%,rgba(90,40,10,.028) 100%);
+  box-shadow:inset 0 1.5px 0 rgba(255,255,255,.92),0 0 0 1.5px rgba(22,19,15,.085),0 8px 18px rgba(90,40,10,.075),0 24px 48px rgba(90,40,10,.12)}
+.scene-B .ic.t-dark{
+  background-image:linear-gradient(180deg,rgba(245,238,223,.05) 0%,rgba(245,238,223,0) 42%,rgba(0,0,0,.12) 100%);
+  box-shadow:inset 0 1.5px 0 rgba(245,238,223,.14),0 14px 30px rgba(22,19,15,.16),0 28px 54px rgba(22,19,15,.18)}
+/* 高质感版（1.5 → 1.9）：炭黑场的炭灰卡 / 卡片白卡加顶边微高光 + 细描边 + 双层深投影 */
+.scene-A .ic.t-card,.scene-A .ic.t-dark{
+  background-image:linear-gradient(180deg,rgba(245,238,223,.048) 0%,rgba(245,238,223,0) 40%,rgba(0,0,0,.11) 100%);
+  box-shadow:inset 0 1.5px 0 rgba(245,238,223,.18),inset 0 0 0 1.5px rgba(245,238,223,.09),0 12px 24px rgba(0,0,0,.36),0 38px 76px rgba(0,0,0,.44)}
+.scene-A .ic.t-lit{
+  background-image:linear-gradient(180deg,rgba(255,255,255,.55) 0%,rgba(255,255,255,0) 45%,rgba(90,40,10,.03) 100%);
+  box-shadow:inset 0 1.5px 0 rgba(255,255,255,.88),0 14px 28px rgba(0,0,0,.34),0 40px 80px rgba(0,0,0,.42)}
+.ic.t-hot{background-image:linear-gradient(180deg,rgba(255,255,255,.15) 0%,rgba(255,255,255,0) 48%,rgba(22,19,15,.07) 100%)}
+.scene-A .ic.t-hot{box-shadow:inset 0 1.5px 0 rgba(255,255,255,.28),0 20px 52px rgba(255,90,31,.24),0 34px 70px rgba(0,0,0,.38)}
+.scene-B .ic.t-hot{box-shadow:inset 0 1.5px 0 rgba(255,255,255,.30),0 14px 32px rgba(255,90,31,.24),0 24px 48px rgba(90,40,10,.12)}
+.ic.t-aux{background-image:linear-gradient(180deg,rgba(255,255,255,.12) 0%,rgba(255,255,255,0) 48%,rgba(0,0,0,.15) 100%)}
+.scene-A .ic.t-aux{box-shadow:inset 0 1.5px 0 rgba(245,238,223,.24),0 18px 44px rgba(0,47,167,.28),0 32px 64px rgba(0,0,0,.4)}
+.scene-B .ic.t-aux{box-shadow:inset 0 1.5px 0 rgba(245,238,223,.26),0 14px 32px rgba(0,47,167,.22),0 24px 48px rgba(90,40,10,.12)}
 /* 一屏一个朱橙焦点（1.5）：炭黑场的炭灰卡里，编号 / 数字改用奶油白，朱橙只留给当前项（朱橙卡）和 {{重点字}} */
 .scene-A .ic.t-card,.scene-A .ic.t-dark{--ic-num:var(--cream)}
 /* 白底卡（卡片白）的编号 / 数字用炭黑（1.6，用户确认），不再用克莱因蓝；奶油白场的默认卡也是白底，同样用炭黑 */
@@ -73,6 +89,8 @@
 
 /* ---------- stat 数字卡 ---------- */
 .ic-stat .ic-body{justify-content:center}
+.ic-stat.shape-circle .ic-body{align-items:center;text-align:center}
+.ic-stat.shape-circle .ic-row{justify-content:center}
 .ic-stat .ic-row{display:flex;align-items:baseline;white-space:nowrap;gap:.12em}
 .ic-stat .ic-unit{font-weight:900;color:var(--ic-fg)}
 .ic-stat .ic-lab{margin-top:.3em}
@@ -85,13 +103,14 @@
 
 /* ---------- chip 对比芯片 ---------- */
 .ic-chip .ic-body{align-items:center;justify-content:center;text-align:center}
+.ic-chip.has-img .ic-body{align-items:flex-start;text-align:left}
 .ic-chip .ic-name{white-space:nowrap}
 .ic-chip .ic-sub{margin-top:.3em;opacity:.9}
 
 /* ---------- term 终端卡 ---------- */
 .ic-term{--r:var(--r-win)!important}   /* 终端是窗口：用窗口圆角（36px），比信息卡小一档，像 macOS 窗口 */
 .ic-term .ic-body{padding:0}
-.ic-term .ic-bar{flex:none;display:flex;align-items:center;gap:14px;padding:12px 24px;border-bottom:2px solid rgba(245,238,223,.12)}
+.ic-term .ic-bar{flex:none;display:flex;align-items:center;gap:14px;padding:12px 24px;background-image:linear-gradient(180deg,rgba(245,238,223,.04),rgba(245,238,223,.015));border-bottom:1.5px solid rgba(245,238,223,.12)}
 .ic-term .ic-bar i{width:18px;height:18px;border-radius:50%;background:var(--cream);opacity:.45;flex:none}
 .ic-term .ic-bar i:first-child{background:var(--orange);opacity:1}
 .ic-term .ic-bar span{margin-left:14px;font-family:var(--f-mono);font-weight:600;white-space:nowrap}
@@ -118,12 +137,13 @@
 /* ======================= 第二批 ======================= */
 /* 窗口标题栏：终端卡、截图框共用 */
 .ic-shot .ic-body{padding:0}
-.ic-shot .ic-bar{flex:none;display:flex;align-items:center;gap:14px;padding:12px 24px;border-bottom:2px solid rgba(245,238,223,.12)}
+.ic-shot .ic-bar{flex:none;display:flex;align-items:center;gap:14px;padding:12px 24px;background-image:linear-gradient(180deg,rgba(245,238,223,.04),rgba(245,238,223,.015));border-bottom:1.5px solid rgba(245,238,223,.12)}
 .ic-shot .ic-bar i{width:18px;height:18px;border-radius:50%;background:var(--cream);opacity:.45;flex:none}
 .ic-shot .ic-bar i:first-child{background:var(--orange);opacity:1}
 .ic-shot .ic-bar span{margin-left:14px;font-family:var(--f-mono);font-weight:600;white-space:nowrap}
 .ic-shot{--r:var(--r-win)!important}
-.ic-shot .ic-area{flex:1;position:relative;margin:0 14px 14px;border-radius:calc(var(--r-win) - 14px);overflow:hidden;background:var(--char-lo)}
+.ic-shot .ic-area{flex:1;position:relative;margin:10px 14px 14px;border-radius:calc(var(--r-win) - 14px);overflow:hidden;background:var(--char-lo);box-shadow:inset 0 0 0 1.5px rgba(245,238,223,.12)}
+.ic-shot .ic-area::after{content:'';position:absolute;inset:0;pointer-events:none;border-radius:inherit;box-shadow:inset 0 0 0 1.5px rgba(22,19,15,.16),inset 0 10px 22px rgba(0,0,0,.10)}
 .ic-shot .ic-area img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
 .ic-shot .ph{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:52px;color:var(--cream);opacity:.3;
   background:repeating-linear-gradient(135deg,rgba(245,238,223,.06) 0 14px,transparent 14px 28px)}
@@ -184,10 +204,12 @@
 .ic-jd .ic-pills{display:flex;flex-wrap:wrap;gap:.3em .35em;font-size:52px}
 
 /* skill 技能树节点：tone 由 state 决定（infocards.js 里 done=card、now=hot、lock=ghost） */
-.ic.t-ghost{--ic-bg:transparent;--ic-fg:var(--s-title);--ic-acc:var(--s-accent);box-shadow:inset 0 0 0 4px color-mix(in srgb,var(--s-title) 40%,transparent)!important;
-  background-image:repeating-linear-gradient(135deg,color-mix(in srgb,var(--s-title) 5%,transparent) 0 14px,transparent 14px 28px)}
+.ic.t-ghost{--ic-bg:transparent;--ic-fg:var(--s-title);--ic-acc:var(--s-accent);box-shadow:none!important;
+  border:2.5px dashed color-mix(in srgb,var(--s-title) 28%,transparent);
+  background-image:radial-gradient(color-mix(in srgb,var(--s-title) 11%,transparent) 1.5px,transparent 1.5px);background-size:18px 18px}
 .ic-skill .ic-body{justify-content:space-between}
 .ic-skill .ic-sk-top{display:flex;justify-content:space-between;align-items:flex-start}
+.ic-skill.has-img .ic-sk-top{justify-content:flex-start;gap:.35em}
 .ic-skill .ic-glyph{color:var(--ic-acc)}
 .ic-skill .ic-prog{height:12px;border-radius:6px;background:color-mix(in srgb,currentColor 18%,transparent);overflow:hidden;margin-top:.2em}
 .ic-skill .ic-fill{height:100%;border-radius:6px;background:var(--ic-acc)}
@@ -203,7 +225,10 @@
 
 /* verdict 结论卡 */
 .ic-verdict .ic-body{flex-direction:row;align-items:center;gap:40px}
-.ic-verdict .ic-mk{flex:none;border-radius:50%;background:var(--ic-blk);color:var(--ic-blk-fg);display:flex;align-items:center;justify-content:center}
+.ic-verdict.shape-circle .ic-body{flex-direction:column;justify-content:center;align-items:center;text-align:center;gap:24px}
+.ic-verdict.shape-circle .ic-vt{flex:none;width:100%}
+.ic-verdict .ic-mk{flex:none;border-radius:50%;background:var(--ic-blk);color:var(--ic-blk-fg);display:flex;align-items:center;justify-content:center;box-shadow:inset 0 1.5px 0 rgba(255,255,255,.26),0 12px 28px rgba(0,0,0,.16)}
+.ic-verdict .ic-mk.mk-aux{background:var(--klein);color:var(--cream);box-shadow:inset 0 1.5px 0 rgba(245,238,223,.24),0 14px 30px rgba(0,47,167,.24)}
 .ic-verdict .ic-mk .ic-num{color:inherit;line-height:1}
 .ic-verdict .ic-vt{flex:1;min-width:0}
 .ic-verdict .ic-why{margin-top:.35em;opacity:.85}
@@ -272,30 +297,34 @@
 .scene-B .ic-pct.now{color:var(--char)}
 /* 胶囊（流转标签、会话、标注） */
 .ic-pillbox{display:inline-flex;flex-direction:column;align-items:center;justify-content:center;padding:14px 30px;border-radius:999px;background:var(--slate);color:var(--cream);
-  box-shadow:inset 0 0 0 1.5px rgba(245,238,223,.12),0 18px 36px rgba(0,0,0,.3);line-height:1.1;white-space:nowrap}
-.scene-B .ic-pillbox{background:var(--paper);color:var(--char);box-shadow:0 12px 28px rgba(90,40,10,.12),0 0 0 1.5px rgba(22,19,15,.06)}
+  background-image:linear-gradient(180deg,rgba(245,238,223,.05) 0%,rgba(0,0,0,.08) 100%);
+  box-shadow:inset 0 1.5px 0 rgba(245,238,223,.18),inset 0 0 0 1.5px rgba(245,238,223,.11),0 18px 36px rgba(0,0,0,.34);line-height:1.1;white-space:nowrap}
+.scene-B .ic-pillbox{background:var(--paper);color:var(--char);background-image:linear-gradient(180deg,rgba(255,255,255,.7) 0%,rgba(90,40,10,.025) 100%);box-shadow:inset 0 1.5px 0 rgba(255,255,255,.9),0 12px 28px rgba(90,40,10,.12),0 0 0 1.5px rgba(22,19,15,.08)}
 .ic-pillbox.row{flex-direction:row;gap:.35em}
-.ic-pillbox.hot{background:var(--orange);color:var(--char)}
+.ic-pillbox.hot{background:var(--orange);color:var(--char);background-image:linear-gradient(180deg,rgba(255,255,255,.16) 0%,rgba(22,19,15,.06) 100%)}
+.ic-pillbox.aux{background:var(--klein);color:var(--cream);background-image:linear-gradient(180deg,rgba(255,255,255,.12) 0%,rgba(0,0,0,.14) 100%)}
 .ic-pillbox .ic-en{margin-top:.4em}
 /* 圆环图 */
-.ic-ring .seg{fill:var(--slate);stroke:rgba(245,238,223,.12);stroke-width:1.5}
+.ic-ring .seg{fill:var(--slate);stroke:rgba(245,238,223,.14);stroke-width:1.5}
 .scene-B .ic-ring .seg{fill:var(--paper);stroke:rgba(22,19,15,.12)}
 .ic-ring .seg.hot{fill:var(--orange);stroke:none}
 /* 徽章流转 */
 .ic-node{position:absolute;border-radius:50%;background:var(--slate);color:var(--cream);display:flex;flex-direction:column;align-items:center;justify-content:center;
-  box-shadow:inset 0 0 0 1.5px rgba(245,238,223,.1),0 30px 60px rgba(0,0,0,.35);text-align:center}
-.scene-B .ic-node{background:var(--paper);color:var(--char);box-shadow:0 18px 40px rgba(90,40,10,.12)}
-.ic-node.hot{background:var(--orange);color:var(--char);box-shadow:0 30px 60px rgba(0,0,0,.35),0 0 0 12px rgba(255,90,31,.14)}
+  background-image:linear-gradient(180deg,rgba(245,238,223,.06) 0%,rgba(0,0,0,.12) 100%);
+  box-shadow:inset 0 1.5px 0 rgba(245,238,223,.18),inset 0 0 0 1.5px rgba(245,238,223,.10),0 30px 60px rgba(0,0,0,.38);text-align:center}
+.scene-B .ic-node{background:var(--paper);color:var(--char);background-image:linear-gradient(180deg,rgba(255,255,255,.72) 0%,rgba(90,40,10,.03) 100%);box-shadow:inset 0 1.5px 0 rgba(255,255,255,.92),0 0 0 1.5px rgba(22,19,15,.08),0 18px 40px rgba(90,40,10,.12)}
+.ic-node.hot{background:var(--orange);color:var(--char);background-image:linear-gradient(180deg,rgba(255,255,255,.18) 0%,rgba(22,19,15,.06) 100%);box-shadow:inset 0 1.5px 0 rgba(255,255,255,.32),0 30px 60px rgba(0,0,0,.36),0 0 0 14px rgba(255,90,31,.16)}
+.ic-node.aux{background:var(--klein);color:var(--cream);background-image:linear-gradient(180deg,rgba(255,255,255,.12) 0%,rgba(0,0,0,.16) 100%);box-shadow:inset 0 1.5px 0 rgba(245,238,223,.24),0 28px 56px rgba(0,0,0,.36),0 0 0 10px rgba(0,47,167,.18)}
 .ic-node .ic-icon.ic-inl{margin-bottom:.15em}
 .ic-node .ic-en{margin-top:.5em}
 /* 嵌套归属 */
 .ic-nest .outer{fill:color-mix(in srgb,currentColor 2%,transparent);stroke:currentColor;stroke-opacity:.3;stroke-width:2;stroke-dasharray:10 10}
 .ic-hrow{display:flex;align-items:baseline;gap:.6em}.ic-hrow .ic-en{margin-top:0}
-.ic-zone{position:absolute;border-radius:28px;background:var(--slate);color:var(--cream);box-shadow:inset 0 0 0 1.5px rgba(245,238,223,.09),0 30px 60px rgba(0,0,0,.32)}
-.scene-B .ic-zone{background:var(--paper);color:var(--char);box-shadow:0 18px 40px rgba(90,40,10,.12)}
+.ic-zone{position:absolute;border-radius:28px;background:var(--slate);color:var(--cream);background-image:linear-gradient(180deg,rgba(245,238,223,.045) 0%,rgba(0,0,0,.10) 100%);box-shadow:inset 0 1.5px 0 rgba(245,238,223,.16),inset 0 0 0 1.5px rgba(245,238,223,.09),0 30px 60px rgba(0,0,0,.35)}
+.scene-B .ic-zone{background:var(--paper);color:var(--char);background-image:linear-gradient(180deg,rgba(255,255,255,.7) 0%,rgba(90,40,10,.025) 100%);box-shadow:inset 0 1.5px 0 rgba(255,255,255,.9),0 0 0 1.5px rgba(22,19,15,.08),0 18px 40px rgba(90,40,10,.12)}
 .ic-zh{position:absolute;left:32px;top:30px}
-.ic-res{position:absolute;border-radius:22px;background:var(--char-hi);color:var(--cream);display:flex;align-items:center;gap:.4em;padding:0 28px;box-shadow:inset 0 0 0 1.5px rgba(245,238,223,.1)}
-.scene-B .ic-res{background:var(--cream);color:var(--char)}
+.ic-res{position:absolute;border-radius:22px;background:var(--char-hi);color:var(--cream);display:flex;align-items:center;gap:.4em;padding:0 28px;box-shadow:inset 0 1.5px 0 rgba(245,238,223,.14),inset 0 0 0 1.5px rgba(245,238,223,.10)}
+.scene-B .ic-res{background:var(--cream);color:var(--char);box-shadow:inset 0 0 0 1.5px rgba(22,19,15,.08)}
 .ic-svg .xmk{fill:var(--orange)}.ic-svg .xmkx{stroke:var(--char);stroke-width:4.5;stroke-linecap:round;fill:none}
 /* 证据墙 */
 .ic-sw{position:absolute;display:flex;flex-direction:column;background:var(--slate);border-radius:22px;overflow:hidden;box-shadow:inset 0 0 0 1.5px rgba(245,238,223,.1),0 36px 70px rgba(0,0,0,.45)}

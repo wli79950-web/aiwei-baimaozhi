@@ -1,6 +1,6 @@
 {
- "version": "1.0",
- "updated": "2026-11-27",
+ "version": "1.1",
+ "updated": "2026-11-28",
  "note": "镜头配方表（P6）：一张知识卡片 = 排版 + 信息卡 / 图解 + 图片 + 动效。每条配方写明用来讲什么、场景、焦点、图片类别、用到的组件、动效节奏和一个示例镜头（example，可直接交给 engine/shot.js / tools/cards_preview.js / ae/build_ae.py）。示例内容是示意，图片是风格样张（不进正片）。",
  "shot_spec": "example 的字段见 engine/shot.js 开头：layout、scene、fill（槽位 → 填充）、cue（入场秒）、deco、lines、co、amb、bokeh、sc（录屏）、sub",
  "recipes": [
@@ -121,7 +121,9 @@
    "focus": [
     "c1"
    ],
-   "images": [],
+   "images": [
+    "1 实物贴纸"
+   ],
    "components": [
     "keyword",
     "ring",
@@ -179,7 +181,8 @@
       "data": {
        "word": "水平越权",
        "en": "THIS EPISODE · 本期",
-       "icon": "target"
+       "icon": "target",
+       "img": "cards/images/samples/bmz_key.png"
       },
       "tone": "card"
      }
@@ -196,7 +199,8 @@
     "l1"
    ],
    "images": [
-    "证据截图"
+    "证据截图",
+    "1 实物贴纸"
    ],
    "components": [
     "list",
@@ -225,7 +229,7 @@
          "state": "done"
         },
         {
-         "text": "范围：Web / API",
+         "text": "范围：Web 接口",
          "state": "done"
         },
         {
@@ -233,7 +237,8 @@
          "state": "now"
         },
         "测试时间窗"
-       ]
+       ],
+       "img": "cards/images/samples/bmz_briefcase.png"
       }
      },
      "m1": {
@@ -434,7 +439,8 @@
     "[[ ]] 色块"
    ],
    "images": [
-    "证据截图"
+    "证据截图",
+    "1 实物贴纸"
    ],
    "components": [
     "quote",
@@ -457,7 +463,8 @@
       "ic": "quote",
       "data": {
        "text": "同一个漏洞拆成多份提交，\n算[[刷洞]]，要扣分",
-       "src": "平台规则（示意）"
+       "src": "平台规则（示意）",
+       "img": "cards/images/samples/bmz_shield.png"
       }
      }
     },
@@ -505,7 +512,49 @@
       "fs": 52,
       "cls": "mono c dim"
      }
-    }
+    },
+    "lines": [
+     [
+      220,
+      240,
+      620,
+      240,
+      0
+     ],
+     [
+      1300,
+      240,
+      1700,
+      240,
+      0
+     ],
+     [
+      220,
+      812,
+      360,
+      812,
+      1
+     ],
+     [
+      1560,
+      812,
+      1700,
+      812,
+      1
+     ]
+    ],
+    "deco": [
+     [
+      200,
+      136,
+      "VIEWPORT · HTTP RESPONSE"
+     ],
+     [
+      1500,
+      960,
+      "STATUS · 200 OK"
+     ]
+    ]
    }
   },
   {
@@ -517,7 +566,9 @@
    "focus": [
     "c3"
    ],
-   "images": [],
+   "images": [
+    "1 实物贴纸"
+   ],
    "components": [
     "step",
     "title",
@@ -564,7 +615,8 @@
        "name": "AI 扫描",
        "en": "AI SCAN",
        "icon": "cpu",
-       "step": 6
+       "step": 6,
+       "img": "cards/images/samples/bmz_aichip.png"
       },
       "tone": "hot"
      },
@@ -737,7 +789,8 @@
        "name": "AI 能做",
        "en": "MACHINE",
        "sub": "批量扫接口",
-       "icon": "bot"
+       "icon": "bot",
+       "img": "cards/images/samples/bmz_aichip.png"
       },
       "tone": "card"
      },
@@ -752,7 +805,8 @@
        "name": "必须人来",
        "en": "HUMAN",
        "sub": "判断真假",
-       "icon": "user-round"
+       "icon": "user-round",
+       "img": "cards/images/samples/bmz_shield.png"
       },
       "tone": "hot"
      },
@@ -955,6 +1009,40 @@
       300,
       110
      ]
+    ],
+    "lines": [
+     [
+      240,
+      296,
+      1680,
+      296,
+      0
+     ]
+    ],
+    "deco": [
+     [
+      64,
+      128,
+      "MYTH vs REALITY · 认知反转"
+     ]
+    ],
+    "amb": [
+     [
+      "keycaps",
+      88,
+      690,
+      260,
+      200,
+      "far"
+     ],
+     [
+      "screws",
+      1620,
+      136,
+      210,
+      160,
+      "far"
+     ]
     ]
    }
   },
@@ -998,23 +1086,30 @@
     },
     "lines": [
      [
-      652,
+      632,
       508,
-      676,
-      508
+      688,
+      508,
+      0
      ],
      [
-      1244,
+      1224,
       508,
-      1268,
-      508
+      1280,
+      508,
+      1
      ]
     ],
     "deco": [
      [
       96,
       140,
-      "01 → 02 → 03 · 递进"
+      "01 → 02 → 03 · 递进三步"
+     ],
+     [
+      96,
+      956,
+      "PIPELINE · CAPTURE / TAMPER / REPLAY"
      ]
     ]
    }
@@ -1055,10 +1150,11 @@
          "state": "done"
         },
         {
-         "text": "读到别人手机号",
+         "text": "越权读数据",
          "state": "now"
         }
-       ]
+       ],
+       "img": "cards/images/samples/bmz_bug.png"
       },
       "tone": "card"
      }
@@ -1132,7 +1228,7 @@
      "l1": {
       "t": "→",
       "fs": 64,
-      "cls": "blkcell"
+      "cls": "blkcell aux"
      },
      "c2": {
       "ic": "term",
@@ -1152,7 +1248,7 @@
     "deco": [
      [
       68,
-      236,
+      224,
       "BEFORE / AFTER · 同一个请求"
      ]
     ]
@@ -1485,7 +1581,8 @@
       "ic": "quote",
       "data": {
        "text": "AI 找到的线索，\n要人来{{签字确认}}",
-       "src": "白帽工作守则（示意）"
+       "src": "白帽工作守则（示意）",
+       "img": "cards/images/samples/bmz_whitehat.png"
       },
       "tone": "card"
      }
@@ -1509,7 +1606,8 @@
     "[[ ]] 色块"
    ],
    "images": [
-    "证据截图"
+    "证据截图",
+    "1 实物贴纸"
    ],
    "components": [
     "quote",
@@ -1537,7 +1635,8 @@
      "c2": {
       "ic": "quote",
       "data": {
-       "text": "任意登录用户\n可读取[[他人订单]]"
+       "text": "任意登录用户\n可读取[[他人订单]]",
+       "img": "cards/images/samples/bmz_lock_open.png"
       }
      },
      "c3": {
@@ -1547,7 +1646,8 @@
        "unit": "条",
        "label": "可读订单",
        "en": "ORDERS EXPOSED",
-       "note": "示意数据"
+       "note": "示意数据",
+       "img": "cards/images/samples/bmz_bug.png"
       }
      }
     },
@@ -1568,7 +1668,8 @@
    "scene": "A",
    "focus": [],
    "images": [
-    "证据截图"
+    "证据截图",
+    "1 实物贴纸"
    ],
    "components": [
     "keyword",
@@ -1599,7 +1700,8 @@
        "word": "越权",
        "en": "IDOR",
        "exp": "改个号，就看到了",
-       "icon": "key-round"
+       "icon": "key-round",
+       "img": "cards/images/samples/bmz_key.png"
       },
       "tone": "card"
      }
@@ -1744,15 +1846,33 @@
      },
      "m1": {
       "img": "cards/images/samples/sc02/sc02p_report.png",
-      "cls": "stk diecut"
+      "cls": "stk diecut",
+      "rect": [
+       616,
+       104,
+       336,
+       336
+      ]
      },
      "m2": {
       "img": "cards/images/samples/sc02/sc02_magnifier.png",
-      "cls": "stk diecut"
+      "cls": "stk diecut",
+      "rect": [
+       1048,
+       104,
+       336,
+       336
+      ]
      },
      "m3": {
       "img": "cards/images/samples/sc02/sc02_waiting.png",
-      "cls": "stk diecut"
+      "cls": "stk diecut",
+      "rect": [
+       1480,
+       104,
+       336,
+       336
+      ]
      }
     },
     "deco": [
@@ -1848,7 +1968,8 @@
       "ic": "chip",
       "data": {
        "name": "报告已通过",
-       "sub": "定级：高危（示意）"
+       "sub": "定级：高危（示意）",
+       "img": "cards/images/samples/bmz_coin.png"
       },
       "tone": "card"
      },
@@ -1954,7 +2075,8 @@
     "c4"
    ],
    "images": [
-    "证据截图"
+    "证据截图",
+    "1 实物贴纸"
    ],
    "components": [
     "step",
@@ -2009,7 +2131,8 @@
        "idx": "04",
        "name": "越权",
        "en": "IDOR",
-       "icon": "key-round"
+       "icon": "key-round",
+       "img": "cards/images/samples/bmz_lock_open.png"
       },
       "tone": "hot"
      },
@@ -2099,8 +2222,13 @@
     "deco": [
      [
       128,
-      290,
-      "CASE STUDY · 示意"
+      286,
+      "CASE STUDY · 剪报案例"
+     ],
+     [
+      1000,
+      286,
+      "SUMMARY · 漏洞复盘"
      ]
     ]
    }
@@ -2137,14 +2265,26 @@
     },
     "bokeh": [
      [
-      300,
-      300,
+      260,
+      240,
       120
      ],
      [
-      1700,
+      1680,
+      220,
+      110
+     ],
+     [
+      1580,
       880,
-      100
+      90
+     ]
+    ],
+    "deco": [
+     [
+      128,
+      136,
+      "METAPHOR · 意象比喻"
      ]
     ]
    }
@@ -2456,9 +2596,16 @@
       "data": {
        "word": "owner 字段",
        "exp": "这单是谁的",
-       "icon": "file"
+       "icon": "file",
+       "img": "cards/images/samples/bmz_key.png"
       },
-      "tone": "card"
+      "tone": "card",
+      "rect": [
+       1184,
+       208,
+       672,
+       248
+      ]
      },
      "c2": {
       "ic": "verdict",
@@ -2628,7 +2775,9 @@
    "focus": [
     "l6"
    ],
-   "images": [],
+   "images": [
+    "1 实物贴纸"
+   ],
    "components": [
     "tag",
     "verdict"
@@ -2642,7 +2791,8 @@
       "ic": "verdict",
       "data": {
        "text": "每一步\n都留证据",
-       "en": "KEEP EVIDENCE"
+       "en": "KEEP EVIDENCE",
+       "img": "cards/images/samples/bmz_shield.png"
       }
      },
      "m1": null,
@@ -3006,7 +3156,44 @@
       },
       "tone": "card"
      }
-    }
+    },
+    "lines": [
+     [
+      720,
+      320,
+      810,
+      420,
+      0
+     ],
+     [
+      1200,
+      320,
+      1110,
+      420,
+      0
+     ],
+     [
+      720,
+      720,
+      810,
+      620,
+      0
+     ],
+     [
+      1200,
+      720,
+      1110,
+      620,
+      0
+     ]
+    ],
+    "deco": [
+     [
+      96,
+      136,
+      "VOICES · 核心结论与周边反应"
+     ]
+    ]
    }
   },
   {
@@ -3278,7 +3465,9 @@
    "images": [
     "1 实物贴纸"
    ],
-   "components": [],
+   "components": [
+    "tag"
+   ],
    "motion": "贴纸 drop（落定回弹 2%） → 文字 rise → 焦点（朱橙）在强调拍 blockSweep；类别 3 和背景动态常驻",
    "preview": "docs/previews/cards/L-N19.jpg",
    "example": {
@@ -3298,21 +3487,62 @@
       "cls": "c"
      },
      "l3": {
-      "t": "“我登录了”",
-      "fs": 52,
-      "cls": "c dim"
+      "ic": "tag",
+      "data": {
+       "text": "“我登录了”",
+       "icon": "user-round"
+      },
+      "tone": "lit",
+      "rect": [
+       64,
+       704,
+       480,
+       96
+      ]
      },
      "l4": {
-      "t": "“但这不是我的”",
-      "fs": 52,
-      "cls": "c dim"
+      "ic": "tag",
+      "data": {
+       "text": "“但这不是我的”",
+       "icon": "shield-alert"
+      },
+      "tone": "lit",
+      "rect": [
+       1312,
+       704,
+       544,
+       96
+      ]
      },
      "k1": {
       "t": "AUTHN ≠ AUTHZ",
       "fs": 20,
       "cls": "mic"
      }
-    }
+    },
+    "lines": [
+     [
+      520,
+      420,
+      690,
+      420,
+      "aux"
+     ],
+     [
+      1400,
+      420,
+      1230,
+      420,
+      1
+     ]
+    ],
+    "deco": [
+     [
+      64,
+      128,
+      "CONCEPT BRIDGE · 认证 vs 授权"
+     ]
+    ]
    }
   },
   {
@@ -3351,8 +3581,24 @@
     "deco": [
      [
       64,
-      860,
-      "SAME LOCK · 同一把锁"
+      128,
+      "ASSESSMENT · 可用性 vs 安全性"
+     ]
+    ],
+    "lines": [
+     [
+      540,
+      516,
+      740,
+      516,
+      "aux"
+     ],
+     [
+      1380,
+      516,
+      1180,
+      516,
+      1
      ]
     ]
    }
@@ -3504,9 +3750,9 @@
       },
       "rect": [
        544,
-       104,
+       176,
        880,
-       768
+       696
       ]
      },
      "l1": {
@@ -3514,7 +3760,13 @@
       "data": {
        "text": "都一样"
       },
-      "tone": "card"
+      "tone": "card",
+      "rect": [
+       560,
+       108,
+       256,
+       76
+      ]
      },
      "m2": {
       "ic": "zoom",
@@ -3606,7 +3858,8 @@
       "ic": "verdict",
       "data": {
        "text": "越权成立",
-       "why": "owner ≠ 当前用户"
+       "why": "owner ≠ 当前用户",
+       "markTone": "aux"
       }
      }
     },
@@ -3633,7 +3886,8 @@
    ],
    "components": [
     "term",
-    "title"
+    "title",
+    "tag"
    ],
    "motion": "标题逐行 maskUp → 卡片 / 图解按槽位顺序 rise（错开 0.12s） → 贴纸 drop（落定回弹 2%） → 文字 rise → 焦点（朱橙）在强调拍 blockSweep；类别 3 和背景动态常驻",
    "preview": "docs/previews/cards/L-N24.jpg",
@@ -3684,9 +3938,17 @@
       "img": "cards/images/samples/bmz_lock_closed.png"
      },
      "l3": {
-      "t": "+ 归属校验",
-      "fs": 52,
-      "cls": "c"
+      "ic": "tag",
+      "data": {
+       "text": "+ 归属校验"
+      },
+      "tone": "aux",
+      "rect": [
+       752,
+       260,
+       320,
+       84
+      ]
      },
      "l4": {
       "t": "不是我的 → 403",
@@ -3699,6 +3961,15 @@
       68,
       236,
       "PATCH · 修复"
+     ]
+    ],
+    "lines": [
+     [
+      864,
+      572,
+      1056,
+      572,
+      "aux"
      ]
     ]
    }
@@ -3770,7 +4041,8 @@
        "value": "1",
        "unit": "个",
        "label": "能提交（示意）",
-       "en": "SIGNAL"
+       "en": "SIGNAL",
+       "img": "cards/images/samples/bmz_coin.png"
       }
      }
     },
@@ -3867,7 +4139,8 @@
    "images": [],
    "components": [
     "review",
-    "title"
+    "title",
+    "tag"
    ],
    "motion": "标题逐行 maskUp → 卡片 / 图解按槽位顺序 rise（错开 0.12s） → 文字 rise → 焦点（朱橙）在强调拍 blockSweep；类别 3 和背景动态常驻",
    "preview": "docs/previews/cards/R-AI-REVIEW.jpg",
@@ -3887,8 +4160,18 @@
       "cls": "dim"
      },
      "l2": {
-      "t": "成立：{{1 / 4}}",
-      "fs": 56
+      "ic": "tag",
+      "data": {
+       "text": "人工核实 1 / 4",
+       "dot": true
+      },
+      "tone": "aux",
+      "rect": [
+       64,
+       680,
+       480,
+       104
+      ]
      },
      "c1": {
       "ic": "review",
@@ -3934,7 +4217,9 @@
    "function": "就业、入门路线：已会 / 正在学 / 未解锁",
    "scene": "B",
    "focus": [],
-   "images": [],
+   "images": [
+    "1 实物贴纸"
+   ],
    "components": [
     "skill",
     "title",
@@ -3958,7 +4243,8 @@
       "data": {
        "lv": "01",
        "name": "HTTP 基础",
-       "state": "done"
+       "state": "done",
+       "img": "cards/images/samples/bmz_laptop.png"
       }
      },
      "c2": {
@@ -3966,7 +4252,8 @@
       "data": {
        "lv": "02",
        "name": "抓包改包",
-       "state": "done"
+       "state": "done",
+       "img": "cards/images/samples/bmz_radar.png"
       }
      },
      "c3": {
@@ -3975,7 +4262,8 @@
        "lv": "03",
        "name": "常见漏洞",
        "state": "now",
-       "pct": 60
+       "pct": 60,
+       "img": "cards/images/samples/bmz_bug.png"
       }
      },
      "c4": {
@@ -4020,8 +4308,8 @@
     },
     "deco": [
      [
-      68,
-      236,
+      1408,
+      148,
       "SKILL TREE · 学习路线"
      ]
     ]
@@ -4037,7 +4325,8 @@
     "[[ ]] 色块"
    ],
    "images": [
-    "2 意象插画"
+    "2 意象插画",
+    "3 氛围装饰"
    ],
    "components": [
     "jd",
@@ -4084,7 +4373,7 @@
        "dot": true,
        "en": "MUST HAVE"
       },
-      "tone": "card"
+      "tone": "aux"
      }
     },
     "deco": [
@@ -4092,6 +4381,13 @@
       740,
       236,
       "JD · 示意"
+     ]
+    ],
+    "bokeh": [
+     [
+      1760,
+      220,
+      100
      ]
     ]
    }
@@ -4126,7 +4422,8 @@
        "name": "抓包工具",
        "en": "PROXY",
        "sub": "看清每个请求",
-       "icon": "scan-search"
+       "icon": "scan-search",
+       "img": "cards/images/samples/bmz_radar.png"
       },
       "tone": "card"
      },
@@ -4141,7 +4438,8 @@
        "name": "AI 助手",
        "en": "ASSISTANT",
        "sub": "批量出思路",
-       "icon": "bot"
+       "icon": "bot",
+       "img": "cards/images/samples/bmz_aichip.png"
       },
       "tone": "hot"
      },

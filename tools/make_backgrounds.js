@@ -23,13 +23,30 @@ const pt = a => `${(R.cx + rOut * Math.cos(a)).toFixed(1)} ${(R.cy + rOut * Math
 const sweep = `<svg xmlns="http://www.w3.org/2000/svg" width="${W}" height="${H}" viewBox="0 0 ${W} ${H}">
   <path d="M${R.cx} ${R.cy} L${pt(a0)} A${rOut} ${rOut} 0 0 1 ${pt(a1)} Z" fill="${C.orange}" fill-opacity="${R.sweep_opacity}"/>
 </svg>\n`;
-fs.writeFileSync(path.join(L, 'BG1_radar_lines.svg'), rings(C.cream, B.scene.A.line.opacity));
-fs.writeFileSync(path.join(L, 'BG1_radar_sweep.svg'), sweep);
-fs.writeFileSync(path.join(L, 'BG2_radar_lines.svg'), rings(C.char, B.scene.B.line.opacity));
-
-// BG3 炭黑·工作台（1.5）：点阵（径向淡出）+ 十字标；焦点组件（光晕 / 刻度环 / 刻度）是可移动的独立层
+// 动态层：BG2 奶油白·图纸工作台（雷达线 + 与 BG3 呼应的极淡精密点阵与十字基准标，同一 SVG 层保持 AE 分层一致）
 const K = B.background.bench, F = K.focus, svgOpen = (w, h) => `<svg xmlns="http://www.w3.org/2000/svg" width="${w}" height="${h}" viewBox="0 0 ${w} ${h}">`;
 const [frx, fry, fcx, fcy] = K.fade, ecx = W * fcx, ecy = H * fcy, erx = W * frx, ery = H * fry;   // 椭圆淡出：半径 75% × 70%，中心 (50%, 46%)
+const bg2Lines = `${svgOpen(W, H)}
+  <defs>
+    <pattern id="d2" x="-${K.grid / 2}" y="-${K.grid / 2}" width="${K.grid}" height="${K.grid}" patternUnits="userSpaceOnUse"><circle cx="${K.grid / 2}" cy="${K.grid / 2}" r="1.35" fill="${C.char}" fill-opacity="0.075"/></pattern>
+    <radialGradient id="f2" gradientUnits="userSpaceOnUse" cx="${ecx}" cy="${ecy}" r="${erx}" gradientTransform="translate(${ecx} ${ecy}) scale(1 ${(ery / erx).toFixed(4)}) translate(${-ecx} ${-ecy})"><stop offset="0.3" stop-color="#fff"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></radialGradient>
+    <mask id="m2"><rect width="${W}" height="${H}" fill="url(#f2)"/></mask>
+  </defs>
+  <rect width="${W}" height="${H}" fill="url(#d2)" mask="url(#m2)"/>
+  <g fill="none" stroke="${C.char}" stroke-width="2" opacity="${B.scene.B.line.opacity}">
+    ${R.rings.map(r => `<circle cx="${R.cx}" cy="${R.cy}" r="${r}"/>`).join('\n    ')}
+    <line x1="${R.cx - 560}" y1="${R.cy}" x2="${R.cx + 560}" y2="${R.cy}"/>
+    <line x1="${R.cx}" y1="${R.cy - 500}" x2="${R.cx}" y2="${R.cy + 500}"/>
+  </g>
+  <g stroke="${C.char}" stroke-opacity="0.14" stroke-width="1.5">
+    ${K.marks.map(([x, y]) => `<line x1="${x - K.mark_len / 2}" y1="${y}" x2="${x + K.mark_len / 2}" y2="${y}"/><line x1="${x}" y1="${y - K.mark_len / 2}" x2="${x}" y2="${y + K.mark_len / 2}"/>`).join('\n    ')}
+  </g>
+</svg>\n`;
+fs.writeFileSync(path.join(L, 'BG1_radar_lines.svg'), rings(C.cream, B.scene.A.line.opacity));
+fs.writeFileSync(path.join(L, 'BG1_radar_sweep.svg'), sweep);
+fs.writeFileSync(path.join(L, 'BG2_radar_lines.svg'), bg2Lines);
+
+// BG3 炭黑·工作台（1.5）：点阵（径向淡出）+ 十字标；焦点组件（光晕 / 刻度环 / 刻度）是可移动的独立层
 fs.writeFileSync(path.join(L, 'BG3_dots.svg'), `${svgOpen(W, H)}
   <defs>
     <pattern id="d" x="-${K.grid / 2}" y="-${K.grid / 2}" width="${K.grid}" height="${K.grid}" patternUnits="userSpaceOnUse"><circle cx="${K.grid / 2}" cy="${K.grid / 2}" r="${K.dot_r}" fill="${C.cream}" fill-opacity="${K.dot_opacity}"/></pattern>
@@ -63,7 +80,7 @@ fs.writeFileSync(path.join(L, 'BG3_focus_ticks.svg'), `${svgOpen(F.canvas, F.can
 // 底板
 const plates = {
   'BG1_char_plate.png': `radial-gradient(circle at 72% 46%,${C.char_hi} 0,${C.char} 58%,${C.char_lo} 100%)`,
-  'BG2_cream_plate.png': C.cream,
+  'BG2_cream_plate.png': `radial-gradient(ellipse at 50% 40%,#FAF5E8 0,${C.cream} 56%,#E8DFCE 100%)`,
   'BG3_bench_plate.png': `radial-gradient(ellipse at 50% 42%,${C.char_hi} 0,${C.char} 62%,${C.char_lo} 100%)`,
   'FX_orange.png': C.orange,
   'FX_klein.png': C.klein,

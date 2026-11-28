@@ -1,5 +1,12 @@
 # 更新记录
 
+## 1.16.0 · 2026-11-28 · 视觉系统 1.9：大号信息卡内嵌图片、B 场图纸质感与微材质升级
+- **大号信息卡内嵌图片**（`cards/infocards/infocards.js`）：除原有 `keyword` / `step` / `tier` 外，扩展 `define`、`quote`、`list`、`stat`、`verdict`、`chip`、`jd`、`skill`、`risk` 全部原生支持 `img` 贴纸内嵌与文字区自动让位（自带 `drop` 入场动效）；圆形 `stat` / `verdict` 改为居中列排保护，消除圆形裁切与孤字；`verdict` 新增 `markTone: "aux"` 支持克莱因蓝冷静确认记号。
+- **B 奶油白场「图纸工作台」升级**（`tools/make_backgrounds.js`）：`BG2_cream_plate.png` 改为暖白顶光径向渐变 + 边缘柔和暗角；`BG2_radar_lines.svg` 叠加与 `BG3` 呼应的 48px 炭黑极淡点阵与 5 处十字基准标，拉平 A/B 两场质感落差且保持 AE 分层结构不变。
+- **卡片与窗口微材质升级**（`cards/infocards/infocards.css`、`engine/base.css`、`engine/shot.css`）：保持纯色板 `background-color`（通过色板校验），叠加顶光微渐变、1.5px 顶边微高光切边与双层接触/氛围阴影；技能树未解锁卡 `.t-ghost` 改为蓝图点阵 + 虚线框；窗口顶栏微光与截图区内阴影压边；SC02 模切贴纸双层柔和落影；`shot.js` / `shot.css` 支持克莱因蓝辅助引导线（`aux`）与色块下方副标间距自适应（`.lab:has(.blk) small`）。
+- **56 条完整配方精修与重渲染**（`cards/recipes/recipes.json` v1.1、`recipes.md`、`docs/previews/cards/`）：为 16 个大号信息卡配方内嵌实物贴纸；激活克莱因蓝冷静对照（`L-K22`、`L-N19`、`L-N20`、`L-N23`、`L-N24`、`R-AI-REVIEW`、`R-JD`）；修复 `L-N01` 编号遮挡、`L-N12B` 孤字与双朱橙、`L-N19`/`L-N20` 色块压副标、`L-N22` 标签微压、`L-N25` 圆内文字裁切、`R-SKILL` 顶距拥挤等细节；补强 `L-K07`/`L-K13`/`L-K14`/`L-N07`/`L-N16` 构造层。
+- **全量校验通过**：`contrast_check.py`（17/17）、`layout_lint.py`（50/50）、`infocard_check.js`（A/B 场 57 样例 + 10 演示帧确定性）、`cards_preview.js`（56/56 零错误）。`brand.json` 升至 1.9.0，`STYLE.md`、`cards/infocards/README.md` 同步更新。
+
 ## 1.15.0 · 2026-11-28 · P6：镜头运行时、配方表、AE 包生成器
 - **镜头运行时** `engine/shot.js`（全局 `SHOT`）：一个镜头 = 排版 + 填充（信息卡 / 图片 / 文字）+ 背景板 + 丰富度元素 + 入场时间；网页预览、MP4、AE 包都从同一份镜头描述出。`tools/lib/shotpage.js` 生成镜头页面。
 - **入场时间表**：`IC.plan`（卡片里每个部件什么时候、用哪个动效入场）和 `SHOT.plan`（每个画面元素）。网页 `IC.animate` / `SHOT.renderAt` 和 AE 导出读同一份；重构后 56 张预览逐像素不变。

@@ -1,4 +1,10 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1920" height="1080" viewBox="0 0 1920 1080">
+  <defs>
+    <pattern id="d2" x="-24" y="-24" width="48" height="48" patternUnits="userSpaceOnUse"><circle cx="24" cy="24" r="1.35" fill="#16130F" fill-opacity="0.075"/></pattern>
+    <radialGradient id="f2" gradientUnits="userSpaceOnUse" cx="960" cy="496.8" r="1440" gradientTransform="translate(960 496.8) scale(1 0.5250) translate(-960 -496.8)"><stop offset="0.3" stop-color="#fff"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></radialGradient>
+    <mask id="m2"><rect width="1920" height="1080" fill="url(#f2)"/></mask>
+  </defs>
+  <rect width="1920" height="1080" fill="url(#d2)" mask="url(#m2)"/>
   <g fill="none" stroke="#16130F" stroke-width="2" opacity="0.06">
     <circle cx="1440" cy="540" r="170"/>
     <circle cx="1440" cy="540" r="270"/>
@@ -6,5 +12,12 @@
     <circle cx="1440" cy="540" r="470"/>
     <line x1="880" y1="540" x2="2000" y2="540"/>
     <line x1="1440" y1="40" x2="1440" y2="1040"/>
+  </g>
+  <g stroke="#16130F" stroke-opacity="0.14" stroke-width="1.5">
+    <line x1="101" y1="312" x2="123" y2="312"/><line x1="112" y1="301" x2="112" y2="323"/>
+    <line x1="1189" y1="168" x2="1211" y2="168"/><line x1="1200" y1="157" x2="1200" y2="179"/>
+    <line x1="1797" y1="168" x2="1819" y2="168"/><line x1="1808" y1="157" x2="1808" y2="179"/>
+    <line x1="1797" y1="864" x2="1819" y2="864"/><line x1="1808" y1="853" x2="1808" y2="875"/>
+    <line x1="149" y1="864" x2="171" y2="864"/><line x1="160" y1="853" x2="160" y2="875"/>
   </g>
 </svg>

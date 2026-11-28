@@ -57,7 +57,7 @@
     });
     if (spec.lines && spec.lines.length) {
       var sv = document.createElementNS(NS, 'svg'); sv.setAttribute('class', 'lines'); sv.setAttribute('width', 1920); sv.setAttribute('height', 1080);
-      sv.innerHTML = spec.lines.map(function (l) { return '<line class="' + (l[4] ? 'hot' : '') + '" x1="' + l[0] + '" y1="' + l[1] + '" x2="' + l[2] + '" y2="' + l[3] + '"/><circle class="' + (l[4] ? 'hot' : '') + '" cx="' + l[0] + '" cy="' + l[1] + '" r="5"/>'; }).join('');
+      sv.innerHTML = spec.lines.map(function (l) { var lc = l[4] === 'aux' ? 'aux' : l[4] ? 'hot' : ''; return '<line class="' + lc + '" x1="' + l[0] + '" y1="' + l[1] + '" x2="' + l[2] + '" y2="' + l[3] + '"/><circle class="' + lc + '" cx="' + l[0] + '" cy="' + l[1] + '" r="5"/>'; }).join('');
       frame.appendChild(sv); reg(sv, 'lines', 'lines', last + 0.15);
     }
 
@@ -76,7 +76,7 @@
         e.src = f.img; reg(e, /photo/.test(f.cls || '') ? 'photo' : 'img', s.id, at[s.id], { tilt: f.tilt || 0, src: f.img }); return;
       }
       if (f.t != null) {
-        if (/blkcell/.test(f.cls || '')) { e = add(frame, 'div', 'blkcell', pos + ';font-size:' + f.fs + 'px', ''); e.textContent = f.t; reg(e, 'lab', s.id, at[s.id]); return; }
+        if (/blkcell/.test(f.cls || '')) { e = add(frame, 'div', f.cls, pos + ';font-size:' + f.fs + 'px', ''); e.textContent = f.t; reg(e, 'lab', s.id, at[s.id]); return; }
         e = add(frame, 'div', 'lab ' + (f.cls || ''), pos + ';font-size:' + f.fs + 'px', '<div>' + md(f.t) + '</div>'); e.dataset.w = r[2]; e.dataset.h = r[3];
         reg(e, /\bmic\b/.test(f.cls || '') ? 'deco' : 'lab', s.id, at[s.id]);
       }
