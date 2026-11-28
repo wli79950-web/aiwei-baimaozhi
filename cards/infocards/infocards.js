@@ -606,29 +606,36 @@
 
   /* ---------- 动效：纯函数 ---------- */
   // cue = { in: 入场时间, emph: 强调时间（可省，默认 in + 0.5）, out: 退场时间（可省）, gap: 消息间隔（chat） }
+  // 入场时间表：卡片里每个会动的元素什么时候、用哪个动效入场。网页（animate）和 AE 导出（ae/export_shots.js）都读这一份。
+  // 返回 [{el, fx, at, o, i}]：第一项是卡片本身（fx 为 null 表示不动，如无底卡的标题）
+  function plan(el, cue) {
+    var t0 = cue.in || 0, te = cue.emph != null ? cue.emph : t0 + 0.5, boxed = el.dataset.tone !== 'none';
+    var q = function (s) { return [].slice.call(el.querySelectorAll(s)); }, P = [{ el: el, fx: boxed ? 'rise' : null, at: t0 }];
+    var add = function (s, fx, at, o) { q(s).forEach(function (e, i) { P.push({ el: e, fx: fx, at: typeof at === 'function' ? at(i) : at, o: o || null, i: i }); }); };
+    var lt = t0 + (boxed ? 0.1 : 0), nd = q('[data-role="decor"]').length;
+    add('[data-role="decor"]', 'rise', t0, { dy: 24 });
+    add('[data-role="line"]', 'maskUp', lt + (nd ? 0.12 : 0));
+    add('[data-role="text"]', 'rise', function (i) { return lt + 0.18 + i * 0.08; }, { dy: 24 });
+    add('[data-role="tline"]', 'rise', function (i) { return lt + 0.15 + i * 0.08; }, { dy: 16 });
+    add('[data-role="msg"]', 'rise', function (i) { return t0 + i * (cue.gap || 0.7); });
+    add('[data-role="stk"]', 'drop', t0 + 0.15);
+    add('[data-role="row"]', 'rise', function (i) { return lt + 0.2 + i * 0.25; }, { dy: 24 });
+    add('[data-role="pill"]', 'rise', function (i) { return lt + 0.25 + i * 0.06; }, { dy: 16 });
+    add('[data-role="mk"]', 'drop', lt + 0.2);
+    add('[data-role="box"]', 'rise', t0);
+    add('[data-role="rule"]', 'unfold', t0);
+    add('[data-role="bar"]', 'underline', te);
+    add('[data-role="hl"]', 'blockSweep', function (i) { return te + i * 0.15; });
+    add('[data-role="num"]', 'countUp', lt + 0.1);
+    return P;
+  }
   function animate(el, t, cue) {
     var BM = (typeof self !== 'undefined' && self.BM) || (typeof window !== 'undefined' && window.BM);
     if (!BM) throw new Error('IC：先引入 engine/motion/motion.js');
-    var t0 = cue.in || 0, te = cue.emph != null ? cue.emph : t0 + 0.5, type = el.dataset.ic, boxed = el.dataset.tone !== 'none';
-    var q = function (s) { return [].slice.call(el.querySelectorAll(s)); };
-    BM.set(el, boxed ? BM.rise(t, t0) : {}, cue.out != null ? BM.sink(t, cue.out) : {});
-    var lt = t0 + (boxed ? 0.1 : 0);
-    q('[data-role="decor"]').forEach(function (e) { BM.set(e, BM.rise(t, t0, { dy: 24 })); });
-    q('[data-role="line"]').forEach(function (e, i) { BM.set(e, BM.maskUp(t, lt + (q('[data-role="decor"]').length ? 0.12 : 0), i)); });
-    q('[data-role="text"]').forEach(function (e, i) { BM.set(e, BM.rise(t, lt + 0.18 + i * 0.08, { dy: 24 })); });
-    q('[data-role="tline"]').forEach(function (e, i) { BM.set(e, BM.rise(t, lt + 0.15 + i * 0.08, { dy: 16 })); });
-    q('[data-role="msg"]').forEach(function (e, i) { BM.set(e, BM.rise(t, t0 + i * (cue.gap || 0.7))); });
-    q('[data-role="stk"]').forEach(function (e) { BM.set(e, BM.drop(t, t0 + 0.15)); });
-    q('[data-role="row"]').forEach(function (e, i) { BM.set(e, BM.rise(t, lt + 0.2 + i * 0.25, { dy: 24 })); });
-    q('[data-role="pill"]').forEach(function (e, i) { BM.set(e, BM.rise(t, lt + 0.25 + i * 0.06, { dy: 16 })); });
-    q('[data-role="mk"]').forEach(function (e) { BM.set(e, BM.drop(t, lt + 0.2)); });
-    q('[data-role="box"]').forEach(function (e) { BM.set(e, BM.rise(t, t0)); });
-    q('[data-role="rule"]').forEach(function (e) { BM.set(e, BM.unfold(t, t0)); });
-    q('[data-role="bar"]').forEach(function (e) { BM.set(e, BM.underline(t, te)); });
-    q('[data-role="hl"]').forEach(function (e, i) { BM.set(e, BM.blockSweep(t, te + i * 0.15)); });
-    q('[data-role="num"]').forEach(function (e) {
-      var to = e.dataset.to, v = parseFloat(String(to).replace(/,/g, ''));
-      BM.text(e, isNaN(v) ? to : fmtNum(BM.countUp(t, lt + 0.1, 0, v), to));
+    plan(el, cue).forEach(function (p, k) {
+      if (k === 0) { BM.set(el, p.fx ? BM.rise(t, p.at) : {}, cue.out != null ? BM.sink(t, cue.out) : {}); return; }
+      if (p.fx === 'countUp') { var to = p.el.dataset.to, v = parseFloat(String(to).replace(/,/g, '')); BM.text(p.el, isNaN(v) ? to : fmtNum(BM.countUp(t, p.at, 0, v), to)); return; }
+      BM.set(p.el, p.fx === 'maskUp' ? BM.maskUp(t, p.at, p.i) : BM[p.fx](t, p.at, p.o || undefined));
     });
     return el;
   }
@@ -639,5 +646,5 @@
     return out;
   }
 
-  return { render: render, fit: fit, animate: animate, spec: spec, types: Object.keys(C), SIZE: SIZE, MIN: MIN, rich: rich, callout: callout };
+  return { render: render, fit: fit, animate: animate, plan: plan, spec: spec, types: Object.keys(C), SIZE: SIZE, MIN: MIN, rich: rich, callout: callout };
 });

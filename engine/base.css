@@ -5,6 +5,7 @@
 @import "../node_modules/misans/lib/Normal/MiSans-Medium.min.css";
 @import "../node_modules/misans/lib/Normal/MiSans-Bold.min.css";
 @import "../node_modules/misans/lib/Normal/MiSans-Heavy.min.css";
+@import "fonts_patch.css";   /* MiSans 网页分片缺的字用随包 .ttf 补（ae/lib/fontmap.py 生成） */
 @import "../node_modules/@fontsource/archivo/900.css";
 @import "../node_modules/@fontsource/ibm-plex-mono/500.css";
 @import "../node_modules/@fontsource/ibm-plex-mono/600.css";

@@ -22,9 +22,10 @@
 | `cards/images/` | 图片：风格提示词 `styles.json`（写实 `real` 为核心、动漫 `anime` 为辅，另有 SC02、tone、device、flat……持续扩充）；图片每期现生成，抠图后过 `tools/grade.py` 统一调色 |
 | `cards/layouts/` | 排版（P3）：由挖洞号 49 张卡的构图迁来，50 个 `layout.json` + 线框预览，只含构图和槽位，持续扩充 |
 | `cards/infocards/` | 信息卡（P4），持续扩充 |
-| `cards/recipes/` | 配方（P6）：一张卡 = 排版 + 信息卡 + 图片 + 动效 |
+| `cards/recipes/` | 配方（P6）：叙事功能 → 排版 + 信息卡 + 图片 + 动效，`recipes.json` 56 条；每条的示例镜头就是预览 |
 | `libs/screencast/` | 录屏组件（P4）：窗口、推镜、标注、光标、打码、联动 |
-| `ae/` | AE 包工具：探测报告、说明；挖洞号迁来的参考实现在提交 `adbbc35` 的 `ae/_from_aiwei-vs2/`，P6 改造后进 `main` |
+| `engine/shot.js` | 镜头运行时（P6）：一份镜头描述 → 网页预览 / MP4 / AE 包 |
+| `ae/` | AE 包工具（P6）：`python3 ae/build_ae.py <期目录>` 一键出分层 AE 重建包 + 还原对比 + 模拟测试；演示 `ae/examples/demo/` |
 | `tools/` | 生图、抠图、双色调、对比度检查、生成 tokens / 背景板 / 预览、语音识别、口播抠像 |
 | `fonts/` | 得意黑、Archivo Black、IBM Plex Mono（SIL OFL 1.1，附许可）；MiSans Medium / Bold / Heavy（小米许可，用户已确认商用） |
 | `episodes/` | 每期一个目录；`main` 只保留最新两期，更早的打标签 `ep/<期号>` 归档 |
@@ -39,15 +40,15 @@
 | P3 排版库 | 49 张卡构图 → `layout.json` + 线框预览 + `layout_lint` | ✅ 2026-11-27（50 个排版，全部通过检查） |
 | P4 信息卡库 + 录屏组件 | 首批约 20 个组件 × A/B 场景；录屏窗口 / 推镜 / 标注 / 打码 / 联动 | ✅ 2026-11-27（信息卡 20 个 + 录屏组件网页端；AE 端在 P6） |
 | P5 素材库 | 写实 / 动漫风格定稿（陶瓷贴纸停用）、`real` 12 + `anime` 6 + `flat` 2 + `device` 2 样张、`device_paste.py`、生图清单模板 + `genimg_list.py` | ✅ 2026-11-27 |
-| P6 配方表 + AE | 配方表、新 AE 组件库、`build_ae.py` 分层检查 | 待做 |
+| P6 配方表 + AE | 镜头运行时、配方表 56 条、AE 导出器 + 运行库 + `build_ae.py` 分层检查 + 模拟测试、录屏 AE 预合成、演示包 | ✅ 2026-11-28（没在真 AE 里测过） |
 | P7 试做一期 | 30–60 秒完整流程 | 待做 |
 
 ## 不在 main 当前版本里、但保存在历史中的内容
-`main` 上只有已确认的东西。下面两项暂时不用，保存在提交 `adbbc35`（`main` 的历史里），需要时取回（浅克隆先 `git fetch --depth=10 origin main`）：
+`main` 上只有已确认的东西。下面的内容暂时不用，保存在提交 `adbbc35`（`main` 的历史里），需要时取回（浅克隆先 `git fetch --depth=10 origin main`）：
 
 | 内容 | 位置 | 取回命令 | 什么时候进 main |
 |---|---|---|---|
-| 挖洞号 AE 工具的参考实现（写死了挖洞号的颜色、字体、HUD） | `ae/_from_aiwei-vs2/` | `git checkout adbbc35 -- ae/_from_aiwei-vs2` | P6 改造完 |
+| 挖洞号 AE 工具的参考实现（写死了挖洞号的颜色、字体、HUD） | `ae/_from_aiwei-vs2/` | `git checkout adbbc35 -- ae/_from_aiwei-vs2` | 不再进 main：P6 已按白帽志重写成 `ae/`（模拟测试由它改造） |
 | 图片素材库 `toy` / `tone` 样张、演示帧 F5 / F6、图片素材库预览板 | `libs/imagery/candidates/`、`docs/previews/` | `git checkout adbbc35 -- libs/imagery/candidates` | 不再进 main（不设品牌层），需要参考时取回 |
 
 > 本仓库不含 lieflat code video 的任何代码；所有动效自写。与「艾唯说挖洞」（`aiwei-vs2`）的素材完全隔离。不设品牌素材层，图片素材每期由用户提供或现生成。

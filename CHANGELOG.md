@@ -1,5 +1,20 @@
 # 更新记录
 
+## 1.15.0 · 2026-11-28 · P6：镜头运行时、配方表、AE 包生成器
+- **镜头运行时** `engine/shot.js`（全局 `SHOT`）：一个镜头 = 排版 + 填充（信息卡 / 图片 / 文字）+ 背景板 + 丰富度元素 + 入场时间；网页预览、MP4、AE 包都从同一份镜头描述出。`tools/lib/shotpage.js` 生成镜头页面。
+- **入场时间表**：`IC.plan`（卡片里每个部件什么时候、用哪个动效入场）和 `SHOT.plan`（每个画面元素）。网页 `IC.animate` / `SHOT.renderAt` 和 AE 导出读同一份；重构后 56 张预览逐像素不变。
+- **配方表** `cards/recipes/recipes.json`（56 条：50 个排版 + AI 对话 / AI 审查 / 技能栈 / 招聘要求 / 工具对比 / 面试金句 6 种新叙事功能），`recipes.md` 由 `tools/recipes_md.py` 生成；`tools/cards_preview.js` 改为从配方表出预览。
+- **AE 包生成器** `python3 ae/build_ae.py <期目录>`：字体覆盖表 → 导出（`ae/export_shots.js` + `ae/lib/page_aex.js`：每个画面元素拆成透明 PNG + AE 文字层，逐段设字体，入场关键帧用 BMAE）→ 分层 / 章节进度条区 / 缺字形硬检查 → 拼脚本（`ae/ae_lib.jsx`，ES3）→ 收素材和字体 → 模拟 AE 测试 → zip。
+  - 多部件卡片、图解、倾斜卡放进「部件预合成」；部件 = PNG 主层 + 挂在下面的文字层（透明度表达式跟随）；`maskUp` 用轨道遮罩，`countUp` 用滑块 + 表达式。
+  - 录屏：窗口边框 PNG + 录屏预合成（原片 + 时间重映射 + 推镜关键帧 + 打码实色块 / 标注框挂在原片层下 + 聚光反转蒙版 + 标签），和网页 `SC.keyframes` 同一套数学。光标、引线不重建，模糊打码做成实色块（写进包里 README）。
+  - **还原对比**：只用导出的图层在浏览器里拼回 settled 那一帧，和网页原画面逐像素比（演示期 6 个镜头平均差异 ≤ 0.7 色阶），三联图随包附带。
+  - 模拟测试 `ae/mock_ae_test.js` 由挖洞号的自有工具改造：去掉 IP 区 / HUD / 字幕层检查；新增父层有关键帧时挂子层报错、拆维后写整体位置报错、开启时间重映射自带首尾关键帧、图层重名、章节进度条区文字检查；探测报告没覆盖的修剪路径、滑块控制按官方文档补。**没有在真 AE 里运行过。**
+  - 演示期 `ae/examples/demo/`（5 个配方镜头 + 1 个录屏镜头）。
+- **MiSans 补字**：npm 网页分片缺全角？～＝＋％、部分生僻字，浏览器会落到系统字体（和 AE 对不上，也不好看）。`ae/lib/fontmap.py --patch` 生成 `engine/fonts_patch.css`，用随包 .ttf 补上；`base.css` 引入。用到这些字的预览重出（问号等改成 MiSans 字形）。
+- `brand.json` 1.8.1：Archivo 的 AE 字体名改为字体文件里真正的 PostScript 名 `ArchivoRoman-Black`（原来写的 `Archivo-Black` AE 找不到）。
+- 配方示例文字：L-K24「箭头 = 动作」改半角等号；L-K26「用户变管理员」（原来最后一个字单独掉一行）。
+- 文档：`ae/README.md` 重写、`docs/rules/AE包规范.md`（怎么生成、检查到什么程度、没重建的部分）、`CLAUDE.md`、`STYLE.md`、`README.md` 同步。
+
 ## 1.14.0 · 2026-11-27 · 视觉系统 1.8：画面丰富度
 - 用户对照挖洞号的知识卡片，认为白帽志画面丰富度与美感有差距；先出 6 张改版候选（`docs/previews/rich/compare_1/2.jpg`），用户确认后改库。
 - **装饰小字放宽**：每屏 ≤ 16、每张卡 ≤ 6（`brand.json` 1.8.0 → `type.decor`）；图解组件按一组元素算，只计入每屏上限（`pagecheck`）。`test_layouts` 同步。

@@ -94,17 +94,27 @@
     return { frame: frame, spec: spec, layout: layout, bg: bg, units: units, sc: sch, errs: errs, scene: scene, focus: focus, last: last };
   }
 
+  // 入场时间表：每个 unit 的入场动效（卡片内部的逐项入场由 IC.plan 给出）。网页 renderAt 和 AE 导出都读这一份。
+  // 返回 [{u, fx, at, o, parts}]：fx 为 null 表示不动（氛围道具、光斑、字幕、录屏窗口自己管）；out 是统一退场时间（可无）
+  function plan(h) {
+    var IC = g('IC');
+    return h.units.map(function (u) {
+      if (u.kind === 'ic' || u.kind === 'title') { var P = IC.plan(u.el, { in: u.at, emph: u.at + 0.6 }); return { u: u, fx: P[0].fx, at: u.at, o: null, parts: P.slice(1) }; }
+      if (u.kind === 'img') return { u: u, fx: 'drop', at: u.at, o: null, parts: [] };
+      if (u.kind === 'amb' || u.kind === 'bokeh' || u.kind === 'sub' || u.kind === 'sc') return { u: u, fx: null, at: u.at, o: null, parts: [] };
+      return { u: u, fx: 'rise', at: u.at, o: { dy: 24 }, parts: u.svg ? [{ el: u.svg, fx: 'rise', at: u.at, o: { dy: 0 }, i: 0, sibling: true }] : [] };
+    });
+  }
   // 时间 t 的画面：背景动态层 + 每个 unit 的入场 / 退场
   function renderAt(h, t) {
     var BM = g('BM'), IC = g('IC'), BGLIB = g('BGLIB'), SC = g('SC'), out = h.spec.out;
     BGLIB.animate(h.bg, t);
-    h.units.forEach(function (u) {
-      var e = u.el, o = out != null ? BM.sink(t, out) : {};
-      if (u.kind === 'ic' || u.kind === 'title') { IC.animate(e, t, { in: u.at, emph: u.at + 0.6, out: out }); return; }
-      if (u.kind === 'img') { BM.set(e, BM.drop(t, u.at), o); return; }
-      if (u.kind === 'amb' || u.kind === 'bokeh' || u.kind === 'sub' || u.kind === 'sc') { if (out != null) BM.set(e, o); return; }
-      BM.set(e, BM.rise(t, u.at, { dy: 24 }), o);
-      if (u.svg) BM.set(u.svg, BM.rise(t, u.at, { dy: 0 }), o);
+    plan(h).forEach(function (p) {
+      var e = p.u.el, o = out != null ? BM.sink(t, out) : {};
+      if (p.u.kind === 'ic' || p.u.kind === 'title') { IC.animate(e, t, { in: p.at, emph: p.at + 0.6, out: out }); return; }
+      if (!p.fx) { if (out != null) BM.set(e, o); return; }
+      BM.set(e, BM[p.fx](t, p.at, p.o || undefined), o);
+      p.parts.forEach(function (q) { BM.set(q.el, BM[q.fx](t, q.at, q.o || undefined), o); });
     });
     if (h.sc && SC) return SC.render(h.sc, t);
   }
@@ -121,5 +131,5 @@
   // 全部入场完成、还没退场的时间点（预览 / AE 导出取这一帧）
   function settled(h) { var m = 0; h.units.forEach(function (u) { m = Math.max(m, u.at || 0); }); return Math.min(m + 1.6, h.spec.out != null ? h.spec.out - 0.01 : 1e9); }
 
-  return { mount: mount, renderAt: renderAt, settled: settled, check: check, md: md };
+  return { mount: mount, renderAt: renderAt, plan: plan, settled: settled, check: check, md: md };
 });

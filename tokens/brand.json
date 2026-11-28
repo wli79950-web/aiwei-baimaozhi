@@ -1,7 +1,7 @@
 {
   "name": "艾唯白帽志",
-  "version": "1.8.0",
-  "updated": "2026-11-27",
+  "version": "1.8.1",
+  "updated": "2026-11-28",
   "spec": {
     "w": 1920,
     "h": 1080,
@@ -196,7 +196,7 @@
     "num": {
       "family": "Archivo",
       "weight": 900,
-      "ae": "Archivo-Black",
+      "ae": "ArchivoRoman-Black",
       "file": "fonts/Archivo-Black.ttf",
       "license": "SIL OFL 1.1（由可变字体固定为 wght 900 / wdth 100）",
       "bundled": true,
